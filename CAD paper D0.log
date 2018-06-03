@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2017.5.20)  3 JUN 2018 14:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2017.5.20)  3 JUN 2018 17:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -355,57 +355,154 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 <figures/fig1.pdf, id=16, 374.39874pt x 340.27126pt>
 File: figures/fig1.pdf Graphic file (type pdf)
  <use figures/fig1.pdf>
-Package pdftex.def Info: figures/fig1.pdf used on input line 101.
+Package pdftex.def Info: figures/fig1.pdf used on input line 116.
 (pdftex.def)             Requested size: 280.79837pt x 255.2028pt.
 
-[2 <./figures/fig1.pdf>] [3]
-Overfull \hbox (23.29285pt too wide) in paragraph at lines 172--173
+<figures/fig2.pdf, id=17, 294.09875pt x 290.08376pt>
+File: figures/fig2.pdf Graphic file (type pdf)
+ <use figures/fig2.pdf>
+Package pdftex.def Info: figures/fig2.pdf used on input line 122.
+(pdftex.def)             Requested size: 220.57352pt x 217.56227pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[2 <./figures/fig1.pdf>] <figures/fig3.pdf, id=58, 417.56pt x 411.5375pt>
+File: figures/fig3.pdf Graphic file (type pdf)
+
+<use figures/fig3.pdf>
+Package pdftex.def Info: figures/fig3.pdf used on input line 144.
+(pdftex.def)             Requested size: 313.16922pt x 308.65237pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[3 <./figures/fig2.pdf>] [4 <./figures/fig3.pdf>]
+<figures/fig4.pdf, id=147, 562.1pt x 318.18875pt>
+File: figures/fig4.pdf Graphic file (type pdf)
+ <use figures/fig4.pdf>
+Package pdftex.def Info: figures/fig4.pdf used on input line 168.
+(pdftex.def)             Requested size: 421.57397pt x 238.64096pt.
+
+[5 <./figures/fig4.pdf>] <figures/fig5.pdf, id=154, 532.99126pt x 404.51125pt>
+File: figures/fig5.pdf Graphic file (type pdf)
+
+<use figures/fig5.pdf>
+Package pdftex.def Info: figures/fig5.pdf used on input line 197.
+(pdftex.def)             Requested size: 266.49498pt x 202.25513pt.
+ <figures/fig6.pdf, id=155, 294.09875pt x 290.08376pt>
+File: figures/fig6.pdf Graphic file (type pdf)
+
+<use figures/fig6.pdf>
+Package pdftex.def Info: figures/fig6.pdf used on input line 203.
+(pdftex.def)             Requested size: 147.04901pt x 145.04152pt.
+
+Overfull \hbox (23.29285pt too wide) in paragraph at lines 210--211
 \OML/cmm/m/it/10.95 A[]; A[]; :::; A[]$\OT1/cmr/m/n/10.95 , each bounded by the
  line seg-ments de-fined by the points $[]$
  []
 
-[4] [5] [6] [7]
-Overfull \hbox (8.2467pt too wide) in paragraph at lines 328--328
+[6 <./figures/fig5.pdf> <./figures/fig6.pdf>]
+<figures/fig7.pdf, id=248, 453.695pt x 376.40625pt>
+File: figures/fig7.pdf Graphic file (type pdf)
+ <use figures/fig7.pdf>
+Package pdftex.def Info: figures/fig7.pdf used on input line 219.
+(pdftex.def)             Requested size: 226.84694pt x 188.20265pt.
+
+<figures/fig8.pdf, id=249, 532.99126pt x 404.51125pt>
+File: figures/fig8.pdf Graphic file (type pdf)
+ <use figures/fig8.pdf>
+Package pdftex.def Info: figures/fig8.pdf used on input line 225.
+(pdftex.def)             Requested size: 266.49498pt x 202.25513pt.
+
+[7 <./figures/fig7.pdf> <./figures/fig8.pdf>]
+<figures/fig9.pdf, id=321, 562.1pt x 275.0275pt>
+File: figures/fig9.pdf Graphic file (type pdf)
+ <use figures/fig9.pdf>
+Package pdftex.def Info: figures/fig9.pdf used on input line 243.
+(pdftex.def)             Requested size: 421.57397pt x 206.27011pt.
+
+[8 <./figures/fig9.pdf>]
+<figures/fig10.pdf, id=355, 482.80376pt x 304.13625pt>
+File: figures/fig10.pdf Graphic file (type pdf)
+ <use figures/fig10.pdf>
+Package pdftex.def Info: figures/fig10.pdf used on input line 278.
+(pdftex.def)             Requested size: 362.10193pt x 228.10162pt.
+
+<figures/fig10b.pdf, id=356, 388.45125pt x 297.11pt>
+File: figures/fig10b.pdf Graphic file (type pdf)
+ <use figures/fig10b.pdf>
+Package pdftex.def Info: figures/fig10b.pdf used on input line 284.
+(pdftex.def)             Requested size: 291.3377pt x 222.83194pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[9 <./figures/fig10.pdf>]
+<figures/fig11.pdf, id=362, 438.63875pt x 355.3275pt>
+File: figures/fig11.pdf Graphic file (type pdf)
+ <use figures/fig11.pdf>
+Package pdftex.def Info: figures/fig11.pdf used on input line 298.
+(pdftex.def)             Requested size: 328.97824pt x 266.49495pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<figures/fig12.pdf, id=363, 366.36874pt x 290.08376pt>
+File: figures/fig12.pdf Graphic file (type pdf)
+ <use figures/fig12.pdf>
+Package pdftex.def Info: figures/fig12.pdf used on input line 327.
+(pdftex.def)             Requested size: 274.77588pt x 217.56227pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[10 <./figures/fig10b.pdf>] [11 <./figures/fig11.pdf>] [12 <./figures/fig12.pdf
+>]
+Overfull \hbox (8.2467pt too wide) in paragraph at lines 397--397
 [] 
  []
 
-[8]
+[13]
 
-LaTeX Warning: Empty `thebibliography' environment on input line 375.
+LaTeX Warning: Empty `thebibliography' environment on input line 444.
 
-[9] (./CAD paper D0.aux) ) 
+[14] (./CAD paper D0.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
- 5732 strings out of 493014
- 96183 string characters out of 6130549
- 177162 words of memory out of 5000000
- 9178 multiletter control sequences out of 15000+600000
+ 5816 strings out of 493014
+ 97760 string characters out of 6130549
+ 175162 words of memory out of 5000000
+ 9250 multiletter control sequences out of 15000+600000
  14771 words of font info for 56 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
- 38i,16n,39p,1169b,319s stack positions out of 5000i,500n,10000p,200000b,80000s
-<d:/Program Files/texlive/2016/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmbx10.pfb><d:/Program Files/texlive/2016/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmbx12.pfb><d:/Program Files/texlive/2016/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmbx8.pfb><d:/Program Files/texlive/2016/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmex10.pfb><d:/Program Files/texlive/2016/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><d:/Program Files/texlive/201
-6/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><d:/Program Files/texliv
-e/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><d:/Program Files/te
-xlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><d:/Program File
-s/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><d:/Program 
-Files/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><d:/Prog
-ram Files/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><d:/
-Program Files/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><
-d:/Program Files/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pf
-b><d:/Program Files/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9
-.pfb><d:/Program Files/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mss8.pfb><d:/Program Files/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmsy10.pfb><d:/Program Files/texlive/2016/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmsy6.pfb><d:/Program Files/texlive/2016/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmsy8.pfb>
-Output written on "CAD paper D0.pdf" (9 pages, 234730 bytes).
+ 38i,16n,39p,1169b,323s stack positions out of 5000i,500n,10000p,200000b,80000s
+<d:/Program Files/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx
+10.pfb><d:/Program Files/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmbx12.pfb><d:/Program Files/texlive/2016/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmbx8.pfb><d:/Program Files/texlive/2016/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmex10.pfb><d:/Program Files/texlive/2016/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmmi10.pfb><d:/Program Files/texlive/2016/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmmi12.pfb><d:/Program Files/texlive/2016/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmmi6.pfb><d:/Program Files/texlive/2016/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmmi8.pfb><d:/Program Files/texlive/2016/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmr10.pfb><d:/Program Files/texlive/2016/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><d:/Program Files/texlive/2016/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><d:/Program Files/texlive/20
+16/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><d:/Program Files/texlive
+/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><d:/Program Files/texl
+ive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb><d:/Program Files/t
+exlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb><d:/Program Fil
+es/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><d:/Progra
+m Files/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><d:/Pr
+ogram Files/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+Output written on "CAD paper D0.pdf" (14 pages, 371987 bytes).
 PDF statistics:
- 142 PDF objects out of 1000 (max. 8388607)
- 104 compressed objects within 2 object streams
+ 472 PDF objects out of 1000 (max. 8388607)
+ 370 compressed objects within 4 object streams
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 66 words of extra memory for PDF output out of 10000 (max. 10000000)
 

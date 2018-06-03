@@ -96,14 +96,34 @@ Consider a rigid link of length $L_0$ positioned in a 2D plane, initially aligne
 \end{align}
 The extension of tractrix equation along motion in arbitrary direction as well as an algorithm to calculate the same in 3-D can be found in [ref] and [ref]. In case of multiple links connected to each other as in the case of hyper-redundant robot, or a one dimensional object approximated as a series of connected linkages the algorithm can be applied iteratively from the head to tail as shown in [ref]. By moving along the tractix curve, the tail moves the minimum distance with respect to its initial position. Also, the displacement $\Vert \textbf{x}_h-\textbf{X}_h \Vert \geq \Vert \textbf{x}_t-\textbf{X}_t \Vert$ which means that the displacement attentuates from the displaced link to end of the chain in case of serially connected links[fig2]. Due to the minimal displacement of the tail, the motion can be imagined as the one with high lateral resistance on the link and less resistance in the direction of motion of link. 
 
+%\begin{figure}[ht!]
+%    \centering
+%    \begin{subfigure}{0.48\textwidth}
+%        \centering
+%        \includegraphics[width=0.75\linewidth]{figures/fig1.pdf}
+%        \caption{Tractrix curve in 2D}
+%        \label{fig:tractrixin2D}
+%    \end{subfigure}%
+%    \begin{subfigure}{0.48\textwidth}
+%        \centering
+%        \includegraphics[width=1\linewidth]{figures/fig2.pdf}
+%        \caption{Tractrix with multiple links}
+%    \end{subfigure}
+%\end{figure}
+
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.75]{figures/fig1.pdf}
 \caption{Tractrix curve in 2D\label{fig1}}
 \end{figure}
 
-[fig1 : Tractrix curve]
-[fig2 : Tractrix on multiple links]
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.75]{figures/fig2.pdf}
+\caption{Tractrix with multiple segments\label{fig2}}
+\end{figure}
+
+
 
 It is shown in [ref] that for a single rigid link, tractrix curve can also be obtained by minimizing an $L^2$ metric which is essentially the displacement of the tail from its initial position subject to the condition that the length of link is always preserved. i.e, the co-ordinates of the tail can be obtained from the following minimization problem:
 \begin{align}
@@ -119,7 +139,12 @@ An advantage of expressing tractrix as a minimization problem is that we can add
 \end{align}
 where $\bf{f}(x) = 0$ is the analytical equations of the boundaries of the surfaces which are to be avoided. For example, if the tail is to avoid a single obstacle represented by a circle with center $(x_c,y_c)$, the expression $f(x) = (x-x_c)^2+(y-y_c)^2-r^2>0$ ensures that the point $x$ always lies outside the circle of radius $r$. Complex objects can be modelled as a combination of super-ellipses as shown in [ref]. In this case, $f(x)$ will be a vector of all boundary equations $\textbf{f}(x) = [f_1(x),f_2(x),...f_m(x)]^T$ [fig3]. It is also worth noting that the value of function will increase or decrease as the point is farther from the curve $f(x)$; the value being zero on the curve. Hence, this approach can also be imagined as a geometric potential field, with zero potential only at the surface of the obstacle. 
 
-[fig3 : Link avoiding multiple obstacles]
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.75]{figures/fig3.pdf}
+\caption{Obstacle avoidance\label{fig3}}
+\end{figure}
+
 In the case of path planning of hyper-redundant manipulator with the motion confined within a duct, the problem may be specified as:
 \begin{align}
 \min_{\textbf{x}_t} &\Vert \textbf{x}_t-\textbf{X}_t \Vert\\
@@ -135,10 +160,14 @@ In this section, we propose different methods to represent a duct in 2D planar s
 %
 One method to represent a duct is by overlapping a series of super-ellipses as shown in [fig4]. In Cartesian co-ordinate system $R^2$, the contour of super-ellipse obeys the following equation:
 \begin{align}
-f(\textbf{x})= f(x,y):\quad\vert \frac{x-x_c}{a} \vert^n+\vert \frac{y-y_c}{b} \vert^n-1=0
+f(\textbf{x})= f(x,y):\quad \left \vert \frac{x-x_c}{a} \right\vert^n+\left\vert \frac{y-y_c}{b} \right\vert^n-1=0
 \end{align}
 
-[fig4 : ( What are super-ellipses? Duct as a combination of super-ellipses)]
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.75]{figures/fig4.pdf}
+\caption{ Super-ellipses and a duct modelled as combination of super-ellipses\label{fig:super-ellipses}}
+\end{figure}
 
 The condition $f(\textbf{x}_t)\leq0$ will ensure that the co-ordinates of the tail of the link $(x_t,y_t)$ always lie inside the bounding curve of a super-ellipse. However, in case of multiple equations ($\textbf{f(x)}$), only one of them need to be satisfied. In other words, the least value of all the values of $\textbf{f(x)}$ should be less than or equal to zero. For the $i^\text{th}$ super-ellipse which is rotated by an angle $\phi_i$ about the $z-$ axis and whose center is translated to the co-ordinates $(x_i,y_i)$ so as to fit a portion of a duct, the co-ordinates of boundary should be multiplied with a transformation matrix
 \begin{align}
@@ -163,9 +192,18 @@ The complete formulation is given as:
 
 An example of single link and multi-segmented chain passing through the duct is shown in [fig5]. Motion of a unit link with and without constraint is shown in [fig6]. The negative gradient (descend direction) of the inequality constraint function is also shown in the figure.
 
-[fig5 : Motion through the duct as a combination of super-ellipses]
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.5]{figures/fig5.pdf}
+\caption{ Motion through duct modelled as combination of super-ellipses\label{fig:ductasSEs}}
+\end{figure}
 
-[fig6 : To show how the link gets pulled into the duct when started off the duct]
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.5]{figures/fig6.pdf}
+\caption{ Effect of gradient of inequality constraint in pulling the tail into the duct\label{fig:gradienteffectSE}}
+\end{figure}
+
 
 \subsection{Representation of duct as a set of connected quadrilaterals}
 
@@ -176,9 +214,18 @@ A complex duct shape can be represented as a continuous array of discrete patche
 \end{align}
 in parameters $u$ and $v$. If the vertices of the quadrilateral are given by $\mathbf{P}_{i}=\left[ {}^xP_{i},{}^yP_{i}\right]^T $ and $\mathbf{Q}_{i}=\left[ {}^xQ_{i},{}^yQ_{i}\right]^T $, then the analytical expressions for the terms $u$ and ${v}$, given the value of $\mathbf{x}_i$, can be obtained by solving \ref{eq:xi(u,t)} (see Appendix). The values of $u,v$ can be used to classify the point with respect to the surface patch $A_i$. However, it may be noted that there will be two sets of solution and they are not always real and unique. For example, for the surface patch shown in [fig8], when the point $\mathbf{P} =\left(10,-5 \right)$ when classified with respect to the area $A$ returns the values $u=\left( 1.0 + 0.6~i,~1.0 - 0.6~i \right)$ and $v=\left(2.0 + 1.9~i,~2.0 - 1.9~i\right)$.
 
-[fig7] : Duct represented by stitched quadrilaterals
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.5]{figures/fig7.pdf}
+\caption{Duct represented by stitched quadrilaterals\label{fig:stitchequads}}
+\end{figure}
 
-[fig8] : Example where the classification problem returns complex solutions
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.5]{figures/fig8.pdf}
+\caption{Example where the classification problem returns complex solutions\label{fig:complexsolns}}
+\end{figure}
+
 
 
  In case of a single quadrilateral patch, we can now write the optimization problem as:
@@ -191,8 +238,12 @@ in parameters $u$ and $v$. If the vertices of the quadrilateral are given by $\m
 \end{align}
 for real values of $\hat{u}$ and $\hat{v}$. In case of multiple patches, classifying one point with respect to all the patches give the values $\left({u}_1,{v}_1 \right), \left({u}_2,{v}_2 \right),...,\left({u}_m,{v}_m \right)$ etc. for the $m$ number of patches $A_1, A_2,..., A_m$ and consequently, $m$ set of conditions. But out of the $m$ condition sets, only one set should be satisfied since the point will belong to only one patch at a given instance of motion through the duct. Including a switching  statement in the optimization code will be inefficient especially when the point to be classified is close to the common boundary between two patches. 
 
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.75]{figures/fig9.pdf}
+\caption{ Step function \label{fig:stepfunction}}
+\end{figure}
 
-[fig9] : The $\xi$ function, $\chi$ function
 
 In order to provide a gradient to the constraint which will direct the point into the duct, an inequality constraint is to be included as in the case of super-ellipses described in the previous subsection. If $\hat{u}$ and $\hat{v}$ represent the parameters obtained for a point $\mathbf{x}_t$ classified with respect to the quadrilateral $A_i$, $x_{\zeta_1}(t) = \mathbf{P}_{i-1}+\left(1-{\hat{u}} \right)\mathbf{P}_i$ and $x_{\zeta_2}(t) = \mathbf{Q}_{i-1}+\left(1-{\hat{u}} \right)\mathbf{Q}_i$ will give the two points on the duct boundary curves corresponding to the parameter $\hat{u}$. Then using triangular inequality theorem ??, we can see that the value
 \begin{align}
@@ -222,9 +273,17 @@ where $\hat{\mathbf{v}}=\left[\hat{v}_1,\hat{v}_2,...,\hat{v}_m\right]^T$
 
 Motion of a unit link passing through the duct is shown in [fig10]
 
-[fig10] : Example of constrained motion with stitched quadrilaterals
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.75]{figures/fig10.pdf}
+\caption{ Example of constrained motion with stitched quadrilaterals \label{fig:motionquads}}
+\end{figure}
 
-[fig10b] : Constraint equation's gradient
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.75]{figures/fig10b.pdf}
+\caption{ Effect of gradient of inequality constraint in pulling the tail into the quadratic duct \label{fig:quadgradient}}
+\end{figure}
 
 
 \subsection{Representation of duct using two non-intersecting continuous curves}
@@ -234,7 +293,12 @@ If the non-intersecting border curves of the duct can be analytically expressed,
 \end{align}
 For example, [fig11] shows a 2D duct defined by two curves $\zeta_1(u) = \left[u,~\sin\left(u \right)\right]^T$ and $\zeta_2(u) = \left[u,~\sin\left(u +\frac{\pi}{8}\right)+1\right]^T$ and a path chosen midway between the two curves. The equation of the surface generated by this curves will simply be
 
-[fig11] : Example of analytical duct
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.75]{figures/fig11.pdf}
+\caption{ Example of analytical duct \label{fig:analyticduct}}
+\end{figure}
+
 
 \begin{align}
 \begin{bmatrix}
@@ -258,14 +322,19 @@ In this case, we will solve the equations:
 \end{align} 
  An example movement of hyper-redundant manipulator through the duct is shown in [fig12]. However, analytical solution is not always viable for complex equations and numerical procedure must be employed to find the values of $u$ and $v$ corresponding to the given tail point to be classified. The equation used is same as \ref{eq:minx,u,v}.
 
-[fig12] : Example of motion through analytical duct
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.75]{figures/fig12.pdf}
+\caption{ Motion through analytical duct \label{fig:analyticductmotion}}
+\end{figure}
+
 
 \section{Motion planning through 3D ducts}
 In this section, we will explain a few methods to represent ducts in 3D and how motion planning is achieved in the same.
 \subsection{Representation of duct using combination of super-ellipsoids}
 In Cartesian co-ordinate system in $R^3$, the surface of a super-ellipsoid follows the equation:
 \begin{equation}
-f(x,y,z) = \left[ \left\lbrace \left(\frac{x}{a} \right)^{\frac 2e} +\left(\frac{y}{b} \right)^{\frac 2e} \right\rbrace^{\frac{e}{n}} +\left(\frac{z}{c} \right)^{\frac 2n}  \right]^\frac n2-1 =0
+f(x,y,z) : \left[ \left\lbrace \left(\frac{x}{a} \right)^{\frac 2e} +\left(\frac{y}{b} \right)^{\frac 2e} \right\rbrace^{\frac{e}{n}} +\left(\frac{z}{c} \right)^{\frac 2n}  \right]^\frac n2-1 =0
 \end{equation}
 
 
