@@ -30,7 +30,7 @@
 
 \begin{document}
 %
-\title{I changed the title. again... Are you serious?}
+\title{Motion planning of hyper-redundant robot through confined ducts}
 %
 %
 \author{K. P. Ashwin*, Arkadeep N. C.
@@ -135,9 +135,9 @@ In the case of path planning of hyper-redundant manipulator with the motion conf
 \begin{align} \label{eq:path_planning_opt}
 \min_{\textbf{x}_t} &\Vert \textbf{x}_t-\textbf{X}_t \Vert\\
 \text{Subject to:} &\Vert \textbf{x}_h - \textbf{x}_t \Vert -L_0 = 0 \nonumber \\
- ~~ &\bf{f}(x) <0 \nonumber
+ ~~ &{f}(x) <0 \nonumber
 \end{align}
-While this expression is applicable for a duct represented by a single surface with the boundary $f(x)$, unlike the obstacle avoidance problem, the same will not work in the case of complex surfaces represented by combination of simpler analytical shapes. This is because if a point is classified as inside one of the simpler shapes, then it should be classified as outside the other shapes forming the duct. In other words, if one constraint function $f_k(x)\le 0$, then the other constraint functions $f_{i\neq k}>0$. In the next sections, we present different methods to represent the ducts and how confined space motion is achieved in the same.
+While this expression is applicable for a duct represented by a single surface with the boundary $f(x)$, unlike the obstacle avoidance problem, the same will not work in the case of complex surfaces represented by combination of simpler analytical shapes. This is because if a point is classified as inside one of the simpler shapes, then it should be classified as outside the other shapes forming the duct. In other words, if one constraint function $f_k(x)< 0$, then the other constraint functions $f_{i\neq k}\geq 0$. In the next sections, we present different methods to represent the ducts and how confined space motion is achieved in different cases. 
 
 
 \subsection{Nature of the optimization problem}\label{sc:optimization}
@@ -192,7 +192,7 @@ The complete formulation is given as:
 \min\left(\textbf{g}(\textbf{x}_t)\right) < 0
 \end{align}
 
-An example of single link and multi-segmented chain passing through the duct is shown in [fig5]. Motion of a unit link with and without constraint is shown in [fig6]. The negative gradient (descend direction) of the inequality constraint function is also shown in the figure. The method shown here is reasonably fast as explained in section ??. The only time required is in identifying the super-ellipsoids to fit the duct profile. For the example shown in this paper, this is done by manually identifying clusters of points in the duct and fitting ellipses which will reduce the fitting error in a least squared sense.
+An example of single link and multi-segmented chain passing through the duct is shown in [fig5]. Motion of a unit link with and without constraint is shown in [fig6]. The negative gradient (descend direction) of the inequality constraint function is also shown in the figure. The method shown here is quite fast and scalable as explained in section ??, while the majority of time taken for the scheme being in identifying the super-ellipsoids which fit the duct profile. For the example shown in this section, this identification is done by manually selecting clusters of points in the duct and fitting ellipses which will reduce the fitting error in a least squared sense.
 
 \begin{figure}[h]
 \centering
@@ -209,7 +209,7 @@ An example of single link and multi-segmented chain passing through the duct is 
 
 \subsection{Representation of duct as a set of connected quadrilaterals}
 
-A complex duct shape can be represented as a continuous array of discrete patches formed by piecewise continuous curves as shown in [fig6]. The individual quadrilateral patches may be denoted as $A_1,A_2,...,A_n$, each bounded by the line segments defined by the points $\mathbf{(P_0,P_1),(P_1,P_2),...,(P_{n-1},P_n)}$ for the curve $\mathbf{\zeta_1}$ and $\mathbf{(Q_0,Q_1),(Q_1,Q_2),...,(Q_{n-1},Q_n)}$ for the curve $\mathbf{\zeta_2}$. Then the co-ordinates of a point inside the surface patch $A_i$ is given by the parametric expression
+Since the profile of a super-ellipse is always symmetric, for complex and non-symmetric ducts, representation using the previous method might require a large number of shapes. In such cases, a complex duct shape can be represented as a continuous array of discrete patches formed by piecewise continuous curves as shown in [fig6]. The individual quadrilateral patches may be denoted as $A_1,A_2,...,A_n$, each bounded by the line segments defined by the points $\mathbf{(P_0,P_1),(P_1,P_2),...,(P_{n-1},P_n)}$ for the curve $\mathbf{\zeta_1}$ and $\mathbf{(Q_0,Q_1),(Q_1,Q_2),...,(Q_{n-1},Q_n)}$ for the curve $\mathbf{\zeta_2}$. Then the co-ordinates of a point inside the surface patch $A_i$ is given by the parametric expression
 \begin{align}
 \label{eq:xi(u,t)}
 \mathbf{x}_i(u,v)= \left[ \mathbf{P}_{i-1}+\left(1-{u} \right)\mathbf{P}_i  \right]\left(1-{v}\right) +\left[\mathbf{ Q}_{i-1}+\left(1-{u} \right)\mathbf{Q}_i  \right]\left({v}\right)
@@ -240,13 +240,6 @@ in parameters $u$ and $v$. If the vertices of the quadrilateral are given by $\m
 \end{align}
 for real values of ${u}$ and ${v}$. In case of multiple patches, classifying one point with respect to all the patches return the values $\left({u}_1,{v}_1 \right), \left({u}_2,{v}_2 \right),...,\left({u}_m,{v}_m \right)$ etc. for the $m$ number of patches $A_1, A_2,..., A_m$ and consequently, $m$ set of conditions. But out of the $m$ condition sets, only one set should be satisfied since the point will belong to only one patch at a given instance of motion through the duct. Including a switching  statement in the optimization code will be inefficient especially when the point to be classified is close to the common boundary between two patches. 
 
-\begin{figure}[h]
-\centering
-\includegraphics[scale=0.75]{figures/fig9.pdf}
-\caption{ Step function \label{fig:stepfunction}}
-\end{figure}
-
-
 In order to provide a gradient to the constraint which will direct the point into the duct, an inequality constraint is to be included as in the case of super-ellipses described in the previous subsection. If $\hat{u}$ and $\hat{v}$ represent the parameters obtained for a point $\mathbf{x}_t$ classified with respect to the quadrilateral $A_i$, $x_{\zeta_1}(t) = \mathbf{P}_{i-1}+\left(1-{\hat{u}} \right)\mathbf{P}_i$ and $x_{\zeta_2}(t) = \mathbf{Q}_{i-1}+\left(1-{\hat{u}} \right)\mathbf{Q}_i$ will give the two points on the duct boundary curves corresponding to the parameter $\hat{u}$. Then using triangular inequality theorem ??, we can see that the value
 \begin{align}
 \label{eq:ductgradientinquad}
@@ -262,7 +255,7 @@ will always assign a negative real value for $h$ when point is inside the duct a
 0, &\quad t >1
 \end{matrix}\right.
 \end{align}
-The function $\chi$ applied on the quantity $\hat{u}_i$ (which is the value of parameter ${u}$ classified with respect to quadrilateral $A_i$), will return 0 only if the point satisfies the constraint $0\leq \hat{u}_i\leq 1$. Now, multiplying this quantity $\chi(\hat{v})$ with $h_i$ will return non-zero negative value only if the point is inside the duct. Including the inequality constraint, the complete optimization problem is given as:
+The function $\chi$ applied on the quantity $\hat{u}_i$ (which is the value of parameter ${u}$ classified with respect to quadrilateral $A_i$), will return 0 only if the point satisfies the constraint $0\leq \hat{u}_i\leq 1$. Now, multiplying this quantity $\chi(\hat{u})$ with $h_i$ will return a non-zero negative value only if the point is inside the duct. Including the inequality constraint, the complete optimization problem is given as:
 
 \begin{align}
 \label{eq:min,u,v,im}
@@ -283,7 +276,7 @@ Motion of a unit link passing through the duct is shown in [fig11] and the effec
 \begin{figure}[h!]
 \centering
 \includegraphics[scale=0.5]{figures/fig10b.pdf}
-\caption{ Effect of gradient of inequality constraint in pulling the tail into the quadratic duct \label{fig:quadgradient}}
+\caption{ Effect of gradient of inequality constraint in pulling the tail into the quadrilateral duct \label{fig:quadgradient}}
 \end{figure}
 
 
@@ -294,10 +287,19 @@ If the non-intersecting border curves of the duct can be analytically expressed,
 \end{align}
 For example, [fig11] shows a 2D duct defined by two curves $\zeta_1(u) = \left[u,~\sin\left(u \right)\right]^T$ and $\zeta_2(u) = \left[u,~\sin\left(u +\frac{\pi}{8}\right)+1\right]^T$ and a path chosen midway between the two curves. The equation of the surface generated by this curves will be
 
-\begin{figure}[h]
-\centering
-\includegraphics[scale=0.75]{figures/fig11.pdf}
-\caption{ Example of analytical duct \label{fig:analyticduct}}
+\begin{figure}[ht!]
+    \centering
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=0.75\linewidth]{figures/fig11.pdf}
+        \caption{Example of analytical duct \label{fig:analyticduct}}
+    \end{subfigure}%
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=0.75\linewidth]{figures/fig12.pdf}
+        \caption{Motion through analytical duct \label{fig:analyticductmotion}}
+    \end{subfigure}
+    \caption{ Tractrix based algorithm on analytical duct}
 \end{figure}
 
 
@@ -323,11 +325,7 @@ In this case, we will solve the equations:
 \end{align} 
  An example movement of hyper-redundant manipulator through the duct is shown in [fig12]. However, analytical solution is not always viable for complex equations and numerical procedure must be employed to find the values of $u$ and $v$ corresponding to the given tail point to be classified. The equation to be used is \ref{eq:minx,u,v}.
 
-\begin{figure}[h]
-\centering
-\includegraphics[scale=0.75]{figures/fig12.pdf}
-\caption{ Motion through analytical duct \label{fig:analyticductmotion}}
-\end{figure}
+
 
 
 \section{Motion planning through 3D ducts}
@@ -344,7 +342,7 @@ By changing the parameters $a,b,c$ and $n$, we get different closed surfaces as 
 [fig13] : What are super-ellipsoids.
 [fig14] : Duct represented by super-ellipsoids.
 
-The procedure to calculate the inside-outside condition is same as that of the method described in section [ref sec]. The final equations will be same as [\ref{eq: min,mingx}]. An example problem with duct approximated using super-ellipsoids is shown in [fig15]
+The procedure to calculate the inside-outside condition is same as that of the method described in section [ref sec]. The final equations will be same as [\ref{eq: min,mingx}]. An example problem with duct approximated using super-ellipsoids is shown in [fig15]. As mentioned in the case for super-ellipses, solution to the path planning problem with ducts represented by super-ellipsoids is fast as explained in section ??. Identifying the shapes which fit the duct, is also same as the method mentioned in section ??.
 
 [fig15] : Motion through super-ellipsoid ducts
 
@@ -355,11 +353,31 @@ Another more involved method in representing duct is by series of connected cyli
 \label{eq:cylinder}
 x = C_1(u,t,\theta),~~y = C_2(u,t,\theta),~~z = C_3(u,t,\theta)
 \end{align}
-where the parameters $u,t$ and $\theta$ varies along the radial, axial and circumferential direction of the cylinder respectively (refer [fig16]). Closed form expressions for $u$ and $t$ in terms of the co-ordinates of the point  to be classified is not trivial in this case and hence, one has to use numerical solution methods to find the same. Similar to the representation in [sec], $0\leq u,t \leq 1$ classifies the point as inside the cylinder. The final minimization problem is same as that of [\ref{eq:min,u,v,im}]. Motion of link chain through the duct connected using cylinders is shown in [fig18]
+where the parameters $u,t$ and $\theta$ varies along the radial, axial and circumferential direction of the cylinder respectively (refer [fig16]). Similar to the representation in [sec], $0\leq u< 1$ and $0<t<1$ classifies the point as inside the cylinder. The final minimization problem is same as that of [\ref{eq:min,u,v,im}]. Motion of link chain through the duct connected using cylinders is shown in [fig17]
+
+[fig16] : Connected cylinder forming duct
+[fig17] : Motion of HR manipulator through connected-cylinders duct
+
+
+\subsection{Representation of duct as point clouds}
+Most practically convenient way of representing the duct would be as the a collection of point clouds  ($\mathbf{R}_i,i=1,2,...,N$ where $N$ is the number of points in the cloud) such as obtained from Stereolithographic formatted file (STL). It is possible to pose the optimization problem in the form:
+\begin{align}
+\label{eq:STLeqs}
+\min_{\textbf{x}_t} &\Vert \textbf{x}_t-\textbf{X}_t \Vert\\
+\nonumber \text{sub:~~~} &\Vert \textbf{x}_h - \textbf{x}_t \Vert -L_0 = 0\\
+&[\mathbf{A}]\mathbf{x}_t+\mathbf{B}\leq 0
+\end{align}
+where $\mathbf{A}$ is a $m\times 3$ matrix and $\mathbf{B}$ is a $m\times 1$ vector. The left hand side of $m$ inequalities represent the equations of $m$ number of planes spanned by three adjacent points in the cloud. The $i^\text{th}$ equation, $A_{i}^1x_t+A_{i}^2y_t+A_{i}^3z_t+B_i$ takes a value less than zero when the point $\mathbf{x}_t$ is in the half space which contains the origin and is greater than zero otherwise. The value also provides the attractive gradient which will ensure that the point stays inside the duct. However, in actual implementation, this procedure will be tedious and for practical convenience, it is possible to classify the point $\mathbf{x}_t$ as inside or outside the hull using the algorithm proposed by ??. The attracting gradient which ensures the point to be inside the duct--as the case with the previous methods-- can be provided using the artificial potential field generated from the centroid of the point cloud in conjunction with the output of the in-out function. The inequality constraint then becomes
+\begin{align}
+\label{eq:STLineq}
+w(\mathbf{R})\frac{1}{\Vert(\overline{\mathbf{R}})-\mathbf{x}_t\Vert}\leq 0
+\end{align}
+where $w(\overline{\mathbf{R}})$ represents the output from in-out function which is either 1 for the point being outside and 0 for the point being inside the cloud or on the bounding surface\footnote{Unlike the previous classification problems, the bounding surface will also be considered as inside the surface in this case.}. 
+
+Another interesting prospect of this method is its application in obstacle avoidance where the left hand side of the equation \Cref{eq:STLineq} will be greater than zero. The obstacle avoidance methods which follow the equation given by \Cref{eq:obstacle_avoidance_opt} is often limited to shapes which can be modelled analytically. Though the algorithm shown here is limited to convex shapes, they can be applied to more complex and non-symmetric shapes.
+
 
 [fig16] : Analytical cylinder
-[fig17] : Connected cylinder forming duct
-[fig18] : Motion of HR manipulator through connected-cylinders duct
 
 \section{Example: Motion simulation of endoscope through GI tract}
 There has been a growing interest in simulating motion of endoscope through GI tract for developing simulators for endoscopy and for implementing path planning for endoscopic and laparoscopic surgical robots. In this section, we simulate the natural motion of an endoscope through GI tract. For simulation, we use the stereolithographic data of GI tract obtained from ??. We have demonstrated both the methods presented in [sec] and [sec] for approximating the GI tract. In the first method, a collection of points are manually selected from the STL file where super-elliposids are fit based on least square error minimization techniques. Representation of GI tract as series of super-ellipsoids is shown in [fig19]
