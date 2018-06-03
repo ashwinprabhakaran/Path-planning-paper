@@ -1,4 +1,4 @@
-\documentclass[10pt,a4]{article}
+\documentclass[12pt,a4]{article}
 \usepackage[a4paper, total={6.5in, 8.5in}]{geometry}
 \usepackage{moreverb,url}
 \usepackage[colorlinks,bookmarksopen,bookmarksnumbered,citecolor=red,urlcolor=red]{hyperref}
@@ -40,7 +40,8 @@ of Mechanical Engineering, Indian Institute of Science, Bangalore 560012, India,
 \thanks{Corresponding Author, Professor, Department of Mechanical Engineering, Indian Institute of Science, Bangalore, email: asitava@iisc.ac.in.}}
 %
 %double spacing for submission
-\baselineskip 12pt plus 0.5pt minus 0.5pt 
+%\baselineskip 12pt plus 0.5pt minus 0.5pt 
+\baselineskip 18pt plus 0.5pt minus 0.5pt
 %
 \date{}
 \maketitle
@@ -98,57 +99,61 @@ The extension of tractrix equation along motion in arbitrary direction as well a
     \begin{subfigure}{0.48\textwidth}
         \centering
         \includegraphics[width=0.75\linewidth]{figures/fig1.pdf}
-        \caption{Tractrix curve in 2D}
+        \caption{Tractrix curve in 2D with one link}
         \label{fig:tractrixin2D}
     \end{subfigure}%
     \begin{subfigure}{0.48\textwidth}
         \centering
-        \includegraphics[width=1\linewidth]{figures/fig2.pdf}
+        \includegraphics[width=0.75\linewidth]{figures/fig2.pdf}
         \caption{Tractrix with multiple links}
     \end{subfigure}
+\caption{Tractrix in a plane}
 \end{figure}
-
-\begin{figure}[h]
-\centering
-\includegraphics[scale=0.75]{figures/fig1.pdf}
-\caption{Tractrix curve in 2D\label{fig1}}
-\end{figure}
-
-\begin{figure}[h]
-\centering
-\includegraphics[scale=0.75]{figures/fig2.pdf}
-\caption{Tractrix with multiple segments\label{fig2}}
-\end{figure}
-
 
 
 It is shown in [ref] that for a single rigid link, tractrix curve can also be obtained by minimizing an $L^2$ metric which is essentially the displacement of the tail from its initial position subject to the condition that the length of link is always preserved. i.e, the co-ordinates of the tail can be obtained from the following minimization problem:
-\begin{align}
+\begin{align} \label{eq:Opt_prob_main}
 \min_{\textbf{x}_t} &\Vert \textbf{x}_t-\textbf{X}_t \Vert\\
-\text{sub:  } &\Vert \textbf{x}_h - \textbf{x}_t \Vert -L_0 = 0
+\text{Subject~ to:  } &\Vert \textbf{x}_h - \textbf{x}_t \Vert -L_0 = 0 \nonumber
 \end{align}
 An advantage of expressing tractrix as a minimization problem is that we can add more constraints to the above expression and hence, control the position of the tail point. Though the resulting curve may not necessarily be a tractix curve, the motion of the tail will appear realistic [ref]. For the motion of a link which minimizes its tail velocity (displacement of the tail co-ordinates), obstacle avoidance is achieved by formulating the problem as:
-\begin{align}
+\begin{align} \label{eq:obstacle_avoidance_opt}
 \min_{\textbf{x}_t} &\Vert \textbf{x}_t-\textbf{X}_t \Vert\\
-\text{sub:~~~} 
-&\Vert \textbf{x}_h - \textbf{x}_t \Vert -L_0 = 0\\
-\bf{f}(x) >0
+\text{Subject to:} 
+&\Vert \textbf{x}_h - \textbf{x}_t \Vert -L_0 = 0 \nonumber \\ 
+~~ &\bf{f}(x) >0  \nonumber
 \end{align}
 where $\bf{f}(x) = 0$ is the analytical equations of the boundaries of the surfaces which are to be avoided. For example, if the tail is to avoid a single obstacle represented by a circle with center $(x_c,y_c)$, the expression $f(x) = (x-x_c)^2+(y-y_c)^2-r^2>0$ ensures that the point $x$ always lies outside the circle of radius $r$. Complex objects can be modelled as a combination of super-ellipses as shown in [ref]. In this case, $f(x)$ will be a vector of all boundary equations $\textbf{f}(x) = [f_1(x),f_2(x),...f_m(x)]^T$ [fig3]. It is also worth noting that the value of function will increase or decrease as the point is farther from the curve $f(x)$; the value being zero on the curve. Hence, this approach can also be imagined as a geometric potential field, with zero potential only at the surface of the obstacle. 
 
-\begin{figure}[h]
+\begin{figure}[h!]
 \centering
 \includegraphics[scale=0.75]{figures/fig3.pdf}
-\caption{Obstacle avoidance\label{fig3}}
+\caption{Obstacle avoidance in a plane\label{fig:obstacle_avoidance_2D}}
 \end{figure}
 
 In the case of path planning of hyper-redundant manipulator with the motion confined within a duct, the problem may be specified as:
-\begin{align}
+\begin{align} \label{eq:path_planning_opt}
 \min_{\textbf{x}_t} &\Vert \textbf{x}_t-\textbf{X}_t \Vert\\
-\text{sub:~~~} &\Vert \textbf{x}_h - \textbf{x}_t \Vert -L_0 = 0\\
- \bf{f}(x) <0
+\text{Subject to:} &\Vert \textbf{x}_h - \textbf{x}_t \Vert -L_0 = 0 \nonumber \\
+ ~~ &\bf{f}(x) <0 \nonumber
 \end{align}
 While this expression is applicable for a duct represented by a single surface with the boundary $f(x)$, unlike the obstacle avoidance problem, the same will not work in the case of complex surfaces represented by combination of simpler analytical shapes. This is because if a point is classified as inside one of the simpler shapes, then it should be classified as outside the other shapes forming the duct. In other words, if one constraint function $f_k(x)\le 0$, then the other constraint functions $f_{i\neq k}>0$. In the next sections, we present different methods to represent the ducts and how confined space motion is achieved in the same.
+
+
+\subsection{Nature of the optimization problem}\label{sc:optimization}
+In the previous section we have discussed how tractrix based motion planning can be formulated as a constrained optimization problem, which entails a discussion on the suitability of the posed optimization problem and guarantee that the solution is unique and physically tractable. To address this, we will prove that the problem posed in (equation for optimization) and the variations of the same used in the current work are indeed convex problems. A function $f:\mathbb{R}^n\to \mathbb{R}$ is \textit{convex} if and only if the following two conditions hold:
+\begin{enumerate}
+	\item [a] The domain of $f$, $\textbf{dom}f$ is a convex set, and,
+	\item [b]  For all $x,y \in \textbf{dom}f$ and $\theta$ with $0\leq \theta \leq 1$ \begin{equation}\label{eq:convex_fn}
+	f(\theta x+(1-\theta)y)\leq \theta f(x)+(1-\theta)f(y)
+	\end{equation}
+\end{enumerate}
+In our problem, the function is the $L_2$ norm of a vector in $\mathbb{R}^2$ or $\mathbb{R}^3$.  Though the $L_2$ norm is defined for all real vectors, the constraints ensuring that the object moves within the confinement of the duct restricts the domain to a feasible closed set $\mathcal{S}$\footnote{Assuming $\mathcal{S}$ to be a closed set allows the object to physically touch the boundaries of the duct}. Therefore, if the conditions a and b associated with the definition of a convex function are satisfied for $\mathcal{S}$ and the $L_2$ norm, then the solution obtained for (put optimization equation here) is unique. \\ 
+It is a well known result that any p-norm $||x||_p=(\sum\limits_{i=1}^{n}|x_i|^p)^{1/p},~ x\in \mathbb{R}$ is a convex function for $p\geq 1$. The fact that a p-norm is convex can be shown by using the scalability and the triangle inequality associated with a normed vector-space. With $\theta$  being a scaling parameter, \cref{eq:convex_fn} simplifies exactly to the triangle equality for norms. Also, any p-norm is a valid norm on $\mathbb{R}$ for $p\geq1$ follows from the Minkowski inequality\footnote{For a measure space $\mathbb{S}$, $p\geq 1$ and $f,~g$ are members of the Lebesgue space $L_P(\mathbb{S})$, the following inequality holds: $||f+g||_p\leq ||f||_p+||g||_p$ }. This leaves us to show that the feasible set $\mathcal{S}$ is convex. For all our modeling examples, we choose $\mathcal{S}$ to be convex by assigning convex boundaries to it or, expressing $\mathcal{S}$ as intersections of closed convex sets.  However, as is, none of the problems posed in \cref{eq:Opt_prob_main,eq:obstacle_avoidance_opt,eq:path_planning_opt} are convex because of the non-linear equality constraints associated with them, which guarantees that the length of a segment is constant. To pose it as a convex problem we approximate the constraint with 2 linear constraints as described in section(\textbf{put complexity section here}). For the cases of path planning in 2-D and 3-D, the paths chosen are either entirely convex or are discretized as such. As discussed in the following sections, we do not represent a "duct" as a union of closed convex sets as the first condition of convexity cannot be guaranteed for sets formed by union of convex sets. 
+
+
+
+
 
 \section{Motion planning through planar ducts}
 %
@@ -383,8 +388,8 @@ Using a constant value of $\nu = ??$, we can see from [fig23] that the formulati
 
 \section{Limitations}
 
-\section*{Appendix}
-\subsection*{Analytical expressions for $u,v$ for quadrilateral patch}
+\section{Appendix}	\crefalias{section}{appsec}
+\subsection{Analytical expressions for $u,v$ for quadrilateral patch}\label{app:Analylit_u_v_quad}
 \begin{align}
 &\quad {v} = \frac{k_1-k_2\pm \sqrt{\left(k_2-k_1\right)^2-4k_3k_4}}{2k_3},~~{u} = \frac{\left(x-{}^xP_{i-1}+{v}\right)}{\left( a_2+{v} a_3 \right)}\\
 \nonumber\text{ where, }k_1 &= \left(b_1b_2+b_0b_3 \right),~~k_2 = \left(a_1a_2+a_0a_3 \right),~~
@@ -398,22 +403,22 @@ If ${}^xP_{i-1}={}^xP_{i}$ and ${}^xQ_{i-1}={}^xQ_{i}$,
 {u} = \frac{b_0}{a_2},~~{v} = \frac{a_0a_2-\left(a_3+a_2 \right)}{a_1\left(b_0-a_2\right)+b_0\left(b_3-b_2 \right)}
 \end{align}
 
-\subsection*{Parameteric equation of solid cylinder}
+\subsection{Parametric equation of solid cylinder}\label{app:parametric_u_v_solid_cyl}
 \begin{align}
 x & = C_1(u,t,\theta)=\left(r_1m_1u\cos\theta +m_2 \right)\left(1-t \right)+\left(r_2n_1u\cos\theta+n_2 \right)t\\
 y & = C_2(u,t,\theta)=\left(r_1m_3u\cos\theta +r_1m_4u\sin\theta +m_5 \right)\left(1-t \right)+\left(r_2n_3u\cos\theta+r_2n_4u\sin\theta+n_5 \right)t\\
 z & = C_3(u,t,\theta)=\left(r_1m_6u\cos\theta +r_1m_7u\sin\theta +m_8 \right)\left(1-t \right)+\left(r_2n_6u\cos\theta+r_2n_7u\sin\theta+n_8 \right)t
 \end{align}
 where
-\begin{align}
-m_1 = \cos{}^1\phi_2,~m_2 = {}^1x_c,~m_3 = \sin{}^1\phi_1\sin{}^1\phi_2,~m_4=\cos{}^1\phi_1,\\
-m_5 = {}^1y_c,~m_6=-\cos{}^1\phi_1\sin{}^1\phi_2,~m_7=\sin{}^1\phi_1,~m_8={}^1z_c
-\end{align}
+\begin{align*}
+m_1 = \cos{}^1\phi_2,~m_2 = {}^1x_c,~m_3 = \sin{}^1\phi_1\sin{}^1\phi_2,~m_4=\cos{}^1\phi_1, \nonumber \\
+m_5 = {}^1y_c,~m_6=-\cos{}^1\phi_1\sin{}^1\phi_2,~m_7=\sin{}^1\phi_1,~m_8={}^1z_c \nonumber
+\end{align*}
 and
-\begin{align}
-n_1 = \cos{}^2\phi_2,~n_2 = {}^2x_c,~n_3 = \sin{}^2\phi_1\sin{}^2\phi_2,~n_4=\cos{}^2\phi_1,\\
-n_5 = {}^2y_c,~n_6=-\cos{}^2\phi_1\sin{}^2\phi_2,~n_7=\sin{}^2\phi_1,~n_8={}^2z_c
-\end{align}
+\begin{align*}
+n_1 = \cos{}^2\phi_2,~n_2 = {}^2x_c,~n_3 = \sin{}^2\phi_1\sin{}^2\phi_2,~n_4=\cos{}^2\phi_1, \nonumber \\
+n_5 = {}^2y_c,~n_6=-\cos{}^2\phi_1\sin{}^2\phi_2,~n_7=\sin{}^2\phi_1,~n_8={}^2z_c \nonumber
+\end{align*}
 The quantity ${}^1\left(\cdot\right)$ and ${}^2\left(\cdot\right)$ represent the corresponding parameters of the circles at the ends of the cylinder. $\phi_1$ and $\phi_2$ are the angles about the Y and X-axes which the plane of the circle is rotated, $(x_c,y_c,z_c)$ is the co-ordinate of the center of the circle.
 %\bibliography{journalref}
 
