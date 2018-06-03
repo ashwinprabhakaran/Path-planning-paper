@@ -155,7 +155,7 @@ While this expression is applicable for a duct represented by a single surface w
 In this section, we propose different methods to represent a duct in 2D planar surface. 
 \subsection{Representation of duct using super-ellipses}
 %
-One method to represent a duct is by overlapping a series of super-ellipses as shown in [fig4]. In Cartesian co-ordinate system $R^2$, the contour of super-ellipse obeys the following equation:
+One method to represent a duct is by overlapping a series of super-ellipses as shown in [fig5b]. This is the most simple and straightforward means of representation as shown in [ref Midhun]. In Cartesian co-ordinate system $R^2$, the contour of super-ellipse obeys the following equation:
 \begin{align}
 f(\textbf{x})= f(x,y):\quad \left \vert \frac{x-x_c}{a} \right\vert^n+\left\vert \frac{y-y_c}{b} \right\vert^n-1=0
 \end{align}
@@ -166,7 +166,7 @@ f(\textbf{x})= f(x,y):\quad \left \vert \frac{x-x_c}{a} \right\vert^n+\left\vert
 \caption{ Super-ellipses and a duct modelled as combination of super-ellipses\label{fig:super-ellipses}}
 \end{figure}
 
-%The condition $f(\textbf{x}_t)\leq0$ will ensure that the co-ordinates of the tail of the link $(x_t,y_t)$ always lie inside the bounding curve of a super-ellipse. However, in case of multiple equations ($\textbf{f(x)}$), only one of them need to be satisfied. In other words, the least value of all the values of $\textbf{f(x)}$ should be less than or equal to zero. For the $i^\text{th}$ super-ellipse which is rotated by an angle $\phi_i$ about the $z-$ axis and whose center is translated to the co-ordinates $(x_i,y_i)$ so as to fit a portion of a duct, the co-ordinates of boundary should be multiplied with a transformation matrix
+The condition $f(\textbf{x}_t)<0$ will ensure that the co-ordinates of the tail of the link $(x_t,y_t)$ always lie inside the bounding curve of a super-ellipse. However, in case of multiple equations ($\textbf{f(x)}$), only one of them will be satisfied for the point to be inside the duct. In practical implementation, we can say that this translates to saying that the least value amongst all the values of $\textbf{f(x)}$ should be less than zero. For the $i^\text{th}$ super-ellipse which is rotated by an angle $\phi_i$ about the $z-$ axis and whose center is translated to the co-ordinates $(x_i,y_i)$ so as to fit a portion of a duct, the co-ordinates of boundary should be multiplied with a transformation matrix
 \begin{align}
 T_i = \begin{bmatrix}
 \cos \phi_i & -\sin\phi_i & 0 & x_i\\
@@ -187,7 +187,7 @@ The complete formulation is given as:
 \min\left(\textbf{g}(\textbf{x}_t)\right) < 0
 \end{align}
 
-An example of single link and multi-segmented chain passing through the duct is shown in [fig5]. Motion of a unit link with and without constraint is shown in [fig6]. The negative gradient (descend direction) of the inequality constraint function is also shown in the figure.
+An example of single link and multi-segmented chain passing through the duct is shown in [fig5]. Motion of a unit link with and without constraint is shown in [fig6]. The negative gradient (descend direction) of the inequality constraint function is also shown in the figure. The method shown here is reasonably fast as explained in section ??. The only time required is in identifying the super-ellipsoids to fit the duct profile. For the example shown in this paper, this is done by manually identifying clusters of points in the duct and fitting ellipses which will reduce the fitting error in a least squared sense.
 
 \begin{figure}[h]
 \centering
@@ -209,7 +209,7 @@ A complex duct shape can be represented as a continuous array of discrete patche
 \label{eq:xi(u,t)}
 \mathbf{x}_i(u,v)= \left[ \mathbf{P}_{i-1}+\left(1-{u} \right)\mathbf{P}_i  \right]\left(1-{v}\right) +\left[\mathbf{ Q}_{i-1}+\left(1-{u} \right)\mathbf{Q}_i  \right]\left({v}\right)
 \end{align}
-in parameters $u$ and $v$. If the vertices of the quadrilateral are given by $\mathbf{P}_{i}=\left[ {}^xP_{i},{}^yP_{i}\right]^T $ and $\mathbf{Q}_{i}=\left[ {}^xQ_{i},{}^yQ_{i}\right]^T $, then the analytical expressions for the terms $u$ and ${v}$, given the value of $\mathbf{x}_i$, can be obtained by solving \ref{eq:xi(u,t)} (see Appendix). The values of $u,v$ can be used to classify the point with respect to the surface patch $A_i$. However, it may be noted that there will be two sets of solution and they are not always real and unique. For example, for the surface patch shown in [fig8], when the point $\mathbf{P} =\left(10,-5 \right)$ when classified with respect to the area $A$ returns the values $u=\left( 1.0 + 0.6~i,~1.0 - 0.6~i \right)$ and $v=\left(2.0 + 1.9~i,~2.0 - 1.9~i\right)$.
+in parameters $u$ and $v$. If the vertices of the quadrilateral are given by $\mathbf{P}_{i}=\left[ {}^xP_{i},{}^yP_{i}\right]^T $ and $\mathbf{Q}_{i}=\left[ {}^xQ_{i},{}^yQ_{i}\right]^T $, then the analytical expressions for the terms $u$ and ${v}$, given the value of $\mathbf{x}_i$, can be obtained by solving \ref{eq:xi(u,t)} (see Appendix). The values of $u,v$ can be used to classify the point with respect to the surface patch $A_i$. However, it may be noted that there will be two sets of solution and they are not always real and unique. For example, for the surface patch shown in [fig8], the point $\mathbf{P} =\left(10,-5 \right)$ when classified with respect to the area $A$ returns the values $u=\left( 1.0 + 0.6~i,~1.0 - 0.6~i \right)$ and $v=\left(2.0 + 1.9~i,~2.0 - 1.9~i\right)$.
 
 \begin{figure}[h]
 \centering
@@ -233,7 +233,7 @@ in parameters $u$ and $v$. If the vertices of the quadrilateral are given by $\m
 \text{~~~~~~~} 0 \leq u \leq 1\\
 \text{~~~~~~~} 0 \leq v \leq 1
 \end{align}
-for real values of $\hat{u}$ and $\hat{v}$. In case of multiple patches, classifying one point with respect to all the patches give the values $\left({u}_1,{v}_1 \right), \left({u}_2,{v}_2 \right),...,\left({u}_m,{v}_m \right)$ etc. for the $m$ number of patches $A_1, A_2,..., A_m$ and consequently, $m$ set of conditions. But out of the $m$ condition sets, only one set should be satisfied since the point will belong to only one patch at a given instance of motion through the duct. Including a switching  statement in the optimization code will be inefficient especially when the point to be classified is close to the common boundary between two patches. 
+for real values of ${u}$ and ${v}$. In case of multiple patches, classifying one point with respect to all the patches return the values $\left({u}_1,{v}_1 \right), \left({u}_2,{v}_2 \right),...,\left({u}_m,{v}_m \right)$ etc. for the $m$ number of patches $A_1, A_2,..., A_m$ and consequently, $m$ set of conditions. But out of the $m$ condition sets, only one set should be satisfied since the point will belong to only one patch at a given instance of motion through the duct. Including a switching  statement in the optimization code will be inefficient especially when the point to be classified is close to the common boundary between two patches. 
 
 \begin{figure}[h]
 \centering
@@ -247,7 +247,7 @@ In order to provide a gradient to the constraint which will direct the point int
 \label{eq:ductgradientinquad}
 h = \Vert \mathbf{x}_{\zeta_1}-\mathbf{x}_t\Vert^2+\Vert \mathbf{x}_{\zeta_2}-\mathbf{x}_t\Vert^2-\Vert \mathbf{x}_{\zeta_1}- \mathbf{x}_{\zeta_2}\Vert^2
 \end{align}
-will always return a negative real value when point is inside the duct and a positive real value when the point is outside the duct. The value will be zero only at the boundaries. Hence, for an array of quadrilaterals, it is only necessary that the minimum value of the vector $\mathbf{h} = [{h}_1, {h}_2,...,{h}_m]$ should be negative for classifying the point with respect to the duct, as in the case of previous section. But as we can see, the inequality only takes into account the parameter which varies across the boundaries (along the parameter $u$) and not in the direction of $v$ which could result in erroneous classification. For example, with reference to the figure [fig 9b], the value of $h$ for the point $\mathbf{P}$ classified with respect to the two quadrilaterals are $h_1 = ??$ and $h_2 = ??$. Hence, a minimum of both the values will wrongly classify the point as inside. To account for the same, we make use of the step function ?? $\chi$ which is defined as:
+will always assign a negative real value for $h$ when point is inside the duct and a positive real value when the point is outside the duct. The value will be zero only at the boundaries. Hence, for an array of quadrilaterals, it is only necessary that the minimum value of the vector $\mathbf{h} = [{h}_1, {h}_2,...,{h}_m]$ should be negative for classifying the point with respect to the duct, as in the case of previous section. But as we can see, the inequality only takes into account the parameter variation across the boundaries (along the parameter $v$) and not in the direction of $u$ which could result in erroneous classification. For example, with reference to the figure [fig 9b], the value of $h$ for the point $\mathbf{P}$ classified with respect to the two quadrilaterals are $h_1 = ??$ and $h_2 = ??$. Hence, a minimum of both the values will wrongly classify the point as inside. To account for the same, we make use of the function $\chi$ which is necessarily a linear combination of two Heaviside step functions $H(0)-H(1)$, defined as:
 
 \begin{align}
 \label{eq:chifunction}
@@ -257,18 +257,17 @@ will always return a negative real value when point is inside the duct and a pos
 0, &\quad t >1
 \end{matrix}\right.
 \end{align}
-The function $\chi$ applied on the quantity $\hat{v}_i$ which is the value of parameter $\hat{v}$ classified with respect to quadrilateral $A_i$, will return 0 only if the point satisfies the constraint $0\leq \hat{v}_i\leq 1$. Now, multiplying this quantity with $h_i$ will return non-zero negative value only if the point is inside the duct. Including the inequality constraint, the complete optimization problem is given as:
+The function $\chi$ applied on the quantity $\hat{u}_i$ (which is the value of parameter ${u}$ classified with respect to quadrilateral $A_i$), will return 0 only if the point satisfies the constraint $0\leq \hat{u}_i\leq 1$. Now, multiplying this quantity $\chi(\hat{v})$ with $h_i$ will return non-zero negative value only if the point is inside the duct. Including the inequality constraint, the complete optimization problem is given as:
 
- Then the optimization problem becomes:
 \begin{align}
 \label{eq:min,u,v,im}
 \min_{\textbf{x}_t} &\Vert \textbf{x}_t-\textbf{X}_t \Vert\\
 \nonumber \text{sub:~~~} &\Vert \textbf{x}_h - \textbf{x}_t \Vert -L_0 = 0\\
-&\left[\chi\left(\hat{\mathbf{v}}\right)\right]^T\mathbf{h}<0
+&\left[\chi\left(\hat{\mathbf{u}}\right)\right]^T\mathbf{h}<0
 \end{align}
-where $\hat{\mathbf{v}}=\left[\hat{v}_1,\hat{v}_2,...,\hat{v}_m\right]^T$
+where $\hat{\mathbf{u}}=\left[\hat{u}_1,\hat{u}_2,...,\hat{u}_m\right]^T$
 
-Motion of a unit link passing through the duct is shown in [fig10]
+Motion of a unit link passing through the duct is shown in [fig11] and the effect of the added inequality constraint to pull the tail end of the link which is initially positioned outside the duct, is shown in [fig12]
 
 \begin{figure}[h]
 \centering
@@ -276,19 +275,19 @@ Motion of a unit link passing through the duct is shown in [fig10]
 \caption{ Example of constrained motion with stitched quadrilaterals \label{fig:motionquads}}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[h!]
 \centering
-\includegraphics[scale=0.75]{figures/fig10b.pdf}
+\includegraphics[scale=0.5]{figures/fig10b.pdf}
 \caption{ Effect of gradient of inequality constraint in pulling the tail into the quadratic duct \label{fig:quadgradient}}
 \end{figure}
 
 
 \subsection{Representation of duct using two non-intersecting continuous curves}
-If the non-intersecting border curves of the duct can be analytically expressed, then the equation of the surface patch will be simply,
+If the non-intersecting border curves of the duct can be analytically expressed, then the equation of the surface patch will simply be,
 \begin{align}
 \mathbf{x}_i(u,v)= \zeta_1(u)\left(1-{v}\right) +\zeta_2(u)\left({v}\right)
 \end{align}
-For example, [fig11] shows a 2D duct defined by two curves $\zeta_1(u) = \left[u,~\sin\left(u \right)\right]^T$ and $\zeta_2(u) = \left[u,~\sin\left(u +\frac{\pi}{8}\right)+1\right]^T$ and a path chosen midway between the two curves. The equation of the surface generated by this curves will simply be
+For example, [fig11] shows a 2D duct defined by two curves $\zeta_1(u) = \left[u,~\sin\left(u \right)\right]^T$ and $\zeta_2(u) = \left[u,~\sin\left(u +\frac{\pi}{8}\right)+1\right]^T$ and a path chosen midway between the two curves. The equation of the surface generated by this curves will be
 
 \begin{figure}[h]
 \centering
@@ -317,7 +316,7 @@ In this case, we will solve the equations:
 \nonumber \text{sub:~~~} &\Vert \textbf{x}_h - \textbf{x}_t \Vert -L_0 = 0\\
 &0\leq v=\frac{y_t-\sin\left(x_t\right)}{\sin\left(x_t+\frac{\pi}{8}\right)-\sin\left(x_t\right)+1}\leq 1
 \end{align} 
- An example movement of hyper-redundant manipulator through the duct is shown in [fig12]. However, analytical solution is not always viable for complex equations and numerical procedure must be employed to find the values of $u$ and $v$ corresponding to the given tail point to be classified. The equation used is same as \ref{eq:minx,u,v}.
+ An example movement of hyper-redundant manipulator through the duct is shown in [fig12]. However, analytical solution is not always viable for complex equations and numerical procedure must be employed to find the values of $u$ and $v$ corresponding to the given tail point to be classified. The equation to be used is \ref{eq:minx,u,v}.
 
 \begin{figure}[h]
 \centering
