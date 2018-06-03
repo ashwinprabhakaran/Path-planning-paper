@@ -1,0 +1,62 @@
+
+
+\documentclass[12pt,a4]{article}
+\usepackage[a4paper, total={7in, 8.5in}]{geometry}
+\usepackage{graphicx,subfig,epsfig,float}
+%
+\usepackage{bm}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+%\usepackage{caption}
+\usepackage{textcomp}
+\usepackage{hyperref}
+\usepackage[noabbrev]{cleveref}
+\crefname{algocf}{algorithm}{algorithms}
+\Crefname{algocf}{Algorithm}{Algorithms}
+\usepackage{color}
+\usepackage{enumerate}
+\usepackage{caption}
+\captionsetup{compatibility=false}
+\usepackage{epstopdf}
+\usepackage{pdfpages}
+\usepackage{algorithm2e,algorithmic}
+\usepackage{nomencl}
+
+
+\title{CAD paper}
+
+
+\author{}
+
+\date{}  
+\begin{document}
+	\baselineskip 18pt plus 0.5pt minus 0.5pt
+\maketitle  
+
+\section{Nature of the optimization problem}\label{sc:optimization}
+In the previous section we have discussed how tractrix based motion planning can be formulated as a constrained optimization problem, which entails a discussion on the suitability of the posed optimization problem and guarantee that the solution is unique and physically tractable. To address this, we will prove that the problem posed in (equation for optimization) and the variations of the same used in the current work are indeed convex problems. A function $f:\mathbb{R}^n\to \mathbb{R}$ is \textit{convex} if and only if the following two conditions hold:
+\begin{enumerate}
+	\item [a] The domain of $f$, $\textbf{dom}f$ is a convex set, and,
+	\item [b]  For all $x,y \in \textbf{dom}f$ and $\theta$ with $0\leq \theta \leq 1$ \begin{equation}\label{eq:convex_fn}
+	f(\theta x+(1-\theta)y)\leq \theta f(x)+(1-\theta)f(y)
+	\end{equation}
+\end{enumerate}
+In our problem, the function is the $L_2$ norm of a vector in $\mathbb{R}^2$ or $\mathbb{R}^3$.  Though the $L_2$ norm is defined for all real vectors, the constraints ensuring that the object moves within the confinement of the duct restricts the domain to a feasible closed set $\mathcal{S}$\footnote{Assuming $\mathcal{S}$ to be a closed set allows the object to physically touch the boundaries of the duct}. Therefore, if the conditions a and b associated with the definition of a convex function are satisfied for $\mathcal{S}$ and the $L_2$ norm, then the solution obtained for (put optimization equation here) is unique.\\
+It is a well known result that any p-norm $||x||_p=(\sum\limits_{i=1}^{n}|x_i|^p)^{1/p}$ is a convex function for $p\geq 1$. The fact that a p-norm is convex can be shown by using the scalability and the triangle inequality associated with a normed vector-space. With $\theta$  being a scaling parameter, \cref{eq:convex_fn} simplifies exactly to the triangle equality. Also, a p-norm is a valid norm on $\mathbb{R}$ for $p\geq1$ follows from the Minkowski inequality\footnote{For a measure space $\mathbb{S}$, $p\geq 1$ and $f,~g$ are members of the Lebesgue space $L_P(\mathbb{S})$, the following inequality holds: $||f+g||_p\leq ||f||_p+||g||_p$ }. Furthermore, the 2-norm satisfies the first order and second order conditions of convexity as shown in \cref{eq:first_ord_convx,eq:sec_ord_convx}.
+\begin{align}
+f(\textbf{y})\geq f(\textbf{x})+\nabla_xf(\textbf{x})^T(\textbf{y}-\textbf{x}),~ \textbf{x},\textbf{y}\in \textbf{dom}f \label{eq:first_ord_convx}\\
+\nabla^2_x f(\textbf{x})\succeq 0 \label{eq:sec_ord_convx}
+\end{align}
+This leaves us to show that the feasible set $\mathcal{S}$ is convex. For all our modeling examples, we choose $\mathcal{S}$ to be convex by assigning convex boundaries to it or, expressing $\mathcal{S}$ as intersections of closed convex sets. For the cases of path planning in 2-D and 3-D, the paths chosen are either entirely convex or are discretized as such. As discussed in the following sections, we do not represent a "duct" as a union of closed convex sets as the first condition of convexity cannot be guaranteed for sets formed by union of convex sets. 
+
+
+
+
+
+
+
+\end{document}
