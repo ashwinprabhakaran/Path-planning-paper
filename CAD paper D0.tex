@@ -1,33 +1,30 @@
-%
-\documentclass[11pt,a4paper]{article}
-\setlength{\hoffset}{-1.5cm}
-\setlength{\voffset}{0.0cm}
-\setlength{\textheight}{8.5in}
-\setlength{\textwidth}{6.5in}
-\usepackage{graphics,subfigure,epsfig,float,pdflscape,booktabs,array}
-%
-\usepackage{cleveref}
-\usepackage{appendix}
-\usepackage{amsmath}
+\documentclass[10pt,a4]{article}
+\usepackage[a4paper, total={6.5in, 8.5in}]{geometry}
+\usepackage{moreverb,url}
+\usepackage[colorlinks,bookmarksopen,bookmarksnumbered,citecolor=red,urlcolor=red]{hyperref}
 \usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{pdfpages}
+\usepackage{epstopdf}
+\usepackage[english]{babel}
+\usepackage{mathrsfs}
+\usepackage{hyperref}
 \usepackage{caption}
-\usepackage{multirow}
 \usepackage{color}
-\usepackage{lineno}
-%
+\usepackage{float}
+\usepackage[noabbrev]{cleveref}
+\crefname{appsec}{appendix}{appendices}
+\crefname{algocf}{algorithm}{algorithms}
+\Crefname{algocf}{Algorithm}{Algorithms}
+\usepackage{subcaption}
+\usepackage{algorithm2e,algorithmic}
+\usepackage{appendix}
+%\usepackage{breqn}
 \DeclareMathOperator{\sech}{sech}
 
-\newcolumntype{C}[1]{%
- >{\vbox to 2ex\bgroup\vfill\centering}%
- p{#1}%
- <{\egroup}}  
 
-\def\Registered{\raisebox{1ex}{\kern-.1em\setbox\@tempboxa\hbox{\footnotesize$\bigcirc$}\hbox to 0pt{\hbox to\wd\@tempboxa{\hss\tiny R\hss}\hss}\box\@tempboxa\kern-.1em}}
-% correct bad hyphenation here
-\hyphenation{op-tical net-works semi-conduc-tor}
-
-\DeclareRobustCommand{\rchi}{{\mathpalette\irchi\relax}}
-\newcommand{\irchi}[2]{\raisebox{\depth}{$#1\chi$}} % inner command, used by \rchi
 %
 \bibliographystyle{elsarticle-num}
 
@@ -53,7 +50,7 @@ of Mechanical Engineering, Indian Institute of Science, Bangalore 560012, India,
 \end{abstract}
 
 \textbf{Keywords}:??,??,??.
-\linenumbers
+%\linenumbers
 
 \section{Introduction}
 \label{sec:introduction}
@@ -96,20 +93,20 @@ Consider a rigid link of length $L_0$ positioned in a 2D plane, initially aligne
 \end{align}
 The extension of tractrix equation along motion in arbitrary direction as well as an algorithm to calculate the same in 3-D can be found in [ref] and [ref]. In case of multiple links connected to each other as in the case of hyper-redundant robot, or a one dimensional object approximated as a series of connected linkages the algorithm can be applied iteratively from the head to tail as shown in [ref]. By moving along the tractix curve, the tail moves the minimum distance with respect to its initial position. Also, the displacement $\Vert \textbf{x}_h-\textbf{X}_h \Vert \geq \Vert \textbf{x}_t-\textbf{X}_t \Vert$ which means that the displacement attentuates from the displaced link to end of the chain in case of serially connected links[fig2]. Due to the minimal displacement of the tail, the motion can be imagined as the one with high lateral resistance on the link and less resistance in the direction of motion of link. 
 
-%\begin{figure}[ht!]
-%    \centering
-%    \begin{subfigure}{0.48\textwidth}
-%        \centering
-%        \includegraphics[width=0.75\linewidth]{figures/fig1.pdf}
-%        \caption{Tractrix curve in 2D}
-%        \label{fig:tractrixin2D}
-%    \end{subfigure}%
-%    \begin{subfigure}{0.48\textwidth}
-%        \centering
-%        \includegraphics[width=1\linewidth]{figures/fig2.pdf}
-%        \caption{Tractrix with multiple links}
-%    \end{subfigure}
-%\end{figure}
+\begin{figure}[ht!]
+    \centering
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=0.75\linewidth]{figures/fig1.pdf}
+        \caption{Tractrix curve in 2D}
+        \label{fig:tractrixin2D}
+    \end{subfigure}%
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=1\linewidth]{figures/fig2.pdf}
+        \caption{Tractrix with multiple links}
+    \end{subfigure}
+\end{figure}
 
 \begin{figure}[h]
 \centering
@@ -169,7 +166,7 @@ f(\textbf{x})= f(x,y):\quad \left \vert \frac{x-x_c}{a} \right\vert^n+\left\vert
 \caption{ Super-ellipses and a duct modelled as combination of super-ellipses\label{fig:super-ellipses}}
 \end{figure}
 
-The condition $f(\textbf{x}_t)\leq0$ will ensure that the co-ordinates of the tail of the link $(x_t,y_t)$ always lie inside the bounding curve of a super-ellipse. However, in case of multiple equations ($\textbf{f(x)}$), only one of them need to be satisfied. In other words, the least value of all the values of $\textbf{f(x)}$ should be less than or equal to zero. For the $i^\text{th}$ super-ellipse which is rotated by an angle $\phi_i$ about the $z-$ axis and whose center is translated to the co-ordinates $(x_i,y_i)$ so as to fit a portion of a duct, the co-ordinates of boundary should be multiplied with a transformation matrix
+%The condition $f(\textbf{x}_t)\leq0$ will ensure that the co-ordinates of the tail of the link $(x_t,y_t)$ always lie inside the bounding curve of a super-ellipse. However, in case of multiple equations ($\textbf{f(x)}$), only one of them need to be satisfied. In other words, the least value of all the values of $\textbf{f(x)}$ should be less than or equal to zero. For the $i^\text{th}$ super-ellipse which is rotated by an angle $\phi_i$ about the $z-$ axis and whose center is translated to the co-ordinates $(x_i,y_i)$ so as to fit a portion of a duct, the co-ordinates of boundary should be multiplied with a transformation matrix
 \begin{align}
 T_i = \begin{bmatrix}
 \cos \phi_i & -\sin\phi_i & 0 & x_i\\
