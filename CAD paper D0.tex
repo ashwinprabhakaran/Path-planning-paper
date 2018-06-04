@@ -566,15 +566,25 @@ Exploring obstacle-cluttered environments such as in an earthquake hit zone is o
     \caption{ Motion of hyper-redundant robot in confined spaces ?? Fig will be edited??}
 \end{figure}
 
-\subsection{Computational complexity and limitations of tractrix based scheme}
+\subsection{Computational complexity of the proposed scheme}
 
-... for now the procedure takes ?? takes to compute. We plan to reduce this in the future.
-Another limitation of tractrix based scheme proposed is the locking of a link which traverses sharp bends for non-differentiable ducts given by representations proposed in ?? and ??, as shown in [fig ??]. Here, the expected subsequent position of the link is the one which bends around the corner following the head, while the tractrix based approach will result in the link being pulled downwards (like bicycle chain on sprocket) to the position 2 shown in the figure, which is the theoretical minimum for the optimization problem satisfying the constraints. Hence, the bending angle at the corners in the most general case may be limited to $90^\circ$. In order to avoid this issue, the sharp corners may be blunted off by adding extra points in the corners as shown in [fig ??]. For the curve $\zeta_1$ which includes a corner represented by the points $\mathbf{P}_1,\mathbf{P}_2$ and $\mathbf{P}_3$, and a given link length $L_0$ such that $\Vert \mathbf{P}_1-\mathbf{P}_2\Vert\geq L_0$  and $\Vert \mathbf{P}_3-\mathbf{P}_2\Vert\geq L_0$, the curvature may be increased by adding another line segment so that the final points be $\mathbf{P}_1,\mathbf{P}_2^a,\mathbf{P}_2^b,\mathbf{P}_3$  where the point $\mathbf{P}_2^a=\mathbf{P}_2+\frac{L_0}{\Vert \mathbf{P}_2-\mathbf{P}_1}\Vert\left(\mathbf{P}_1-\mathbf{P}_2\Vert\right)$ and $\mathbf{P}_2^b$ may be obtained form solving the equations
-\begin{align}
-\Vert \mathbf{P}_2-\mathbf{P}_2^b\Vert = L_0,~~\Vert \mathbf{P}_2^a-\mathbf{P}_2^b\Vert = L_0
-\end{align} 
-Needless to say, this rounding off is subject to practical feasibility.
+We want to put the following in this section in the order. Work on this is currently underway.
+\begin{itemize}
+	\item Show that the problem in \cref{eq:Opt_prob_main} can be reformulated as a convex problem with a first order approximation of the equality constraint and a trust region constraint
+	\item Show the Lagrange dual problem and show that the constraints are Slater's conditions compliant and self concordant. This would also justify our use of a primal-dual feasible interior point method
+	\item  Therefore, the interior point algorithm would take certain number of iterations always bounded by a constant like 10-15.
+	\item Next, we show that at each iteration of the interior point algorithm, the computation time is constant. Therefore, the problem is LINEARLY scalable with the number of links and number of points on the planned path... i.e. for a particular choice of link number and points on the path, it can have a real time implementation on a computer.
+	\item Finally, we would plot the complexity for a 2D and a 3D case. 
+\end{itemize}
 
+
+\subsection{Limitations of the tractrix based scheme}
+to add the following:
+\begin{itemize}
+	\item Analytical curves and cylinders would require a in-out classifier which is very much computationally involving. Real time implementation with this , even with near analytical formaulations of the in-out function is not possible.
+	\item The tractrix can pass through a certain curve based on it's physical dimensions. We show the dimension of the largest link which  can pass around a given curve is dependent on the local curvature of the curve or surface it is negotiating. This will have a mathematical proof. half page
+	\item Since the objective function and the constraints are not affine, some issues with scaling may occur. we will discuss about these too. 2-3 sentences.
+\end{itemize}
 
 
 \subsection{Tractrix  emulates natural motion}
@@ -590,12 +600,14 @@ Figure \cref{fig:tractrixemulation} shows the final pose of a bicycle chain pull
     \begin{subfigure}{0.48\textwidth}
         \centering
         \includegraphics[width=1\linewidth]{figures/figslipa.png}
+        \caption{Tractrix emulating the motion of a bicycle chain on paper, $\nu=0.95$}
    
     \end{subfigure}%
     ~
         \begin{subfigure}{0.48\textwidth}
         \centering
         \includegraphics[width=1\linewidth]{figures/figslipb.png}
+        \caption{Tractrix emulating the motion of a bicycle chain on gravel, $\nu=0.86$}
       \end{subfigure}
     \caption{ Tractrix with slip emulates natural motion \label{fig:tractrixemulation}}
 \end{figure}
