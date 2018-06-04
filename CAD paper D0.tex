@@ -583,7 +583,7 @@ Motion simulated using the approach discussed in this paper imparts realism due 
 \min_{\textbf{x}_t} &\Vert \textbf{x}_t-\left(\mathbf{X}_t + \nu \mathbf{X}_h \right) \Vert
 \end{align}
 
-Using a constant value of $\nu = ??$, we can see from [fig23] that the formulation conforms with the actual final pose with good accuracy. 
+Figure \cref{fig:tractrixemulation} shows the final pose of a bicycle chain pulled from an initial horizontal position along the negative Y-axis on two surfaces: a smooth paper and a rough surface paved with gravel. Using a constant value of $\nu = 0.95$ for paper and $\nu =0.86$ for gravel, we can see from that the formulation conforms with the actual final pose very well. 
 
 \begin{figure}[ht!]
     \centering
@@ -597,7 +597,7 @@ Using a constant value of $\nu = ??$, we can see from [fig23] that the formulati
         \centering
         \includegraphics[width=1\linewidth]{figures/figslipb.png}
       \end{subfigure}
-    \caption{ Tractrix with slip emulates natural motion }
+    \caption{ Tractrix with slip emulates natural motion \label{fig:tractrixemulation}}
 \end{figure}
 
 \section{Conclusions}
