@@ -328,8 +328,11 @@ f(x,y,z) : \left[ \left\lbrace \left(\frac{x}{a} \right)^{\frac 2e} +\left(\frac
 
 By changing the parameters $a,b,c$ and $n$, we get different closed surfaces as shown in [fig13]. By combining different super-ellipse shapes, we can generate a 3D duct as shown in [fig14]
 
-[fig13] : What are super-ellipsoids.
-[fig14] : Duct represented by super-ellipsoids.
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.5]{figures/fig13.pdf}
+\caption{ Super-ellipsoids \label{fig:SEs}}
+\end{figure}
 
 The procedure to calculate the inside-outside condition is same as that of the method described in section [ref sec]. The final equations will be same as [\ref{eq: min,mingx}]. An example problem with duct approximated using super-ellipsoids is shown in [fig15]. As mentioned in the case for super-ellipses, solution to the path planning problem with ducts represented by super-ellipsoids is fast as explained in section ??. Identifying the shapes which fit the duct, is also same as the method mentioned in section ??.
 
@@ -342,10 +345,64 @@ Another more involved method in representing duct is by series of connected cyli
 \label{eq:cylinder}
 x = C_1(u,t,\theta),~~y = C_2(u,t,\theta),~~z = C_3(u,t,\theta)
 \end{align}
-where the parameters $u,t$ and $\theta$ varies along the radial, axial and circumferential direction of the cylinder respectively (refer [fig16]). Similar to the representation in [sec], $0\leq u< 1$ and $0<t<1$ classifies the point as inside the cylinder. The final minimization problem is same as that of [\ref{eq:min,u,v,im}]. One major advantage of using this formulation is that by changing the radius of cylinder from $r$ to $r-\delta$, we can easily implement a clearance of $\delta$ units from the walls of the cylinder. Motion of link chain through the duct connected using cylinders is shown in [fig17]
+where the parameters $u,t$ and $\theta$ varies along the radial, axial and circumferential direction of the cylinder respectively (refer [fig ??]). Similar to the representation in [sec], $0\leq u< 1$ and $0<t<1$ classifies the point as inside the cylinder. The final minimization problem is same as that of [\ref{eq:min,u,v,im}]. One major advantage of using this formulation is that by changing the radius of cylinder from $r$ to $r-\delta$, we can easily implement a clearance of $\delta$ units from the walls of the cylinder. Motion of hyper-redundant robot with 20 links through a duct formed by connected cylinders is shown in [fig ??]
 
-[fig16] : Connected cylinder forming duct
-[fig17] : Motion of HR manipulator through connected-cylinders duct
+\begin{figure}[ht!]
+    \centering
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=0.3\linewidth]{figures/fig17a.pdf}
+        \caption{Parameters of analytical cylinder \label{fig:cylparams}}
+    \end{subfigure}%
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=0.75\linewidth]{figures/fig16.pdf}
+        \caption{Connected cylinders forming ducts \label{fig:cylductmotion}}
+    \end{subfigure}
+    \caption{ Representation of duct using combination of cylinders(??Figs will be modified??)}
+\end{figure}
+
+\begin{figure}[ht!]
+    \centering
+    \begin{subfigure}{0.31\textwidth}
+        \centering
+        \includegraphics[width=0.8\linewidth]{figures/Pipesnaps/1.png}
+   
+    \end{subfigure}%
+    ~
+        \begin{subfigure}{0.31\textwidth}
+        \centering
+        \includegraphics[width=0.8\linewidth]{figures/Pipesnaps/2.png}
+       
+    \end{subfigure}%
+    ~
+        \begin{subfigure}{0.31\textwidth}
+        \centering
+        \includegraphics[width=0.8\linewidth]{figures/Pipesnaps/3.png}
+      
+    \end{subfigure}%
+    \\
+    
+       \begin{subfigure}{0.31\textwidth}
+        \centering
+        \includegraphics[width=0.8\linewidth]{figures/Pipesnaps/4.png}
+       
+    \end{subfigure}%
+    ~
+        \begin{subfigure}{0.31\textwidth}
+        \centering
+        \includegraphics[width=0.8\linewidth]{figures/Pipesnaps/5.png}
+      
+    \end{subfigure}%
+    ~
+        \begin{subfigure}{0.31\textwidth}
+        \centering
+        \includegraphics[width=0.8\linewidth]{figures/Pipesnaps/6.png}
+        
+    \end{subfigure}%
+    
+    \caption{ Motion of hyper-redundant manipulator through a duct represented as connected cylinders}
+\end{figure}
 
 
 \subsection{Representation of duct as point clouds}
@@ -393,7 +450,20 @@ In this section, we present two practical examples of the above mentioned method
 \subsubsection{Motion planning through a GI tract}
 There has been a growing interest in simulating motion of endoscope through GI tract for developing simulators for endoscopy and for implementing path planning for endoscopic and laparoscopic surgical robots. In this section, we simulate the natural motion of an endoscope through GI tract. For simulation, we use the stereolithographic data of GI tract obtained from ??. We have demonstrated both the methods presented in [sec] and [sec] for approximating the GI tract. In the first method, a collection of points are manually selected from the STL file where super-elliposids are fit based on least square error minimization techniques. Representation of GI tract as series of super-ellipsoids is shown in [fig19]
 
-[fig19] : Representation of GI tract as super-ellipsoids.
+\begin{figure}[ht!]
+    \centering
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=0.25\linewidth]{figures/fig19.pdf}
+        \caption{GI tract as collection of super-elliposids \label{fig:GISEs}}
+    \end{subfigure}%
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=0.25\linewidth]{figures/fig19.pdf}
+        \caption{GI tract as collection of connected cylinder(?? change??) \label{fig:GICYs}}
+    \end{subfigure}
+    \caption{ Representation of GI tract in two methods}
+\end{figure}
 
 For representing GI tract as cylinders, we first found out the medial axis of the duct using ??. Then at equal intervals of distance along the medial axis, planes are drawn normal to the same. The collection of points which are in the close proximity of the plane are selected and a circle is fitted on the points using least square error minimization. The parameters so obtained are used for the cylinder equations in [\ref{eq:cylinder}]. Representation of GI tract as a series of connected cylinders is shown in [fig20]
 
@@ -401,7 +471,47 @@ For representing GI tract as cylinders, we first found out the medial axis of th
 
 The realistic motion simulation of endoscope through GI tract is shown in [fig21]
 
-[fig21] : Motion through GI tract
+\begin{figure}[ht!]
+    \centering
+    \begin{subfigure}{0.15\textwidth}
+        \centering
+        \includegraphics[width=0.6\linewidth]{figures/GIsnaps/1.png}
+   
+    \end{subfigure}%
+    ~
+        \begin{subfigure}{0.15\textwidth}
+        \centering
+        \includegraphics[width=0.6\linewidth]{figures/GIsnaps/2.png}
+       
+    \end{subfigure}%
+    ~
+        \begin{subfigure}{0.15\textwidth}
+        \centering
+        \includegraphics[width=0.6\linewidth]{figures/GIsnaps/3.png}
+
+    \end{subfigure}%
+		~   
+       \begin{subfigure}{0.15\textwidth}
+        \centering
+        \includegraphics[width=0.6\linewidth]{figures/GIsnaps/4.png}
+       
+    \end{subfigure}%
+    ~
+        \begin{subfigure}{0.15\textwidth}
+        \centering
+        \includegraphics[width=0.6\linewidth]{figures/GIsnaps/5.png}
+      
+    \end{subfigure}%
+    ~
+        \begin{subfigure}{0.15\textwidth}
+        \centering
+        \includegraphics[width=0.6\linewidth]{figures/GIsnaps/6.png}
+        
+    \end{subfigure}%
+    
+    \caption{ Motion of endoscope through GI tract}
+\end{figure}
+
 \subsubsection{Motion planning for search and rescue operations}
 Exploring obstacle-cluttered environments such as in an earthquake hit zone is one of the major applications that necessitates the use of hyper-redundant manipulators. In this example, we show how the proposed algorithms can be effectively used in such applications. With reference to [fig ??], the objective of the hyper-redundant manipulator, consisting of 20 links is to 1) enter the scene through the hole in the outer wall, 2) Pass through the vent to get inside the room, 3) Explore the objects 1,2 and 3 located inside the blue hull and 4) Exit without colliding with the complex shapes given by objects 4 and 5. Here, the exploration problem is effectively tackled using the following constraints added to the optimization problem (refer Fig ??): 1) An ellipsoid of the size of the hole located in the outer wall 2) collection of cylindrical ducts to represent the vent, 3) STL models for the objects 1,2 and 3 and 4) Ellipsoid at the last bend in the path to avoid collision with the complex shapes of objects 4 and 5. It is easy to verify that the existing geometry based motion planning of robot will be quite complicated for this scene while using the methods proposed in this paper, the problem can be addressed with only 6 constraints. The six constraints in this case are actively selected so that they become activate only when the position of the head is in the vicinity of the objects/ shapes. Figure [??] shown the simulated results for the motion of manipulator along a chosen path. 
 
