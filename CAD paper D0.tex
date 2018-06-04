@@ -310,7 +310,7 @@ In this case, we will solve the equations:
 \label{eq:analy2D}
 \min_{\textbf{x}_t} &\Vert \textbf{x}_t-\textbf{X}_t \Vert\\
 \nonumber \text{sub:~~~} &\Vert \textbf{x}_h - \textbf{x}_t \Vert -L_0 = 0\\
-&0\leq v=\frac{y_t-\sin\left(x_t\right)}{\sin\left(x_t+\frac{\pi}{8}\right)-\sin\left(x_t\right)+1}\leq 1
+&0< v\vert_{\mathbf{x}_t}< 1
 \end{align} 
  An example movement of hyper-redundant manipulator through the duct is shown in [fig12]. However, analytical solution is not always viable for complex equations and numerical procedure must be employed to find the values of $u$ and $v$ corresponding to the given tail point to be classified. The equation to be used is \ref{eq:minx,u,v}.
 
@@ -366,7 +366,26 @@ where $w(\overline{\mathbf{R}})$ represents the output from in-out function whic
 Another interesting prospect of this method is its application in obstacle avoidance where the left hand side of the equation \Cref{eq:STLineq} will be greater than zero. The obstacle avoidance methods which follow the equation given by \Cref{eq:obstacle_avoidance_opt} is often limited to shapes which can be modelled analytically. Though the algorithm shown here is limited to convex shapes, they can be applied to more complex and non-symmetric shapes.
 
 \subsection{Analytical ducts}
-As mentioned in the section??, it is possible to express same 
+As mentioned in the section??, it is possible to express a few class of ducts using closed form expressions. For example, the helical duct shown in [fig ??] can be expressed using the equations
+\begin{align}
+\begin{bmatrix}
+x(u,\theta,\phi)\\y(u,\theta,\phi)\\z(u,\theta,\phi)
+\end{bmatrix} = 
+\begin{bmatrix}
+\left(R+ru\cos\theta \right)\cos\phi\\
+\left(R+ru\cos\theta \right)\sin\phi\\
+\left(R+r\sin\theta \right)+H\phi
+\end{bmatrix}
+\end{align}
+
+where $R,r,H$ are the radius of the helix, half the thickness of duct and the height of the helix respectively. The solution method involves solving the equation:
+\begin{align}
+\label{eq:analy2D}
+\min_{\textbf{x}_t} &\Vert \textbf{x}_t-\textbf{X}_t \Vert\\
+\nonumber \text{sub:~~~} &\Vert \textbf{x}_h - \textbf{x}_t \Vert -L_0 = 0\\
+&0\leq u < 1
+\end{align} 
+There exists multiple solutions to this equation and one has to conditionally check the validity of the solution while implementation. The motion of hyper-redundant robot through a helical duct is shown in fig??.
 
 \section{Examples and discussion}
 In this section, we present two practical examples of the above mentioned methods and some discussion  on the implementation of the same.

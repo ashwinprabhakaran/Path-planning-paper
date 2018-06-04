@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2017.5.20)  4 JUN 2018 09:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2017.5.20)  4 JUN 2018 10:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -787,7 +787,14 @@ Package: appendix 2009/09/02 v1.2b extra appendix facilities
 LaTeX Warning: Unused global option(s):
     [a4].
 
-(./CAD paper D0.aux)
+(./CAD paper D0.aux
+
+LaTeX Warning: Label `eq:analy2D' multiply defined.
+
+
+LaTeX Warning: Label `eq:analy2D@cref' multiply defined.
+
+)
 \openout1 = `"CAD paper D0.aux"'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 31.
@@ -1012,51 +1019,53 @@ Package pdftex.def Info: figures/fig12.pdf used on input line 288.
 LaTeX Warning: Reference `eq: min,mingx' on page 13 undefined on input line 334
 .
 
-[13] [14] [15] [16]
+[13] [14] [15] [16] [17]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 422.
+(hyperref)                removing `math shift' on input line 441.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 422.
+(hyperref)                removing `math shift' on input line 441.
 
 
-Overfull \hbox (33.9312pt too wide) in paragraph at lines 429--429
+Overfull \hbox (33.9312pt too wide) in paragraph at lines 448--448
 [] 
  []
 
-[17]
-Overfull \hbox (17.62482pt too wide) detected at line 475
+[18]
+Overfull \hbox (17.62482pt too wide) detected at line 494
 [][] 
  []
 
-[18]
 
-LaTeX Warning: Empty `thebibliography' environment on input line 502.
+LaTeX Warning: Empty `thebibliography' environment on input line 521.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 505.
-[19]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 505.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 524.
+[19] [20]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 524.
  (./CAD paper D0.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 505.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 505.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 524.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 524.
 Package rerunfilecheck Info: File `"CAD paper D0".out' has not changed.
 (rerunfilecheck)             Checksum: 2DE2978AB2A0604AB2297E43CE32653E;2124.
 
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 505.
+
+LaTeX Warning: There were multiply-defined labels.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 524.
  )
 (\end occurred inside a group at level 1)
 
 ### simple group (level 1) entered at line 1061 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 12398 strings out of 493014
- 195417 string characters out of 6130549
- 336466 words of memory out of 5000000
+ 12402 strings out of 493014
+ 195463 string characters out of 6130549
+ 330466 words of memory out of 5000000
  15648 multiletter control sequences out of 15000+600000
  16705 words of font info for 66 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1083,10 +1092,10 @@ sy7.pfb><d:/Program Files/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/c
 m/cmsy8.pfb><d:/Program Files/texlive/2016/texmf-dist/fonts/type1/public/amsfon
 ts/cm/cmti12.pfb><d:/Program Files/texlive/2016/texmf-dist/fonts/type1/public/a
 msfonts/symbols/msbm10.pfb>
-Output written on "CAD paper D0.pdf" (19 pages, 392940 bytes).
+Output written on "CAD paper D0.pdf" (20 pages, 394432 bytes).
 PDF statistics:
- 663 PDF objects out of 1000 (max. 8388607)
- 572 compressed objects within 6 object streams
- 109 named destinations out of 1000 (max. 500000)
+ 670 PDF objects out of 1000 (max. 8388607)
+ 578 compressed objects within 6 object streams
+ 113 named destinations out of 1000 (max. 500000)
  248 words of extra memory for PDF output out of 10000 (max. 10000000)
 
