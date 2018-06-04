@@ -90,6 +90,7 @@ of Mechanical Engineering, Indian Institute of Science, Bangalore 560012, India,
 %
 Consider a rigid link of length $L_0$ positioned in a 2D plane, initially aligned to the Y-axis as shown in the figure[ref fig]. The co-ordinates of the `head' of the link is given as $\textbf{X}_h = [X_h,Y_h]^T$ and the co-ordinates of the `tail' as $\textbf{X}_t = [X_t,Y_t]^T$. If the head is displaced to the co-ordinate $\textbf{x}_h = [x_h,y_h]$ along the positive $X-$ axis by $t$ units, the tail of the link can lie anywhere on the circumference of a circle centered at the co-ordinate $(t,0)$ with radius $L_0$. If we assign a rule that the velocity of the tail of the link is always directed towards the length of the link, we get two diametrically opposite points on the circle. The continuous path traced by the tail point is the well known tractrix curve given by the expressions[ref]:
 \begin{align}
+\label{eq:tractrix}
 \textbf{x}_t = [x(t),y(t)] = [t-L_0\tanh\frac{t}{L_0},L_0\sech\frac{t}{L_0}]
 \end{align}
 The extension of tractrix equation along motion in arbitrary direction as well as an algorithm to calculate the same in 3-D can be found in [ref] and [ref]. In case of multiple links connected to each other as in the case of hyper-redundant robot, or a one dimensional object approximated as a series of connected linkages the algorithm can be applied iteratively from the head to tail as shown in [ref]. By moving along the tractix curve, the tail moves the minimum distance with respect to its initial position. Also, the displacement $\Vert \textbf{x}_h-\textbf{X}_h \Vert \geq \Vert \textbf{x}_t-\textbf{X}_t \Vert$ which means that the displacement attentuates from the displaced link to end of the chain in case of serially connected links[fig2]. Due to the minimal displacement of the tail, the motion can be imagined as the one with high lateral resistance on the link and less resistance in the direction of motion of link. 
@@ -210,21 +211,13 @@ Since the profile of a super-ellipse is always symmetric, for complex and non-sy
 \label{eq:xi(u,t)}
 \mathbf{x}_i(u,v)= \left[ \mathbf{P}_{i-1}+\left(1-{u} \right)\mathbf{P}_i  \right]\left(1-{v}\right) +\left[\mathbf{ Q}_{i-1}+\left(1-{u} \right)\mathbf{Q}_i  \right]\left({v}\right)
 \end{align}
-in parameters $u$ and $v$. If the vertices of the quadrilateral are given by $\mathbf{P}_{i}=\left[ {}^xP_{i},{}^yP_{i}\right]^T $ and $\mathbf{Q}_{i}=\left[ {}^xQ_{i},{}^yQ_{i}\right]^T $, then the analytical expressions for the terms $u$ and ${v}$, given the value of $\mathbf{x}_i$, can be obtained by solving \ref{eq:xi(u,t)} (see Appendix). The values of $u,v$ can be used to classify the point with respect to the surface patch $A_i$. However, it may be noted that there will be two sets of solution and they are not always real and unique. For example, for the surface patch shown in [fig8], the point $\mathbf{P} =\left(10,-5 \right)$ when classified with respect to the area $A$ returns the values $u=\left( 1.0 + 0.6~i,~1.0 - 0.6~i \right)$ and $v=\left(2.0 + 1.9~i,~2.0 - 1.9~i\right)$.
+in parameters $u$ and $v$. If the vertices of the quadrilateral are given by $\mathbf{P}_{i}=\left[ {}^xP_{i},{}^yP_{i}\right]^T $ and $\mathbf{Q}_{i}=\left[ {}^xQ_{i},{}^yQ_{i}\right]^T $, then the analytical expressions for the terms $u$ and ${v}$, given the value of $\mathbf{x}_i$, can be obtained by solving \ref{eq:xi(u,t)} (see Appendix). The values of $u,v$ can be used to classify the point with respect to the surface patch $A_i$\footnote{It may be noted that there will be two sets of solution and they are not always real and unique. For example, the point $\mathbf{P} =\left(10,-5 \right)$ when classified with respect to the area $A$ given by the points $\mathbf{P}_1 = \left(0,15 \right),\mathbf{P}_2 = \left(10,10 \right),\mathbf{Q}_1 = \left(0,0 \right)$ and $\mathbf{Q}_2 = \left(4,1 \right),$ returns the values $u=\left( 1.0 + 0.6~i,~1.0 - 0.6~i \right)$ and $v=\left(2.0 + 1.9~i,~2.0 - 1.9~i\right)$. However, it is a trivial task to filter out the imaginary set of solutions, should the algorithm encounters the same.}.
 
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.5]{figures/fig7.pdf}
 \caption{Duct represented by stitched quadrilaterals\label{fig:stitchequads}}
 \end{figure}
-
-\begin{figure}[h]
-\centering
-\includegraphics[scale=0.5]{figures/fig8.pdf}
-\caption{Example where the classification problem returns complex solutions\label{fig:complexsolns}}
-\end{figure}
-
-
 
  In case of a single quadrilateral patch, we can now write the optimization problem as:
  \begin{align}
@@ -349,7 +342,7 @@ Another more involved method in representing duct is by series of connected cyli
 \label{eq:cylinder}
 x = C_1(u,t,\theta),~~y = C_2(u,t,\theta),~~z = C_3(u,t,\theta)
 \end{align}
-where the parameters $u,t$ and $\theta$ varies along the radial, axial and circumferential direction of the cylinder respectively (refer [fig16]). Similar to the representation in [sec], $0\leq u< 1$ and $0<t<1$ classifies the point as inside the cylinder. The final minimization problem is same as that of [\ref{eq:min,u,v,im}]. Motion of link chain through the duct connected using cylinders is shown in [fig17]
+where the parameters $u,t$ and $\theta$ varies along the radial, axial and circumferential direction of the cylinder respectively (refer [fig16]). Similar to the representation in [sec], $0\leq u< 1$ and $0<t<1$ classifies the point as inside the cylinder. The final minimization problem is same as that of [\ref{eq:min,u,v,im}]. One major advantage of using this formulation is that by changing the radius of cylinder from $r$ to $r-\delta$, we can easily implement a clearance of $\delta$ units from the walls of the cylinder. Motion of link chain through the duct connected using cylinders is shown in [fig17]
 
 [fig16] : Connected cylinder forming duct
 [fig17] : Motion of HR manipulator through connected-cylinders duct
@@ -375,7 +368,10 @@ Another interesting prospect of this method is its application in obstacle avoid
 \subsection{Analytical ducts}
 As mentioned in the section??, it is possible to express same 
 
-\section{Results and discussion}
+\section{Examples and discussion}
+In this section, we present two practical examples of the above mentioned methods and some discussion  on the implementation of the same.
+\subsection{Examples of motion planning through ducts}
+\subsubsection{Motion planning through a GI tract}
 There has been a growing interest in simulating motion of endoscope through GI tract for developing simulators for endoscopy and for implementing path planning for endoscopic and laparoscopic surgical robots. In this section, we simulate the natural motion of an endoscope through GI tract. For simulation, we use the stereolithographic data of GI tract obtained from ??. We have demonstrated both the methods presented in [sec] and [sec] for approximating the GI tract. In the first method, a collection of points are manually selected from the STL file where super-elliposids are fit based on least square error minimization techniques. Representation of GI tract as series of super-ellipsoids is shown in [fig19]
 
 [fig19] : Representation of GI tract as super-ellipsoids.
@@ -387,25 +383,36 @@ For representing GI tract as cylinders, we first found out the medial axis of th
 The realistic motion simulation of endoscope through GI tract is shown in [fig21]
 
 [fig21] : Motion through GI tract
+\subsubsection{Motion planning for search and rescue operations}
+Exploring obstacle-cluttered environments such as in an earthquake hit zone is one of the major applications that necessitates the use of hyper-redundant manipulators. In this example, we show how the proposed algorithms can be effectively used in such applications. With reference to [fig ??], the objective of the hyper-redundant manipulator, consisting of 20 links is to 1) enter the scene through the hole in the outer wall, 2) Pass through the vent to get inside the room, 3) Explore the objects 1,2 and 3 located inside the blue hull and 4) Exit without colliding with the complex shapes given by objects 4 and 5. Here, the exploration problem is effectively tackled using the following constraints added to the optimization problem (refer Fig ??): 1) An ellipsoid of the size of the hole located in the outer wall 2) collection of cylindrical ducts to represent the vent, 3) STL models for the objects 1,2 and 3 and 4) Ellipsoid at the last bend in the path to avoid collision with the complex shapes of objects 4 and 5. It is easy to verify that the existing geometry based motion planning of robot will be quite complicated for this scene while using the methods proposed in this paper, the problem can be addressed with only 6 constraints. The six constraints in this case are actively selected so that they become activate only when the position of the head is in the vicinity of the objects/ shapes. Figure [??] shown the simulated results for the motion of manipulator along a chosen path. 
 
-\subsection{Limitations of tractrix}
-put largest link thing here
+\subsection{Computational complexity and limitations of tractrix based scheme}
+
+... for now the procedure takes ?? takes to compute. We plan to reduce this in the future.
+Another limitation of tractrix based scheme proposed is the locking of a link which traverses sharp bends for non-differentiable ducts given by representations proposed in ?? and ??, as shown in [fig ??]. Here, the expected subsequent position of the link is the one which bends around the corner following the head, while the tractrix based approach will result in the link being pulled downwards (like bicycle chain on sprocket) to the position 2 shown in the figure, which is the theoretical minimum for the optimization problem satisfying the constraints. Hence, the bending angle at the corners in the most general case may be limited to $90^\circ$. In order to avoid this issue, the sharp corners may be blunted off by adding extra points in the corners as shown in [fig ??]. For the curve $\zeta_1$ which includes a corner represented by the points $\mathbf{P}_1,\mathbf{P}_2$ and $\mathbf{P}_3$, and a given link length $L_0$ such that $\Vert \mathbf{P}_1-\mathbf{P}_2\Vert\geq L_0$  and $\Vert \mathbf{P}_3-\mathbf{P}_2\Vert\geq L_0$, the curvature may be increased by adding another line segment so that the final points be $\mathbf{P}_1,\mathbf{P}_2^a,\mathbf{P}_2^b,\mathbf{P}_3$  where the point $\mathbf{P}_2^a=\mathbf{P}_2+\frac{L_0}{\Vert \mathbf{P}_2-\mathbf{P}_1}\Vert\left(\mathbf{P}_1-\mathbf{P}_2\Vert\right)$ and $\mathbf{P}_2^b$ may be obtained form solving the equations
+\begin{align}
+\Vert \mathbf{P}_2-\mathbf{P}_2^b\Vert = L_0,~~\Vert \mathbf{P}_2^a-\mathbf{P}_2^b\Vert = L_0
+\end{align} 
+Needless to say, this rounding off is subject to practical feasibility.
+
+
 
 \subsection{Tractrix  emulates natural motion}
-Motion simulated using the approach discussed in this paper imparts realism due to the minimal movement of tail with respect to the head. In nature effect is created due to the friction or other resistive forces acting in the lateral direction of the link. In the absence of friction, displacement given in the head will result in a simple translation of link. In other words, $\mathbf{x}_t$ in this case, will be same as $\mathbf{x}_h$. In figure [fig22], we can see the effect of friction on a connected link chain which is pulled in one direction. The discrepancy between natural movement and the simulation based on the tractrix approach is because tractrix represents the ideal scenario with motion of tail limited only in the direction of motion of the link due to very high level of friction while in natural motion, there is always some degree of translation possible. This slippage could be included in the formulation, however, by adding the slip vector to the tail displacement. The slip vector may be given as a fraction of head displacement as $\mathbf{s} = \nu \mathbf{X}_h$. Then the minimization function will take the form:
+Motion simulated using the approach discussed in this paper imparts realism due to the minimal movement of tail with respect to the head. In nature this effect is created due to the friction or other resistive forces acting in the lateral direction of the link. In the absence of friction, displacement given in the head will result in a simple translation of link. In other words, $\mathbf{x}_t$ in this case, will be same as $\mathbf{x}_h$. In figure [fig22], we can see the effect of friction on a connected link chain which is pulled in one direction. The discrepancy between natural movement and the simulation based on the tractrix approach is because tractrix represents the ideal scenario with motion of tail limited only in the direction of motion of the link due to very high friction while in natural motion, there is always some degree of translation possible. This slippage could be included in the formulation, however, by adding a slip vector to the tail displacement. Since the slippage amounts to the translation of link in the direction of link, slip vector will be in the direction of head displacement and can be written as as $\mathbf{s} = \nu \mathbf{X}_h$, where $\nu<1$ is a constant. $\nu=0$ represents the ideal tractrix case with friction and $\nu=1$ represents pure translation of the link. Including this vector, the minimization function may be written as:
 \begin{align}
 \min_{\textbf{x}_t} &\Vert \textbf{x}_t-\left(\mathbf{X}_t + \nu \mathbf{X}_h \right) \Vert
 \end{align}
 
 [fig22] : Experiments using bicycle chain
 
-Using a constant value of $\nu = ??$, we can see from [fig23] that the formulation conforms with the actual final pose with better accuracy. 
+Using a constant value of $\nu = ??$, we can see from [fig23] that the formulation conforms with the actual final pose with good accuracy. 
 
 [fig23] : Tractrix with $\nu$.
 
 
 \section{Conclusions}
-bla bla
+
+??
 
 
 \subsection{Contributions and scope of future work}

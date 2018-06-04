@@ -1,12 +1,24 @@
 \BOOKMARK [1][]{section.1}{1 Introduction}{}% 1
 \BOOKMARK [1][]{section.2}{2 Overview of tractrix based motion planning}{}% 2
-\BOOKMARK [1][]{section.3}{3 Motion planning through planar ducts}{}% 3
-\BOOKMARK [2][]{subsection.3.1}{3.1 Representation of duct using super-ellipses}{section.3}% 4
-\BOOKMARK [2][]{subsection.3.2}{3.2 Representation of duct as a set of connected quadrilaterals}{section.3}% 5
-\BOOKMARK [2][]{subsection.3.3}{3.3 Representation of duct using two non-intersecting continuous curves}{section.3}% 6
-\BOOKMARK [1][]{section.4}{4 Motion planning through 3D ducts}{}% 7
-\BOOKMARK [2][]{subsection.4.1}{4.1 Representation of duct using combination of super-ellipsoids}{section.4}% 8
-\BOOKMARK [2][]{subsection.4.2}{4.2 Representation of duct as a set of connected cylinders}{section.4}% 9
-\BOOKMARK [1][]{section.5}{5 Example: Motion simulation of endoscope through GI tract}{}% 10
-\BOOKMARK [1][]{section.6}{6 Modifications on tractrix}{}% 11
-\BOOKMARK [1][]{section.7}{7 Limitations}{}% 12
+\BOOKMARK [2][]{subsection.2.1}{2.1 Nature of the optimization problem}{section.2}% 3
+\BOOKMARK [1][]{section.3}{3 Motion planning through planar ducts}{}% 4
+\BOOKMARK [2][]{subsection.3.1}{3.1 Representation of duct using super-ellipses}{section.3}% 5
+\BOOKMARK [2][]{subsection.3.2}{3.2 Representation of duct as a set of connected quadrilaterals}{section.3}% 6
+\BOOKMARK [2][]{subsection.3.3}{3.3 Representation of duct using two non-intersecting continuous curves}{section.3}% 7
+\BOOKMARK [1][]{section.4}{4 Motion planning through 3D ducts}{}% 8
+\BOOKMARK [2][]{subsection.4.1}{4.1 Representation of duct using combination of super-ellipsoids}{section.4}% 9
+\BOOKMARK [2][]{subsection.4.2}{4.2 Representation of duct as a set of connected cylinders}{section.4}% 10
+\BOOKMARK [2][]{subsection.4.3}{4.3 Representation of duct as point clouds}{section.4}% 11
+\BOOKMARK [2][]{subsection.4.4}{4.4 Analytical ducts}{section.4}% 12
+\BOOKMARK [1][]{section.5}{5 Examples and discussion}{}% 13
+\BOOKMARK [2][]{subsection.5.1}{5.1 Examples of motion planning through ducts}{section.5}% 14
+\BOOKMARK [3][]{subsubsection.5.1.1}{5.1.1 Motion planning through a GI tract}{subsection.5.1}% 15
+\BOOKMARK [3][]{subsubsection.5.1.2}{5.1.2 Motion planning for search and rescue operations}{subsection.5.1}% 16
+\BOOKMARK [2][]{subsection.5.2}{5.2 Computational complexity and limitations of tractrix based scheme}{section.5}% 17
+\BOOKMARK [2][]{subsection.5.3}{5.3 Tractrix emulates natural motion}{section.5}% 18
+\BOOKMARK [1][]{section.6}{6 Conclusions}{}% 19
+\BOOKMARK [2][]{subsection.6.1}{6.1 Contributions and scope of future work}{section.6}% 20
+\BOOKMARK [1][]{section.7}{7 Appendix}{}% 21
+\BOOKMARK [2][]{subsection.7.1}{7.1 Analytical expressions for u,v for quadrilateral patch}{section.7}% 22
+\BOOKMARK [2][]{subsection.7.2}{7.2 Parametric equation of solid cylinder}{section.7}% 23
+\BOOKMARK [2][]{subsection.7.3}{7.3 An algorithm for classifying a point with respect to a polyhedron}{section.7}% 24
