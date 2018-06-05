@@ -401,7 +401,7 @@ where the parameters $u,t$ and $\theta$ varies along the radial, axial and circu
 
 
 \subsection{Representation of duct as point clouds}
-Most practically convenient way of representing the duct would be as the a collection of point clouds  ($\mathbf{R}_i,i=1,2,...,N$ where $N$ is the number of points in the cloud) such as obtained from Stereolithographic formatted file (STL). It is possible to pose the optimization problem in the form:
+A practically convenient way of representing the duct would be as a point cloud  ($\mathbf{R}_i,i=1,2,...,N$ where $N$ is the number of points in the cloud) such as obtained from a LiDAR system or a depth map. Subsequently, it would be possible to process the raw data to obtain the geometric representation of the point of cloud as a Stereolithographic formatted file (STL) or the like. Using the current framework, it is possible to pose the motion planning problem in the following form:
 \begin{align}
 \label{eq:STLeqs}
 \min_{\textbf{x}_t} &\Vert \textbf{x}_t-\textbf{X}_t \Vert\\
@@ -434,7 +434,7 @@ x(u,\theta,\phi)\\y(u,\theta,\phi)\\z(u,\theta,\phi)
 
 where $R,r,H$ are the radius of the helix, half the thickness of duct and the height of the helix respectively. The solution method involves solving the equation:
 \begin{align}
-\label{eq:analy2D}
+\label{eq:analy3D}
 \min_{\textbf{x}_t} &\Vert \textbf{x}_t-\textbf{X}_t \Vert\\
 \nonumber \text{sub:~~~} &\Vert \textbf{x}_h - \textbf{x}_t \Vert -L_0 = 0\\
 &0\leq u < 1
@@ -579,12 +579,31 @@ We want to put the following in this section in the order. Work on this is curre
 
 
 \subsection{Limitations of the tractrix based scheme}
-to add the following:
-\begin{itemize}
-	\item Analytical curves and cylinders would require a in-out classifier which is very much computationally involving. Real time implementation with this , even with near analytical formaulations of the in-out function is not possible.
-	\item The tractrix can pass through a certain curve based on it's physical dimensions. We show the dimension of the largest link which  can pass around a given curve is dependent on the local curvature of the curve or surface it is negotiating. This will have a mathematical proof. half page
-	\item Since the objective function and the constraints are not affine, some issues with scaling may occur. we will discuss about these too. 2-3 sentences.
-\end{itemize}
+In spite of the certain advantages regarding formulation and computational aspects of the tractrix based motion planning approach, there are a few limitations which are of importance.\\
+The ducts represented by analytical curves and cylinders would require an in-out classifier to demarcate the feasible space of the posed optimization problem. Often, this would involve numerical formulations which are quite computationally involving. We believe, real time implementation of these problems, even with near analytical formulations of the in-out function will be very difficult.\\
+It is easily seen that a given hyper-redundant robot with a particular link length will not be able to negotiate a path with a ``very low" curvature. We noticed this problem on several occasions and in this section we aim to quantify the effect. To this end, we borrow the concept of ``traversability" from literature on wheeled mobile robots (see e.g. Nilanjan's JMD paper). A curve $(u,f(u))$ is traversable by a circle $C_i$ $C_i: \left(\begin{array}{c} R_i\cos(v) \\ R_i\sin(v) \end{array}\right), ~ 0 \leq v\leq2\pi $  if the circle can roll over the curve $f(u)$ while maintaining ``only one" point of contact at all times. Traversibility for planar curves can be described by the relative curvature $\kappa_R$ of the circle and the curve at the point of contact. For a planar curve and a circle of radius $R_i$, the relative curvature can be given as \[\kappa_R=\dfrac{f_{uu}}{(1+f_u^2)^{3/2}}-\dfrac{1}{R_i}\] A curve is traversable if the relative curvature is greater than 0, just traversable if it is equal to zero and not traversable if it is negative. This is explained in \cref{fig:is_traversable}. This concept would generalize to traversable surfaces when the minimum of the two eigenvalues of the relative curvature matrix\footnote{The relative curvature matrix of a paremetric surface $\mathcal{S}(u,v): \mathbb{S}^2\to \mathbb{R}^3$ and a sphere of radius R at the point of contact $P = \mathcal{S}(u^*,v^*)$ and the Gaussian frame attached to the sphere at P is given as: $\kappa_R\vert_P=\left[\begin{array}{cc}
+	\mathcal{S}_u.\mathcal{S}_u-1/R & \mathcal{S}_u.\mathcal{S}_v \\ 
+	\mathcal{S}_u.\mathcal{S}_v & \mathcal{S}_v.\mathcal{S}_v-1/R
+	\end{array}\right]_{u^*,v^*} $} is positive for traversability or vice versa.
+Based on this result, we hypothesize that if curve is traversable by a circle of diameter $D_i$, then a hyper-redundant robot of link length $D_i$ can move below the curve without intersecting the curve.
+\begin{figure}[ht!]
+	\centering
+	\begin{subfigure}{0.48\textwidth}
+		\centering
+		\includegraphics[width=0.75\linewidth]{figures/fig11.pdf}
+		\caption{Traversability of a curve \label{fig:is_traversable}}
+	\end{subfigure}%
+	\begin{subfigure}{0.48\textwidth}
+		\centering
+		\includegraphics[width=0.75\linewidth]{figures/fig12.pdf}
+		\caption{ \label{fig:largest_link}}
+	\end{subfigure}
+	\caption{ Feasibility of motion planning with a given link length about a given curve.}
+\end{figure}
+
+	
+ Since the objective function and the constraints are not affine, some issues with scaling may occur. we will discuss about these too. 2-3 sentences.
+
 
 
 \subsection{Tractrix  emulates natural motion}
@@ -600,7 +619,7 @@ Figure \cref{fig:tractrixemulation} shows the final pose of a bicycle chain pull
     \begin{subfigure}{0.48\textwidth}
         \centering
         \includegraphics[width=1\linewidth]{figures/figslipa.png}
-        \caption{Tractrix emulating the motion of a bicycle chain on paper, $\nu=0.95$}
+        \caption{Tractrix emulating the motion of a bicycle chain on photo paper, $\nu=0.95$}
    
     \end{subfigure}%
     ~
