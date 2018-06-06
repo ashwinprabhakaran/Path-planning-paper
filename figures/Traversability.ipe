@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
 <ipe version="70107" creator="Ipe 7.2.2">
-<info created="D:20180605121012" modified="D:20180605151620"/>
+<info created="D:20180605121012" modified="D:20180605152719"/>
 <ipestyle name="basic">
 <symbol name="arrow/arc(spx)">
 <path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
@@ -273,7 +273,7 @@ h
 12.5935 0 0 12.5935 200.11 671.624 e
 </path>
 <use name="mark/disk(sx)" pos="205.7 643.126" size="normal" stroke="black"/>
-<text transformations="translations" pos="246.402 743.734" stroke="black" type="label" width="33.407" height="7.473" depth="2.49" valign="baseline">$(u,f(u)$</text>
+<text transformations="translations" pos="246.402 743.734" stroke="black" type="label" width="37.282" height="7.473" depth="2.49" valign="baseline">$(u,f(u))$</text>
 <text matrix="1 0 0 1 0 -50.9616" transformations="translations" pos="167.265 816.501" stroke="black" type="label" width="11.59" height="6.812" depth="1.49" valign="baseline">$C_1$</text>
 <text matrix="1 0 0 1 -5.88018 6.86021" transformations="translations" pos="201.076 704.778" stroke="black" type="label" width="11.59" height="6.812" depth="1.49" valign="baseline">$C_2$</text>
 <text matrix="1 0 0 1 -7.35023 -14.2104" transformations="translations" pos="206.466 673.172" stroke="black" type="label" width="11.59" height="6.812" depth="1.49" valign="baseline">$C_3$</text>
