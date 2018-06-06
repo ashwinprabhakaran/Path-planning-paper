@@ -136,7 +136,7 @@ In the case of path planning of hyper-redundant manipulator, a majority of probl
 \begin{align} \label{eq:path_planning_opt}
 \argmin_{\textbf{x}_t} &\Vert \textbf{x}_t-\textbf{X}_t \Vert\\
 \text{Subject to:} &\Vert \textbf{x}_h - \textbf{x}_t \Vert -L_0 = 0 \nonumber \\
- ~~ &{f}(x) < 0 \nonumber
+C_{\text{ineq}}:~~&{f}(x) < 0 \nonumber
 \end{align}
 While this expression is applicable for a duct represented by a single surface with the boundary $f(x)$, unlike the obstacle avoidance problem, the same will not work in the case of complex surfaces represented by combination of simpler analytical shapes. This is because if a point is classified as inside one of the simpler shapes, then it should be classified as outside the other shapes forming the duct. In other words, if one constraint function $f_k(x)< 0$, then the other constraint functions $f_{i\neq k}\geq 0$. In the next sections, we present different methods to represent the ducts and how confined space motion is achieved in different cases. 
 
@@ -154,7 +154,7 @@ It is a well known result that any p-norm $||x||_p=(\sum\limits_{i=1}^{n}|x_i|^p
 
 \section{Motion planning through planar ducts}
 %
-In this section, we analyze different methods to represent a duct in 2D planar surface and how we can add constraints in different duct representations so as to ensure that the the tip will always lie inside the duct during motion. Each method has its own advantages and disadvantages and it is upto the user to select the best strategy based on the nature of the problem in hand.
+In this section, we analyze different methods to represent a duct in 2D planar surface and how we can add constraints in different representations of duct so as to ensure that the the tip will always lie inside the duct during motion. Each method is shown to have its own advantages.
 \subsection{Representation of duct using super-ellipses}
 %
 One method to represent a duct is by overlapping a series of super-ellipses as shown in [fig5b]. This is the most simple and straightforward means of representation as shown in [ref Midhun]. In Cartesian co-ordinate system $R^2$, the contour of super-ellipse obeys the following equation:
@@ -177,12 +177,10 @@ T_i = \begin{bmatrix}
 0 & 0 & 0 & 1
 \end{bmatrix}
 \end{align}
-The constraint equation now becomes $g_i(\textbf{x}_t) : f_i(T_i^T\textbf{x}_t)< 0,~ i=1,2,...,m$ and, the complete formulation is given as\footnote{Formulation shown in this form is mathematically incorrect, since the set $g_i\left(\mathbf{x}_t\right)$ is a discrete set of continuous functions and the minimum of this set is a discontinuous function. However, the representation is only for implementational convenience, while the statement actually means $g_k\left(\mathbf{x}_t\right)<0,~~g_{i\neq k}\left(\mathbf{x}_t\right)\geq 0$. The same argument will also be applied for the other formulations which follow.}:
+The constraint equation now becomes $g_i(\textbf{x}_t) : f_i(T_i^T\textbf{x}_t)< 0,~ i=1,2,...,m$. For practical implementation, we can write the inequality constraint as 
 \begin{align}
 \label{eq: min_and_mingx}
-\argmin_{\textbf{x}_t} &\Vert \textbf{x}_t-\textbf{X}_t \Vert\\
-\text{Subject ~to:~~~} &\Vert \textbf{x}_h - \textbf{x}_t \Vert -L_0 = 0 \nonumber \\
-& \min\left(g_i(\textbf{x}_t)\right) < 0,~~ i=1,2,...,m \nonumber
+C_{\text{ineq}}:~~ \min\left(g_i(\textbf{x}_t)\right) < 0,~~ i=1,2,...,m 
 \end{align}
 
 An example of single link and multi-segmented chain passing through the duct is shown in [fig5]. Motion of a unit link with and without constraint is shown in [fig6]. The negative gradient (descend direction) of the inequality constraint function is also shown in the figure. The method shown here is quite fast and scalable as explained in section ??, while the majority of time taken for the scheme being in identifying the super-ellipsoids which fit the duct profile. For the example shown in this section, this identification is done by manually selecting clusters of points in the duct and fitting ellipses which will reduce the fitting error in a least squared sense.
@@ -202,7 +200,21 @@ An example of single link and multi-segmented chain passing through the duct is 
 
 \subsection{Representation of duct as a set of connected quadrilaterals}
 
-Since the profile of a super-ellipse is always symmetric, for complex and non-symmetric ducts, representation using the previous method might require a large number of shapes. In such cases, a complex duct shape can be represented as a closed shape obtaining by stitching convex quadrilaterals. The individual quadrilateral patches may be denoted as $A_1,A_2,...,A_n$, each bounded by the line segments defined by the points $\mathbf{(P_0,P_1),(P_1,P_2),...,(P_{n-1},P_n)}$ for the curve $\mathbf{\zeta_1}$ and $\mathbf{(Q_0,Q_1),(Q_1,Q_2),...,(Q_{n-1},Q_n)}$ for the curve $\mathbf{\zeta_2}$. Then the co-ordinates of a point inside the surface patch $A_i$ is given by the parametric expression
+Since the profile of a super-ellipse is always symmetric, for complex and non-symmetric ducts, representation using the previous method might require a large number of shapes. For such cases, a complex duct shape can be represented as a closed shape obtained by stitching convex quadrilaterals as shown in \ref{fig:stitchequads}. The individual quadrilateral patches may be denoted as $A_1,A_2,...,A_n$, each bounded by the line segments defined by the points $\mathbf{(P_0,P_1),(P_1,P_2),...,(P_{n-1},P_n)}$ for the curve $\mathbf{\zeta_1}$ and $\mathbf{(Q_0,Q_1),(Q_1,Q_2),...,(Q_{n-1},Q_n)}$ for the curve $\mathbf{\zeta_2}$. Classification of a point $\mathbf{x}_t$ as inside or outside a quadrilateral represented by points, say, $\mathbf{P}_1,\mathbf{P}_2,\mathbf{Q}_2$ and $\mathbf{Q}_1,$ is essentially checking the placement of the point in the half spaces represented by the four lines spanned by the point set $\left(\mathbf{P}_1,\mathbf{P}_2\right)$, $\left(\mathbf{P}_2,\mathbf{Q}_2\right)$, $\left(\mathbf{Q}_2,\mathbf{Q}_1\right)$, and $\left(\mathbf{Q}_1,\mathbf{P}_1\right)$. This can be written as a set of four inequality constraints:
+\begin{align}
+A^1_1 x_t+ A^2_1 y_t +B_1 <0\\
+\nonumber A^1_2 x_t+ A^2_2 y_t +B_2 <0\\
+\nonumber A^1_3 x_t+ A^2_3 y_t +B_3 <0\\
+\nonumber A^1_4 x_t+ A^2_4 y_t +B_4 <0
+\end{align}
+where $A_i^1 x+A_i^2y+B_i=0$ represents a line obtained from one pair of non-diagonal points in the quadrilateral. In matrix form, the inequality will look like:
+\begin{align}
+C_\text{ineq}:~~ \left[\mathbf{A} \right] \mathbf{x}_t +\mathbf{B} <0
+\end{align}
+where $\left[\mathbf{A} \right]$ is a $4\times 4$ matrix and $\mathbf{B}$ is a $4 \times 1$ vector.
+But we propose a more convenient method for practical applications which is as follows:
+
+The co-ordinates of a point inside the surface patch $A_i$ is given by the parametric expression
 \begin{align}
 \label{eq:xi(u,t)}
 \mathbf{x}_i(u,v)= \left[ \mathbf{P}_{i-1}+\left(1-{u} \right)\mathbf{P}_i  \right]\left(1-{v}\right) +\left[\mathbf{ Q}_{i-1}+\left(1-{u} \right)\mathbf{Q}_i  \right]\left({v}\right)
@@ -215,12 +227,9 @@ in parameters $u$ and $v$. If the vertices of the quadrilateral are given by $\m
 \caption{Duct represented by stitched quadrilaterals\label{fig:stitchequads}}
 \end{figure}
 
- In case of a single quadrilateral patch, we can now write the optimization problem as:
+ In case of a single quadrilateral patch, the inequality constraints will be simply,
  \begin{align} \label{eq:minx,u,v}
-\argmin_{\textbf{x}_t} &\Vert \textbf{x}_t-\textbf{X}_t \Vert\\
-\text{Subject to:~~~} &\Vert \textbf{x}_h - \textbf{x}_t \Vert -L_0 = 0 \nonumber \\
-\text{~~~~~~~}& 0 \leq u \leq 1 \nonumber \\
-\text{~~~~~~~} & 0 \leq v \leq 1 \nonumber
+C_\text{ineq}:~~& 0 \leq u \leq 1 ,~~  0 < v < 1 
 \end{align}
 for real values of ${u}$ and ${v}$. In case of multiple patches, classifying one point with respect to all the patches return the values $\left({u}_1,{v}_1 \right), \left({u}_2,{v}_2 \right),...,\left({u}_m,{v}_m \right)$ etc. for the $m$ number of patches $A_1, A_2,..., A_m$ and consequently, $m$ set of conditions. But out of the $m$ condition sets, only one set should be satisfied since the point will belong to only one patch at a given instance of motion through the duct. Including a switching  statement in the optimization code will be inefficient especially when the point to be classified is close to the common boundary between two patches. 
 
@@ -229,7 +238,7 @@ In order to provide a gradient to the constraint which will direct the point int
 \label{eq:ductgradientinquad}
 h = \Vert \mathbf{x}_{\zeta_1}-\mathbf{x}_t\Vert^2+\Vert \mathbf{x}_{\zeta_2}-\mathbf{x}_t\Vert^2-\Vert \mathbf{x}_{\zeta_1}- \mathbf{x}_{\zeta_2}\Vert^2
 \end{align}
-will always assign a negative real value for $h$ when point is inside the duct and a positive real value when the point is outside the duct. The value will be zero only at the boundaries. Hence, for an array of quadrilaterals, it is only necessary that the minimum value of the vector $\mathbf{h} = [{h}_1, {h}_2,...,{h}_m]$ should be negative for classifying the point with respect to the duct, as in the case of previous section. But as we can see, the inequality only takes into account the parameter variation across the boundaries (along the parameter $v$) and not in the direction of $u$ which could result in erroneous classification. For example, with reference to the figure [fig 9b], the value of $h$ for the point $\mathbf{P}$ classified with respect to the two quadrilaterals are $h_1 = ??$ and $h_2 = ??$. Hence, a minimum of both the values will wrongly classify the point as inside. To account for the same, we make use of the function $\chi$ which is necessarily a linear combination of two Heaviside step functions $H(0)-H(1)$, defined as:
+will always assign a negative real value for $h$ when point is inside the duct and a positive real value when the point is outside the duct. The value will be zero only at the boundaries. Hence, for an array of quadrilaterals, it is only necessary that the minimum value of the vector $\mathbf{h} = [{h}_1, {h}_2,...,{h}_m]$ should be negative for classifying the point with respect to the duct, as in the case of previous section. But as we can see, the inequality only takes into account the parameter variation across the boundaries (along the parameter $v$) and not in the direction of $u$. To account for the same, we make use of the function $\chi$ which is necessarily a linear combination of two Heaviside step functions $H(0)-H(1)$, defined as:
 
 \begin{align}
 \label{eq:chifunction}
@@ -239,17 +248,14 @@ will always assign a negative real value for $h$ when point is inside the duct a
 0, &\quad t >1
 \end{matrix}\right.
 \end{align}
-The function $\chi$ applied on the quantity $\hat{u}_i$ (which is the value of parameter ${u}$ classified with respect to quadrilateral $A_i$), will return 0 only if the point satisfies the constraint $0\leq \hat{u}_i\leq 1$. Now, multiplying this quantity $\chi(\hat{u})$ with $h_i$ will return a non-zero negative value only if the point is inside the duct. Including the inequality constraint, the complete optimization problem is given as:
-
+The function $\chi$ applied on the quantity $\hat{u}_i$ (which is the value of parameter ${u}$ classified with respect to quadrilateral $A_i$), will return 0 only if the point satisfies the constraint $0\leq \hat{u}_i\leq 1$. Now, multiplying this quantity $\chi(\hat{u})$ with $h_i$ will return a non-zero negative value only if the point is inside the duct. Then the following inequality constraint:
 \begin{align}
-\label{eq:min,u,v,im}
-\min_{\textbf{x}_t} &\Vert \textbf{x}_t-\textbf{X}_t \Vert\\
-\nonumber \text{sub:~~~} &\Vert \textbf{x}_h - \textbf{x}_t \Vert -L_0 = 0\\
-&\left[\chi\left(\hat{\mathbf{u}}\right)\right]^T\mathbf{h}<0
+\label{eq:quadrils}
+C_{\text{ineq}}:~~\left[\chi\left(\hat{\mathbf{u}}\right)\right]^T\mathbf{h}<0
 \end{align}
-where $\hat{\mathbf{u}}=\left[\hat{u}_1,\hat{u}_2,...,\hat{u}_m\right]^T$
+where $\hat{\mathbf{u}}=\left[\hat{u}_1,\hat{u}_2,...,\hat{u}_m\right]^T$ becomes a more practical and convenient way to implement the inequality constraint in the optimization problem.
 
-Motion of a unit link passing through the duct is shown in [fig11] and the effect of the added inequality constraint to pull the tail end of the link which is initially positioned outside the duct, is shown in [fig12]
+As an example, motion of a unit link passing through the duct is shown in [fig11] and the effect of the added inequality constraint~\ref{eq:quadrils} to pull the tail end of the link which is initially positioned outside the duct, is shown in [fig12]. Apart from being more flexible, another advantage of representing a 2D duct as a set of connected quadrilaterals in this parameteric form is that by setting the limits of the parameter $v$ to $0+\delta < v< 1-\delta,~~\delta<0.5$, it is easy to manually add a clearance from the walls of the duct without manipulating the duct itself. Also, it is easy to note that $\delta=0.5-\epsilon$ (where $\epsilon$ is a small number) would follow the backbone curve motion.
 
 \begin{figure}[h]
 \centering
@@ -307,11 +313,9 @@ In this case, we will solve the equations:
 \nonumber \text{sub:~~~} &\Vert \textbf{x}_h - \textbf{x}_t \Vert -L_0 = 0\\
 &0< v\vert_{\mathbf{x}_t}< 1
 \end{align} 
- An example movement of hyper-redundant manipulator through the duct is shown in [fig12]. However, analytical solution is not always viable for complex equations and numerical procedure must be employed to find the values of $u$ and $v$ corresponding to the given tail point to be classified. The equation to be used is \ref{eq:minx,u,v}.
+ An example movement of hyper-redundant manipulator through the duct is shown in [fig12]. However, analytical solution is not always viable for complex equations and numerical procedure must be employed to find the values of $u$ and $v$ corresponding to the given tail point to be classified. Also, since multiple solutions may be possible for such cases, the correctness of the solution would heavily depend on the choice of initial guess provided\footnote{The same argument will also hold for analytical surfaces spanned in 3D and hence is not studied further.}. The equation to be used is \ref{eq:minx,u,v}.
 
-
-
-
+%----------------------------------------------------------------------------------------------------
 \section{Motion planning through 3D ducts}
 In this section, we will explain a few methods to represent ducts in 3D and how motion planning is achieved in the same.
 \subsection{Representation of duct using combination of super-ellipsoids}
@@ -329,18 +333,23 @@ By changing the parameters $a,b,c$ and $n$, we get different closed surfaces as 
 \caption{ Super-ellipsoids \label{fig:SEs}}
 \end{figure}
 
-The procedure to calculate the inside-outside condition is same as that of the method described in section [ref sec]. The final equations will be same as [\ref{eq: min,mingx}]. An example problem with duct approximated using super-ellipsoids is shown in [fig15]. As mentioned in the case for super-ellipses, solution to the path planning problem with ducts represented by super-ellipsoids is fast as explained in section ??. Identifying the shapes which fit the duct, is also same as the method mentioned in section ??.
+The procedure to calculate the inside-outside condition is same as that of the method described in section [ref sec]. The inequality condition will be [\ref{eq: min_and_mingx}]. An example problem with duct approximated using super-ellipsoids is shown in [fig15]. As mentioned in the case for super-ellipses, solution to the path planning problem with ducts represented by super-ellipsoids is fast (also explained in section ??). Identifying the shapes which fit the duct, is also same as the method mentioned in section ??. 
 
 [fig15] : Motion through super-ellipsoid ducts (to be added)
 
 
 \subsection{Representation of duct as a set of connected cylinders}
-Another more involved method in representing duct is by series of connected cylinders. By linearly interpolating two circles in 3D, we get the parametric equation of surface of the cylinder as (refer Appendix for the detailed expressions):
+Similar to the set of connected quadrilaterals in 2D, a duct in 3D can be represented by series of connected cylinders. By linearly interpolating two circles in space, we get the parametric equation of the cylinder as (refer Appendix for the detailed expressions):
 \begin{align}
 \label{eq:cylinder}
 x = C_1(u,t,\theta),~~y = C_2(u,t,\theta),~~z = C_3(u,t,\theta)
 \end{align}
-where the parameters $u,t$ and $\theta$ varies along the radial, axial and circumferential direction of the cylinder respectively (refer [fig ??]). Similar to the representation in [sec], $0\leq u< 1$ and $0<t<1$ classifies the point as inside the cylinder. The final minimization problem is same as that of [\ref{eq:min,u,v,im}]. One major advantage of using this formulation is that by changing the radius of cylinder from $r$ to $r-\delta$, we can easily implement a clearance of $\delta$ units from the walls of the cylinder. Motion of hyper-redundant robot with 20 links through a duct formed by connected cylinders is shown in [fig ??]
+where the parameters $u,t$ and $\theta$ varies along the radial, axial and circumferential direction of the cylinder respectively (refer [fig ??]). Similar to the representation in [sec], $0\leq u< 1$ and $0<t<1$ classifies the point as inside the cylinder. The constrained inequality \ref{eq:quadrils} generated will also be valid for cylinders. The quantity $h_i$ will simply be $h = \hat{u}_i-1$, which will show the same characteristics as defined by the value of $h_i$ in equation \ref{eq:ductgradientinquad}. The constraint inequality, hence takes the form:
+\begin{align}
+\label{eq:const_cyl}
+C_\text{ineq}:~~\left[\chi\left(\hat{\mathbf{t}}\right)\right]^T\mathbf{h}<0
+\end{align}
+As is the case of quadrilaterals,it is possible to add a clearance from the walls by changing the radius of cylinder from $r$ to $r-\delta$, which is a very desirable characteristic for robots used in medical applications. Motion of hyper-redundant robot with 20 links through a duct formed by connected cylinders is shown in [fig ??]. 
 
 \begin{figure}[ht!]
     \centering
@@ -401,55 +410,56 @@ where the parameters $u,t$ and $\theta$ varies along the radial, axial and circu
 
 
 \subsection{Representation of duct as point clouds}
-A practically convenient way of representing the duct would be as a point cloud  ($\mathbf{R}_i,i=1,2,...,N$ where $N$ is the number of points in the cloud) such as obtained from a LiDAR system or a depth map. Subsequently, it would be possible to process the raw data to obtain the geometric representation of the point of cloud as a Stereolithographic formatted file (STL) or the like. Using the current framework, it is possible to pose the motion planning problem in the following form:
+
+The most direct way of representing the duct, in a practical sense, would be as a point cloud  ($\mathbf{R}_i,i=1,2,...,N$ where $N$ is the number of points in the cloud) such as obtained from a LiDAR system or a depth map. Subsequently, it would be possible to process the raw data to obtain the geometric representation of the point of cloud as a Stereolithographic formatted file (STL) or the like. Using the current framework, it is possible to pose the motion planning problem in the following form:
 \begin{align}
 \label{eq:STLeqs}
 \min_{\textbf{x}_t} &\Vert \textbf{x}_t-\textbf{X}_t \Vert\\
 \nonumber \text{sub:~~~} &\Vert \textbf{x}_h - \textbf{x}_t \Vert -L_0 = 0\\
 &[\mathbf{A}]\mathbf{x}_t+\mathbf{B}\leq 0
 \end{align}
-where $\mathbf{A}$ is a $m\times 3$ matrix and $\mathbf{B}$ is a $m\times 1$ vector. The left hand side of $m$ inequalities represent the equations of $m$ number of planes spanned by three adjacent points in the cloud. The $i^\text{th}$ equation, $A_{i}^1x_t+A_{i}^2y_t+A_{i}^3z_t+B_i$ takes a value less than zero when the point $\mathbf{x}_t$ is in the half space which contains the origin and is greater than zero otherwise. The value also provides the attractive gradient which will ensure that the point stays inside the duct. However, in actual implementation, this procedure will be tedious and for practical convenience, it is possible to classify the point $\mathbf{x}_t$ as inside or outside the hull using the algorithm described in \cref{alg:in_hull}, in \cref{app:polyhedron_point}. The attracting gradient which ensures the point to be inside the duct--as the case with the previous methods-- can be provided using the artificial potential field generated from the centroid of the point cloud in conjunction with the output of the in-out function. The inequality constraint then becomes
+where $\mathbf{A}$ is a $m\times 3$ matrix and $\mathbf{B}$ is a $m\times 1$ vector. The left hand side of $m$ inequalities represent the equations of $m$ number of planes spanned by three adjacent points in the cloud. The $i^\text{th}$ equation, $A_{i}^1x_t+A_{i}^2y_t+A_{i}^3z_t+B_i$ takes a value less than zero when the point $\mathbf{x}_t$ is in the half space which contains the origin and is greater than zero otherwise. The value also provides the attractive gradient which will ensure that the point stays inside the duct. However, in actual implementation, this procedure will be tedious and for practical convenience, it is possible to classify the point $\mathbf{x}_t$ as inside or outside the hull using the \cref{alg:in_hull} described in \cref{app:polyhedron_point}. The attracting gradient which ensures the point to be inside the duct--as the case with the previous methods-- can be provided using the artificial potential field generated from the centroid of the point cloud in conjunction with the output of the in-out function. The inequality constraint then becomes
 \begin{align}
 \label{eq:STLineq}
 w(\mathbf{R})\frac{1}{\Vert(\overline{\mathbf{R}})-\mathbf{x}_t\Vert}\leq 0
 \end{align}
 where $w(\overline{\mathbf{R}})$ represents the output from in-out function which is either 1 for the point being outside and 0 for the point being inside the cloud or on the bounding surface\footnote{Unlike the previous classification problems, the bounding surface will also be considered as inside the surface in this case.}. 
 
-Another interesting prospect of this method is its application in obstacle avoidance where the left hand side of the equation \Cref{eq:STLineq} will be greater than zero. The obstacle avoidance methods which follow the equation given by \Cref{eq:obstacle_avoidance_opt} is often limited to shapes which can be modelled analytically. Though the algorithm shown here is limited to convex shapes, they can be applied to more complex and non-symmetric shapes. Example of motion plannin through convex, non-analytical point clouds is shown in figure ??.
+Another interesting prospect of this method is its application in obstacle avoidance where the left hand side of the equation \Cref{eq:STLineq} will be greater than zero. The obstacle avoidance methods which follow the equation given by \Cref{eq:obstacle_avoidance_opt} is often limited to shapes which can be modelled analytically. Though the algorithm shown here is limited to convex shapes, they can be applied to more complex and non-symmetric shapes. Example of motion planning through convex, non-analytical point clouds is shown in figure ??.
 
 [fig ??. Motion of HR- robot through STL duct (to be added)]
 
-\subsection{Analytical ducts}
-As mentioned in the section??, it is possible to express a few class of ducts using closed form expressions. For example, the helical duct shown in [fig ??] can be expressed using the equations
-\begin{align}
-\begin{bmatrix}
-x(u,\theta,\phi)\\y(u,\theta,\phi)\\z(u,\theta,\phi)
-\end{bmatrix} = 
-\begin{bmatrix}
-\left(R+ru\cos\theta \right)\cos\phi\\
-\left(R+ru\cos\theta \right)\sin\phi\\
-\left(R+r\sin\theta \right)+H\phi
-\end{bmatrix}
-\end{align}
+%\subsection{Analytical ducts}
+%As mentioned in the section??, it is possible to express a few class of ducts using closed form expressions. For example, the helical duct shown in [fig ??] can be expressed using the equations
+%\begin{align}
+%\begin{bmatrix}
+%x(u,\theta,\phi)\\y(u,\theta,\phi)\\z(u,\theta,\phi)
+%\end{bmatrix} = 
+%\begin{bmatrix}
+%\left(R+ru\cos\theta \right)\cos\phi\\
+%\left(R+ru\cos\theta \right)\sin\phi\\
+%\left(R+r\sin\theta \right)+H\phi
+%\end{bmatrix}
+%\end{align}
+%
+%where $R,r,H$ are the radius of the helix, half the thickness of duct and the height of the helix respectively. The solution method involves solving the equation:
+%\begin{align}
+%\label{eq:analy3D}
+%\min_{\textbf{x}_t} &\Vert \textbf{x}_t-\textbf{X}_t \Vert\\
+%\nonumber \text{sub:~~~} &\Vert \textbf{x}_h - \textbf{x}_t \Vert -L_0 = 0\\
+%&0\leq u < 1
+%\end{align} 
+%There exists multiple solutions to this equation and one has to conditionally check the validity of the solution while implementation. The motion of hyper-redundant robot through a helical duct is shown in fig??.
 
-where $R,r,H$ are the radius of the helix, half the thickness of duct and the height of the helix respectively. The solution method involves solving the equation:
-\begin{align}
-\label{eq:analy3D}
-\min_{\textbf{x}_t} &\Vert \textbf{x}_t-\textbf{X}_t \Vert\\
-\nonumber \text{sub:~~~} &\Vert \textbf{x}_h - \textbf{x}_t \Vert -L_0 = 0\\
-&0\leq u < 1
-\end{align} 
-There exists multiple solutions to this equation and one has to conditionally check the validity of the solution while implementation. The motion of hyper-redundant robot through a helical duct is shown in fig??.
-
-
-\begin{figure}[h!]
-\centering
-\includegraphics[scale=0.75]{figures/analytduct.pdf}
-\caption{ Motion of hyper-redundant robot through helical duct \label{fig:helicalduct}}
-\end{figure}
+%
+%\begin{figure}[h!]
+%\centering
+%\includegraphics[scale=0.75]{figures/analytduct.pdf}
+%\caption{ Motion of hyper-redundant robot through helical duct \label{fig:helicalduct}}
+%\end{figure}
 
 \section{Examples and discussion}
-In this section, we present two practical examples of the above mentioned methods and some discussion  on the implementation of the same.
+In this section, we present two practical examples where the above mentioned methods are applied and some discussion on the implementation of the above mentioned algorithms.
 \subsection{Examples of motion planning through ducts}
 \subsubsection{Motion planning through a GI tract}
 There has been a growing interest in simulating motion of endoscope through GI tract for developing simulators for endoscopy and for implementing path planning for endoscopic and laparoscopic surgical robots. In this section, we simulate the natural motion of an endoscope through GI tract. For simulation, we use the stereolithographic data of GI tract obtained from ??. We have demonstrated both the methods presented in [sec] and [sec] for approximating the GI tract. In the first method, a collection of points are manually selected from the STL file where super-elliposids are fit based on least square error minimization techniques. Representation of GI tract as series of super-ellipsoids is shown in [fig19]
@@ -517,7 +527,7 @@ The realistic motion simulation of endoscope through GI tract is shown in [fig21
 \end{figure}
 
 \subsubsection{Motion planning for search and rescue operations}
-Exploring obstacle-cluttered environments such as in an earthquake hit zone is one of the major applications that necessitates the use of hyper-redundant manipulators. In this example, we show how the proposed algorithms can be effectively used in such applications. With reference to [fig ??], the objective of the hyper-redundant manipulator, consisting of 20 links is to 1) enter the scene through the hole in the outer wall, 2) Pass through the vent to get inside the room, 3) Explore the objects 1,2 and 3 located inside the blue hull and 4) Exit without colliding with the complex shapes given by objects 4 and 5. Here, the exploration problem is effectively tackled using the following constraints added to the optimization problem (refer Fig ??): 1) An ellipsoid of the size of the hole located in the outer wall 2) collection of cylindrical ducts to represent the vent, 3) STL models for the objects 1,2 and 3 and 4) Ellipsoid at the last bend in the path to avoid collision with the complex shapes of objects 4 and 5 (orange color). It is easy to verify that the existing geometry based motion planning of robot will be quite complicated for this scene while using the methods proposed in this paper, the problem can be addressed with only 6 constraints. The six constraints in this case are actively selected so that they become active only when the position of the head is in the vicinity of the objects/ shapes. Figure [??] shown the simulated results for the motion of manipulator along a chosen path. 
+Exploring obstacle-cluttered environments such as in an earthquake hit zone is one of the major applications that necessitates the use of hyper-redundant manipulators. In this example, we show how the proposed algorithms can be effectively used in such applications. With reference to [fig ??], the objective of the hyper-redundant manipulator, consisting of 20 links is to 1) enter the scene through the hole in the outer wall, 2) Pass through the vent to get inside the room, 3) Explore the objects 1,2 and 3 located inside the blue region and 4) Exit without colliding with the complex shapes given by objects 4 and 5. Here, the exploration problem is effectively tackled using the following constraints added to the optimization problem (refer Fig ??): 1) An ellipsoid of the size of the hole located in the outer wall 2) collection of cylindrical ducts to represent the vent, 3) STL models for the objects 1,2 and 3 and 4) Ellipsoid at the last bend in the path to avoid collision with the complex shapes of objects 4 and 5 (orange color). It is easy to verify that the geometry based global motion planning techniques for obstacle avoidance existing in literature will entail a very involving problem formulation [ananthanarayanan], while using the methods proposed in this paper, the problem can be addressed with only 6 constraints. The six constraints in this case are actively selected so that they become active only when the position of the head is in the vicinity of the objects/ shapes. Figure [??] shown the simulated results for the motion of manipulator along a chosen path. 
 
 \begin{figure}[h!]
 \centering
@@ -606,30 +616,30 @@ Based on this result, we hypothesize that if curve is traversable by a circle of
 	\caption{ Feasibility of motion planning with a given link length about a given curve.}
 \end{figure}
 	
-\subsection{Tractrix  emulates natural motion}
-Motion simulated using the approach discussed in this paper imparts realism due to the minimal movement of tail with respect to the head. In nature this effect is created due to the friction or other resistive forces acting in the lateral direction of the link. In the absence of friction, displacement given in the head will result in a simple translation of link. In other words, $\mathbf{x}_t$ in this case, will be same as $\mathbf{x}_h$. In actual practice, there will be a discrepancy between natural movement and the simulation based on the tractrix approach because tractrix represents the ideal scenario with motion of tail limited only in the direction of motion of the link due to very high friction while in natural motion, there is always some degree of translation possible. This slippage could be included in the formulation, however, by adding a slip vector to the tail displacement. Since the slippage amounts to the translation of link in the direction of link, slip vector will be in the direction of head displacement and can be written as as $\mathbf{s} = \nu \mathbf{X}_h$, where $\nu<1$ is a constant. $\nu=0$ represents the ideal tractrix case with friction and $\nu=1$ represents pure translation of the link. Including this vector, the minimization function may be written as:
-\begin{align}
-\min_{\textbf{x}_t} &\Vert \textbf{x}_t-\left(\mathbf{X}_t + \nu \mathbf{X}_h \right) \Vert
-\end{align}
-
-Figure \cref{fig:tractrixemulation} shows the final pose of a bicycle chain pulled from an initial horizontal position along the negative Y-axis on two surfaces: a smooth paper and a rough surface paved with gravel. Using a constant value of $\nu = 0.95$ for paper and $\nu =0.86$ for gravel, we can see from that the formulation conforms with the actual final pose very well. 
-
-\begin{figure}[ht!]
-    \centering
-    \begin{subfigure}{0.48\textwidth}
-        \centering
-        \includegraphics[width=1\linewidth]{figures/figslipa.png}
-        \caption{Tractrix emulating the motion of a bicycle chain on photo paper, $\nu=0.95$}
-   
-    \end{subfigure}%
-    ~
-        \begin{subfigure}{0.48\textwidth}
-        \centering
-        \includegraphics[width=1\linewidth]{figures/figslipb.png}
-        \caption{Tractrix emulating the motion of a bicycle chain on gravel, $\nu=0.86$}
-      \end{subfigure}
-    \caption{ Tractrix with slip emulates natural motion \label{fig:tractrixemulation}}
-\end{figure}
+%\subsection{Tractrix  emulates natural motion}
+%Motion simulated using the approach discussed in this paper imparts realism due to the minimal movement of tail with respect to the head. In nature this effect is created due to the friction or other resistive forces acting in the lateral direction of the link. In the absence of friction, displacement given in the head will result in a simple translation of link. In other words, $\mathbf{x}_t$ in this case, will be same as $\mathbf{x}_h$. In actual practice, there will be a discrepancy between natural movement and the simulation based on the tractrix approach because tractrix represents the ideal scenario with motion of tail limited only in the direction of motion of the link due to very high friction while in natural motion, there is always some degree of translation possible. This slippage could be included in the formulation, however, by adding a slip vector to the tail displacement. Since the slippage amounts to the translation of link in the direction of link, slip vector will be in the direction of head displacement and can be written as as $\mathbf{s} = \nu \mathbf{X}_h$, where $\nu<1$ is a constant. $\nu=0$ represents the ideal tractrix case with friction and $\nu=1$ represents pure translation of the link. Including this vector, the minimization function may be written as:
+%\begin{align}
+%\min_{\textbf{x}_t} &\Vert \textbf{x}_t-\left(\mathbf{X}_t + \nu \mathbf{X}_h \right) \Vert
+%\end{align}
+%
+%Figure \cref{fig:tractrixemulation} shows the final pose of a bicycle chain pulled from an initial horizontal position along the negative Y-axis on two surfaces: a smooth paper and a rough surface paved with gravel. Using a constant value of $\nu = 0.95$ for paper and $\nu =0.86$ for gravel, we can see from that the formulation conforms with the actual final pose very well. 
+%
+%\begin{figure}[ht!]
+%    \centering
+%    \begin{subfigure}{0.48\textwidth}
+%        \centering
+%        \includegraphics[width=1\linewidth]{figures/figslipa.png}
+%        \caption{Tractrix emulating the motion of a bicycle chain on photo paper, $\nu=0.95$}
+%   
+%    \end{subfigure}%
+%    ~
+%        \begin{subfigure}{0.48\textwidth}
+%        \centering
+%        \includegraphics[width=1\linewidth]{figures/figslipb.png}
+%        \caption{Tractrix emulating the motion of a bicycle chain on gravel, $\nu=0.86$}
+%      \end{subfigure}
+%    \caption{ Tractrix with slip emulates natural motion \label{fig:tractrixemulation}}
+%\end{figure}
 
 \section{Conclusions}
 
