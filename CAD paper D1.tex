@@ -586,6 +586,17 @@ We want to put the following in this section in the order. Work on this is curre
 	\item Next, we show that at each iteration of the interior point algorithm, the computation time is constant. Therefore, the problem is LINEARLY scalable with the number of links and number of points on the planned path... i.e. for a particular choice of link number and points on the path, it can have a real time implementation on a computer.
 	\item Finally, we would plot the complexity for a 2D and a 3D case. 
 \end{itemize}
+=========================================\\
+
+An important aspect of the formulations described in the current work was to show that the formulation and implementation of motion planning problem using tractrix is intuitive and has a broad scope of application. In concurrence to that theme, in this section, we attempt to analyze the worst case computational complexity of such an implementation to show that the current work has potential for real time application in actual problems. We begin by reviewing some mathematical concepts, after Boyd[opt book], to be used in the following discussion.\\
+\indent \textit{Self Concordance}: A convex function $f: \mathbb{R} \to \mathbb{R}$ is \textit{self-concordant} if $|f'''(x)|\leq 2f''(x)^{3/2}$ for all $x \in \textbf{dom}f$. It can be shown that the Eucledian norm and linear functions are self concordant.\\
+\indent \textit{Closed Euclidean ball}: For a metric space $\mathbb{M}$, a closed Euclidean ball $B_r$ about a point $\textbf{P}$ is defined by the closed set $B_P\left[r \right] =\{x\in \mathbb{M} ~| ~||x||_2 \leq r\}$. \\
+\indent \textit{Feasible set}: For an optimization problem with constraints $f_i(\textbf{x})\leq 0$ and $h_j(\textbf{x})=0$, for $i=1,2,...,n$ and $j=1,2,...,m$, the feasible set is $\mathcal{S}=\cap_{i=1}^n~\textbf{dom}f_i\cap\cap_{j=1}^m~\textbf{dom}h_j$. 
+\indent \textit{Slater's condition}: Slater's conditions of constraint qualification hold when there exists an $\textbf{x}~ \in \mathcal{S}$, a strictly feasible point,  such that all the inequality conditions and equality conditions are satisfied. This would, in general, mean that strong duality would hold and at the optimum point, the primal and dual problem would have the same solutions.\\
+
+
+
+
 
 
 \subsection{Limitations of the tractrix based scheme}
