@@ -150,7 +150,7 @@ In the previous section we have discussed how tractrix based motion planning can
 	\end{equation}
 \end{enumerate}
 In our problem, the function is the $L_2$ norm of a vector in $\mathbb{R}^2$ or $\mathbb{R}^3$.  Though the $L_2$ norm is defined for all real vectors, the constraints ensuring that the object moves within the confinement of the duct restricts the domain to a feasible closed set $\mathcal{S}$\footnote{Assuming $\mathcal{S}$ to be a closed set allows the object to physically touch the boundaries of the duct}. Therefore, if the conditions a and b associated with the definition of a convex function are satisfied for $\mathcal{S}$ and the $L_2$ norm, then the solution obtained for (put optimization equation here) is unique. \\ 
-It is a well known result that any p-norm $||x||_p=(\sum\limits_{i=1}^{n}|x_i|^p)^{1/p},~ x\in \mathbb{R}$ is a convex function for $p\geq 1$. The fact that a p-norm is convex can be shown by using the scalability and the triangle inequality associated with a normed vector-space. With $\theta$  being a scaling parameter, \cref{eq:convex_fn} simplifies exactly to the triangle equality for norms. Also, any p-norm is a valid norm on $\mathbb{R}$ for $p\geq1$ follows from the Minkowski inequality\footnote{For a measure space $\mathbb{S}$, $p\geq 1$ and $f,~g$ are members of the Lebesgue space $L_P(\mathbb{S})$, the following inequality holds: $||f+g||_p\leq ||f||_p+||g||_p$ }. This leaves us to show that the feasible set $\mathcal{S}$ is convex. For all our modeling examples, we choose $\mathcal{S}$ to be convex by assigning convex boundaries to it or, expressing $\mathcal{S}$ as intersections of closed convex sets.  However, as is, none of the problems posed in \cref{eq:Opt_prob_main,eq:obstacle_avoidance_opt,eq:path_planning_opt} are convex because of the non-linear equality constraints associated with them, which guarantees that the length of a segment is constant. To pose it as a convex problem we approximate the constraint with 2 linear constraints as described in section(\textbf{put complexity section here}). For the cases of path planning in 2-D and 3-D, the paths chosen are either entirely convex or are discretized as such. As discussed in the following sections, we do not represent a ``duct" as a union of closed convex sets as the first condition of convexity cannot be guaranteed for sets formed by union of convex sets. 
+It is a well known result that any p-norm $||x||_p=(\sum\limits_{i=1}^{n}|x_i|^p)^{1/p},~ x\in \mathbb{R}$ is a convex function for $p\geq 1$. The fact that a p-norm is convex can be shown by using the scalability and the triangle inequality associated with a normed vector-space. With $\theta$  being a scaling parameter, \cref{eq:convex_fn} simplifies exactly to the triangle equality for norms. Also, any p-norm is a valid norm on $\mathbb{R}$ for $p\geq1$ follows from the Minkowski inequality\footnote{For a measure space $\mathbb{S}$, $p\geq 1$ and $f,~g$ are members of the Lebesgue space $L_P(\mathbb{S})$, the following inequality holds: $||f+g||_p\leq ||f||_p+||g||_p$ }. This leaves us to show that the feasible set $\mathcal{S}$ is convex. For all our modeling examples, we choose $\mathcal{S}$ to be convex by assigning convex boundaries to it or, expressing $\mathcal{S}$ as intersections of closed convex sets.  However, as is, none of the problems posed in \cref{eq:Opt_prob_main,eq:obstacle_avoidance_opt,eq:path_planning_opt} are convex because of the non-linear equality constraints associated with them, which guarantees that the length of a segment is constant. To pose it as a convex problem we approximate the constraint with linear constraints as described in section(\textbf{put complexity section here}). For the cases of path planning in 2-D and 3-D, the paths chosen are either entirely convex or are discretized as such. As discussed in the following sections, we do not represent a ``duct" as a union of closed convex sets as the first condition of convexity cannot be guaranteed for sets formed by union of convex sets. 
 
 \section{Motion planning through planar ducts}
 %
@@ -202,10 +202,7 @@ An example of single link and multi-segmented chain passing through the duct is 
 
 Since the profile of a super-ellipse is always symmetric, for complex and non-symmetric ducts, representation using the previous method might require a large number of shapes. For such cases, a complex duct shape can be represented as a closed shape obtained by stitching convex quadrilaterals as shown in \ref{fig:stitchequads}. The individual quadrilateral patches may be denoted as $A_1,A_2,...,A_n$, each bounded by the line segments defined by the points $\mathbf{(P_0,P_1),(P_1,P_2),...,(P_{n-1},P_n)}$ for the curve $\mathbf{\zeta_1}$ and $\mathbf{(Q_0,Q_1),(Q_1,Q_2),...,(Q_{n-1},Q_n)}$ for the curve $\mathbf{\zeta_2}$. Classification of a point $\mathbf{x}_t$ as inside or outside a quadrilateral represented by points, say, $\mathbf{P}_1,\mathbf{P}_2,\mathbf{Q}_2$ and $\mathbf{Q}_1,$ is essentially checking the placement of the point in the half spaces represented by the four lines spanned by the point set $\left(\mathbf{P}_1,\mathbf{P}_2\right)$, $\left(\mathbf{P}_2,\mathbf{Q}_2\right)$, $\left(\mathbf{Q}_2,\mathbf{Q}_1\right)$, and $\left(\mathbf{Q}_1,\mathbf{P}_1\right)$. This can be written as a set of four inequality constraints:
 \begin{align}
-A^1_1 x_t+ A^2_1 y_t +B_1 <0\\
-\nonumber A^1_2 x_t+ A^2_2 y_t +B_2 <0\\
-\nonumber A^1_3 x_t+ A^2_3 y_t +B_3 <0\\
-\nonumber A^1_4 x_t+ A^2_4 y_t +B_4 <0
+A^1_i x_t+ A^2_i y_t +B_i <0 ~~ i=1,2,3,4\\
 \end{align}
 where $A_i^1 x+A_i^2y+B_i=0$ represents a line obtained from one pair of non-diagonal points in the quadrilateral. In matrix form, the inequality will look like:
 \begin{align}
@@ -590,19 +587,59 @@ We want to put the following in this section in the order. Work on this is curre
 
 An important aspect of the formulations described in the current work was to show that the formulation and implementation of motion planning problem using tractrix is intuitive and has a broad scope of application. In concurrence to that theme, in this section, we attempt to analyze the worst case computational complexity of such an implementation to show that the current work has potential for real time application in actual problems. We begin by reviewing some mathematical concepts, after Boyd[opt book], to be used in the following discussion.\\
 \indent \textit{Self Concordance}: A convex function $f: \mathbb{R} \to \mathbb{R}$ is \textit{self-concordant} if $|f'''(x)|\leq 2f''(x)^{3/2}$ for all $x \in \textbf{dom}f$. It can be shown that the Eucledian norm and linear functions are self concordant.\\
-\indent \textit{Closed Euclidean ball}: For a metric space $\mathbb{M}$, a closed Euclidean ball $B_r$ about a point $\textbf{P}$ is defined by the closed set $B_P\left[r \right] =\{x\in \mathbb{M} ~| ~||x||_2 \leq r\}$. \\
-\indent \textit{Feasible set}: For an optimization problem with constraints $f_i(\textbf{x})\leq 0$ and $h_j(\textbf{x})=0$, for $i=1,2,...,n$ and $j=1,2,...,m$, the feasible set is $\mathcal{S}=\cap_{i=1}^n~\textbf{dom}f_i\cap\cap_{j=1}^m~\textbf{dom}h_j$. 
-\indent \textit{Slater's condition}: Slater's conditions of constraint qualification hold when there exists an $\textbf{x}~ \in \mathcal{S}$, a strictly feasible point,  such that all the inequality conditions and equality conditions are satisfied. This would, in general, mean that strong duality would hold and at the optimum point, the primal and dual problem would have the same solutions.\\
+%\indent \textit{Closed Euclidean ball}: For a metric space $\mathbb{M}$, a closed Euclidean ball $B_r$ about a point $\textbf{P}$ is defined by the closed set $B_P\left[r \right] =\{x\in \mathbb{M} ~| ~||x||_2 \leq r\}$. $B_0\left[ r \right] $  would mean that the ball is centered at the origin. \\
+\indent \textit{Feasible set}: For an optimization problem with constraints $f_i(\textbf{x})\leq 0$ and $h_j(\textbf{x})=0$, for $i=1,2,...,n$ and $j=1,2,...,m$, the feasible set is $\mathcal{S}=\cap_{i=1}^n~\textbf{dom}f_i\cap\cap_{j=1}^m~\textbf{dom}h_j$. For all our problems, $\mathcal{S} $ is a subset of the real space $\mathbb{R}$ of dimension 2 or 3.\\
+\indent \textit{Slater's condition}: Slater's conditions of constraint qualification hold when there exists an $\textbf{x}~ \in \mathcal{S}$, a strictly feasible point,  such that all the inequality conditions and equality conditions are satisfied\footnote{We resort to a slight misuse of notation for brevity. For a more complete treatment, one may refer to Chapter 5 of the book by Boyd and Vandenberghe [Boyd book].}. This would, in general, mean that strong duality would hold and at the optimum point, the primal and dual problem would have the same solutions.\\
+With these, we move on to our topic of complexity analysis. In \cref{sc:optimization} we have discussed that the problem as presented in \cref{eq:Opt_prob_main} is not  convex due to the non-linear equality constraint guaranteeing the length of a link is constant at all times. We get around by replacing the non-linear equality constraint by it's affine equivalent-- a first order approximation of the constraint about a feasible point $\textbf{x}^* \in \mathcal{S}$, and a trust region constraint as shown in problem in \cref{eq:Opt_prob_mod}. It is imperative for the trust region radius to be small-- in our implementation, we have chosen the trust region radius $\epsilon_T$ to be about 6 orders of magnitude smaller than the smallest dimension of $\mathcal{S}$. In \cref{eq:Opt_prob_mod}, $Dg(\textbf{x}^*)$ is the Jacobian of the objective function. 
+\begin{align}\label{eq:Opt_prob_mod}
+ \argmin_{\textbf{x}_t} & ~g(\textbf{x}_t): \vert \vert \textbf{x}_t-\textbf{X}_t\vert \vert\\
+\text{Subject to}~: &~ g(\textbf{x}^*)-Dg(\textbf{x}^*) (\textbf{x}_t-\textbf{x}^*) =0\nonumber\\ 
+					& | \textbf{x}^*-\textbf{x}_t| \preceq  \epsilon_T \nonumber\\
+					& C_{ineq}: f(x) \preceq 0 \nonumber
+\end{align}
 
-
-
-
+We can rewrite \cref{eq:Opt_prob_mod} as a standard nonlinear program with the objective function $g$, all the $'m'$ constraints $\textbf{f}$ and $\textbf{s}$, a vector of $m\times 1$ slack variables as 
+\begin{align} \label{eq:standard_non_lin_prog}
+\argmin_{\textbf{x}_t} ~& g(\textbf{x}_t) \\
+\text{Subject to: }~ & \textbf{f}(\textbf{x}_t)+\textbf{s} =0 \nonumber\\
+& \textbf{s}\succeq 0\nonumber
+\end{align} 
+We also observe that the problem in \cref{eq:Opt_prob_mod} corresponding to the implementations studied so far, is actually a minimum norm problem with either polyhedral (or polygonal in 2D)  or super-quadric (or super-elliptic) constraints. As all of the constraints qualify Slater's condition, we conclude that strong duality holds for all  versions of the problem studied in the current work. We choose a interior point method to solve the nonlinear programming problem at hand and by reformulating \cref{eq:standard_non_lin_prog} as a barrier problem with barrier parmeter $\mu$. The KKT necessary and sufficient conditions for the given problem is given in \cref{eq:KKT_system}.
+\begin{align}\label{eq:KKT_system}
+\nabla_{\textbf{x}_t}g(\textbf{x}_t)+\nabla_{\textbf{x}_t}\textbf{f}(\textbf{x}_t)^T \vec{\lambda} =0 \nonumber \\
+\textbf{f}(\textbf{x}_t)+\textbf{s}=0 \\
+\textbf{L}\textbf{S}-\mu \vec{e}=0 \nonumber
+\end{align}
+In \cref{eq:KKT_system}, $\textbf{L}$ is the $m \times m$ diagonal matrix of the Lagrange multipliers ($\vec{\lambda}$), $\textbf{S }$ is the $m \times m$ diagonal matrix of the slack variables $\textbf{s}$ and $\textbf{e}$ is a $m\times 1$ vector of ones. The above system represents $2m+1$ equations in $2m+1$ variables and is known as the KKT system. While using an interior point methods, the computation times depend on two principal factors-- the number of Newton steps required to converge and the complexity of each Newton step i.e. total amount of computation required in solving \cref{eq:KKT_system} to obtain the Newton direction. For our case with  a self-concordant log barrier and polyhedral constraints, which are by default self-concordant, we can conclude that the total number of Newton steps are of the order of $\sqrt{m}+c$ where $c$ is a integer. In case of our problems, we actually observed this phenomenon where, for a 2D case the total number of iterations were about 10, for $m=6$ for 4 linear constraints defining $\mathcal{S}$ and 2 trust region constraints. \textbf{TELL something about 3d here}.\\
+\Cref{eq:KKT_system} can be linearized, and solved (for a 3D case) to obtain the Newton direction as
+\begin{align}\label{eq:Lin_KKT}
+\left(\begin{array}{ccc}
+ A_{3\times3} & B^T_{m\times 3} & 0_{3\times m} \\ 
+B_{3\times m}  & 0_{m\times m} & I_{m\times m} \\ 
+0_{6\times m} & \textbf{S} & \textbf{L}
+\end{array}  \right) \left( \begin{array}{c}
+\triangle\ x \\ 
+\triangle \lambda \\ 
+ \triangle s
+\end{array}  \right) = \left( \begin{array}{c}
+-\textbf{F}_1 \\ 
+-\textbf{F}_2 \\ 
+-\textbf{F}_3
+\end{array}  \right) 
+\end{align}
+where, $\textbf{A}=\nabla_{\textbf{x}_t}^2g(\textbf{x}_t)+\sum\limits_{i=1}^{m}\nabla_{\textbf{x}_t}^2\lambda_if_i(\textbf{x}_t)$ is a $3\times3$ symmetric matrix, $B=\nabla_{\textbf{x}_t}\textbf{f}(\textbf{x}_t)$ is a $m\times3$ matrix of the gradient of the $m$ constraint functions, and $\textbf{F}_1$, $\textbf{F}_2$, and $\textbf{F}_3$ are the left hand sides of \cref{eq:KKT_system}. Following [put nilanjan's ieee tro paper] we can obtain the Newton directions as:
+\begin{align}
+&\triangle \textbf{x}_t=\textbf{G}^{-1}(-\textbf{F}_1-\textbf{B}^T(\textbf{S}^{-1}\textbf{L})(\textbf{F}_2+\textbf{L}^{-1}\textbf{F}_3)) \nonumber \\
+&\triangle\lambda=(\textbf{S}^{-1}\textbf{L})(\textbf{B}\triangle \textbf{x}_t -\textbf{F}_2+\textbf{L}^{-1}\textbf{F}_3)\\
+&\triangle s = -\textbf{L}^{-1}(\textbf{F}_3+\textbf{S}\triangle \lambda) \nonumber
+\end{align}
+ Where, $\textbf{G}= \textbf{A}+\textbf{B}^T(\textbf{S}^{-1}\textbf{L})\textbf{B}$, a $3\times3$ matrix (for a 3D case) which can be inverted symbolically, also, $\textbf{S}$ and $\textbf{L}$ are diagonal matrices so their inversion can be calculated in linear time ($\mathcal{O}(m)$). Overall, the 
 
 
 \subsection{Limitations of the tractrix based scheme}
 In spite of the certain advantages regarding formulation and computational aspects of the tractrix based motion planning approach, there are a few limitations which are of importance.\\
 The ducts represented by analytical curves and cylinders would require an in-out classifier to demarcate the feasible space of the posed optimization problem. Often, this would involve numerical formulations which are quite computationally involving. We believe, real time implementation of these problems, even with near analytical formulations of the in-out function will be very difficult.\\
-It is easily seen that a given hyper-redundant robot with a particular link length will not be able to negotiate a path with a ``very low" curvature. This is shown in \cref{fig:not_traversable}. In \cref{fig:not_traversable}, the points 1,2,...,8 denote the coordinates of $\textbf{x}_h$ across successive iterations. It is seen, that from iteration 6 onwards, the constraints demarcating the feasible space $\mathcal{S}$ and the one guaranteeing a constant link length cannot be simultaneously satisfied unless the tail $\textbf{x}_t$ (the result of \cref{eq:Opt_prob_main}), backtracks its own path. Soon after, the optimization problem stops as the link seems to be ``locked" at the trough of $\zeta(u)$. In this section we want to quantify the locking effect. To this end, we borrow the concept of ``traversability" from literature on wheeled mobile robots (see e.g. Nilanjan's JMD paper). A curve $\zeta(u)$ is traversable by a circle $C_i$, $C_i: \left(\begin{array}{c} R_i\cos(v) \\ R_i\sin(v) \end{array}\right), ~ 0 \leq v\leq2\pi $  if $C_i$ can roll over the curve $\zeta(u)$ while maintaining ``only one" point of contact at all times. Traversibility for planar curves can be described by the relative curvature $\kappa_R$ of the circle and the curve at the point of contact. For a planar curve and a circle of radius $R_i$, the relative curvature can be given as \[\kappa_R=\dfrac{\zeta_{uu}}{(1+\zeta_u^2)^{3/2}}-\dfrac{1}{R_i}\] A curve is traversable if the relative curvature is greater than 0, just traversable if it is equal to zero and not traversable if it is negative. This is explained in \cref{fig:is_traversable}. This concept would generalize to traversable surfaces when the minimum of the two eigenvalues of the relative curvature matrix\footnote{The relative curvature matrix of a paremetric surface ${S}(u,v): \mathbb{S}^2\to \mathbb{R}^3$ and a sphere of radius R at the point of contact $P = \mathcal{S}(u^*,v^*)$ and the Gaussian frame attached to the sphere at P is given as: $\kappa_R\vert_P=\left[\begin{array}{cc}
+It is easily seen that a given hyper-redundant robot with a particular link length will not be able to negotiate a path with a ``very low" curvature. This is shown in \cref{fig:not_traversable}. In \cref{fig:not_traversable}, the points 1,2,...,8 denote the coordinates of $\textbf{x}_h$ across successive iterations. It is seen, that from iteration 6 onwards, the constraints demarcating the feasible space $\mathcal{S}$ and the one guaranteeing a constant link length cannot be simultaneously satisfied unless the tail $\textbf{x}_t$ (the result of \cref{eq:Opt_prob_main}), backtracks its own path. Soon after, the optimization problem stops as the link seems to be ``locked" at the trough of $\zeta(u)$. In this section we want to quantify the locking effect. To this end, we borrow the concept of ``traversability" from literature on wheeled mobile robots (see e.g. Nilanjan's JMD paper). A curve $\zeta(u)$ is traversable by a circle $C_i$, $C_i: \left(\begin{array}{c} R_i\cos(v) \\ R_i\sin(v) \end{array}\right), ~ 0 \leq v\leq2\pi $  if $C_i$ can roll over the curve $\zeta(u)$ while maintaining ``only one" point of contact at all times. Traversibility for planar curves can be described by the relative curvature $\kappa_R$ of the circle and the curve at the point of contact. For a planar curve and a circle of radius $R_i$, the relative curvature can be given as \[\kappa_R=\dfrac{\zeta_{uu}}{(1+\zeta_u^2)^{3/2}}-\dfrac{1}{R_i}\] A curve is traversable if the relative curvature is greater than 0, just traversable if it is equal to zero and not traversable if it is negative. This is explained in \cref{fig:is_traversable}. This concept would generalize to traversable surfaces when the minimum of the two eigenvalues of the relative curvature matrix\footnote{The relative curvature matrix of a parametric surface ${S}(u,v): \mathbb{S}^2\to \mathbb{R}^3$ and a sphere of radius R at the point of contact $P = \mathcal{S}(u^*,v^*)$ and the Gaussian frame attached to the sphere at P is given as: $\kappa_R\vert_P=\left[\begin{array}{cc}
 	{S}_u.{S}_u-1/R & {S}_u.{S}_v \\ 
 	{S}_u.{S}_v & {S}_v.{S}_v-1/R
 	\end{array}\right]_{u^*,v^*} $} is positive for traversability or vice versa.
@@ -694,14 +731,13 @@ n_5 = {}^2y_c,~n_6=-\cos{}^2\phi_1\sin{}^2\phi_2,~n_7=\sin{}^2\phi_1,~n_8={}^2z_
 The quantity ${}^1\left(\cdot\right)$ and ${}^2\left(\cdot\right)$ represent the corresponding parameters of the circles at the ends of the cylinder. $\phi_1$ and $\phi_2$ are the angles about the Y and X-axes which the plane of the circle is rotated, $(x_c,y_c,z_c)$ is the co-ordinate of the center of the circle.
 
 \subsection{An algorithm for classifying a point with respect to a polyhedron}\label{app:polyhedron_point}
-\indent Classification a point with respect to a triangulated domain is a very well known problem and many methods exist, which offer various advantages in terms of computational complexities. In \cref{alg:in_hull}, we describe a method, to classify a given set of points $O$ with respect to $\mathcal{S}$ as inside ($O_{in}$) and outside ($O_{out}$). Our algorithm and it's Matlab implementation\footnote{We have used a Matlab function inhull.m, a fully vectorized implementation of the algorithm, made available by John D'Errico for free usage. } is not very efficient at higher dimensions but seems to perform reasonably well at 3D, by taking less than 8 seconds to classify about 10,000 points with respect to a meshed domain. 
+\indent Classification a point with respect to a triangulated domain is a very well known problem and many methods exist, which offer various advantages in terms of computational complexities. In \cref{alg:in_hull}, we describe a method, to classify a given set of points $O$ with respect to $\mathcal{P}$ as inside ($O_{in}$) and outside ($O_{out}$). Our algorithm and it's Matlab implementation\footnote{We have used a Matlab function inhull.m, a fully vectorized implementation of the algorithm, made available by John D'Errico for free usage. } is not very efficient at higher dimensions but seems to perform reasonably well at 3D, by taking less than 8 seconds to classify about 10,000 points with respect to a meshed domain. 
 \begin{algorithm}[ht!]
-	\textbf{Purpose :} To classify a set of points $ O $ with respect to $\partial \mathcal{S}$\\
+	\textbf{Purpose :} To classify a set of points $ O $ with respect to $\partial \mathcal{P}$\\
 	\KwIn{The set $ O $, $O\in \Re^3$ and $O \equiv O_{in}\cup O_{out}$ }
 	\KwOut{$ O_{in},~ O_{out}$}
 	\begin{algorithmic}[1]
-		\STATE Obtain the $\alpha$ shape $\mathcal{S}$ of the set of points $\mathbb{S}$
-		\STATE Obtain $C$, the center of $\mathcal{S}$ by taking the mean of the vertices of the $N$ facets constituting $\partial \mathcal{S}$
+		\STATE Obtain $C$, the center of $\mathcal{P}$ by taking the mean of the vertices of the $N$ facets constituting the boundary $\partial \mathcal{SP}$
 		\FOR {$i=1,2,...,N$}
 		\STATE Calculate the normal to the $i^{th}$ facet, $A_n^i=(f_i^1-f_i^2)\times(f_i^2-f_i^3)$
 		\STATE Choose a point $A^i$ on the $i^{th}$ facet and move $A_n^i$ to $A^i$
@@ -709,7 +745,8 @@ The quantity ${}^1\left(\cdot\right)$ and ${}^2\left(\cdot\right)$ represent the
 		\STATE $H(i)=\langle\vec{O_i-A_i}, A_n^i\rangle$
 		\ENDFOR 
 		\IF {$H(i)\geq 0 ~\forall i$}
-		\STATE Classify $O_1 \in O_{in}$ as inside, otherwise classify $O_1\in O_{out}$  		\ENDIF
+		\STATE Classify $O_1 \in O_{in}$ as inside, otherwise classify $O_1\in O_{out}$  		
+		\ENDIF
 	\end{algorithmic}
 	
 	\caption{Algorithm for classifying points as inside ($O_{in}$) or outside ($O_{out}$) of a triangulated domain}		
