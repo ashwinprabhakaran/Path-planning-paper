@@ -363,14 +363,14 @@ As is the case of quadrilaterals,it is possible to add a clearance from the wall
 
 
 
-\subsection{Representation of duct as point clouds}
+\subsection{Representation of duct as point clouds}\label{sc:duct_as_STL}
 
 The most direct way of representing the duct, in a practical sense, would be as a point cloud  ($\mathbf{R}_i,i=1,2,...,N$ where $N$ is the number of points in the cloud) such as obtained from a LiDAR system or a depth map. Subsequently, it would be possible to process the raw data to obtain the geometric representation of the point of cloud as a Stereolithographic formatted file (STL) or the like. Using the current framework, it is possible to pose the motion planning problem in the following form:
 \begin{align}
 \label{eq:STLeqs}
 \min_{\textbf{x}_t} &\Vert \textbf{x}_t-\textbf{X}_t \Vert\\
 \nonumber \text{sub:~~~} &\Vert \textbf{x}_h - \textbf{x}_t \Vert -L_0 = 0\\
-&[\mathbf{A}]\mathbf{x}_t+\mathbf{B}\leq 0
+&[\mathbf{A}]\mathbf{x}_t+\mathbf{B}\leq 0 \nonumber
 \end{align}
 where $\mathbf{A}$ is a $m\times 3$ matrix and $\mathbf{B}$ is a $m\times 1$ vector. The left hand side of $m$ inequalities represent the equations of $m$ number of planes spanned by three adjacent points in the cloud. The $i^\text{th}$ equation, $A_{i}^1x_t+A_{i}^2y_t+A_{i}^3z_t+B_i$ takes a value less than zero when the point $\mathbf{x}_t$ is in the half space which contains the origin and is greater than zero otherwise. The value also provides the attractive gradient which will ensure that the point stays inside the duct. However, in actual implementation, this procedure will be tedious and for practical convenience, it is possible to classify the point $\mathbf{x}_t$ as inside or outside the hull using the \cref{alg:in_hull} described in \cref{app:polyhedron_point}. The attracting gradient which ensures the point to be inside the duct--as the case with the previous methods-- can be provided using the artificial potential field generated from the centroid of the point cloud in conjunction with the output of the in-out function. The inequality constraint then becomes
 \begin{align}
@@ -576,20 +576,10 @@ Exploring obstacle-cluttered environments such as in an earthquake hit zone is o
 
 \subsection{Computational complexity of the proposed scheme}
 
-We want to put the following in this section in the order. Work on this is currently underway.
-\begin{itemize}
-	\item Show that the problem in \cref{eq:Opt_prob_main} can be reformulated as a convex problem with a first order approximation of the equality constraint and a trust region constraint
-	\item Show the Lagrange dual problem and show that the constraints are Slater's conditions compliant and self concordant. This would also justify our use of a primal-dual feasible interior point method
-	\item  Therefore, the interior point algorithm would take certain number of iterations always bounded by a constant like 10-15.
-	\item Next, we show that at each iteration of the interior point algorithm, the computation time is constant. Therefore, the problem is LINEARLY scalable with the number of links and number of points on the planned path... i.e. for a particular choice of link number and points on the path, it can have a real time implementation on a computer.
-	\item Finally, we would plot the complexity for a 2D and a 3D case. 
-\end{itemize}
-=========================================\\
-
 An important aspect of the formulations described in the current work was to show that the formulation and implementation of motion planning problem using tractrix is intuitive and has a broad scope of application. In concurrence to that theme, in this section, we attempt to analyze the worst case computational complexity of such an implementation to show that the current work has potential for real time application in actual problems. We begin by reviewing some mathematical concepts, after Boyd[opt book], to be used in the following discussion.\\
 \indent \textit{Self Concordance}: A convex function $f: \mathbb{R} \to \mathbb{R}$ is \textit{self-concordant} if $|f'''(x)|\leq 2f''(x)^{3/2}$ for all $x \in \textbf{dom}f$. It can be shown that the Eucledian norm and linear functions are self concordant.\\
-%\indent \textit{Closed Euclidean ball}: For a metric space $\mathbb{M}$, a closed Euclidean ball $B_r$ about a point $\textbf{P}$ is defined by the closed set $B_P\left[r \right] =\{x\in \mathbb{M} ~| ~||x||_2 \leq r\}$. $B_0\left[ r \right] $  would mean that the ball is centered at the origin. \\
-\indent \textit{Feasible set}: For an optimization problem with constraints $f_i(\textbf{x})\leq 0$ and $h_j(\textbf{x})=0$, for $i=1,2,...,n$ and $j=1,2,...,m$, the feasible set is $\mathcal{S}=\cap_{i=1}^n~\textbf{dom}f_i\cap\cap_{j=1}^m~\textbf{dom}h_j$. For all our problems, $\mathcal{S} $ is a subset of the real space $\mathbb{R}$ of dimension 2 or 3.\\
+\indent \textit{The big-O notation} ($\mathcal{O}$): For two functions $f,~g: \mathbb{N}\to \mathbb{R}^+$, the function $g$ is an asymptotically upper bound for $f$, denoted by $f(n)~\epsilon~ \mathcal{O}(g(n))$, if there exists a constant $c>0$ and $n_0\epsilon \mathbb{N}$ such that $\forall n> n_0$, $f(n)\leq cg(n)$.  \\
+\indent \textit{Feasible set}: For an optimization problem with constraints $f_i(\textbf{x})\leq 0$ and $h_j(\textbf{x})=0$, for $i=1,2,...,n$ and $j=1,2,...,m$, the feasible set is $\mathcal{S}=\cap_{i=1}^n~\textbf{dom}(f_i\leq0)\cap\cap_{j=1}^m~\textbf{dom}(h_j=0)$. For all our problems, $\mathcal{S} $ is a subset of the real space $\mathbb{R}$ of dimension 2 or 3.\\
 \indent \textit{Slater's condition}: Slater's conditions of constraint qualification hold when there exists an $\textbf{x}~ \in \mathcal{S}$, a strictly feasible point,  such that all the inequality conditions and equality conditions are satisfied\footnote{We resort to a slight misuse of notation for brevity. For a more complete treatment, one may refer to Chapter 5 of the book by Boyd and Vandenberghe [Boyd book].}. This would, in general, mean that strong duality would hold and at the optimum point, the primal and dual problem would have the same solutions.\\
 With these, we move on to our topic of complexity analysis. In \cref{sc:optimization} we have discussed that the problem as presented in \cref{eq:Opt_prob_main} is not  convex due to the non-linear equality constraint guaranteeing the length of a link is constant at all times. We get around by replacing the non-linear equality constraint by it's affine equivalent-- a first order approximation of the constraint about a feasible point $\textbf{x}^* \in \mathcal{S}$, and a trust region constraint as shown in problem in \cref{eq:Opt_prob_mod}. It is imperative for the trust region radius to be small-- in our implementation, we have chosen the trust region radius $\epsilon_T$ to be about 6 orders of magnitude smaller than the smallest dimension of $\mathcal{S}$. In \cref{eq:Opt_prob_mod}, $Dg(\textbf{x}^*)$ is the Jacobian of the objective function. 
 \begin{align}\label{eq:Opt_prob_mod}
@@ -611,7 +601,7 @@ We also observe that the problem in \cref{eq:Opt_prob_mod} corresponding to the 
 \textbf{f}(\textbf{x}_t)+\textbf{s}=0 \\
 \textbf{L}\textbf{S}-\mu \vec{e}=0 \nonumber
 \end{align}
-In \cref{eq:KKT_system}, $\textbf{L}$ is the $m \times m$ diagonal matrix of the Lagrange multipliers ($\vec{\lambda}$), $\textbf{S }$ is the $m \times m$ diagonal matrix of the slack variables $\textbf{s}$ and $\textbf{e}$ is a $m\times 1$ vector of ones. The above system represents $2m+1$ equations in $2m+1$ variables and is known as the KKT system. While using an interior point methods, the computation times depend on two principal factors-- the number of Newton steps required to converge and the complexity of each Newton step i.e. total amount of computation required in solving \cref{eq:KKT_system} to obtain the Newton direction. For our case with  a self-concordant log barrier and polyhedral constraints, which are by default self-concordant, we can conclude that the total number of Newton steps are of the order of $\sqrt{m}+c$ where $c$ is a integer. In case of our problems, we actually observed this phenomenon where, for a 2D case the total number of iterations were about 10, for $m=6$ for 4 linear constraints defining $\mathcal{S}$ and 2 trust region constraints. \textbf{TELL something about 3d here}.\\
+In \cref{eq:KKT_system}, $\textbf{L}$ is the $m \times m$ diagonal matrix of the Lagrange multipliers ($\vec{\lambda}$), $\textbf{S }$ is the $m \times m$ diagonal matrix of the slack variables $\textbf{s}$ and $\textbf{e}$ is a $m\times 1$ vector of ones. The above system represents $2m+1$ equations in $2m+1$ variables and is known as the KKT system. While using an interior point methods, the computation times depend on two principal factors-- the number of Newton steps required to converge and the complexity of each Newton step i.e. total amount of computation required in solving \cref{eq:KKT_system} to obtain the Newton direction. For our case with  a self-concordant log barrier and polyhedral constraints, which are by default self-concordant, we can conclude that the total number of Newton steps are of the order of $\sqrt{m}+c$ where $c$ is a integer. In case of our problems, we actually observed this phenomenon where, for a 2D case the total number of iterations were about 10, for $m=6$ for 4 linear constraints defining $\mathcal{S}$ and 2 trust region constraints.\\
 \Cref{eq:KKT_system} can be linearized, and solved (for a 3D case) to obtain the Newton direction as
 \begin{align}\label{eq:Lin_KKT}
 \left(\begin{array}{ccc}
@@ -629,12 +619,39 @@ B_{3\times m}  & 0_{m\times m} & I_{m\times m} \\
 \end{array}  \right) 
 \end{align}
 where, $\textbf{A}=\nabla_{\textbf{x}_t}^2g(\textbf{x}_t)+\sum\limits_{i=1}^{m}\nabla_{\textbf{x}_t}^2\lambda_if_i(\textbf{x}_t)$ is a $3\times3$ symmetric matrix, $B=\nabla_{\textbf{x}_t}\textbf{f}(\textbf{x}_t)$ is a $m\times3$ matrix of the gradient of the $m$ constraint functions, and $\textbf{F}_1$, $\textbf{F}_2$, and $\textbf{F}_3$ are the left hand sides of \cref{eq:KKT_system}. Following [put nilanjan's ieee tro paper] we can obtain the Newton directions as:
-\begin{align}
+\begin{align}\label{eq:Newton-dir}
 &\triangle \textbf{x}_t=\textbf{G}^{-1}(-\textbf{F}_1-\textbf{B}^T(\textbf{S}^{-1}\textbf{L})(\textbf{F}_2+\textbf{L}^{-1}\textbf{F}_3)) \nonumber \\
 &\triangle\lambda=(\textbf{S}^{-1}\textbf{L})(\textbf{B}\triangle \textbf{x}_t -\textbf{F}_2+\textbf{L}^{-1}\textbf{F}_3)\\
 &\triangle s = -\textbf{L}^{-1}(\textbf{F}_3+\textbf{S}\triangle \lambda) \nonumber
 \end{align}
- Where, $\textbf{G}= \textbf{A}+\textbf{B}^T(\textbf{S}^{-1}\textbf{L})\textbf{B}$, a $3\times3$ matrix (for a 3D case) which can be inverted symbolically, also, $\textbf{S}$ and $\textbf{L}$ are diagonal matrices so their inversion can be calculated in linear time ($\mathcal{O}(m)$). Overall, the 
+ Where, $\textbf{G}= \textbf{A}+\textbf{B}^T(\textbf{S}^{-1}\textbf{L})\textbf{B}$, a $3\times3$ matrix (for a 3D case) which can be inverted symbolically, also, $\textbf{S}$ and $\textbf{L}$ are diagonal matrices so their inversion can be calculated in linear time ($\mathcal{O}(m)$). Overall, the asymptotic complexity of solving \cref{eq:Newton-dir} is $\mathcal{O}(m^3)$ as the calculation of $ G^{-1},~ \triangle x$ and $\triangle \lambda$ are $\mathcal{O}(m^3)$. This would result in a total asymptotic complexity of $\mathcal{O}(m^{3.5})$ of the implementation. However, the computation time of an iteration doesn't depend on the number of links of the hyper-redundant robot or the step size path, hence the proposed method is linear in these. This is observed from \cref{fig:link_complexity,fig:path_complexity}. As discussed in \cref{sc:duct_as_STL}, in our implementation of the motion planning problem inside a polyhedral domain, we use a separate algorithm to determine whether to use the constraints of the form $[\mathbf{A}]_{m\times 3}\mathbf{x}_t+\mathbf{B}_{m\times 1}\leq 0$ in \cref{eq:STLeqs}. \Cref{alg:in_hull} discusses an $\mathcal{O}(m)$ algorithm to do the same in case of a polyhedron with $ m $ faces. Therefore, the total asymptotic complexity of our implementation should be about $\mathcal{O}(m^{1.5})$. \Cref{fig:face_complexity} shows that actual complexity implementation of our algorithm is about $(m^{1.67})$, with room for further improvement\footnote{Computation times in \cref{fig:complexity} was obtained using the 'tic-toc' function in MatlabR2016b running on a workstation with dual 8 core Intel XEON (2.1GHz), 32 GB RAM and Windows 10}. 
+ \begin{figure}
+\centering
+ \begin{subfigure}{0.9\textwidth}
+ \centering
+ \includegraphics[width=0.8\linewidth]{figures/link_complexity.pdf}
+ \caption{Our implementation is time-linear in number of links}
+ \label{fig:link_complexity}
+\end{subfigure}%
+\\
+\begin{subfigure}{0.9\textwidth}
+\centering
+ \includegraphics[width=0.8\linewidth]{figures/path_complexity.pdf}
+\caption{Our implementation is time-linear in number of path points}
+\label{fig:path_complexity}
+\end{subfigure}%
+\\
+\begin{subfigure}{0.9\textwidth}
+\centering
+ \includegraphics[width=0.8\linewidth]{figures/face_complexity.pdf}
+\caption{Our implementation is $m^{1.5}$}
+\label{fig:face_complexity}
+\end{subfigure}%
+
+\caption{ Complexity of our implementations}
+\label{fig:complexity}
+\end{figure}
+ 
 
 
 \subsection{Limitations of the tractrix based scheme}
