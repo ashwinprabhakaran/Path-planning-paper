@@ -352,13 +352,8 @@ where the parameters $u,t$ and $\theta$ varies along the radial, axial and circu
 \label{eq:const_cyl}
 C_\text{ineq}:~~\left[\chi\left(\hat{\mathbf{t}}\right)\right]^T\mathbf{h}<0
 \end{align}
-As is the case of quadrilaterals,it is possible to add a clearance from the walls by changing the radius of cylinder from $r$ to $r-\delta$, which is a very desirable characteristic for robots used in medical applications. Representation of duct using ellipsoids and connected cylinders is shown \cref{fig:pipefitting}. 
+As is the case of quadrilaterals,it is possible to add a clearance from the walls by changing the radius of cylinder from $r$ to $r-\delta$, which is a very desirable characteristic for robots used in medical applications. 
 
-\begin{figure}[h!]
-\centering
-\includegraphics[scale=0.45]{figures/fitonpipe.pdf}
-\caption{ Representation of 3D duct using super-ellipsoids and analytical cylinders\label{fig:pipefitting}}
-\end{figure}
 
 
 
@@ -379,9 +374,28 @@ w(\mathbf{R})\frac{1}{\Vert(\overline{\mathbf{R}})-\mathbf{x}_t\Vert}\leq 0
 \end{align}
 where $w(\overline{\mathbf{R}})$ represents the output from in-out function which is either 1 for the point being outside and 0 for the point being inside the cloud or on the bounding surface\footnote{Unlike the previous classification problems, the bounding surface will also be considered as inside the surface in this case.}. 
 
-Another interesting prospect of this method is its application in obstacle avoidance where the left hand side of the equation \Cref{eq:STLineq} will be greater than zero. The obstacle avoidance methods which follow the equation given by \Cref{eq:obstacle_avoidance_opt} is often limited to shapes which can be modelled analytically. Though the algorithm shown here is limited to convex shapes, they can be applied to more complex and non-symmetric shapes. Example of motion planning through convex, non-analytical point clouds is shown in figure ??.
+Another interesting prospect of this method is its application in obstacle avoidance where the left hand side of the equation \Cref{eq:STLineq} will be greater than zero. The obstacle avoidance methods which follow the equation given by \Cref{eq:obstacle_avoidance_opt} is often limited to shapes which can be modelled analytically. Though the algorithm shown here is limited to convex shapes, they can be applied to more complex and non-symmetric shapes. Representation of pipe using ellipsoids, analytical cylinders and as convex point clouds is shown in \ref{fig:pipefitECS}.
 
-[fig ??. Motion of HR- robot through STL duct (to be added)]
+
+\begin{figure}[ht!]
+    \centering
+    \begin{subfigure}{0.325\textwidth}
+        \centering
+        \includegraphics[width=0.75\linewidth]{figures/pipefitell.pdf}
+        \caption{Ellipsoid fit \label{fig:pipefitell}}
+    \end{subfigure}%
+    \begin{subfigure}{0.325\textwidth}
+        \centering
+        \includegraphics[width=0.75\linewidth]{figures/pipefitcyl.pdf}
+        \caption{Cylinders fit \label{fig:pipefitcyl}}
+    \end{subfigure}
+        \begin{subfigure}{0.325\textwidth}
+        \centering
+        \includegraphics[width=0.75\linewidth]{figures/pipefitstl.pdf}
+        \caption{Point clouds fit\label{fig:pipefitstl}}
+    \end{subfigure}
+    \caption{ Representation of duct using ellipsoids, cylinders and point clouds\label{fig:pipefitECS}}
+\end{figure}
 
 %\subsection{Analytical ducts}
 %As mentioned in the section??, it is possible to express a few class of ducts using closed form expressions. For example, the helical duct shown in [fig ??] can be expressed using the equations
