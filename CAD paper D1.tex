@@ -56,7 +56,7 @@ of Mechanical Engineering, Indian Institute of Science, Bangalore 560012, India,
 \section{Introduction}
 \label{sec:introduction}
 
-In a reachable workspace of a serial robot in 3D, since a given position and orientation of end-effector can be achieved using a maximum of six joints, additional joints would create a redundant system. Such robots are generally termed redundant serial robots. While robots with 6 joints  or less can achieve a position and orientation in space with limited configurations, there are theoretically infinite possibilities for a hyper-redundant robot to achieve the same. These additional degrees of freedom can be effectively used in situations where the robot has to selectively choose configurations without altering the end-effector pose, such as robotic manipulation through confined spaces. This renders the use of highly articulated hyper-redundant robots in applications such as exploring earthquake hit regions for search and rescue operations, remotely operated robotic arms for minimally invasive laparoscopic and endoscopic surgeries and inspection of industrial pipelines and ducts[cite refs.]. A large number of redundant joints also make the robots analogous in morphology to  snake, elephant trunk, tentacle etc. and hence, a topic of particular interest in bio-inspired robotics. Identifying a suitable configuration from the many possible configurations, given the position and orientation of the end-effector constitutes the redundancy resolution of hyper-redundant robots. If the path through which the end-effector has to follow is predetermined, then the redundancy resolution problem also constitutes the motion planning of the robot.
+In the reachable workspace of a serial robot in 3D, since a given position and orientation of end-effector can be achieved using a maximum of six joints, additional joints would create a redundant system. Such robots are generally termed redundant serial robots. While robots with 6 joints  or less can achieve a position and orientation in space with limited configurations, there are theoretically infinite possibilities for a hyper-redundant robot to achieve the same. These additional degrees of freedom can be effectively used in situations where the robot has to selectively choose configurations without altering the end-effector pose, such as robotic manipulation through confined spaces. This renders the use of highly articulated hyper-redundant robots in applications such as exploring earthquake hit regions for search and rescue operations, remotely operated robotic arms for minimally invasive laparoscopic and endoscopic surgeries and inspection of industrial pipelines and ducts[cite refs.]. A large number of redundant joints also make the robots analogous in morphology to  snake, elephant trunk, tentacle etc. and hence, a topic of particular interest in bio-inspired robotics. Identifying a suitable configuration from the many possible configurations, given the position and orientation of the end-effector constitutes the redundancy resolution of hyper-redundant robots. If the path through which the end-effector has to follow is predetermined, then the redundancy resolution problem also constitutes the motion planning of the robot.
 
 The initial focus of researchers on addressing redundancy resolution problem was to solve the equation $\dot{\mathbf{\vartheta}}=J\left(\mathbf{\varphi} \right)\dot{\mathbf{\varphi}}$ where $J$ is the manipulator Jacobian matrix and $\vartheta$ and $\varphi$ are the vectors in task space and joint space respectively. Primary idea of inverse kinematics is to invert the Jacobian using Moore-Penrose inverse(pseudo inverse). While this method results in singularities in the algorithm??, methods such as task space-augmented Jacobian[ ref Leigois] and extended Jacobian[ ref Maciejewski] are aimed to avoid these singularities and also obtain solutions to inverse kinematic problem by specifying a velocity component at the singular configuration depending on the task at hand [refs] . Since the major advantage of using a hyper-redundant robot is to facilitate motion avoiding obstacles and movement in confined spaces, many researchers have worked on this particular task using abovementioned techniques[refs]. However, even though the methods avoid singularities in the manipulator Jacobian, it could generate other forms of singularities and also, the method becomes computationally complex for large number of joints. Many other redundancy resolution such as ??,?? and ?? can also be found in the literature. In [ref Chirikjian], obstacle avoidance problem for hyper-redundant manipulator is carried out by fitting a curve through the joints of manipulator and planning the path for this `backbone curve ‘ which avoids obstacles. Finding the pose of the backbone curve directly gives the co-ordinates of the joints. Hence, in case of obstacle cluttered environments, planning the path of the end-effector which avoids the obstacles will result in redundancy resolution since the trajectory itself forms the backbone curve of the manipulator[ref path planning papers like Choset]. (Add minimize torque sentence also in this paragraph)
 
@@ -98,12 +98,12 @@ Redundant robots are extensively used for applications which require additional 
 \section{Overview of tractrix based motion planning}
 \label{sec:Tractrixoverview}
 %
-Consider a rigid link of length $L_0$ positioned in a 2D plane, initially aligned to the Y-axis as shown in the figure[ref fig]. The co-ordinates of the `head' of the link is given as $\textbf{X}_h = [X_h,Y_h]^T$ and the co-ordinates of the `tail' as $\textbf{X}_t = [X_t,Y_t]^T$. If the head is displaced to the co-ordinate $\textbf{x}_h = [x_h,y_h]$ along the positive $X-$ axis by $t$ units, the tail of the link can lie anywhere on the circumference of a circle centered at the co-ordinate $(t,0)$ with radius $L_0$. If we assign a rule that the velocity of the tail of the link is always directed towards the length of the link, we get two diametrically opposite points on the circle. The continuous path traced by the tail point is the well known tractrix curve given by the expressions[ref]:
+Consider a rigid link of length $L_0$ positioned in a 2D plane, initially aligned to the Y-axis as shown in \cref{fig:tractrixin2D} . The co-ordinates of the `head' of the link is given as $\textbf{X}_h = [X_h,Y_h]^T$ and the co-ordinates of the `tail' as $\textbf{X}_t = [X_t,Y_t]^T$. If the head is displaced to the co-ordinate $\textbf{x}_h = [x_h,y_h]$ along the positive $X-$ axis by $t$ units, the tail of the link can lie anywhere on the circumference of a circle centered at the co-ordinate $(t,0)$ with radius $L_0$. If we assign a rule that the velocity of the tail of the link is always directed towards the length of the link, we get two diametrically opposite points on the circle. The continuous path traced by the tail point is the well known tractrix curve as given in \cref{eq:tractrix}:
 \begin{align}
 \label{eq:tractrix}
 \textbf{x}_t = [x(t),y(t)] = [t-L_0\tanh\frac{t}{L_0},L_0\sech\frac{t}{L_0}]
 \end{align}
-The extension of tractrix equation along motion in arbitrary direction as well as an algorithm to calculate the same in 3-D can be found in [ref] and [ref]. In case of multiple links connected to each other as in the case of hyper-redundant robot, or a one dimensional object approximated as a series of connected linkages the algorithm can be applied iteratively from the head to tail as shown in [ref]. By moving along the tractix curve, the tail moves the minimum distance with respect to its initial position. Also, the displacement $\Vert \textbf{x}_h-\textbf{X}_h \Vert \geq \Vert \textbf{x}_t-\textbf{X}_t \Vert$ which means that the displacement attentuates from the displaced link to end of the chain in case of serially connected links[fig2]. Due to the minimal displacement of the tail, the motion can be imagined as the one with high lateral resistance on the link and less resistance in the direction of motion of link. 
+The extension of tractrix equation along motion in arbitrary direction as well as an algorithm to calculate the same in 3-D can be found in [ref] and [ref]. In case of multiple links connected to each other as in the case of a hyper-redundant robot, or a one dimensional object approximated as a series of connected linkages, the algorithm can be applied iteratively from the head to tail as shown in [ref]. By moving along the tractix curve, the tail moves the minimum distance with respect to its initial position. Also, the displacement $\Vert \textbf{x}_h-\textbf{X}_h \Vert \geq \Vert \textbf{x}_t-\textbf{X}_t \Vert$ which means that the displacement attentuates from the displaced link to end of the chain in case of serially connected links as shown in \cref{fig:attenuation_of Motion}. Due to the minimal displacement of the tail, the motion can be imagined as the one with high lateral resistance on the link and less resistance in the direction of motion of link. 
 
 \begin{figure}[ht!]
     \centering
@@ -117,6 +117,7 @@ The extension of tractrix equation along motion in arbitrary direction as well a
         \centering
         \includegraphics[width=0.75\linewidth]{figures/fig2.pdf}
         \caption{Tractrix with multiple links}
+        \label{fig:attenuation_of Motion}
     \end{subfigure}
 \caption{Tractrix in a plane}
 \end{figure}
@@ -134,7 +135,7 @@ An advantage of expressing tractrix as a minimization problem is that we can add
 &\Vert \textbf{x}_h - \textbf{x}_t \Vert -L_0 = 0 \nonumber \\ 
 ~~ &f(\textbf{x}) \succeq 0  \nonumber
 \end{align}
-where $\bf{f}(x) = 0$ is the analytical equations of the boundaries of the surfaces which are to be avoided. For example, if the tail is to avoid a single obstacle represented by a circle with center $(x_c,y_c)$, the expression $f(x) = (x-x_c)^2+(y-y_c)^2-r^2>0$ ensures that the point $x$ always lies outside the circle of radius $r$. Complex objects can be modelled as a combination of super-ellipses as shown in [ref]. In this case, $f(x)$ will be a vector of all boundary equations $\textbf{f}(x) = [f_1(x),f_2(x),...f_m(x)]^T$ [fig3]. It is also worth noting that the value of function will increase or decrease as the point is farther from the curve $f(x)$; the value being zero on the curve. Hence, this approach can also be imagined as a geometric potential field, with zero potential only at the surface of the obstacle. 
+where $\bf{f}(x) = 0$ are the analytical equations of the boundaries of the surfaces which are to be avoided. For example, if the tail is to avoid a single obstacle represented by a circle with center $(x_c,y_c)$, the expression $f(x) = (x-x_c)^2+(y-y_c)^2-r^2>0$ ensures that the point $x$ always lies outside the circle of radius $r$. Complex objects can be modelled as a combination of super-ellipses as shown in [ref]. In this case, $\textbf{f}(x)$ will be a vector of all boundary equations $\textbf{f}(x) = [f_1(x),f_2(x),...f_m(x)]^T$. It is also worth noting that the value of constraint function in \cref{eq:obstacle_avoidance_opt} will increase or decrease as the point is farther from the curve $\textbf{f}(x)$; the value being zero on the curve. Hence, this approach can also be imagined as a geometric potential field, with zero potential only at the surface of the obstacle. 
 
 \begin{figure}[h!]
 \centering
@@ -142,7 +143,7 @@ where $\bf{f}(x) = 0$ is the analytical equations of the boundaries of the surfa
 \caption{Obstacle avoidance in a plane\label{fig:obstacle_avoidance_2D}}
 \end{figure}
 
-In the case of path planning of hyper-redundant manipulator, a majority of problems deal with simulating the motion of the robot while traversing through a confined space within a narrow bounded path, which we term as a ``\textit{duct}" for the remainder of the paper. The problem of planning the motion of the robot through a duct may be specified as:
+In the case of motion planning of hyper-redundant manipulator, a quite a few problems deal with simulating the motion of the robot while traversing through a confined space within a narrow bounded path, which we term as a ``\textit{duct}" for the remainder of the paper. The problem of planning the motion of the robot through a duct may be specified as:
 \begin{align} \label{eq:path_planning_opt}
 \argmin_{\textbf{x}_t} &\Vert \textbf{x}_t-\textbf{X}_t \Vert\\
 \text{Subject to:} &\Vert \textbf{x}_h - \textbf{x}_t \Vert -L_0 = 0 \nonumber \\
@@ -160,7 +161,7 @@ In the previous section we have discussed how tractrix based motion planning can
 	\end{equation}
 \end{enumerate}
 In our problem, the function is the $L_2$ norm of a vector in $\mathbb{R}^2$ or $\mathbb{R}^3$.  Though the $L_2$ norm is defined for all real vectors, the constraints ensuring that the object moves within the confinement of the duct restricts the domain to a feasible closed set $\mathcal{S}$\footnote{Assuming $\mathcal{S}$ to be a closed set allows the object to physically touch the boundaries of the duct}. Therefore, if the conditions a and b associated with the definition of a convex function are satisfied for $\mathcal{S}$ and the $L_2$ norm, then the solution obtained for (put optimization equation here) is unique. \\ 
-It is a well known result that any p-norm $||x||_p=(\sum\limits_{i=1}^{n}|x_i|^p)^{1/p},~ x\in \mathbb{R}$ is a convex function for $p\geq 1$. The fact that a p-norm is convex can be shown by using the scalability and the triangle inequality associated with a normed vector-space. With $\theta$  being a scaling parameter, \cref{eq:convex_fn} simplifies exactly to the triangle equality for norms. Also, any p-norm is a valid norm on $\mathbb{R}$ for $p\geq1$ follows from the Minkowski inequality\footnote{For a measure space $\mathbb{S}$, $p\geq 1$ and $f,~g$ are members of the Lebesgue space $L_P(\mathbb{S})$, the following inequality holds: $||f+g||_p\leq ||f||_p+||g||_p$ }. This leaves us to show that the feasible set $\mathcal{S}$ is convex. For all our modeling examples, we choose $\mathcal{S}$ to be convex by assigning convex boundaries to it or, expressing $\mathcal{S}$ as intersections of closed convex sets.  However, as is, none of the problems posed in \cref{eq:Opt_prob_main,eq:obstacle_avoidance_opt,eq:path_planning_opt} are convex because of the non-linear equality constraints associated with them, which guarantees that the length of a segment is constant. To pose it as a convex problem we approximate the constraint with linear constraints as described in \cref{sc:Complexity}. For the cases of path planning in 2-D and 3-D, the paths chosen are either entirely convex or are discretized as such. As discussed in the following sections, we do not represent a ``duct" as a union of closed convex sets as the first condition of convexity cannot be guaranteed for sets formed by union of convex sets. 
+It is a well known result that any p-norm $||x||_p=(\sum\limits_{i=1}^{n}|x_i|^p)^{1/p},~ x\in \mathbb{R}$ is a convex function for $p\geq 1$. The fact that a p-norm is convex can be shown by using the scalability and the triangle inequality associated with a normed vector-space. With $\theta$  being a scaling parameter, \cref{eq:convex_fn} simplifies exactly to the triangle equality for norms. Also, any p-norm is a valid norm on $\mathbb{R}$ for $p\geq1$ follows from the Minkowski inequality\footnote{For a measure space $\mathbb{S}$, $p\geq 1$ and $f,~g$ are members of the Lebesgue space $L_P(\mathbb{S})$, the following inequality holds: $||f+g||_p\leq ||f||_p+||g||_p$ }. This leaves us to show that the feasible set $\mathcal{S}$ is convex. For all our modeling examples, we choose $\mathcal{S}$ to be convex by assigning convex boundaries to it or, expressing $\mathcal{S}$ as intersections of closed convex sets.  However, as is, none of the problems posed in \cref{eq:Opt_prob_main,eq:obstacle_avoidance_opt,eq:path_planning_opt} are convex because of the non-linear equality constraints associated with them, which guarantees that the length of a segment is constant. To pose it as a convex problem we approximate the constraint with linear constraints as described in \cref{sc:Complexity}. For the cases of motion planning in 2-D and 3-D, the paths chosen are either entirely convex or are discretized as such. As discussed in the following sections, we do not represent a ``duct" as a union of closed convex sets as the first condition of convexity cannot be guaranteed for sets formed by union of convex sets. 
 
 \section{Motion planning through planar ducts}
 %
@@ -355,7 +356,7 @@ By changing the parameters $a,b,c$ and $n$, we get different closed surfaces as 
 \caption{ Super-ellipsoids \label{fig:SEs}}
 \end{figure}
 
-The procedure to calculate the inside-outside condition is same as that of the method described in section [ref sec]. The inequality condition will be [\ref{eq: min_and_mingx}]. An example problem with duct approximated using super-ellipsoids is shown in [fig15]. As mentioned in the case for super-ellipses, solution to the path planning problem with ducts represented by super-ellipsoids is fast (also explained in section ??). Identifying the shapes which fit the duct, is also same as the method mentioned in section ??. 
+The procedure to calculate the inside-outside condition is same as that of the method described in section [ref sec]. The inequality condition will be [\ref{eq: min_and_mingx}]. An example problem with duct approximated using super-ellipsoids is shown in [fig15]. As mentioned in the case for super-ellipses, solution to the motion planning problem with ducts represented by super-ellipsoids is fast (also explained in section ??). Identifying the shapes which fit the duct, is also same as the method mentioned in section ??. 
 
 \subsection{Representation of duct as a set of connected cylinders}
 Similar to the set of connected quadrilaterals in 2D, a duct in 3D can be represented by series of connected cylinders. By linearly interpolating two circles in space, we get the parametric equation of the cylinder as (refer Appendix for the detailed expressions):
@@ -492,7 +493,7 @@ One major use of hyper-redundant robots is in inspection of ducts such as indust
 
 
 \subsubsection{Motion planning through a GI tract}
-There has been a growing interest in simulating motion of endoscope through GI tract for developing simulators for endoscopy and for implementing path planning for endoscopic and laparoscopic surgical robots. In this section, we simulate the natural motion of an endoscope through GI tract. For simulation, we use the stereolithographic data of GI tract obtained from ??. For demonstration, both the methods presented in [sec] and [sec] are used for approximating the GI tract. In the first method, a collection of points are manually selected from the STL file where super-elliposids are fit based on least square error minimization techniques. Representation of GI tract as series of super-ellipsoids is shown in [fig19]
+There has been a growing interest in simulating motion of endoscope through GI tract for developing simulators for endoscopy and for implementing path and motion plans for endoscopic and laparoscopic surgical robots. In this section, we simulate the natural motion of an endoscope through GI tract. For simulation, we use the stereolithographic data of GI tract obtained by processing CT scan data. For demonstration, both the methods presented in [sec] and [sec] are used for approximating the GI tract. In the first method, a collection of points are manually selected from the STL file where super-elliposids are fit based on least square error minimization techniques.  Representation of GI tract as series of super-ellipsoids is shown in [fig19]
 
 \begin{figure}[ht!]
     \centering
@@ -515,19 +516,13 @@ The realistic motion simulation of endoscope through GI tract is shown in [fig21
 
 \begin{figure}[ht!]
     \centering
-    \begin{subfigure}{0.15\textwidth}
+    \begin{subfigure}{0.28\textwidth}
         \centering
-        \includegraphics[width=0.75\linewidth]{figures/GIsnaps/1.png}
+        \includegraphics[width=0.95\linewidth]{figures/GIsnaps/1.png}
    
     \end{subfigure}%
     ~
-        \begin{subfigure}{0.15\textwidth}
-        \centering
-        \includegraphics[width=0.75\linewidth]{figures/GIsnaps/2.png}
-       
-    \end{subfigure}%
-    ~
-        \begin{subfigure}{0.15\textwidth}
+       \begin{subfigure}{0.15\textwidth}
         \centering
         \includegraphics[width=0.75\linewidth]{figures/GIsnaps/3.png}
 
@@ -555,11 +550,11 @@ The realistic motion simulation of endoscope through GI tract is shown in [fig21
 \end{figure}
 
 \subsubsection{Motion planning for search and rescue operations}
-Exploring obstacle-cluttered environments such as in an earthquake hit zone is one of the major applications that necessitates the use of hyper-redundant manipulators. In this example, we show how the proposed algorithms can be effectively used in such applications. With reference to [fig ??], the objective of the hyper-redundant manipulator, consisting of 20 links is to 1) enter the scene through the hole in the outer wall, 2) Pass through the vent to get inside the room, 3) Explore the objects 1,2 and 3 located inside the blue region and 4) Exit without colliding with the complex shapes given by objects 4 and 5. Here, the exploration problem is effectively tackled using the following constraints added to the optimization problem (refer Fig ??): 1) An ellipsoid of the size of the hole located in the outer wall 2) collection of cylindrical ducts to represent the vent, 3) STL models for the objects 1,2 and 3 and 4) Ellipsoid at the last bend in the path to avoid collision with the complex shapes of objects 4 and 5 (orange color). It is easy to verify that the geometry based global motion planning techniques for obstacle avoidance existing in literature will entail a very involving problem formulation [ananthanarayanan], while using the methods proposed in this paper, the problem can be addressed with only 6 constraints. The six constraints in this case are actively selected so that they become active only when the position of the head is in the vicinity of the objects/ shapes. Figure [??] shown the simulated results for the motion of manipulator along a chosen path. 
+Exploring a cluttered environment-- such as in an earthquake hit zone is one of the major applications that necessitates the use of hyper-redundant manipulators. In this example, we show how the proposed algorithms can be effectively used in such applications. With reference to [fig ??], the objective of the hyper-redundant manipulator, consisting of 20 links is to 1) enter the scene through the hole in the outer wall, 2) Pass through the vent to get inside the room, 3) Explore the objects 1,2 and 3 located inside the blue region and 4) Exit without colliding with the complex shapes given by objects 4 and 5. Here, the exploration problem is effectively tackled using the following constraints added to the optimization problem (refer Fig ??): 1) An ellipsoid of the size of the hole located in the outer wall 2) collection of cylindrical ducts to represent the vent, 3) STL models for the objects 1,2 and 3 and 4) Ellipsoid at the last bend in the path to avoid collision with the complex shapes of objects 4 and 5 (orange color). It is easy to see that the geometry based global motion planning techniques for obstacle avoidance existing in literature will entail a very involving problem formulation [ananthanarayanan]. While using the methods proposed in this paper, the problem can be addressed with only 6 constraints. The six constraints in this case are actively selected so that they become active only when the position of the head is in the vicinity of the objects/ shapes. Figure [??] shown the simulated results for the motion of manipulator along a chosen path. 
 
 \begin{figure}[h!]
 \centering
-\includegraphics[scale=0.2]{figures/figscene.png}
+\includegraphics[scale=0.65]{figures/figscene.pdf}
 \caption{ Scene of search and rescue problem \label{fig:scene}}
 \end{figure}
 
@@ -654,36 +649,33 @@ where, $\textbf{A}=\nabla_{\textbf{x}_t}^2g(\textbf{x}_t)+\sum\limits_{i=1}^{m}\
 &\triangle\lambda=(\textbf{S}^{-1}\textbf{L})(\textbf{B}\triangle \textbf{x}_t -\textbf{F}_2+\textbf{L}^{-1}\textbf{F}_3)\\
 &\triangle s = -\textbf{L}^{-1}(\textbf{F}_3+\textbf{S}\triangle \lambda) \nonumber
 \end{align}
- Where, $\textbf{G}= \textbf{A}+\textbf{B}^T(\textbf{S}^{-1}\textbf{L})\textbf{B}$, a $3\times3$ matrix (for a 3D case) which can be inverted symbolically, also, $\textbf{S}$ and $\textbf{L}$ are diagonal matrices so their inversion can be calculated in linear time ($\mathcal{O}(m)$). Overall, the asymptotic complexity of solving \cref{eq:Newton-dir} is $\mathcal{O}(m^3)$ as the calculation of $ G^{-1},~ \triangle x$ and $\triangle \lambda$ are $\mathcal{O}(m^3)$. This would result in a total asymptotic complexity of $\mathcal{O}(m^{3.5})$ of the implementation. However, the computation time of an iteration doesn't depend on the number of links of the hyper-redundant robot or the step size path, hence the proposed method is linear in these. This is observed from \cref{fig:link_complexity,fig:path_complexity}. As discussed in \cref{sc:duct_as_STL}, in our implementation of the motion planning problem inside a polyhedral domain, we use a separate algorithm to determine whether to use the constraints of the form $[\mathbf{A}]_{m\times 3}\mathbf{x}_t+\mathbf{B}_{m\times 1}\leq 0$ in \cref{eq:STLeqs}. \Cref{alg:in_hull} discusses an $\mathcal{O}(m)$ algorithm to do the same in case of a polyhedron with $ m $ faces. Therefore, the total asymptotic complexity of our implementation should be about $\mathcal{O}(m^{1.5})$. \Cref{fig:face_complexity} shows that actual complexity implementation of our algorithm is about $(m^{1.67})$, with room for further improvement\footnote{Computation times in \cref{fig:complexity} was obtained using the 'tic-toc' function in MatlabR2016b running on a workstation with dual 8 core Intel XEON (2.1GHz), 32 GB RAM and Windows 10}. 
+ Where, $\textbf{G}= \textbf{A}+\textbf{B}^T(\textbf{S}^{-1}\textbf{L})\textbf{B}$, a $3\times3$ matrix (for a 3D case) which can be inverted symbolically, also, $\textbf{S}$ and $\textbf{L}$ are diagonal matrices so their inversion can be calculated in linear time ($\mathcal{O}(m)$). Overall, the asymptotic complexity of solving \cref{eq:Newton-dir} is $\mathcal{O}(m^3)$ as the calculation of $ G^{-1},~ \triangle x$ and $\triangle \lambda$ are $\mathcal{O}(m^3)$. This would result in a total asymptotic complexity of the implementation to be $\mathcal{O}(m^{3.5})$. However, the computation time of an iteration doesn't depend on the number of links of the hyper-redundant robot or the step size path, hence the proposed method is linear in these. This is observed from \cref{fig:path_complexity}. As discussed in \cref{sc:duct_as_STL}, in our implementation of the motion planning problem inside a polyhedral domain, we use a separate algorithm to determine whether to use the constraints of the form $[\mathbf{A}]_{m\times 3}\mathbf{x}_t+\mathbf{B}_{m\times 1}\leq 0$ in \cref{eq:STLeqs}. \Cref{alg:in_hull} discusses an $\mathcal{O}(m)$ algorithm to do the same in case of a polyhedron with $ m $ faces. Therefore, the total asymptotic complexity of our implementation should be about $\mathcal{O}(m^{1.5})$. \Cref{fig:face_complexity} shows that actual complexity implementation of our algorithm scales as $(m^{1.43})$, with room for further improvement\footnote{Computation times in \cref{fig:complexity} was obtained using the `tic-toc' function in MatlabR2016b running on a workstation with dual 8 core Intel XEON (2.1GHz), 32 GB RAM and Windows 10}. Furthermore, the formulations involving parametric shapes (super ellipses and super ellipsoids) are even faster because the classification of a point with respect to the domain is available as a closed form expression. 
  \begin{figure}
 \centering
-\begin{subfigure}{0.75\textwidth}
+\begin{subfigure}{0.48\textwidth}
 \centering
  \includegraphics[width=0.8\linewidth]{figures/Path_and_link_complexity.pdf}
 \caption{Our implementation is time-linear in number of path points and link numbers}
 \label{fig:path_complexity}
 \end{subfigure}%
-\\
-\begin{subfigure}{0.8\textwidth}
+\begin{subfigure}{0.48\textwidth}
 \centering
  \includegraphics[width=0.8\linewidth]{figures/face_complexity.pdf}
-\caption{Our implementation is $\mathcal{O}(m^{1.5})$}
+\caption{Our implementation scales as $(m^{1.43})$}
 \label{fig:face_complexity}
 \end{subfigure}%
 \caption{ Complexity of our implementations}
 \label{fig:complexity}
 \end{figure}
  
-
-
 \subsection{Limitations of the tractrix based scheme}
 In spite of the certain advantages regarding formulation and computational aspects of the tractrix based motion planning approach, there are a few limitations which are of importance.\\
 The ducts represented by analytical curves and cylinders would require an in-out classifier to demarcate the feasible space of the posed optimization problem. Often, this would involve numerical formulations which are quite computationally involving. We believe, real time implementation of these problems, even with near analytical formulations of the in-out function will be very difficult.\\
-It is easily seen that a given hyper-redundant robot with a particular link length will not be able to negotiate a path with a ``very low" curvature. This is shown in \cref{fig:not_traversable}. In \cref{fig:not_traversable}, the points 1,2,...,8 denote the coordinates of $\textbf{x}_h$ across successive iterations. It is seen, that from iteration 6 onwards, the constraints demarcating the feasible space $\mathcal{S}$ and the one guaranteeing a constant link length cannot be simultaneously satisfied unless the tail $\textbf{x}_t$ (the result of \cref{eq:Opt_prob_main}), backtracks its own path. Soon after, the optimization problem stops as the link seems to be ``locked" at the trough of $\zeta(u)$. In this section we want to quantify the locking effect. To this end, we borrow the concept of ``traversability" from literature on wheeled mobile robots (see e.g. Nilanjan's JMD paper). A curve $\zeta(u)$ is traversable by a circle $C_i$, $C_i: \left(\begin{array}{c} R_i\cos(v) \\ R_i\sin(v) \end{array}\right), ~ 0 \leq v\leq2\pi $  if $C_i$ can roll over the curve $\zeta(u)$ while maintaining ``only one" point of contact at all times. Traversibility for planar curves can be described by the relative curvature $\kappa_R$ of the circle and the curve at the point of contact. For a planar curve and a circle of radius $R_i$, the relative curvature can be given as \[\kappa_R=\dfrac{\zeta_{uu}}{(1+\zeta_u^2)^{3/2}}-\dfrac{1}{R_i}\] A curve is traversable if the relative curvature is greater than 0, just traversable if it is equal to zero and not traversable if it is negative. This is explained in \cref{fig:is_traversable}. This concept would generalize to traversable surfaces when the minimum of the two eigenvalues of the relative curvature matrix\footnote{The relative curvature matrix of a parametric surface ${S}(u,v): \mathbb{S}^2\to \mathbb{R}^3$ and a sphere of radius R at the point of contact $P = \mathcal{S}(u^*,v^*)$ and the Gaussian frame attached to the sphere at P is given as: $\kappa_R\vert_P=\left[\begin{array}{cc}
+It is easily seen that a given hyper-redundant robot with a particular link length will not be able to negotiate a path with a ``very low" curvature. This is shown in \cref{fig:not_traversable}. In \cref{fig:not_traversable}, the points 1,2,...,8 denote the coordinates of $\textbf{x}_h$ across successive iterations. It is seen, that from iteration 6 onwards, the constraints demarcating the feasible space $\mathcal{S}$ and the one guaranteeing a constant link length cannot be simultaneously satisfied unless the tail $\textbf{x}_t$ (the result of \cref{eq:Opt_prob_main}), backtracks its own path. Soon after, the optimization problem stops as the link seems to be ``locked" at the trough of $\zeta(u)$. In this section we want to quantify the locking effect. To this end, we borrow the concept of ``traversability" from literature on wheeled mobile robots (see e.g. Nilanjan's JMD paper). A curve $\zeta(u)$ is traversable by a circle $C_i$, $C_i: \left(\begin{array}{c} R_i\cos(v) \\ R_i\sin(v) \end{array}\right), ~ 0 \leq v\leq2\pi $  if $C_i$ can roll over the curve $\zeta(u)$ while maintaining ``only one" point of contact at all times. Traversibility for planar curves can be described by the relative curvature $\kappa_R$ of the circle and the curve at the point of contact. For a planar curve and a circle of radius $R_i$, the relative curvature can be given as \[\kappa_R=\dfrac{\zeta_{uu}}{(1+\zeta_u^2)^{3/2}}-\dfrac{1}{R_i}\] A curve is traversable if the relative curvature is greater than 0, just traversable if it is equal to zero and not traversable if it is negative. This is explained in \cref{fig:is_traversable}. This concept would generalize to traversable surfaces when the minimum of the two eigenvalues of the relative curvature matrix\footnote{The relative curvature matrix of a parametric surface ${S}(u,v): \mathbb{S}^2\to \mathbb{R}^3$ and a sphere of radius R at the point of contact $P = \mathcal{S}(u^*,v^*)$ and on the Gaussian frame attached to the sphere(or $ S $) at P is given as: $\kappa_R\vert_P=\left[\begin{array}{cc}
 	{S}_u.{S}_u-1/R & {S}_u.{S}_v \\ 
 	{S}_u.{S}_v & {S}_v.{S}_v-1/R
 	\end{array}\right]_{u^*,v^*} $} is positive for traversability or vice versa.
-Based on this result, we hypothesize that if curve is traversable by a circle of diameter $D_i$, then a hyper-redundant robot of link length $D_i$ can move below the curve without intersecting the curve as shown in \cref{fig:largest_link}. This would also give us an idea about the largest link length that can be used in a hyper-redundant robot traversing a given duct. This concept also holds for tessellated surfaces (e.g. see the work by Meyer et al. [??]). 
+Based on this result, we hypothesize that if curve is traversable by a circle of diameter $D_i$, then a hyper-redundant robot of link length $D_i$ can move below the curve without intersecting the curve as shown in \cref{fig:largest_link}. This would also give us an idea about the largest link length that can be used in a hyper-redundant robot traversing a given duct. This concept can also be extended to tessellated surfaces with information about the principal curvatures of the surface at a point (e.g. see the work by Meyer et al. [??]). 
 \begin{figure}[ht!]
 	\centering
 		\begin{subfigure}{0.31\textwidth}
@@ -758,16 +750,16 @@ If ${}^xP_{i-1}={}^xP_{i}$ and ${}^xQ_{i-1}={}^xQ_{i}$,
     \begin{subfigure}{0.48\textwidth}
         \centering
         \includegraphics[width=0.3\linewidth]{figures/fig17a.pdf}
-        \caption{Parameters of analytical cylinder \label{fig:cylparams}}
+        \caption{Parameters of a general cylinder \label{fig:cylparams}}
     \end{subfigure}%
     \begin{subfigure}{0.48\textwidth}
         \centering
-        \includegraphics[width=0.75\linewidth]{figures/fig16.pdf}
-        \caption{?? \label{fig:cylductmotion}}
+        \includegraphics[width=0.85\linewidth]{figures/app_fig1.pdf}
+        \caption{Schematic of \cref{alg:in_hull} \label{fig:alg_schematic}}
     \end{subfigure}
-    \caption{ ??(??Figs will be modified??)}
+\caption{}
 \end{figure}
-
+The parametric cylinder, as shown in \cref{fig:cylparams}, with the parameters $u,~\theta$ and $t$ is given as:
 \begin{align}
 x & = C_1(u,t,\theta)=\left(r_1m_1u\cos\theta +m_2 \right)\left(1-t \right)+\left(r_2n_1u\cos\theta+n_2 \right)t\\
 y & = C_2(u,t,\theta)=\left(r_1m_3u\cos\theta +r_1m_4u\sin\theta +m_5 \right)\left(1-t \right)+\left(r_2n_3u\cos\theta+r_2n_4u\sin\theta+n_5 \right)t\\
@@ -775,24 +767,21 @@ z & = C_3(u,t,\theta)=\left(r_1m_6u\cos\theta +r_1m_7u\sin\theta +m_8 \right)\le
 \end{align}
 where
 \begin{align*}
-m_1 = \cos{}^1\phi_2,~m_2 = {}^1x_c,~m_3 = \sin{}^1\phi_1\sin{}^1\phi_2,~m_4=\cos{}^1\phi_1, \nonumber \\
-m_5 = {}^1y_c,~m_6=-\cos{}^1\phi_1\sin{}^1\phi_2,~m_7=\sin{}^1\phi_1,~m_8={}^1z_c \nonumber
-\end{align*}
-and
-\begin{align*}
-n_1 = \cos{}^2\phi_2,~n_2 = {}^2x_c,~n_3 = \sin{}^2\phi_1\sin{}^2\phi_2,~n_4=\cos{}^2\phi_1, \nonumber \\
-n_5 = {}^2y_c,~n_6=-\cos{}^2\phi_1\sin{}^2\phi_2,~n_7=\sin{}^2\phi_1,~n_8={}^2z_c \nonumber
+&m_1= \cos{}^1\phi_2,~m_2 = {}^1x_c,~&m_3 = \sin{}^1\phi_1\sin{}^1\phi_2,~m_4=\cos{}^1\phi_1, \nonumber \\
+&m_5 = {}^1y_c,~m_6=-\cos{}^1\phi_1\sin{}^1\phi_2,~&m_7=\sin{}^1\phi_1,~m_8={}^1z_c \nonumber\\
+&n_1 = \cos{}^2\phi_2,~n_2 = {}^2x_c,~&n_3 = \sin{}^2\phi_1\sin{}^2\phi_2,~n_4=\cos{}^2\phi_1, \nonumber \\
+&n_5 = {}^2y_c,~n_6=-\cos{}^2\phi_1\sin{}^2\phi_2,~&n_7=\sin{}^2\phi_1,~n_8={}^2z_c \nonumber
 \end{align*}
 The quantity ${}^1\left(\cdot\right)$ and ${}^2\left(\cdot\right)$ represent the corresponding parameters of the circles at the ends of the cylinder. $\phi_1$ and $\phi_2$ are the angles about the Y and X-axes which the plane of the circle is rotated, $(x_c,y_c,z_c)$ is the co-ordinate of the center of the circle.
 
 \subsection{An algorithm for classifying a point with respect to a polyhedron}\label{app:polyhedron_point}
-\indent Classification a point with respect to a triangulated domain is a very well known problem and many methods exist, which offer various advantages in terms of computational complexities. In \cref{alg:in_hull}, we describe a method, to classify a given set of points $O$ with respect to a polyhedron $\mathcal{P}$ as inside ($O_{in}$) and outside ($O_{out}$). The worst case complexity for our algorithm\footnote{We have used a modified version of the Matlab function inhull.m, made available by John D'Errico for free usage. } is $\mathcal{O}(m)$.    
+\indent Classification a point with respect to a triangulated domain is a very well known problem and many methods exist, which offer various advantages in terms of computational complexities. In \cref{alg:in_hull}, we describe a method, to classify a given set of points $O$ with respect to a polyhedron $\mathcal{P}$ as inside ($O_{in}$) and outside ($O_{out}$). The implementation of our algorithm\footnote{We have used a modified version of the Matlab function inhull.m, made available by John D'Errico for free usage. } is $\mathcal{O}(m)$. The algorithm can be visualized from \cref{fig:alg_schematic}.
 \begin{algorithm}[ht!]
-	\textbf{Purpose :} To classify a set of points $ O $ with respect to $\partial \mathcal{P}$\\
+	\textbf{Purpose :} To classify a set of points $ O $ with respect to  boundary $\partial \mathcal{P}$\\
 	\KwIn{The set $ O $, $O\in \Re^3$ and $O \equiv O_{in}\cup O_{out}$ }
 	\KwOut{$ O_{in},~ O_{out}$}
 	\begin{algorithmic}[1]
-		\STATE Obtain $C$, the center of $\mathcal{P}$ by taking the mean of the vertices of the $N$ facets constituting the boundary $\partial \mathcal{P}$
+		\STATE Obtain $C$, the center of $\mathcal{P}$ by taking the mean of the vertices of the $N$ facets constituting $\partial \mathcal{P}$
 		\FOR {$i=1,2,...,N$}
 		\STATE Calculate the normal to the $i^{th}$ facet, $A_n^i=(f_i^1-f_i^2)\times(f_i^2-f_i^3)$
 		\STATE Choose a point $A^i$ on the $i^{th}$ facet and move $A_n^i$ to $A^i$
@@ -804,7 +793,7 @@ The quantity ${}^1\left(\cdot\right)$ and ${}^2\left(\cdot\right)$ represent the
 		\ENDIF
 	\end{algorithmic}
 	
-	\caption{Algorithm for classifying points as inside ($O_{in}$) or outside ($O_{out}$) of a triangulated domain}		
+	\caption{Algorithm for classifying points as inside ($O_{in}$) or outside ($O_{out}$) of a triangulated domain. }		
 	\label{alg:in_hull}
 \end{algorithm}
 
