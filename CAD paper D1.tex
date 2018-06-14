@@ -160,7 +160,7 @@ In the previous section we have discussed how tractrix based motion planning can
 	\end{equation}
 \end{enumerate}
 In our problem, the function is the $L_2$ norm of a vector in $\mathbb{R}^2$ or $\mathbb{R}^3$.  Though the $L_2$ norm is defined for all real vectors, the constraints ensuring that the object moves within the confinement of the duct restricts the domain to a feasible closed set $\mathcal{S}$\footnote{Assuming $\mathcal{S}$ to be a closed set allows the object to physically touch the boundaries of the duct}. Therefore, if the conditions a and b associated with the definition of a convex function are satisfied for $\mathcal{S}$ and the $L_2$ norm, then the solution obtained for (put optimization equation here) is unique. \\ 
-It is a well known result that any p-norm $||x||_p=(\sum\limits_{i=1}^{n}|x_i|^p)^{1/p},~ x\in \mathbb{R}$ is a convex function for $p\geq 1$. The fact that a p-norm is convex can be shown by using the scalability and the triangle inequality associated with a normed vector-space. With $\theta$  being a scaling parameter, \cref{eq:convex_fn} simplifies exactly to the triangle equality for norms. Also, any p-norm is a valid norm on $\mathbb{R}$ for $p\geq1$ follows from the Minkowski inequality\footnote{For a measure space $\mathbb{S}$, $p\geq 1$ and $f,~g$ are members of the Lebesgue space $L_P(\mathbb{S})$, the following inequality holds: $||f+g||_p\leq ||f||_p+||g||_p$ }. This leaves us to show that the feasible set $\mathcal{S}$ is convex. For all our modeling examples, we choose $\mathcal{S}$ to be convex by assigning convex boundaries to it or, expressing $\mathcal{S}$ as intersections of closed convex sets.  However, as is, none of the problems posed in \cref{eq:Opt_prob_main,eq:obstacle_avoidance_opt,eq:path_planning_opt} are convex because of the non-linear equality constraints associated with them, which guarantees that the length of a segment is constant. To pose it as a convex problem we approximate the constraint with linear constraints as described in section(\textbf{put complexity section here}). For the cases of path planning in 2-D and 3-D, the paths chosen are either entirely convex or are discretized as such. As discussed in the following sections, we do not represent a ``duct" as a union of closed convex sets as the first condition of convexity cannot be guaranteed for sets formed by union of convex sets. 
+It is a well known result that any p-norm $||x||_p=(\sum\limits_{i=1}^{n}|x_i|^p)^{1/p},~ x\in \mathbb{R}$ is a convex function for $p\geq 1$. The fact that a p-norm is convex can be shown by using the scalability and the triangle inequality associated with a normed vector-space. With $\theta$  being a scaling parameter, \cref{eq:convex_fn} simplifies exactly to the triangle equality for norms. Also, any p-norm is a valid norm on $\mathbb{R}$ for $p\geq1$ follows from the Minkowski inequality\footnote{For a measure space $\mathbb{S}$, $p\geq 1$ and $f,~g$ are members of the Lebesgue space $L_P(\mathbb{S})$, the following inequality holds: $||f+g||_p\leq ||f||_p+||g||_p$ }. This leaves us to show that the feasible set $\mathcal{S}$ is convex. For all our modeling examples, we choose $\mathcal{S}$ to be convex by assigning convex boundaries to it or, expressing $\mathcal{S}$ as intersections of closed convex sets.  However, as is, none of the problems posed in \cref{eq:Opt_prob_main,eq:obstacle_avoidance_opt,eq:path_planning_opt} are convex because of the non-linear equality constraints associated with them, which guarantees that the length of a segment is constant. To pose it as a convex problem we approximate the constraint with linear constraints as described in \cref{sc:Complexity}. For the cases of path planning in 2-D and 3-D, the paths chosen are either entirely convex or are discretized as such. As discussed in the following sections, we do not represent a ``duct" as a union of closed convex sets as the first condition of convexity cannot be guaranteed for sets formed by union of convex sets. 
 
 \section{Motion planning through planar ducts}
 %
@@ -604,17 +604,17 @@ Exploring obstacle-cluttered environments such as in an earthquake hit zone is o
     \caption{ Motion of hyper-redundant robot in confined spaces ?? Fig will be edited??}
 \end{figure}
 
-\subsection{Computational complexity of the proposed scheme}
+\subsection{Computational complexity of the proposed scheme} \label{sc:Complexity}
 
 An important aspect of the formulations described in the current work was to show that the formulation and implementation of motion planning problem using tractrix is intuitive and has a broad scope of application. In concurrence to that theme, in this section, we attempt to analyze the worst case computational complexity of such an implementation to show that the current work has potential for real time application in actual problems. We begin by reviewing some mathematical concepts, after Boyd[opt book], to be used in the following discussion.\\
 \indent \textit{Self Concordance}: A convex function $f: \mathbb{R} \to \mathbb{R}$ is \textit{self-concordant} if $|f'''(x)|\leq 2f''(x)^{3/2}$ for all $x \in \textbf{dom}f$. It can be shown that the Eucledian norm and linear functions are self concordant.\\
-\indent \textit{The big-O notation} ($\mathcal{O}$): For two functions $f,~g: \mathbb{N}\to \mathbb{R}^+$, the function $g$ is an asymptotically upper bound for $f$, denoted by $f(n)~\epsilon~ \mathcal{O}(g(n))$, if there exists a constant $c>0$ and $n_0\epsilon \mathbb{N}$ such that $\forall n> n_0$, $f(n)\leq cg(n)$.  \\
+%\indent \textit{The big-O notation} ($\mathcal{O}$): For two functions $f,~g: \mathbb{N}\to \mathbb{R}^+$, the function $g$ is an asymptotically upper bound for $f$, denoted by $f(n)~\epsilon~ \mathcal{O}(g(n))$, if there exists a constant $c>0$ and $n_0\epsilon \mathbb{N}$ such that $\forall n> n_0$, $f(n)\leq cg(n)$.  \\
 \indent \textit{Feasible set}: For an optimization problem with constraints $f_i(\textbf{x})\leq 0$ and $h_j(\textbf{x})=0$, for $i=1,2,...,n$ and $j=1,2,...,m$, the feasible set is $\mathcal{S}=\cap_{i=1}^n~\textbf{dom}(f_i\leq0)\cap\cap_{j=1}^m~\textbf{dom}(h_j=0)$. For all our problems, $\mathcal{S} $ is a subset of the real space $\mathbb{R}$ of dimension 2 or 3.\\
 \indent \textit{Slater's condition}: Slater's conditions of constraint qualification hold when there exists an $\textbf{x}~ \in \mathcal{S}$, a strictly feasible point,  such that all the inequality conditions and equality conditions are satisfied\footnote{We resort to a slight misuse of notation for brevity. For a more complete treatment, one may refer to Chapter 5 of the book by Boyd and Vandenberghe [Boyd book].}. This would, in general, mean that strong duality would hold and at the optimum point, the primal and dual problem would have the same solutions.\\
-With these, we move on to our topic of complexity analysis. In \cref{sc:optimization} we have discussed that the problem as presented in \cref{eq:Opt_prob_main} is not  convex due to the non-linear equality constraint guaranteeing the length of a link is constant at all times. We get around by replacing the non-linear equality constraint by it's affine equivalent-- a first order approximation of the constraint about a feasible point $\textbf{x}^* \in \mathcal{S}$, and a trust region constraint as shown in problem in \cref{eq:Opt_prob_mod}. It is imperative for the trust region radius to be small-- in our implementation, we have chosen the trust region radius $\epsilon_T$ to be about 6 orders of magnitude smaller than the smallest dimension of $\mathcal{S}$. In \cref{eq:Opt_prob_mod}, $Dg(\textbf{x}^*)$ is the Jacobian of the objective function. 
+With these, we move on to our topic of complexity analysis. In \cref{sc:optimization} we have discussed that the problem as presented in \cref{eq:Opt_prob_main} is not  convex due to the non-linear equality constraint guaranteeing the length of a link is constant at all times. We get around by replacing the non-linear equality constraint by it's affine equivalent-- a first order approximation of the constraint about a feasible point $\textbf{x}^* \in \mathcal{S}$, and a trust region constraint as shown in problem in \cref{eq:Opt_prob_mod}. It is imperative for the trust region radius to be small-- in our implementation, we have chosen the trust region radius $\epsilon_T$ to be about 6 orders of magnitude smaller than the smallest dimension of $\mathcal{S}$. In \cref{eq:Opt_prob_mod}, $\nabla_{\textbf{x}_t}$ is the gradient of the objective function. 
 \begin{align}\label{eq:Opt_prob_mod}
  \argmin_{\textbf{x}_t} & ~g(\textbf{x}_t): \vert \vert \textbf{x}_t-\textbf{X}_t\vert \vert\\
-\text{Subject to}~: &~ g(\textbf{x}^*)-Dg(\textbf{x}^*) (\textbf{x}_t-\textbf{x}^*) =0\nonumber\\ 
+\text{Subject to}~: &~ g(\textbf{x}^*)-\nabla_{\textbf{x}_t}g(\textbf{x}^*) (\textbf{x}_t-\textbf{x}^*) =0\nonumber\\ 
 					& | \textbf{x}^*-\textbf{x}_t| \preceq  \epsilon_T \nonumber\\
 					& C_{ineq}: f(x) \preceq 0 \nonumber
 \end{align}
@@ -657,27 +657,19 @@ where, $\textbf{A}=\nabla_{\textbf{x}_t}^2g(\textbf{x}_t)+\sum\limits_{i=1}^{m}\
  Where, $\textbf{G}= \textbf{A}+\textbf{B}^T(\textbf{S}^{-1}\textbf{L})\textbf{B}$, a $3\times3$ matrix (for a 3D case) which can be inverted symbolically, also, $\textbf{S}$ and $\textbf{L}$ are diagonal matrices so their inversion can be calculated in linear time ($\mathcal{O}(m)$). Overall, the asymptotic complexity of solving \cref{eq:Newton-dir} is $\mathcal{O}(m^3)$ as the calculation of $ G^{-1},~ \triangle x$ and $\triangle \lambda$ are $\mathcal{O}(m^3)$. This would result in a total asymptotic complexity of $\mathcal{O}(m^{3.5})$ of the implementation. However, the computation time of an iteration doesn't depend on the number of links of the hyper-redundant robot or the step size path, hence the proposed method is linear in these. This is observed from \cref{fig:link_complexity,fig:path_complexity}. As discussed in \cref{sc:duct_as_STL}, in our implementation of the motion planning problem inside a polyhedral domain, we use a separate algorithm to determine whether to use the constraints of the form $[\mathbf{A}]_{m\times 3}\mathbf{x}_t+\mathbf{B}_{m\times 1}\leq 0$ in \cref{eq:STLeqs}. \Cref{alg:in_hull} discusses an $\mathcal{O}(m)$ algorithm to do the same in case of a polyhedron with $ m $ faces. Therefore, the total asymptotic complexity of our implementation should be about $\mathcal{O}(m^{1.5})$. \Cref{fig:face_complexity} shows that actual complexity implementation of our algorithm is about $(m^{1.67})$, with room for further improvement\footnote{Computation times in \cref{fig:complexity} was obtained using the 'tic-toc' function in MatlabR2016b running on a workstation with dual 8 core Intel XEON (2.1GHz), 32 GB RAM and Windows 10}. 
  \begin{figure}
 \centering
- \begin{subfigure}{0.9\textwidth}
- \centering
- \includegraphics[width=0.8\linewidth]{figures/link_complexity.pdf}
- \caption{Our implementation is time-linear in number of links}
- \label{fig:link_complexity}
-\end{subfigure}%
-\\
-\begin{subfigure}{0.9\textwidth}
+\begin{subfigure}{0.75\textwidth}
 \centering
- \includegraphics[width=0.8\linewidth]{figures/path_complexity.pdf}
-\caption{Our implementation is time-linear in number of path points}
+ \includegraphics[width=0.8\linewidth]{figures/Path_and_link_complexity.pdf}
+\caption{Our implementation is time-linear in number of path points and link numbers}
 \label{fig:path_complexity}
 \end{subfigure}%
 \\
-\begin{subfigure}{0.9\textwidth}
+\begin{subfigure}{0.8\textwidth}
 \centering
  \includegraphics[width=0.8\linewidth]{figures/face_complexity.pdf}
-\caption{Our implementation is $m^{1.5}$}
+\caption{Our implementation is $\mathcal{O}(m^{1.5})$}
 \label{fig:face_complexity}
 \end{subfigure}%
-
 \caption{ Complexity of our implementations}
 \label{fig:complexity}
 \end{figure}
@@ -794,13 +786,13 @@ n_5 = {}^2y_c,~n_6=-\cos{}^2\phi_1\sin{}^2\phi_2,~n_7=\sin{}^2\phi_1,~n_8={}^2z_
 The quantity ${}^1\left(\cdot\right)$ and ${}^2\left(\cdot\right)$ represent the corresponding parameters of the circles at the ends of the cylinder. $\phi_1$ and $\phi_2$ are the angles about the Y and X-axes which the plane of the circle is rotated, $(x_c,y_c,z_c)$ is the co-ordinate of the center of the circle.
 
 \subsection{An algorithm for classifying a point with respect to a polyhedron}\label{app:polyhedron_point}
-\indent Classification a point with respect to a triangulated domain is a very well known problem and many methods exist, which offer various advantages in terms of computational complexities. In \cref{alg:in_hull}, we describe a method, to classify a given set of points $O$ with respect to $\mathcal{P}$ as inside ($O_{in}$) and outside ($O_{out}$). Our algorithm and it's Matlab implementation\footnote{We have used a Matlab function inhull.m, a fully vectorized implementation of the algorithm, made available by John D'Errico for free usage. } is not very efficient at higher dimensions but seems to perform reasonably well at 3D, by taking less than 8 seconds to classify about 10,000 points with respect to a meshed domain. 
+\indent Classification a point with respect to a triangulated domain is a very well known problem and many methods exist, which offer various advantages in terms of computational complexities. In \cref{alg:in_hull}, we describe a method, to classify a given set of points $O$ with respect to a polyhedron $\mathcal{P}$ as inside ($O_{in}$) and outside ($O_{out}$). The worst case complexity for our algorithm\footnote{We have used a modified version of the Matlab function inhull.m, made available by John D'Errico for free usage. } is $\mathcal{O}(m)$.    
 \begin{algorithm}[ht!]
 	\textbf{Purpose :} To classify a set of points $ O $ with respect to $\partial \mathcal{P}$\\
 	\KwIn{The set $ O $, $O\in \Re^3$ and $O \equiv O_{in}\cup O_{out}$ }
 	\KwOut{$ O_{in},~ O_{out}$}
 	\begin{algorithmic}[1]
-		\STATE Obtain $C$, the center of $\mathcal{P}$ by taking the mean of the vertices of the $N$ facets constituting the boundary $\partial \mathcal{SP}$
+		\STATE Obtain $C$, the center of $\mathcal{P}$ by taking the mean of the vertices of the $N$ facets constituting the boundary $\partial \mathcal{P}$
 		\FOR {$i=1,2,...,N$}
 		\STATE Calculate the normal to the $i^{th}$ facet, $A_n^i=(f_i^1-f_i^2)\times(f_i^2-f_i^3)$
 		\STATE Choose a point $A^i$ on the $i^{th}$ facet and move $A_n^i$ to $A^i$
