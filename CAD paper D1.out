@@ -17,8 +17,7 @@
 \BOOKMARK [2][]{subsection.5.2}{5.2 Computational complexity of the proposed scheme}{section.5}% 17
 \BOOKMARK [2][]{subsection.5.3}{5.3 Limitations of the tractrix based scheme}{section.5}% 18
 \BOOKMARK [1][]{section.6}{6 Conclusions}{}% 19
-\BOOKMARK [2][]{subsection.6.1}{6.1 Contributions and scope of future work}{section.6}% 20
-\BOOKMARK [1][]{section.7}{7 Appendix}{}% 21
-\BOOKMARK [2][]{subsection.7.1}{7.1 Analytical expressions for u,v for quadrilateral patch}{section.7}% 22
-\BOOKMARK [2][]{subsection.7.2}{7.2 Parametric equation of solid cylinder}{section.7}% 23
-\BOOKMARK [2][]{subsection.7.3}{7.3 An algorithm for classifying a point with respect to a polyhedron}{section.7}% 24
+\BOOKMARK [1][]{section.7}{7 Appendix}{}% 20
+\BOOKMARK [2][]{subsection.7.1}{7.1 Analytical expressions for u,v for quadrilateral patch}{section.7}% 21
+\BOOKMARK [2][]{subsection.7.2}{7.2 Parametric equation of solid cylinder}{section.7}% 22
+\BOOKMARK [2][]{subsection.7.3}{7.3 An algorithm for classifying a point with respect to a polyhedron}{section.7}% 23
