@@ -58,17 +58,11 @@ Application of highly articulated hyper-redundant robots to manoeuvre in narrow 
 \section{Introduction}
 \label{sec:introduction}
 
-<<<<<<< HEAD
 In the reachable workspace of a serial robot in 3D, since a given position and orientation of end-effector can be achieved using a maximum of six joints, additional joints would create a redundant system. Such robots are generally termed redundant serial robots. While robots with 6 joints  or less can achieve a position and orientation in space with limited configurations, there are theoretically infinite possibilities for a hyper-redundant robot to achieve the same. These additional degrees of freedom can be effectively used in situations where the robot has to selectively choose configurations without altering the end-effector pose, such as robotic manipulation through confined spaces. This renders the potential use of highly articulated hyper-redundant robots in applications such as exploring earthquake hit regions for search and rescue operations [ref Wolf 2003, Murphy 2008], remotely operated robotic arms for minimally invasive laparoscopic and endoscopic surgeries [ref Slatkin 1995 Howe 1999 Cadiere2001 Murphy2008 Burgner-Kahrs2015] and inspection of industrial pipelines and nuclear reactors[ref Paljug1995 Chirikjian1991 William 1997 Gargiulo2009 Ma1994]. A large number of redundant joints also make the robots analogous in morphology to  snake, elephant trunk, tentacle etc. and hence, a topic of particular interest in bio-inspired robotics [ref Hirose2004 Hannan2000 Chirikjian1993]. Identifying a suitable configuration from the many possible configurations, given the position and orientation of the end-effector constitutes the redundancy resolution of hyper-redundant robots. If the path through which the end-effector has to follow is predetermined, then the redundancy resolution problem also constitutes the motion planning of the robot.
 
 The initial focus of researchers on addressing redundancy resolution problem was to solve the equation $\dot{\mathbf{\vartheta}}=J\left(\mathbf{\varphi} \right)\dot{\mathbf{\varphi}}$ where $J$ is the manipulator Jacobian matrix and $\vartheta$ and $\varphi$ are the vectors in task space and joint space respectively. Primary idea of inverse kinematics is to invert the Jacobian using Moore-Penrose inverse(pseudo inverse). While this method results in kinematic singularities, methods such as extended Jacobian[ ref Leigois1977, JohnBaillieul1984 ] and task prioritized augmented Jacobian[ ref Maciejewski1985] are aimed to avoid these singularities and also obtain solutions to inverse kinematic problem by specifying a velocity component at the singular configuration depending on the task at hand. Since the major advantage of using a hyper-redundant robot is to facilitate motion avoiding obstacles and movement in confined spaces, many researchers have worked on this particular task using above mentioned techniques [ref Hwang1992]. However, even though the methods avoid singularities in the manipulator Jacobian, it could generate other forms of singularities and also, the method becomes computationally complex for large number of joints [ref Chiaverini1997]. Many other redundancy resolution methods including variational approach, geometric approach, neural networks and fuzzy logic can also be found in the literature. [ref Sciavicco1988, Mao1997, Dasgupta, Antonelli2003]. In [ref Chirikjian1991], obstacle avoidance problem for hyper-redundant manipulator is carried out by fitting a curve through the joints of manipulator and planning the path for this `backbone curve' which avoids obstacles. Finding the pose of the backbone curve directly gives the co-ordinates of the joints. Hence, in case of obstacle cluttered environments, planning the path of the end-effector which avoids the obstacles will result in redundancy resolution since the trajectory itself forms the backbone curve of the manipulator[ref Latombe1991, Khatib1986, Lumelsky1987, Choset2001]. 
-=======
-In the reachable workspace of a serial robot in 3D, since a given position and orientation of end-effector can be achieved using a maximum of six joints, additional joints would create a redundant system. Such robots are generally termed redundant serial robots. While robots with 6 joints  or less can achieve a position and orientation in space with limited configurations, there are theoretically infinite possibilities for a hyper-redundant robot to achieve the same. These additional degrees of freedom can be effectively used in situations where the robot has to selectively choose configurations without altering the end-effector pose, such as robotic manipulation through confined spaces. This requires the use of highly articulated hyper-redundant robots in applications such as exploring earthquake hit regions for search and rescue operations, remotely operated robotic arms for minimally invasive laparoscopic and endoscopic surgeries and inspection of industrial pipelines and nuclear reactors[cite refs.]. A large number of redundant joints also make the robots analogous in morphology to  snake, elephant trunk, tentacle etc. and hence, is a topic of particular interest in bio-inspired robotics. Identifying a suitable configuration from the many possible configurations, given the position and orientation of the end-effector constitutes the redundancy resolution of hyper-redundant robots. If the path through which the end-effector has to follow is predetermined, then the redundancy resolution problem also constitutes the motion planning of the robot.
 
-The initial focus of researchers on addressing the redundancy resolution problem was to solve the equation $\dot{\mathbf{\vartheta}}=J\left(\mathbf{\varphi} \right)\dot{\mathbf{\varphi}}$ where $J$ is the manipulator Jacobian matrix and $\vartheta$ and $\varphi$ are the vectors in task space and joint space respectively. Primary idea of inverse kinematics is to invert the Jacobian using Moore-Penrose inverse(pseudo inverse). While this method results in singularities in the algorithm??, methods such as task space-augmented Jacobian[ ref Leigois] and extended Jacobian[ ref Maciejewski] are aimed to avoid these singularities and also obtain solutions to inverse kinematic problem by specifying a velocity component at the singular configuration depending on the task at hand [refs] . Since the major advantage of using a hyper-redundant robot is to facilitate motion avoiding obstacles and movement in confined spaces, many researchers have worked on this particular task using above mentioned techniques[refs]. However, even though the methods avoid singularities in the manipulator Jacobian, it could generate other forms of singularities and also, the method becomes computationally complex for large number of joints. Many other redundancy resolution techniques such as ??,?? and ?? can also be found in the literature. In [ref Chirikjian], obstacle avoidance problem for hyper-redundant manipulator is carried out by fitting a curve through the joints of manipulator and planning the path for this `backbone curve' which avoids obstacles. Finding the pose of the backbone curve directly gives the co-ordinates of the joints. Hence, in case of obstacle cluttered environments, planning the path of the end-effector which avoids the obstacles will result in redundancy resolution since the trajectory itself forms the backbone curve of the manipulator[ref path planning papers like Choset]. (Add minimize torque sentence also in this paragraph)
->>>>>>> 568e3ad1e2e1540e1b34c91bcf814e63e4d03180
-
-Even though the backbone curve approach is very simple, end-effector trajectory with many kinks may sometimes produce undesirably high acceleration at the tail of the link as shown in \cref{fig:backbone}. The motion will also look un-natural. In [ref], the authors proposed a tractrix based redundancy resolving algorithm which produces natural looking motion of hyper-redundant robot. It is also shown in [ref] that the same can be achieved by minimizing the subsequent motion of the links, given the displacement of the head(end-effector), and the motion attenuates from the head to the tail(base) of the entire manipulator. For obstacles represented by simple analytical shapes, the algorithm can be effectively used for obstacle avoidance of the entire link chain as well[ref]. However, in the special case of motion through confined spaces within a narrow bounded path (which hereafter we call ``duct''), directly implementing the algorithm would require modeling the entire half space outside the duct as obstacles which is impractical. In this paper, we discuss a few methods to represent ducts and how to implement tractrix-based algorithm for motion planning of a hyper-redundant robot. In section \ref{sec:Tractrixoverview}, an overview of tractrix based algorithm and the physical tractability of the algorithm is discussed. Representation of ducts in 2D plane and motion planning through the planar ducts is detailed in section \ref{sec:2Dmotionplanning}. Representation of ducts in 3D and motion planning in the same is explained in \cref{sec:3Dmotionplanning}. In section \ref{sec:Examples}, we demonstrate the concepts by simulating the motion of hyper-redundant robots in three practical applications. Advantage of this method in terms of computational complexity and the limitations of this method is also mentioned in the section. Finally, in section \ref{sec:conclusions}, we present the conclusions of the paper and the scope of future work.
+Even though the backbone curve approach is very simple, end-effector trajectory with many kinks may sometimes produce undesirably high acceleration at the tail of the link as shown in \cref{fig:backbone}. The motion will also look un-natural. In [ref Srinivasan2010], the authors proposed a tractrix based redundancy resolving algorithm which produces natural looking motion of hyper-redundant robot. It is also shown in [ref Midhun 2013] that the same can be achieved by minimizing the subsequent motion of the links, given the displacement of the head(end-effector), and the motion attenuates from the head to the tail(base) of the entire manipulator. For obstacles represented by simple analytical shapes, the algorithm can be effectively used for obstacle avoidance of the entire link chain as well[Midhun 2017]. However, in the special case of motion through confined spaces within a narrow bounded path (which hereafter we call ``duct''), directly implementing the algorithm would require modeling the entire half space outside the duct as obstacles which is impractical. In this paper, we discuss a few methods to represent ducts and how to implement tractrix-based algorithm for motion planning of a hyper-redundant robot. In section \ref{sec:Tractrixoverview}, an overview of tractrix based algorithm and the physical tractability of the algorithm is discussed. Representation of ducts in 2D plane and motion planning through the planar ducts is detailed in section \ref{sec:2Dmotionplanning}. Representation of ducts in 3D and motion planning in the same is explained in \cref{sec:3Dmotionplanning}. In section \ref{sec:Examples}, we demonstrate the concepts by simulating the motion of hyper-redundant robots in three practical applications. Advantage of this method in terms of computational complexity and the limitations of this method is also mentioned in the section. Finally, in section \ref{sec:conclusions}, we present the conclusions of the paper and the scope of future work.
 
 \begin{figure}[ht!]
     \centering
@@ -85,7 +79,7 @@ Consider a rigid link of length $L_0$ positioned in a 2D plane, initially aligne
 \label{eq:tractrix}
 \textbf{x}_t = [x(t),y(t)] = [t-L_0\tanh\frac{t}{L_0},L_0\sech\frac{t}{L_0}]
 \end{align}
-The extension of tractrix equation along motion in arbitrary direction as well as an algorithm to calculate the same in 3-D can be found in [ref] and [ref]. In case of multiple links connected to each other as in the case of a hyper-redundant robot, or a one dimensional object approximated as a series of connected linkages, the algorithm can be applied iteratively from the head to tail as shown in [ref]. By moving along the tractix curve, the tail moves the minimum distance with respect to its initial position. Also, the displacement $\Vert \textbf{x}_h-\textbf{X}_h \Vert \geq \Vert \textbf{x}_t-\textbf{X}_t \Vert$ which means that the displacement attentuates from the displaced link to end of the chain in case of serially connected links as shown in \cref{fig:attenuation_of Motion}. Due to the minimal displacement of the tail, the motion can be imagined as the one with high lateral resistance on the link and less resistance in the direction of motion of link. 
+The extension of tractrix equation along motion in arbitrary direction as well as an algorithm to calculate the same in 3-D can be found in [ref Srinivasan]. In case of multiple links connected to each other as in the case of a hyper-redundant robot, or a one dimensional object approximated as a series of connected linkages, the algorithm can be applied iteratively from the head to tail as shown in their paper. By moving along the tractix curve, the tail moves the minimum distance with respect to its initial position. Also, the displacement $\Vert \textbf{x}_h-\textbf{X}_h \Vert \geq \Vert \textbf{x}_t-\textbf{X}_t \Vert$ which means that the displacement attentuates from the displaced link to end of the chain in case of serially connected links as shown in \cref{fig:attenuation_of Motion}. Due to the minimal displacement of the tail, the motion can be imagined as the one with high lateral resistance on the link and less resistance in the direction of motion of link. 
 
 \begin{figure}[ht!]
     \centering
@@ -105,18 +99,19 @@ The extension of tractrix equation along motion in arbitrary direction as well a
 \end{figure}
 
 
+It is shown in [ref Midhun 2013] that for a single rigid link, tractrix curve can also be obtained by minimizing an $L^2$ metric -- the displacement of the tail from its initial position subject to the condition that the length of link is always preserved. So, the co-ordinates of the tail can be obtained from the following minimization problem:
 \begin{align} \label{eq:Opt_prob_main}
 \argmin_{\textbf{x}_t} &\Vert \textbf{x}_t-\textbf{X}_t \Vert\\
 \text{Subject~ to:  } &\Vert \textbf{x}_h - \textbf{x}_t \Vert -L_0 = 0 \nonumber
 \end{align}
-An advantage of expressing tractrix as a minimization problem is that we can add more constraints to the above expression and hence, control the position of the tail point. Though the resulting curve may not necessarily be a tractix curve, the motion of the tail will appear realistic [ref]. For the motion of a link which minimizes its tail velocity (displacement of the tail co-ordinates), obstacle avoidance is achieved by formulating the problem as:
+An advantage of expressing tractrix as a minimization problem is that we can add more constraints to the above expression and hence, control the position of the tail point. Though the resulting curve may not necessarily be a tractix curve, the motion of the tail will appear realistic. For the motion of a link which minimizes its tail velocity (displacement of the tail co-ordinates), obstacle avoidance is achieved by formulating the problem as:
 \begin{align} \label{eq:obstacle_avoidance_opt}
 \argmin_{\textbf{x}_t} &\Vert \textbf{x}_t-\textbf{X}_t \Vert\\
 \text{Subject to:} 
 &\Vert \textbf{x}_h - \textbf{x}_t \Vert -L_0 = 0 \nonumber \\ 
 ~~ &f(\textbf{x}) \succeq 0  \nonumber
 \end{align}
-where $\bf{f}(x) = 0$ are the analytical equations of the boundaries of the surfaces which are to be avoided. For example, if the tail is to avoid a single obstacle represented by a circle with center $(x_c,y_c)$, the expression $f(x) = (x-x_c)^2+(y-y_c)^2-r^2>0$ ensures that the point $x$ always lies outside the circle of radius $r$. Complex objects can be modelled as a combination of super-ellipses as shown in [ref]. In this case, $\textbf{f}(x)$ will be a vector of all boundary equations $\textbf{f}(x) = [f_1(x),f_2(x),...f_m(x)]^T$. It is also worth noting that the value of constraint function in \cref{eq:obstacle_avoidance_opt} will increase or decrease as the point is farther from the curve $\textbf{f}(x)$; the value being zero on the curve. Hence, this approach can also be imagined as a geometric potential field, with zero potential only at the surface of the obstacle. 
+where $\bf{f}(x) = 0$ are the analytical equations of the boundaries of the surfaces which are to be avoided. For example, if the tail is to avoid a single obstacle represented by a circle with center $(x_c,y_c)$, the expression $f(x) = (x-x_c)^2+(y-y_c)^2-r^2>0$ ensures that the point $x$ always lies outside the circle of radius $r$. Complex objects can be modelled as a combination of super-ellipses as shown in [ref Midhun2017]. In this case, $\textbf{f}(x)$ will be a vector of all boundary equations $\textbf{f}(x) = [f_1(x),f_2(x),...f_m(x)]^T$. It is also worth noting that the value of constraint function in \cref{eq:obstacle_avoidance_opt} will increase or decrease as the point is farther from the curve $\textbf{f}(x)$; the value being zero on the curve. Hence, this approach can also be imagined as a geometric potential field, with zero potential only at the surface of the obstacle. 
 
 \begin{figure}[h!]
 \centering
@@ -142,6 +137,8 @@ In the previous section we have discussed how tractrix based motion planning can
 	f(\theta x+(1-\theta)y)\leq \theta f(x)+(1-\theta)f(y)
 	\end{equation}
 \end{enumerate}
+In our problem, the function is the $L_2$ norm of a vector in $\mathbb{R}^2$ or $\mathbb{R}^3$.  Though the $L_2$ norm is defined for all real vectors, the constraints ensuring that the object moves within the confinement of the duct restricts the domain to a feasible closed set $\mathcal{S}$\footnote{Assuming $\mathcal{S}$ to be a closed set allows the object to physically touch the boundaries of the duct}. Therefore, if the conditions a and b associated with the definition of a convex function are satisfied for $\mathcal{S}$ and the $L_2$ norm, then the solution obtained for \cref{eq:Opt_prob_main} is unique. \\ 
+It is a well known result that any p-norm $||x||_p=\left(\sum\limits_{i=1}^{n}|x_i|^p\right)^{1/p},~ x\in \mathbb{R}$ is a convex function for $p\geq 1$. The fact that a p-norm is convex can be shown by using the scalability and the triangle inequality associated with a normed vector-space. With $\theta$  being a scaling parameter, \cref{eq:convex_fn} simplifies exactly to the triangle equality for norms. Also, any p-norm is a valid norm on $\mathbb{R}$ for $p\geq1$ follows from the Minkowski inequality\footnote{For a measure space $\mathbb{S}$, $p\geq 1$ and $f,~g$ members of the Lebesgue space $L_P(\mathbb{S})$, the following inequality holds: $||f+g||_p\leq ||f||_p+||g||_p$ }. This leaves us to show that the feasible set $\mathcal{S}$ is convex. For all our modeling examples, we choose $\mathcal{S}$ to be convex by assigning convex boundaries to it or, expressing $\mathcal{S}$ as intersections of closed convex sets.  However, as is, none of the problems posed in \cref{eq:Opt_prob_main,eq:obstacle_avoidance_opt,eq:path_planning_opt} are convex because of the non-linear equality constraints associated with them, which guarantees that the length of a segment is constant. To pose it as a convex problem we approximate the constraint with linear constraints as described in \cref{sc:Complexity}. For the cases of motion planning in 2-D and 3-D, the paths chosen are either entirely convex or are discretized as such. As discussed in the following sections, we do not represent a ``duct" as a union of closed convex sets as the first condition of convexity cannot be guaranteed for sets formed by union of convex sets. 
 
 \section{Motion planning through planar ducts}
 \label{sec:2Dmotionplanning}
@@ -149,6 +146,7 @@ In the previous section we have discussed how tractrix based motion planning can
 In this section, we analyze different methods to represent a duct in 2D planar surface and how we can add constraints in different representations of duct so as to ensure that the the tip will always lie inside the duct during motion. Each method is shown to have its own advantages.
 \subsection{Representation of duct using super-ellipses}
 %
+One method to represent a duct is by overlapping a series of super-ellipses as shown in [fig5b]. This is the most simple and straightforward means of representation as shown in [ref Midhun]. In Cartesian co-ordinate system $\mathbb{R}^2$, the contour of super-ellipse obeys the following equation:
 \begin{align}
 f(\textbf{x})= f(x,y):\quad \left \vert \frac{x-x_c}{a} \right\vert^n+\left\vert \frac{y-y_c}{b} \right\vert^n-1=0
 \end{align}
@@ -174,6 +172,7 @@ The constraint equation now becomes $g_i(\textbf{x}_t) : f_i(T_i^T\textbf{x}_t)<
 C_{\text{ineq}}:~~ \min\left(g_i(\textbf{x}_t)\right) < 0,~~ i=1,2,...,m 
 \end{align}
 
+An example of single link and multi-segmented chain passing through the duct is shown in \cref{fig:ductasSEs}. Motion of a unit link with and without constraint is shown in \cref{fig:gradienteffectSE}. The negative gradient of the inequality constraint function is also shown in the \cref{fig:gradienteffectSE}. The method shown here is quite fast and scalable as explained in section \cref{sc:Complexity}, while the majority of time taken for the scheme being in identifying the super-ellipsoids which fit the duct profile. For the example shown in this section, this identification is done by manually selecting clusters of points in the duct and fitting ellipses which will reduce the fitting error in a least squared sense.
 
 %\begin{figure}[h]
 %\centering
@@ -192,6 +191,7 @@ C_{\text{ineq}}:~~ \min\left(g_i(\textbf{x}_t)\right) < 0,~~ i=1,2,...,m
     \begin{subfigure}{0.48\textwidth}
         \centering
         \includegraphics[width=0.95\linewidth]{figures/fig5.pdf}
+        \caption{Motion through duct modelled as \\combination of super-ellipses [movie link] \label{fig:ductasSEs}}
     \end{subfigure}%
     \begin{subfigure}{0.48\textwidth}
         \centering
@@ -261,6 +261,7 @@ As an example, motion of a unit link passing through the duct is shown in [fig11
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.75]{figures/fig10.pdf}
+\caption{ Example of constrained motion with stitched quadrilaterals [movie link] \label{fig:motionquads}}
 \end{figure}
 
 \begin{figure}[h!]
@@ -287,6 +288,7 @@ For example, [fig11] shows a 2D duct defined by two curves $\zeta_1(u) = \left[u
     \begin{subfigure}{0.48\textwidth}
         \centering
         \includegraphics[width=0.75\linewidth]{figures/fig12.pdf}
+        \caption{Motion through analytical duct [movie link] \label{fig:analyticductmotion}}
     \end{subfigure}
     \caption{ Tractrix based algorithm on analytical duct}
 \end{figure}
@@ -386,6 +388,7 @@ Another interesting prospect of this method is its application in obstacle avoid
         \begin{subfigure}{0.325\textwidth}
         \centering
         \includegraphics[width=0.75\linewidth]{figures/pipefitstl.pdf}
+        \caption{Convex polyhedra\label{fig:pipefitstl}}
     \end{subfigure}
     \caption{ Representation of duct using ellipsoids, cylinders and point clouds\label{fig:pipefitECS}}
 \end{figure}
@@ -424,6 +427,7 @@ Another interesting prospect of this method is its application in obstacle avoid
 In this section, we present three practical examples where the above mentioned methods are applied and some discussion on the implementation of the above mentioned algorithms.
 \subsection{Examples of motion planning through ducts}
 
+\subsubsection{Motion planning for inspection robots}\cref{sc:pipe_robot}
 One major use of hyper-redundant robots is in inspection of ducts such as industrial pipelines. By approximating the pipe-line as ellipsoids or cylinders, methods mentioned above are made use of, to plan the motion of a hyper-redundant robot through the same. The path is chosen as the medial axis of the duct, which is also the axis of the cylinders which make up the duct. The configuration of hyper-redundant robot for each path-step is calculated and the simulation of resultant motion is shown in \cref{fig:pipelinemotion}.
 \begin{figure}[ht!]
     \centering
@@ -464,6 +468,7 @@ One major use of hyper-redundant robots is in inspection of ducts such as indust
         
     \end{subfigure}%
     
+    \caption{ Motion of hyper-redundant manipulator through a duct [movie link] \label{fig:pipelinemotion}}
 \end{figure}
 
 
@@ -526,9 +531,12 @@ The realistic motion simulation of endoscope through GI tract is shown in [fig21
         
     \end{subfigure}%
     
+    \caption{ Motion of endoscope through GI tract [movie link]}
 \end{figure}
 
 \subsubsection{Motion planning for search and rescue operations}
+Exploring a cluttered environment-- such as in an earthquake hit zone is one of the major applications that necessitates the use of hyper-redundant manipulators. In this example, we show how the proposed algorithms can be effectively used in such applications. With reference to \cref{fig:scene}, the objective of the hyper-redundant manipulator, consisting of 20 links is to 1) enter the scene through the hole in the outer wall, 2) Pass through the vent to get inside the room, 3) Explore the objects 3,4 and 5 located inside the blue region and 4) Exit without colliding with the complex shapes given by objects 6 and 7. Here, the exploration problem is effectively tackled by combining the various methods discussed so far. We use the following constraints to define the 6 different problems of the form in \cref{eq:path_planning_opt}, to generate the entire motion plan. The first problem is to enter through the hole in the wall. For this, an ellipsoid of the size of the hole located in the outer wall, and the feasible set for the first problem is the interior of the ellipsoid, the path being the axis along the direction of the entry. The second problem is a free tractrix motion, where the robot has to reach the opening of the vent. The feasible set in this case is $\mathbb{R}^3$. Next, the robot passes through the vent. This problem is analogous to the one discussed in \cref{sc:pipe_robot}. A collection of cylindrical polyhedra have been to represent the vent-- the feasible set in this problem. This is followed by another free tractrix problem, where the robot exits the vent at the top of the room and reaches to the floor level. Following which, the robot enters the transparent blue search region populated by objects 3 4 and 5. The feasible set of each of the links are obtained on the fly as a combination of the faces of the search region (transparent blue polyhedron) and the nearest obstacle. Finally, the robot exits the scene through another `hole' in the designated search region modeled as a cylinder. This guarantees that the complex  objects 6 and 7 have no effect on the robot motion as they have no contribution to the feasible set of the final problem. This would have been particularly difficult in half-space based motion plans[ refre midhuns jmr]. Also, it is easy to see that the geometry based global motion planning techniques for obstacle avoidance existing in literature will entail a very involving problem formulation [ananthanarayanan].  \Cref{fig:scene_movie} shows the simulated results for the motion of manipulator along a chosen path. 
+%While using the methods proposed in this paper, the problem can be addressed with only 6 constraints. The six constraints in this case are actively selected so that they become active only when the position of the head is in the vicinity of the objects/ shapes.
 \begin{figure}[h!]
 \centering
 \includegraphics[scale=0.65]{figures/figscene.pdf}
@@ -573,6 +581,8 @@ The realistic motion simulation of endoscope through GI tract is shown in [fig21
         \includegraphics[width=1\linewidth]{figures/Sceneshots/6.png}
        
     \end{subfigure}
+    \caption{ Motion of hyper-redundant robot in confined spaces [movie link] }
+    \label{fig:scene_movie}
 \end{figure}
 
 \subsection{Computational complexity of the proposed scheme} \label{sc:Complexity}
@@ -778,10 +788,10 @@ The quantity ${}^1\left(\cdot\right)$ and ${}^2\left(\cdot\right)$ represent the
 	\label{alg:in_hull}
 \end{algorithm}
 
-%\bibliography{journalref}
+\bibliography{journalref}
 
 
-\begin{thebibliography}{99}
+%\begin{thebibliography}{99}
 
 We have to see IEEE reference format.
 %%1
@@ -803,7 +813,7 @@ We have to see IEEE reference format.
 %\newblock{\em Bioinspiration \& Biomimetics}, {\bf 10}~(5), pp. 055006.
 
 
-\end{thebibliography}
+%\end{thebibliography}
 
 
 \end{document}
