@@ -496,12 +496,17 @@ The realistic motion simulation of endoscope through GI tract is shown in [fig21
 
 \begin{figure}[ht!]
     \centering
-    \begin{subfigure}{0.28\textwidth}
+    \begin{subfigure}{0.15\textwidth}
         \centering
-        \includegraphics[width=0.95\linewidth]{figures/GIsnaps/1.png}
+        \includegraphics[width=0.9\linewidth]{figures/GIsnaps/1.png}
    
     \end{subfigure}%
     ~
+       \begin{subfigure}{0.15\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{figures/GIsnaps/2.png}
+
+    \end{subfigure}%
        \begin{subfigure}{0.15\textwidth}
         \centering
         \includegraphics[width=0.75\linewidth]{figures/GIsnaps/3.png}
@@ -543,37 +548,37 @@ Exploring a cluttered environment-- such as in an earthquake hit zone is one of 
     \centering
     \begin{subfigure}{0.3\textwidth}
         \centering
-        \includegraphics[width=1\linewidth]{figures/figscene.png}
+        \includegraphics[width=1\linewidth]{figures/Sceneshots/1.png}
    
     \end{subfigure}%
     ~
         \begin{subfigure}{0.3\textwidth}
         \centering
-        \includegraphics[width=1\linewidth]{figures/figscene.png}
+        \includegraphics[width=1\linewidth]{figures/Sceneshots/2.png}
        
     \end{subfigure}
         ~
         \begin{subfigure}{0.3\textwidth}
         \centering
-        \includegraphics[width=1\linewidth]{figures/figscene.png}
+        \includegraphics[width=1\linewidth]{figures/Sceneshots/3.png}
        
     \end{subfigure}%\\
 \\
 ~\\
         \begin{subfigure}{0.3\textwidth}
         \centering
-        \includegraphics[width=1\linewidth]{figures/figscene.png}
+        \includegraphics[width=1\linewidth]{figures/Sceneshots/4.png}
 
     \end{subfigure}%
 		~   
        \begin{subfigure}{0.3\textwidth}
         \centering
-        \includegraphics[width=1\linewidth]{figures/figscene.png}
+        \includegraphics[width=1\linewidth]{figures/Sceneshots/5.png}
            \end{subfigure}
                ~
         \begin{subfigure}{0.3\textwidth}
         \centering
-        \includegraphics[width=1\linewidth]{figures/figscene.png}
+        \includegraphics[width=1\linewidth]{figures/Sceneshots/6.png}
        
     \end{subfigure}
     \caption{ Motion of hyper-redundant robot in confined spaces ?? Fig will be edited??}
@@ -630,7 +635,9 @@ where, $\textbf{A}=\nabla_{\textbf{x}_t}^2g(\textbf{x}_t)+\sum\limits_{i=1}^{m}\
 &\triangle s = -\textbf{L}^{-1}(\textbf{F}_3+\textbf{S}\triangle \lambda) \nonumber
 \end{align}
  Where, $\textbf{G}= \textbf{A}+\textbf{B}^T(\textbf{S}^{-1}\textbf{L})\textbf{B}$, a $3\times3$ matrix (for a 3D case) which can be inverted symbolically, also, $\textbf{S}$ and $\textbf{L}$ are diagonal matrices so their inverse can be calculated in linear time ($\mathcal{O}(m)$). Overall, the asymptotic complexity of solving \cref{eq:Newton-dir} is $\mathcal{O}(m^3)$ as the calculation of $ G^{-1},~ \triangle x$ and $\triangle \lambda$ are $\mathcal{O}(m^3)$. This would result in a total asymptotic complexity of the implementation to be $\mathcal{O}(m^{3.5})$. However, the computation time of an iteration doesn't depend on the number of links of the hyper-redundant robot or the step size path, hence the proposed method is linear in these. This is observed from \cref{fig:path_complexity}. As discussed in \cref{sc:duct_as_STL}, in our implementation of the motion planning problem inside a polyhedral domain, we use a separate algorithm to determine whether to use the constraints of the form $[\mathbf{A}]_{m\times 3}\mathbf{x}_t+\mathbf{B}_{m\times 1}\leq 0$ in \cref{eq:STLeqs}. \Cref{alg:in_hull} discusses an $\mathcal{O}(m)$ algorithm to do the same in case of a polyhedron with $ m $ faces. Therefore, the total asymptotic complexity of our implementation should be about $\mathcal{O}(m^{1.5})$. \Cref{fig:face_complexity} shows that actual complexity implementation of our algorithm scales as $(m^{1.43})$, with room for further improvement\footnote{Computation times in \cref{fig:complexity} was obtained using the `tic-toc' function in MatlabR2016b running on a workstation with dual 8 core Intel XEON (2.1GHz), 32 GB RAM and Windows 10. The constant term in the fit equation shown in \cref{fig:face_complexity} signifies the time required to compute the free tractrix problem given by \cref{eq:Opt_prob_main}}. Furthermore, the formulations involving parametric shapes (super ellipses and super ellipsoids) are even faster because the classification of a point with respect to the domain is available as a closed form expression. It may also be noted that this analysis is not applicable to cylinders since they require iterative methods to solve the in-out classifier.
- 
+
+To summarize, three methods to represent 3D ducts are discussed in the previous section which can be chosen based on the computational time and required modelling effort. In the first method of representing ducts by a collection of ellipsoids, modelling time is significant as a separate utility is required to identify the points on surface and to fit the ellipsoids on the data points. However, the solution method is quite fast due to the availability of a closed form function for the in-out classification. The second method of fitting cylinders also involve significant amount of pre-processing to identify cylinders that fit the duct. The implementation time is also high due to the non-analytical nature of the in-out classifier. However, the provision of having a constant clearance from the wall makes it particularly attractive for formulating motion plans for which the thickness of the robot has to be taken into account. Finally, the method of using convex polyhedra to represent ducts requires the least pre-processing time, and is easy to implement with the worst case complexity of $\mathcal{O}(m^{1.5})$.
+
 \begin{figure}
 \centering
 \begin{subfigure}{0.48\textwidth}
