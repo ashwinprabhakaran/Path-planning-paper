@@ -14,13 +14,15 @@
 \usepackage{caption}
 \usepackage{color}
 \usepackage{float}
+\usepackage{subcaption}
+\usepackage{algorithm2e,algorithmic}
+\usepackage{appendix}
 \usepackage[noabbrev]{cleveref}
 \crefname{appsec}{appendix}{appendices}
 \crefname{algocf}{algorithm}{algorithms}
 \Crefname{algocf}{Algorithm}{Algorithms}
-\usepackage{subcaption}
-\usepackage{algorithm2e,algorithmic}
-\usepackage{appendix}
+
+
 %\usepackage{breqn}
 \DeclareMathOperator{\sech}{sech}
 \DeclareMathOperator*{\argmin}{arg\,min}
@@ -338,12 +340,12 @@ By changing the parameters $a,b,c$ and $n$, we get different closed surfaces as 
 The procedure to calculate the inside-outside condition is same as that of the method described in section [ref sec]. The inequality condition will be [\ref{eq: min_and_mingx}]. An example problem with duct approximated using super-ellipsoids is shown in [fig15]. As mentioned in the case for super-ellipses, solution to the motion planning problem with ducts represented by super-ellipsoids is fast (also explained in section ??). Identifying the shapes which fit the duct, is also same as the method mentioned in section ??. 
 
 \subsection{Representation of duct as a set of connected cylinders}
-Similar to the set of connected quadrilaterals in 2D, a duct in 3D can be represented by series of connected cylinders. By linearly interpolating two circles in space, we get the parametric equation of the cylinder as (refer Appendix for the detailed expressions):
+Similar to the set of connected quadrilaterals in 2D, a duct in 3D can be represented by series of connected cylinders. By linearly interpolating two circles in space, we get the parametric equation of the cylinder as given in \cref{eq:cylinder}. (Please see \cref{fig:cylparams} and \cref{app:parametric_u_v_solid_cyl} for the expanded form of \cref{eq:cylinder}.)
 \begin{align}
 \label{eq:cylinder}
 x = C_1(u,t,\theta),~~y = C_2(u,t,\theta),~~z = C_3(u,t,\theta)
 \end{align}
-where the parameters $u,t$ and $\theta$ varies along the radial, axial and circumferential direction of the cylinder respectively (refer [fig ??]). Similar to the representation in [sec], $0\leq u< 1$ and $0<t<1$ classifies the point as inside the cylinder. The constrained inequality \ref{eq:quadrils} generated will also be valid for cylinders. The quantity $h_i$ will simply be $h = \hat{u}_i-1$, which will show the same characteristics as defined by the value of $h_i$ in equation \ref{eq:ductgradientinquad}. The constraint inequality, hence takes the form:
+where the parameters $u,t$ and $\theta$ varies along the radial, axial and circumferential direction of the cylinder respectively (see \cref{fig:cylparams}). Similar to the representation in [\textbf{??}], $0\leq u< 1$ and $0<t<1$ classifies the point as inside the cylinder. The constrained inequality \ref{eq:quadrils} generated will also be valid for cylinders. The quantity $h_i$ will simply be $h = \hat{u}_i-1$, which will show the same characteristics as defined by the value of $h_i$ in equation \ref{eq:ductgradientinquad}. The constraint inequality, hence takes the form:
 \begin{align}
 \label{eq:const_cyl}
 C_\text{ineq}:~~\left[\chi\left(\hat{\mathbf{t}}\right)\right]^T\mathbf{h}<0
@@ -356,21 +358,21 @@ As is the case of quadrilaterals,it is possible to add a clearance from the wall
 
 \subsection{Representation of duct as point clouds}\label{sc:duct_as_STL}
 
-The most direct way of representing the duct, in a practical sense, would be as a point cloud  ($\mathbf{R}_i,i=1,2,...,N$ where $N$ is the number of points in the cloud) such as obtained from a LiDAR system or a depth map. Subsequently, it would be possible to process the raw data to obtain the geometric representation of the point of cloud as a Stereolithographic formatted file (STL) or the like. Using the current framework, it is possible to pose the motion planning problem in the following form:
+The most direct way of representing the duct, in a practical sense, would be as a point cloud as obtained from a LiDAR system or a depth map. Subsequently, it would be possible to process the raw data (by using alpha shapes [ref edelsbrunner] or standard Delaunay triangulation algorithms [ref mishra]) to obtain the geometric representation of the cloud of points as a convex polyhedron. Stereolithographic formatted files (STL) are a standard data structure, which have been used in the current work. Using the current framework, it is possible to pose the motion planning problem in the following form:
 \begin{align}
 \label{eq:STLeqs}
 \min_{\textbf{x}_t} &\Vert \textbf{x}_t-\textbf{X}_t \Vert\\
 \nonumber \text{sub:~~~} &\Vert \textbf{x}_h - \textbf{x}_t \Vert -L_0 = 0\\
 &[\mathbf{A}]\mathbf{x}_t+\mathbf{B}\leq 0 \nonumber
 \end{align}
-where $\mathbf{A}$ is a $m\times 3$ matrix and $\mathbf{B}$ is a $m\times 1$ vector. The left hand side of $m$ inequalities represent the equations of $m$ number of planes spanned by three adjacent points in the cloud. The $i^\text{th}$ equation, $A_{i}^1x_t+A_{i}^2y_t+A_{i}^3z_t+B_i$ takes a value less than zero when the point $\mathbf{x}_t$ is in the half space which contains the origin and is greater than zero otherwise. The value also provides the attractive gradient which will ensure that the point stays inside the duct. However, in actual implementation, this procedure will be tedious and for practical convenience, it is possible to classify the point $\mathbf{x}_t$ as inside or outside the hull using the \cref{alg:in_hull} described in \cref{app:polyhedron_point}. The attracting gradient which ensures the point to be inside the duct--as the case with the previous methods-- can be provided using the artificial potential field generated from the centroid of the point cloud in conjunction with the output of the in-out function. The inequality constraint then becomes
+where $\mathbf{A}$ is a $m\times 3$ matrix and $\mathbf{B}$ is a $m\times 1$ vector. The left hand side of $m$ inequalities represent the equations of $m$ number of planes spanned by three points on each triangular facet of convex polyhedron. The $i^\text{th}$ equation, $A_{i}^1x_t+A_{i}^2y_t+A_{i}^3z_t+B_i$ takes a value less than zero when the point $\mathbf{x}_t$ is in the half space which contains the origin and is greater than zero otherwise. The value also provides the attractive gradient which will ensure that the point stays inside the duct. However, in actual implementation, this procedure will be tedious and for practical convenience, it is possible to classify the point $\mathbf{x}_t$ as inside or outside the hull using the \cref{alg:in_hull} described in \cref{app:polyhedron_point}. The attracting gradient which ensures the point to be inside the duct--as was the case with the previous methods-- can be provided using the artificial potential field generated from the centroid of the point cloud in conjunction with the output of the in-out function. The inequality constraint then becomes
 \begin{align}
 \label{eq:STLineq}
 w(\mathbf{R})\frac{1}{\Vert(\overline{\mathbf{R}})-\mathbf{x}_t\Vert}\leq 0
 \end{align}
 where $w(\overline{\mathbf{R}})$ represents the output from in-out function which is either 1 for the point being outside and 0 for the point being inside the cloud or on the bounding surface\footnote{Unlike the previous classification problems, the bounding surface will also be considered as inside the surface in this case.}. 
 
-Another interesting prospect of this method is its application in obstacle avoidance where the left hand side of the equation \Cref{eq:STLineq} will be greater than zero. The obstacle avoidance methods which follow the equation given by \Cref{eq:obstacle_avoidance_opt} is often limited to shapes which can be modelled analytically. Though the algorithm shown here is limited to convex shapes, they can be applied to more complex and non-symmetric shapes. Representation of pipe using ellipsoids, analytical cylinders and as convex point clouds is shown in \ref{fig:pipefitECS}.
+Another interesting prospect of this method is its application in obstacle avoidance where the left hand side of the equation \cref{eq:STLineq} will be greater than zero. The obstacle avoidance methods which follow \cref{eq:obstacle_avoidance_opt} is often limited to shapes which can be modelled analytically. Though the algorithm shown here is limited to convex shapes, they can be applied to more complex and non-symmetric shapes. Representation of pipe using ellipsoids, analytical cylinders and as convex point clouds is shown in \ref{fig:pipefitECS}.
 
 
 \begin{figure}[ht!]
@@ -378,12 +380,12 @@ Another interesting prospect of this method is its application in obstacle avoid
     \begin{subfigure}{0.325\textwidth}
         \centering
         \includegraphics[width=0.75\linewidth]{figures/pipefitell.pdf}
-        \caption{Ellipsoid fit \label{fig:pipefitell}}
+        \caption{Fitted ellipsoids \label{fig:pipefitell}}
     \end{subfigure}%
     \begin{subfigure}{0.325\textwidth}
         \centering
         \includegraphics[width=0.75\linewidth]{figures/pipefitcyl.pdf}
-        \caption{Cylinders fit \label{fig:pipefitcyl}}
+        \caption{Fitted cylinders \label{fig:pipefitcyl}}
     \end{subfigure}
         \begin{subfigure}{0.325\textwidth}
         \centering
@@ -427,7 +429,7 @@ Another interesting prospect of this method is its application in obstacle avoid
 In this section, we present three practical examples where the above mentioned methods are applied and some discussion on the implementation of the above mentioned algorithms.
 \subsection{Examples of motion planning through ducts}
 
-\subsubsection{Motion planning for inspection robots}\cref{sc:pipe_robot}
+\subsubsection{Motion planning for inspection robots}\label{sc:pipe_robot}
 One major use of hyper-redundant robots is in inspection of ducts such as industrial pipelines. By approximating the pipe-line as ellipsoids or cylinders, methods mentioned above are made use of, to plan the motion of a hyper-redundant robot through the same. The path is chosen as the medial axis of the duct, which is also the axis of the cylinders which make up the duct. The configuration of hyper-redundant robot for each path-step is calculated and the simulation of resultant motion is shown in \cref{fig:pipelinemotion}.
 \begin{figure}[ht!]
     \centering
@@ -473,7 +475,7 @@ One major use of hyper-redundant robots is in inspection of ducts such as indust
 
 
 \subsubsection{Motion planning through a GI tract}
-There has been a growing interest in simulating motion of endoscope through GI tract for developing simulators for endoscopy and for implementing path and motion plans for endoscopic and laparoscopic surgical robots. In this section, we simulate the natural motion of an endoscope through GI tract. For simulation, we use the stereolithographic data of GI tract obtained by processing CT scan data. For demonstration, both the methods presented in [sec] and [sec] are used for approximating the GI tract. In the first method, a collection of points are manually selected from the STL file where super-elliposids are fit based on least square error minimization techniques.  Representation of GI tract as series of super-ellipsoids is shown in [fig19]
+There has been a growing interest in simulating motion of endoscope through GI tract for developing simulators for endoscopy and for implementing path and motion plans for endoscopic and laparoscopic surgical robots. In this section, we simulate the natural motion of an endoscope through GI tract. For simulation, we use the stereolithographic data of GI tract obtained by processing CT scan data. For demonstration, both the methods presented in [sec] and [sec] are used for approximating the GI tract. In the first method, a collection of points are manually selected from the STL file where super-elliposids are fit based on least square error minimization techniques.  Representation of GI tract as series of super-ellipsoids is shown in \cref{fig:GISEs}.
 
 \begin{figure}[ht!]
     \centering
@@ -490,9 +492,9 @@ There has been a growing interest in simulating motion of endoscope through GI t
     \caption{ Representation of GI tract in two methods}
 \end{figure}
 
-For representing GI tract as cylinders, we first found out the medial axis of the duct using ??. Then at equal intervals of distance along the medial axis, planes are drawn normal to the same. The collection of points which are in the close proximity of the plane are selected and a circle is fitted on the points using least square error minimization. The parameters so obtained are used for the cylinder equations in [\ref{eq:cylinder}]. Representation of GI tract as a series of connected cylinders is shown in [fig20]
+For representing GI tract as cylinders, we first found out the medial axis of the duct using ??. Then at equal intervals of distance along the medial axis, planes are drawn normal to the same. The collection of points which are in the close proximity of the plane are selected and a circle is fitted on the points using least square error minimization. The parameters so obtained are used for the cylinder equations in [\ref{eq:cylinder}]. Representation of GI tract as a series of connected cylinders is shown in {\cref{fig:GICYs}.
 
-The realistic motion simulation of endoscope through GI tract is shown in [fig21]
+The realistic motion simulation of endoscope through GI tract is shown in \cref{fig:GI_movie}.
 
 \begin{figure}[ht!]
     \centering
@@ -532,10 +534,11 @@ The realistic motion simulation of endoscope through GI tract is shown in [fig21
     \end{subfigure}%
     
     \caption{ Motion of endoscope through GI tract [movie link]}
+    \label{fig:GI_movie}
 \end{figure}
 
 \subsubsection{Motion planning for search and rescue operations}
-Exploring a cluttered environment-- such as in an earthquake hit zone is one of the major applications that necessitates the use of hyper-redundant manipulators. In this example, we show how the proposed algorithms can be effectively used in such applications. With reference to \cref{fig:scene}, the objective of the hyper-redundant manipulator, consisting of 20 links is to 1) enter the scene through the hole in the outer wall, 2) Pass through the vent to get inside the room, 3) Explore the objects 3,4 and 5 located inside the blue region and 4) Exit without colliding with the complex shapes given by objects 6 and 7. Here, the exploration problem is effectively tackled by combining the various methods discussed so far. We use the following constraints to define the 6 different problems of the form in \cref{eq:path_planning_opt}, to generate the entire motion plan. The first problem is to enter through the hole in the wall. For this, an ellipsoid of the size of the hole located in the outer wall, and the feasible set for the first problem is the interior of the ellipsoid, the path being the axis along the direction of the entry. The second problem is a free tractrix motion, where the robot has to reach the opening of the vent. The feasible set in this case is $\mathbb{R}^3$. Next, the robot passes through the vent. This problem is analogous to the one discussed in \cref{sc:pipe_robot}. A collection of cylindrical polyhedra have been to represent the vent-- the feasible set in this problem. This is followed by another free tractrix problem, where the robot exits the vent at the top of the room and reaches to the floor level. Following which, the robot enters the transparent blue search region populated by objects 3 4 and 5. The feasible set of each of the links are obtained on the fly as a combination of the faces of the search region (transparent blue polyhedron) and the nearest obstacle. Finally, the robot exits the scene through another `hole' in the designated search region modeled as a cylinder. This guarantees that the complex  objects 6 and 7 have no effect on the robot motion as they have no contribution to the feasible set of the final problem. This would have been particularly difficult in half-space based motion plans[ refre midhuns jmr]. Also, it is easy to see that the geometry based global motion planning techniques for obstacle avoidance existing in literature will entail a very involving problem formulation [ananthanarayanan].  \Cref{fig:scene_movie} shows the simulated results for the motion of manipulator along a chosen path. 
+Exploring a cluttered environment-- such as in an earthquake hit zone is one of the major applications that necessitates the use of hyper-redundant manipulators. In this example, we show how the proposed algorithms can be effectively used in such applications. With reference to \cref{fig:scene}, the objective of the hyper-redundant manipulator, consisting of 20 links is to 1) enter the scene through the hole in the outer wall, 2) Pass through the vent to get inside the room, 3) Explore the objects 3,4 and 5 located inside the blue region and 4) Exit without colliding with the complex shapes given by objects 6 and 7. Here, the exploration problem is effectively tackled by combining the various methods discussed so far. We use the following constraints to define the 6 different problems of the form in \cref{eq:path_planning_opt}, to generate the entire motion plan. The first problem is to enter through the hole in the wall. For this, an ellipsoid of the size of the hole located in the outer wall, and the feasible set for the first problem is the interior of the ellipsoid, the path being the axis along the direction of the entry. The second problem is a free tractrix motion, where the robot has to reach the opening of the vent. The feasible set in this case is $\mathbb{R}^3$. Next, the robot passes through the vent. This problem is analogous to the one discussed in \cref{sc:pipe_robot}. A collection of cylindrical polyhedra have been to represent the vent-- the feasible set in this problem. This is followed by another free tractrix problem, where the robot exits the vent at the top of the room and reaches to the floor level. Following which, the robot enters the transparent blue search region populated by objects 3, 4, and 5. The feasible set of each of the links are obtained on the fly, as a combination of the faces of the search region (transparent blue polyhedron) and the nearest obstacle. Finally, the robot exits the scene through another `hole' in the designated search region modeled as a cylinder. This guarantees that the complex  objects 6 and 7 have no effect on the robot motion as they have no contribution to the feasible set of the final problem. This would have been particularly difficult in half-space based motion plans[ refre midhuns jmr]. Also, it is easy to see that the geometry based global motion planning techniques for obstacle avoidance existing in literature will entail a very involving problem formulation [ananthanarayanan].  \Cref{fig:scene_movie} shows the simulated results for the motion of manipulator along a chosen path. 
 %While using the methods proposed in this paper, the problem can be addressed with only 6 constraints. The six constraints in this case are actively selected so that they become active only when the position of the head is in the vicinity of the objects/ shapes.
 \begin{figure}[h!]
 \centering
@@ -635,9 +638,9 @@ where, $\textbf{A}=\nabla_{\textbf{x}_t}^2g(\textbf{x}_t)+\sum\limits_{i=1}^{m}\
 &\triangle\lambda=(\textbf{S}^{-1}\textbf{L})(\textbf{B}\triangle \textbf{x}_t -\textbf{F}_2+\textbf{L}^{-1}\textbf{F}_3)\\
 &\triangle s = -\textbf{L}^{-1}(\textbf{F}_3+\textbf{S}\triangle \lambda) \nonumber
 \end{align}
- Where, $\textbf{G}= \textbf{A}+\textbf{B}^T(\textbf{S}^{-1}\textbf{L})\textbf{B}$, a $3\times3$ matrix (for a 3D case) which can be inverted symbolically, also, $\textbf{S}$ and $\textbf{L}$ are diagonal matrices so their inverse can be calculated in linear time ($\mathcal{O}(m)$). Overall, the asymptotic complexity of solving \cref{eq:Newton-dir} is $\mathcal{O}(m^3)$ as the calculation of $ G^{-1},~ \triangle x$ and $\triangle \lambda$ are $\mathcal{O}(m^3)$. This would result in a total asymptotic complexity of the implementation to be $\mathcal{O}(m^{3.5})$. However, the computation time of an iteration doesn't depend on the number of links of the hyper-redundant robot or the step size path, hence the proposed method is linear in these. This is observed from \cref{fig:path_complexity}. As discussed in \cref{sc:duct_as_STL}, in our implementation of the motion planning problem inside a polyhedral domain, we use a separate algorithm to determine whether to use the constraints of the form $[\mathbf{A}]_{m\times 3}\mathbf{x}_t+\mathbf{B}_{m\times 1}\leq 0$ in \cref{eq:STLeqs}. \Cref{alg:in_hull} discusses an $\mathcal{O}(m)$ algorithm to do the same in case of a polyhedron with $ m $ faces. Therefore, the total asymptotic complexity of our implementation should be about $\mathcal{O}(m^{1.5})$. \Cref{fig:face_complexity} shows that actual complexity implementation of our algorithm scales as $(m^{1.43})$, with room for further improvement\footnote{Computation times in \cref{fig:complexity} was obtained using the `tic-toc' function in MatlabR2016b running on a workstation with dual 8 core Intel XEON (2.1GHz), 32 GB RAM and Windows 10. The constant term in the fit equation shown in \cref{fig:face_complexity} signifies the time required to compute the free tractrix problem given by \cref{eq:Opt_prob_main}}. Furthermore, the formulations involving parametric shapes (super ellipses and super ellipsoids) are even faster because the classification of a point with respect to the domain is available as a closed form expression. It may also be noted that this analysis is not applicable to cylinders since they require iterative methods to solve the in-out classifier.
+ Where, $\textbf{G}= \textbf{A}+\textbf{B}^T(\textbf{S}^{-1}\textbf{L})\textbf{B}$, a $3\times3$ matrix (for a 3D case) which can be inverted symbolically, also, $\textbf{S}$ and $\textbf{L}$ are diagonal matrices so their inverse can be calculated in linear time ($\mathcal{O}(m)$). Overall, the asymptotic complexity of solving \cref{eq:Newton-dir} is $\mathcal{O}(m^3)$ as the calculation of $ G^{-1},~ \triangle x$ and $\triangle \lambda$ are $\mathcal{O}(m^3)$. This would result in a total asymptotic complexity of the implementation to be $\mathcal{O}(m^{3.5})$. However, the computation time of an iteration doesn't depend on the number of links of the hyper-redundant robot or the step size path, hence the proposed method is linear in these. This is observed from \cref{fig:path_complexity}. As discussed in \cref{sc:duct_as_STL}, in our implementation of the motion planning problem inside a polyhedral domain, we use a separate algorithm to determine whether to use the constraints of the form $[\mathbf{A}]_{m\times 3}\mathbf{x}_t+\mathbf{B}_{m\times 1}\leq 0$ in \cref{eq:STLeqs}. \Cref{alg:in_hull} discusses an $\mathcal{O}(m)$ algorithm to do the same in case of a polyhedron with $ m $ faces. Therefore, the total asymptotic complexity of our implementation should be about $\mathcal{O}(m^{1.5})$. \Cref{fig:face_complexity} shows that actual complexity of the implementation of our algorithm scales as $(m^{1.43})$, with room for further improvement\footnote{Computation times in \cref{fig:complexity} was obtained using the `tic-toc' function in MatlabR2016b running on a workstation with dual 8 core Intel XEON (2.1GHz), 32 GB RAM and Windows 10. The constant term in the fit equation shown in \cref{fig:face_complexity} signifies the time required to compute the free tractrix problem given by \cref{eq:Opt_prob_main}}. Furthermore, the formulations involving parametric shapes (super ellipses and super ellipsoids) are even faster because the classification of a point with respect to the domain is available as a closed form expression. It may also be noted that this analysis is not applicable to cylinders since they require iterative methods to solve the in-out classifier.
 
-To summarize, three methods to represent 3D ducts are discussed in the previous section which can be chosen based on the computational time and required modelling effort. In the first method of representing ducts by a collection of ellipsoids, modelling time is significant as a separate utility is required to identify the points on surface and to fit the ellipsoids on the data points. However, the solution method is quite fast due to the availability of a closed form function for the in-out classification. The second method of fitting cylinders also involve significant amount of pre-processing to identify cylinders that fit the duct. The implementation time is also high due to the non-analytical nature of the in-out classifier. However, the provision of having a constant clearance from the wall makes it particularly attractive for formulating motion plans for which the thickness of the robot has to be taken into account. Finally, the method of using convex polyhedra to represent ducts requires the least pre-processing time, and is easy to implement with the worst case complexity of $\mathcal{O}(m^{1.5})$.
+To summarize, three methods to represent 3D ducts have been discussed in the previous section which can be chosen based on the computational time and required modelling effort. In the first method of representing ducts by a collection of ellipsoids, modelling time is significant as a separate utility is required to identify the points on surface and to fit the ellipsoids on the data points. However, the solution method is quite fast due to the availability of a closed form function for the in-out classification. The second method of fitting cylinders also involve significant amount of pre-processing to identify cylinders that fit the duct. The implementation time is also high due to the non-analytical nature of the in-out classifier. However, the provision of having a constant clearance from the wall makes it particularly attractive for formulating motion plans for which the thickness of the robot has to be taken into account. Finally, the method of using convex polyhedra to represent ducts requires the least pre-processing time, and is easy to implement with the worst case complexity of $\mathcal{O}(m^{1.5})$.
 
 \begin{figure}
 \centering
@@ -650,17 +653,17 @@ To summarize, three methods to represent 3D ducts are discussed in the previous 
 \begin{subfigure}{0.48\textwidth}
 \centering
  \includegraphics[width=1.1\linewidth]{figures/face_complexity.pdf}
-\caption{Our implementation scales as $(m^{1.43})$ }
+\caption{Our implementation scales as $(m^{1.43})$. Times are for a 20 link robot. }
 \label{fig:face_complexity}
 \end{subfigure}%
-\caption{ Complexity of our implementations}
+\caption{ Complexity of our implementations. We plan the motion of the robot through a cylindrical duct of radius 7 and length 80 units and the path was $[3\theta,~ 0,~ 5\sin\theta],~\theta=[0,24\pi]$}
 \label{fig:complexity}
 \end{figure}
  
 \subsection{Limitations of the tractrix based scheme}
 In spite of the certain advantages regarding formulation and computational aspects of the tractrix based motion planning approach, there are a few limitations which are of importance.\\
 The ducts represented by analytical curves and cylinders would require an in-out classifier to demarcate the feasible space of the posed optimization problem. Often, this would involve numerical formulations which are quite computationally involving.\\
-It can be seen that a given hyper-redundant robot with a particular link length will not be able to negotiate a path with a ``very low" curvature. This is shown in \cref{fig:not_traversable}. In \cref{fig:not_traversable}, the points 1,2,...,8 denote the coordinates of $\textbf{x}_h$ across successive iterations. From iteration 6 onwards, the constraints demarcating the feasible space $\mathcal{S}$ and the one guaranteeing a constant link length cannot be simultaneously satisfied unless the tail $\textbf{x}_t$ (the result of \cref{eq:Opt_prob_main}), backtracks its own path. Soon after, the optimization problem stops as the link seems to be ``locked" at the trough of $\zeta(u)$\footnote{In backbone curve approach, this problem is addressed, but with the cost of very large displacement of the tail point.}. In this section we want to quantify the locking effect. To this end, we borrow the concept of ``traversability" from literature on wheeled mobile robots (see e.g. Nilanjan's JMD paper). A curve $\zeta(u)$ is traversable by a circle $C_i$, $C_i: \left(\begin{array}{c} R_i\cos(v) \\ R_i\sin(v) \end{array}\right), ~ 0 \leq v\leq2\pi $  if $C_i$ can roll over the curve $\zeta(u)$ while maintaining ``only one" point of contact at all times. Traversibility for planar curves can be described by the relative curvature $\kappa_R$ of the circle and the curve at the point of contact. For a planar curve and a circle of radius $R_i$, the relative curvature can be given as \[\kappa_R=\dfrac{\zeta_{uu}}{(1+\zeta_u^2)^{3/2}}-\dfrac{1}{R_i}\] A curve is traversable if the relative curvature is greater than 0, just traversable if it is equal to zero and not traversable if it is negative. This is explained in \cref{fig:is_traversable}. This concept would generalize to traversable surfaces when the minimum of the two eigenvalues of the relative curvature matrix\footnote{The relative curvature matrix of a parametric surface ${S}(u,v): \mathbb{S}^2\to \mathbb{R}^3$ and a sphere of radius R at the point of contact $P = \mathcal{S}(u^*,v^*)$ and on the Gaussian frame attached to the sphere(or $ S $) at P is given as: $\kappa_R\vert_P=\left[\begin{array}{cc}
+It can be seen that a given hyper-redundant robot with a particular link length will not be able to negotiate a path with a ``very high" curvature. This is shown in \cref{fig:not_traversable}. In \cref{fig:not_traversable}, the points 1,2,...,8 denote the coordinates of $\textbf{x}_h$ across successive iterations. From iteration 6 onwards, the constraints demarcating the feasible space $\mathcal{S}$ and the one guaranteeing a constant link length cannot be simultaneously satisfied unless the tail $\textbf{x}_t$ (the result of \cref{eq:Opt_prob_main}), backtracks its own path. Soon after, the optimization problem stops as the link seems to be ``locked" at the trough of $\zeta(u)$\footnote{In backbone curve approach, this problem is addressed, but at the cost of a very large displacement of the tail point.}. In this section we want to quantify the locking effect. To this end, we borrow the concept of ``traversability" from literature on wheeled mobile robots (see e.g. Nilanjan's JMD paper). A curve $\zeta(u)$ is traversable by a circle $C_i$, $C_i: \left(\begin{array}{c} R_i\cos(v) \\ R_i\sin(v) \end{array}\right), ~ 0 \leq v\leq2\pi $  if $C_i$ can roll over the curve $\zeta(u)$ while maintaining ``only one" point of contact at all times. Traversibility for planar curves can be described by the relative curvature $\kappa_R$ of the circle and the curve at the point of contact. For a planar curve and a circle of radius $R_i$, the relative curvature can be given as \[\kappa_R=\dfrac{\zeta_{uu}}{(1+\zeta_u^2)^{3/2}}-\dfrac{1}{R_i}\] A curve is traversable if the relative curvature is greater than 0, just traversable if it is equal to zero and not traversable if it is negative. This is explained in \cref{fig:is_traversable}. This concept would generalize to traversable surfaces when the minimum of the two eigenvalues of the relative curvature matrix\footnote{The relative curvature matrix of a parametric surface ${S}(u,v): \mathbb{S}^2\to \mathbb{R}^3$ and a sphere of radius R at the point of contact $P = {S}(u^*,v^*)$ and on the Gaussian frame attached to the sphere(or $ S $) at P is given as: $\kappa_R\vert_P=\left[\begin{array}{cc}
 	{S}_u.{S}_u-1/R & {S}_u.{S}_v \\ 
 	{S}_u.{S}_v & {S}_v.{S}_v-1/R
 	\end{array}\right]_{u^*,v^*} $} is positive for traversability or vice versa.
@@ -713,15 +716,13 @@ Based on this result, we hypothesize that if curve is traversable by a circle of
 \section{Conclusions}
 \label{sec:conclusions}
 
-Motion planning for hyper-redundant robots in narrow ducts using tractrix based redundancy resolution scheme is addressed. To this end, we discussed three methods to represent ducts in 2D plane as a combination of ellipses, as a series of connected quadrilaterals as well as a bound planar surface formed from two non-intersecting analytical curves. Methods to formulate inequality constraints which will impose the tail point of a link to always lie inside the duct are investigated for all the cases. In 3D, representation of ducts as series of ellipsoids, series of connected cylinders and using point clouds is discussed. The basic formulation as well as formulation for efficient practical implementation is discussed. The methods discussed are demonstrated using three practical examples of motion planning of 1) a hyper-redundant inspection robot through an industrial pipeline 2) a highly articulated endoscopic robot through a GI tract and 3) a hyper-redundant robot in search and rescue operation. From the examples, it is shown that the methods discussed in the paper can be effectively used in motion planning of a hyper-redundant robot manoeuvring in confined bounded spaces while emulating realism. Computational complexity for the methods discussed in this paper is analysed. The complexity of the methods scale linearly for the number of links as well as the number of path points for a given problem, while it scales with the order of maximum of 1.5 for the number of constraint equations. The locking condition for links in negotiating ducts of very low radius of curvature is discussed. A maximum link length which could overcome the issue, based on the curvature of the duct walls is suggested.
-
-??uses LAPACK and heavy solvers.. not really required. instead a stripped version of the interior point will do quite well for fast near real-time implementation. ?? Research on algorithms to overcome the locking problem while maintaining motion realism is underway.
+Motion planning for hyper-redundant robots in narrow ducts using tractrix based redundancy resolution scheme is addressed. To this end, we discussed three methods to represent ducts in 2D plane as a combination of ellipses, as a series of connected quadrilaterals as well as a bound planar surface formed from two non-intersecting analytical curves. Methods to formulate inequality constraints which will impose the tail point of a link to always lie inside the duct are investigated for all the cases. In 3D, representation of ducts as series of ellipsoids, series of connected cylinders and using point clouds is discussed. The basic formulation as well as formulation for efficient practical implementation is discussed. The methods discussed are demonstrated using three practical examples of motion planning of 1) a hyper-redundant inspection robot through an industrial pipeline 2) a highly articulated endoscopic robot through a GI tract and 3) a hyper-redundant robot in search and rescue operation. From the examples, it is shown that the methods discussed in the paper can be effectively used in motion planning of a hyper-redundant robot manoeuvring in confined bounded spaces while emulating realism. Computational complexity for the methods discussed in this paper is analysed. The complexity of the methods scale linearly with the number of links as well as the number of path points for a given problem for all our implementations. Also, for ducts modeled as polyhedra, the worst case complexity has been shown to be $\mathcal{O}(m^{1.5})$, in contrast to $\mathcal{O}(m^{3.5})$ while naively using interior point solvers with $`m'$ planar constraints. The locking condition for links in negotiating ducts of very high radius of curvature is discussed. A maximum link length which could overcome the issue, based on the curvature of the duct walls is suggested. In spite of the efficient formulation discussed, in all our implementations we could not reach real time or near real time performances, where the entire motion plan is obtained in less than 0.1 secs. We believe that this is attributed to our usage of Matlab implementation, where a significant computation time is used up to load LAPACK utilities and other paraphernalia. A stand alone and a leaner version of an interior point solver tailor made for constrained least norm problems will do quite well for fast and near real-time implementation. Also, research on more efficient algorithms to overcome the locking problem while maintaining motion realism is currently underway.
 
 
 
-
-\section{Appendix}	\crefalias{section}{appsec}
-\subsection{Analytical expressions for $u,v$ for quadrilateral patch}\label{app:Analylit_u_v_quad}
+\begin{appendices}
+\crefalias{section}{appsec}
+\section{Analytical expressions for $u,v$ for quadrilateral patch}\label{app:Analylit_u_v_quad}
 \begin{align}
 &\quad {v} = \frac{k_1-k_2\pm \sqrt{\left(k_2-k_1\right)^2-4k_3k_4}}{2k_3},~~{u} = \frac{\left(x-{}^xP_{i-1}+{v}\right)}{\left( a_2+{v} a_3 \right)}\\
 \nonumber\text{ where, }k_1 &= \left(b_1b_2+b_0b_3 \right),~~k_2 = \left(a_1a_2+a_0a_3 \right),~~
@@ -735,7 +736,7 @@ If ${}^xP_{i-1}={}^xP_{i}$ and ${}^xQ_{i-1}={}^xQ_{i}$,
 {u} = \frac{b_0}{a_2},~~{v} = \frac{a_0a_2-\left(a_3+a_2 \right)}{a_1\left(b_0-a_2\right)+b_0\left(b_3-b_2 \right)}
 \end{align}
 
-\subsection{Parametric equation of solid cylinder}\label{app:parametric_u_v_solid_cyl}
+\section{Parametric equation of solid cylinder}\label{app:parametric_u_v_solid_cyl}
 \begin{figure}[ht!]
     \centering
     \begin{subfigure}{0.48\textwidth}
@@ -765,7 +766,7 @@ where
 \end{align*}
 The quantity ${}^1\left(\cdot\right)$ and ${}^2\left(\cdot\right)$ represent the corresponding parameters of the circles at the ends of the cylinder. $\phi_1$ and $\phi_2$ are the angles about the Y and X-axes which the plane of the circle is rotated, $(x_c,y_c,z_c)$ is the co-ordinate of the center of the circle.
 
-\subsection{An algorithm for classifying a point with respect to a polyhedron}\label{app:polyhedron_point}
+\section{An algorithm for classifying a point with respect to a polyhedron}\label{app:polyhedron_point}
 \indent Classification a point with respect to a triangulated domain is a very well known problem and many methods exist, which offer various advantages in terms of computational complexities. In \cref{alg:in_hull}, we describe a method, to classify a given set of points $O$ with respect to a polyhedron $\mathcal{P}$ as inside ($O_{in}$) and outside ($O_{out}$). The implementation of our algorithm\footnote{We have used a modified version of the Matlab function inhull.m, made available by John D'Errico for free usage. } is $\mathcal{O}(m)$. The algorithm can be visualized from \cref{fig:alg_schematic}.
 \begin{algorithm}[ht!]
 	\textbf{Purpose :} To classify a set of points $ O $ with respect to  boundary $\partial \mathcal{P}$\\
@@ -789,7 +790,7 @@ The quantity ${}^1\left(\cdot\right)$ and ${}^2\left(\cdot\right)$ represent the
 \end{algorithm}
 
 %\bibliography{journalref}
-
+\end{appendices}
 
 \begin{thebibliography}{99}
 
