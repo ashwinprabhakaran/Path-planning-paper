@@ -1,0 +1,153 @@
+\begin{thebibliography}{10}
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\expandafter\ifx\csname href\endcsname\relax
+  \def\href#1#2{#2} \def\path#1{#1}\fi
+
+\bibitem{Wolf2003}
+A.~Wolf, H.~B. Brown, R.~Casciola, A.~Costa, M.~Schwerin, E.~Shamas, H.~Choset,
+  A mobile hyper redundant mechanism for search and rescue tasks, in:
+  Intelligent Robots and Systems, 2003.(IROS 2003). Proceedings. 2003 IEEE/RSJ
+  International Conference on, Vol.~3, IEEE, 2003, pp. 2889--2895.
+
+\bibitem{Murphy2008}
+R.~R. Murphy, S.~Tadokoro, D.~Nardi, A.~Jacoff, P.~Fiorini, H.~Choset, A.~M.
+  Erkmen, Search and rescue robotics, in: Springer Handbook of Robotics,
+  Springer, 2008, pp. 1151--1173.
+
+\bibitem{Slatkin1995}
+A.~B. Slatkin, J.~Burdick, W.~Grundfest, The development of a robotic
+  endoscope, in: Intelligent Robots and Systems 95.'Human Robot Interaction and
+  Cooperative Robots', Proceedings. 1995 IEEE/RSJ International Conference on,
+  Vol.~2, IEEE, 1995, pp. 162--171.
+
+\bibitem{Howe1999}
+R.~D. Howe, Y.~Matsuoka, Robotics for surgery, Annual Review of Biomedical
+  Engineering 1~(1) (1999) 211--240.
+
+\bibitem{Cadiere2001}
+G.-B. Cadiere, J.~Himpens, O.~Germay, R.~Izizaw, M.~Degueldre, J.~Vandromme,
+  E.~Capelluto, J.~Bruyns, Feasibility of robotic laparoscopic surgery: 146
+  cases, World journal of surgery 25~(11) (2001) 1467--1477.
+
+\bibitem{Burgner-Kahrs2015}
+J.~Burgner-Kahrs, D.~C. Rucker, H.~Choset, Continuum robots for medical
+  applications: A survey, IEEE Transactions on Robotics 31~(6) (2015)
+  1261--1280.
+
+\bibitem{Paljug1995}
+E.~Paljug, T.~Ohm, S.~Hayati, The jpl serpentine robot: a 12-dof system for
+  inspection, in: Robotics and Automation, 1995. Proceedings., 1995 IEEE
+  International Conference on, Vol.~3, IEEE, 1995, pp. 3143--3148.
+
+\bibitem{Chirikjian1991}
+G.~S. Chirikjian, J.~W. Burdick, Hyper-redundant robot mechanisms and their
+  applications, in: Intelligent Robots and Systems' 91.'Intelligence for
+  Mechanical Systems, Proceedings IROS'91. IEEE/RSJ International Workshop on,
+  IEEE, 1991, pp. 185--190.
+
+\bibitem{WilliamII1997}
+R.~L. William~II, J.~B. Mayhew~IV, Obstacle-free control of the hyper-redundant
+  nasa inspection manipulator, in: Proc. of the Fifth National Conf. on Applied
+  Mechanics and Robotics, 1997, pp. 12--15.
+
+\bibitem{Gargiulo2009}
+L.~Gargiulo, P.~Bayetti, V.~Bruno, J.-C. Hatchressian, C.~Hernandez, M.~Houry,
+  D.~Keller, J.-P. Martins, Y.~Measson, Y.~Perrot, et~al., Operation of an iter
+  relevant inspection robot on tore supra tokamak, Fusion Engineering and
+  Design 84~(2-6) (2009) 220--223.
+
+\bibitem{Ma1994}
+S.~Ma, S.~Hirose, H.~Yoshinada, Development of a hyper-redundant multijoint
+  manipulator for maintenance of nuclear reactors, Advanced robotics 9~(3)
+  (1994) 281--300.
+
+\bibitem{Hirose2004}
+S.~Hirose, M.~Mori, Biologically inspired snake-like robots, in: Robotics and
+  Biomimetics, 2004. ROBIO 2004. IEEE International Conference on, IEEE, 2004,
+  pp. 1--7.
+
+\bibitem{Hannan2000}
+M.~W. Hannan, I.~D. Walker, Analysis and initial experiments for a novel
+  elephant's trunk robot, in: Intelligent Robots and Systems, 2000.(IROS 2000).
+  Proceedings. 2000 IEEE/RSJ International Conference on, Vol.~1, IEEE, 2000,
+  pp. 330--337.
+
+\bibitem{Chirikjian1993}
+G.~S. Chirikjian, J.~W. Burdick, Design and experiments with a 30 dof robot,
+  in: Robotics and Automation, 1993. Proceedings., 1993 IEEE International
+  Conference on, IEEE, 1993, pp. 113--119.
+
+\bibitem{Liegeois1977}
+A.~Liegeois, Automatic supervisory control of the configuration and behaviour
+  of multibody mechanisms, IEEE Transactions on systems, man and cybernetics
+  7~(12) (1977) 868--871.
+
+\bibitem{Baillieul1984}
+J.~Baillieul, J.~Hollerbach, R.~Brockett, Programming and control of
+  kinematically redundant manipulators, in: Decision and Control, 1984. The
+  23rd IEEE Conference on, Vol.~23, IEEE, 1984, pp. 768--774.
+
+\bibitem{Maciejewski1985}
+A.~A. Maciejewski, C.~A. Klein, Obstacle avoidance for kinematically redundant
+  manipulators in dynamically varying environments, The international journal
+  of robotics research 4~(3) (1985) 109--117.
+
+\bibitem{Hwang1992}
+Y.~K. Hwang, N.~Ahuja, Gross motion planning—a survey, ACM Computing Surveys
+  (CSUR) 24~(3) (1992) 219--291.
+
+\bibitem{Chiaverini1997}
+S.~Chiaverini, Singularity-robust task-priority redundancy resolution for
+  real-time kinematic control of robot manipulators, IEEE Transactions on
+  Robotics and Automation 13~(3) (1997) 398--410.
+
+\bibitem{Sciavicco1988}
+L.~Sciavicco, B.~Siciliano, A solution algorithm to the inverse kinematic
+  problem for redundant manipulators, IEEE Journal on Robotics and Automation
+  4~(4) (1988) 403--410.
+
+\bibitem{Mao1997}
+Z.~Mao, T.~C. Hsia, Obstacle avoidance inverse kinematics solution of redundant
+  robots by neural networks, Robotica 15~(1) (1997) 3--10.
+
+\bibitem{Dasgupta2009}
+B.~Dasgupta, A.~Gupta, E.~Singla, A variational approach to path planning for
+  hyper-redundant manipulators, Robotics and Autonomous Systems 57~(2) (2009)
+  194--201.
+
+\bibitem{Antonelli2003}
+G.~Antonelli, S.~Chiaverini, Fuzzy redundancy resolution and motion
+  coordination for underwater vehicle-manipulator systems, IEEE Transactions on
+  Fuzzy Systems 11~(1) (2003) 109--120.
+
+\bibitem{Lumelsky1987}
+V.~J. Lumelsky, A.~A. Stepanov, Path-planning strategies for a point mobile
+  automaton moving amidst unknown obstacles of arbitrary shape, Algorithmica
+  2~(1-4) (1987) 403--430.
+
+\bibitem{Khatib1986}
+O.~Khatib, Real-time obstacle avoidance for manipulators and mobile robots, in:
+  Autonomous robot vehicles, Springer, 1986, pp. 396--404.
+
+\bibitem{Choset2001}
+H.~Choset, Coverage for robotics--a survey of recent results, Annals of
+  mathematics and artificial intelligence 31~(1-4) (2001) 113--126.
+
+\bibitem{Sreenivasan2010}
+S.~Sreenivasan, P.~Goel, A.~Ghosal, A real-time algorithm for simulation of
+  flexible objects and hyper-redundant manipulators, Mechanism and Machine
+  Theory 45~(3) (2010) 454--466.
+
+\bibitem{Menon2013}
+M.~S. Menon, G.~Ananthasuresh, A.~Ghosal, Natural motion of one-dimensional
+  flexible objects using minimization approaches, Mechanism and Machine Theory
+  67 (2013) 64--76.
+
+\bibitem{Menon2017}
+M.~S. Menon, V.~Ravi, A.~Ghosal, Trajectory planning and obstacle avoidance for
+  hyper-redundant serial robots, Journal of Mechanisms and Robotics 9~(4)
+  (2017) 041010.
+
+\end{thebibliography}

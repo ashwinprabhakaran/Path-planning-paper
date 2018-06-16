@@ -1,0 +1,1601 @@
+% Encoding: UTF-8
+
+@Misc{Gaylord1958,
+  author    = {Gaylord, Richard H},
+  title     = {Fluid actuated motor system and stroking device},
+  month     = Jul #{~22},
+  year      = {1958},
+  note      = {{US Patent 2,844,126}},
+  publisher = {Google Patents},
+}
+
+@Article{Joseph1960,
+  author  = {Joseph, LM},
+  title   = {Artificial muscle},
+  journal = {Life},
+  year    = {1960},
+  volume  = {14},
+  pages   = {87--88},
+}
+
+@Article{Daerden2002,
+  author  = {Daerden, Frank and Lefeber, Dirk},
+  title   = {Pneumatic artificial muscles: actuators for robotics and automation},
+  journal = {European journal of mechanical and environmental engineering},
+  year    = {2002},
+  volume  = {47},
+  number  = {1},
+  pages   = {11--21},
+}
+
+@InProceedings{Ashwin2015,
+  author       = {Ashwin, KP and Jose, Don P and Ghosal, Ashitava},
+  title        = {Modeling and Analysis of a Flexible End-effector for Actuating Endoscopic Catheters},
+  booktitle    = {Proceedings of the 14th IFToMM World Congress},
+  year         = {2015},
+  pages        = {113--120},
+  organization = {IFToMM},
+}
+
+@Article{Chakravarthy2014,
+  author    = {Chakravarthy, Shanthanu and Aditya, K and Ghosal, Ashitava},
+  title     = {Experimental characterization and control of miniaturized pneumatic artificial muscle},
+  journal   = {Journal of Medical Devices},
+  year      = {2014},
+  volume    = {8},
+  number    = {4},
+  pages     = {041011},
+  publisher = {American Society of Mechanical Engineers},
+}
+
+@Book{Ghosal2006,
+  title     = {Robotics: Fundamental Concepts and Analysis},
+  publisher = {Oxford University Press},
+  year      = {2006},
+  author    = {Ghosal, Ashitava},
+}
+
+@Article{Schulte1961,
+  author  = {Schulte, HF},
+  title   = {The application of external power in prosthetics and orthotics},
+  journal = {The Characteristics of the McKibben Artificial Muscle, National Research Council},
+  year    = {1961},
+  volume  = {874},
+}
+
+@Article{Chou1996,
+  author    = {Chou, Ching-Ping and Hannaford, Blake},
+  title     = {Measurement and modeling of McKibben pneumatic artificial muscles},
+  journal   = {IEEE Transactions on robotics and automation},
+  year      = {1996},
+  volume    = {12},
+  number    = {1},
+  pages     = {90--102},
+  publisher = {IEEE},
+}
+
+@Article{Davis2006,
+  author    = {Davis, Steve and Caldwell, Darwin G},
+  title     = {Braid effects on contractile range and friction modeling in pneumatic muscle actuators},
+  journal   = {The International Journal of Robotics Research},
+  year      = {2006},
+  volume    = {25},
+  number    = {4},
+  pages     = {359--369},
+  publisher = {SAGE Publications},
+}
+
+@Article{Johnson1966,
+  author    = {Johnson, W and Soden, PD},
+  title     = {The discharge characteristics of confined rubber cylinders},
+  journal   = {International Journal of Mechanical Sciences},
+  year      = {1966},
+  volume    = {8},
+  number    = {3},
+  pages     = {213IN1223--222IN2225},
+  publisher = {Elsevier},
+}
+
+@Article{Tondu2000,
+  author    = {Tondu, Bertrand and Lopez, Pierre},
+  title     = {Modeling and control of McKibben artificial muscle robot actuators},
+  journal   = {IEEE control systems},
+  year      = {2000},
+  volume    = {20},
+  number    = {2},
+  pages     = {15--38},
+  publisher = {IEEE},
+}
+
+@Article{Tondu2012,
+  author    = {Tondu, Bertrand},
+  title     = {Modelling of the McKibben artificial muscle: A review},
+  journal   = {Journal of Intelligent Material Systems and Structures},
+  year      = {2012},
+  volume    = {23},
+  number    = {3},
+  pages     = {225--253},
+  publisher = {Sage Publications Sage UK: London, England},
+}
+
+@Article{DeVolder2011,
+  author    = {De Volder, Micha{\"e}l and Moers, AJM and Reynaerts, Dominiek},
+  title     = {Fabrication and control of miniature McKibben actuators},
+  journal   = {Sensors and Actuators A: Physical},
+  year      = {2011},
+  volume    = {166},
+  number    = {1},
+  pages     = {111--116},
+  publisher = {Elsevier},
+}
+
+@InProceedings{Delson2005,
+  author       = {Delson, Nathan and Hanak, Thomas and Loewke, Kevin and Miller, Daniel N},
+  title        = {Modeling and implementation of McKibben actuators for a hopping robot},
+  booktitle    = {Advanced Robotics, 2005. ICAR'05. Proceedings., 12th International Conference on},
+  year         = {2005},
+  pages        = {833--840},
+  organization = {IEEE},
+}
+
+@Article{Version2011,
+  author  = {Version, MATLAB},
+  title   = {7.12. 0.635 (R2011a) The MathWorks},
+  journal = {Inc., Natick, Massachusetts, United States},
+  year    = {2011},
+}
+
+@Article{Pujana-Arrese2010,
+  author    = {Pujana-Arrese, Aron and Mendizabal, Anjel and Arenas, Javier and Prestamero, Ramon and Landaluze, Joseba},
+  title     = {Modelling in Modelica and position control of a 1-DoF set-up powered by pneumatic muscles},
+  journal   = {Mechatronics},
+  year      = {2010},
+  volume    = {20},
+  number    = {5},
+  pages     = {535--552},
+  publisher = {Elsevier},
+}
+
+@Article{Ganguly2012,
+  author    = {Ganguly, Shameek and Garg, Akash and Pasricha, Akshay and Dwivedy, SK},
+  title     = {Control of pneumatic artificial muscle system through experimental modelling},
+  journal   = {Mechatronics},
+  year      = {2012},
+  volume    = {22},
+  number    = {8},
+  pages     = {1135--1147},
+  publisher = {Elsevier},
+}
+
+@Article{Liu2003,
+  author    = {Liu, Wenguo and Rahn, CR},
+  title     = {Fiber-reinforced membrane models of McKibben actuators},
+  journal   = {Transactions of the ASME-E-Journal of Applied Mechanics},
+  year      = {2003},
+  volume    = {70},
+  number    = {6},
+  pages     = {853--859},
+  publisher = {New York: American Society of Mechanical Engineers.},
+}
+
+@Article{Kydoniefs1974,
+  author    = {Kydoniefs, AD and Salathe, Eric P},
+  title     = {Finite cylindrical deformations of a reinforced elastic tube},
+  journal   = {International Journal of Engineering Science},
+  year      = {1974},
+  volume    = {12},
+  number    = {6},
+  pages     = {519--535},
+  publisher = {Elsevier},
+}
+
+@Article{Kothera2009,
+  author    = {Kothera, Curt S and Jangid, Mamta and Sirohi, Jayant and Wereley, Norman M},
+  title     = {Experimental characterization and static modeling of McKibben actuators},
+  journal   = {Journal of Mechanical Design},
+  year      = {2009},
+  volume    = {131},
+  number    = {9},
+  pages     = {091010},
+  publisher = {American Society of Mechanical Engineers},
+}
+
+@Article{Zhou2004,
+  author    = {Zhou, B and Accorsi, ML and Leonard, JW},
+  title     = {A new finite element for modeling pneumatic muscle actuators},
+  journal   = {Computers \& structures},
+  year      = {2004},
+  volume    = {82},
+  number    = {11},
+  pages     = {845--856},
+  publisher = {Elsevier},
+}
+
+@Article{Xing2012,
+  author    = {Xing, Kexin and Wang, Yongji and Zhu, Quanmin and Zhou, Hanying},
+  title     = {Modeling and control of McKibben artificial muscle enhanced with echo state networks},
+  journal   = {Control Engineering Practice},
+  year      = {2012},
+  volume    = {20},
+  number    = {5},
+  pages     = {477--488},
+  publisher = {Elsevier},
+}
+
+@Article{Chen2014,
+  author    = {Chen, DH and Ushijima, K},
+  title     = {Prediction of the mechanical performance of McKibben artificial muscle actuator},
+  journal   = {International Journal of Mechanical Sciences},
+  year      = {2014},
+  volume    = {78},
+  pages     = {183--192},
+  publisher = {Elsevier},
+}
+
+@Book{Jog2015,
+  title     = {Continuum mechanics},
+  publisher = {Cambridge University Press},
+  year      = {2015},
+  author    = {Jog, Chandrashekhar S},
+  volume    = {1},
+}
+
+@Article{Krishnan2015,
+  author    = {Krishnan, Girish and Bishop-Moser, Joshua and Kim, Charles and Kota, Sridhar},
+  title     = {Kinematics of a generalized class of pneumatic artificial muscles},
+  journal   = {Journal of Mechanisms and Robotics},
+  year      = {2015},
+  volume    = {7},
+  number    = {4},
+  pages     = {041014},
+  publisher = {American Society of Mechanical Engineers},
+}
+
+@Article{Yeung2012,
+  author    = {Yeung, Baldwin Po Man and Gourlay, Terence},
+  title     = {A technical review of flexible endoscopic multitasking platforms},
+  journal   = {International journal of surgery},
+  year      = {2012},
+  volume    = {10},
+  number    = {7},
+  pages     = {345--354},
+  publisher = {Elsevier},
+}
+
+@InProceedings{Degani2006,
+  author       = {Degani, Amir and Choset, Howie and Wolf, Alon and Zenati, Marco A},
+  title        = {Highly articulated robotic probe for minimally invasive surgery},
+  booktitle    = {Robotics and Automation, 2006. ICRA 2006. Proceedings 2006 IEEE International Conference on},
+  year         = {2006},
+  pages        = {4167--4172},
+  organization = {IEEE},
+}
+
+@Article{Xu2008,
+  author    = {Xu, Kai and Simaan, Nabil},
+  title     = {An investigation of the intrinsic force sensing capabilities of continuum robots},
+  journal   = {IEEE Transactions on Robotics},
+  year      = {2008},
+  volume    = {24},
+  number    = {3},
+  pages     = {576--587},
+  publisher = {IEEE},
+}
+
+@Article{Camarillo2008,
+  author    = {Camarillo, David B and Milne, Christopher F and Carlson, Christopher R and Zinn, Michael R and Salisbury, J Kenneth},
+  title     = {Mechanics modeling of tendon-driven continuum manipulators},
+  journal   = {IEEE Transactions on Robotics},
+  year      = {2008},
+  volume    = {24},
+  number    = {6},
+  pages     = {1262--1273},
+  publisher = {IEEE},
+}
+
+@InProceedings{Ikuta1994,
+  author       = {Ikuta, Koji and Nokata, Makoto and Aritomi, Satoshi},
+  title        = {Biomedical micro robots driven by miniature cybernetic actuator},
+  booktitle    = {Micro Electro Mechanical Systems, 1994, MEMS'94, Proceedings, IEEE Workshop on},
+  year         = {1994},
+  pages        = {263--268},
+  organization = {IEEE},
+}
+
+@InProceedings{Xu2009,
+  author       = {Xu, Kai and Goldman, Roger E and Ding, Jienan and Allen, Peter K and Fowler, Dennis L and Simaan, Nabil},
+  title        = {System design of an insertable robotic effector platform for single port access (SPA) surgery},
+  booktitle    = {Intelligent Robots and Systems, 2009. IROS 2009. IEEE/RSJ International Conference on},
+  year         = {2009},
+  pages        = {5546--5552},
+  organization = {IEEE},
+}
+
+@Article{Szewczyk2001,
+  author    = {Szewczyk, Jerome and De Sars, V and Bidaud, Ph and Dumont, G},
+  title     = {An active tubular polyarticulated micro-system for flexible endoscope},
+  journal   = {Experimental Robotics VII},
+  year      = {2001},
+  pages     = {179--188},
+  publisher = {Springer},
+}
+
+@InProceedings{Gravagne2000,
+  author       = {Gravagne, Ian A and Walker, Ian D},
+  title        = {On the kinematics of remotely-actuated continuum robots},
+  booktitle    = {Robotics and Automation, 2000. Proceedings. ICRA'00. IEEE International Conference on},
+  year         = {2000},
+  volume       = {3},
+  pages        = {2544--2550},
+  organization = {IEEE},
+}
+
+@Article{Caldwell2000,
+  author    = {Caldwell, Darwin G and Tsagarakis, N and Medrano-Cerda, GA},
+  title     = {Bio-mimetic actuators: polymeric pseudo muscular actuators and pneumatic muscle actuators for biological emulation},
+  journal   = {Mechatronics},
+  year      = {2000},
+  volume    = {10},
+  number    = {4},
+  pages     = {499--530},
+  publisher = {Elsevier},
+}
+
+@Book{Hartley2003,
+  title     = {Multiple view geometry in computer vision},
+  publisher = {Cambridge university press},
+  year      = {2003},
+  author    = {Hartley, Richard and Zisserman, Andrew},
+}
+
+@Article{DeGreef2009,
+  author    = {De Greef, Aline and Lambert, Pierre and Delchambre, Alain},
+  title     = {Towards flexible medical instruments: Review of flexible fluidic actuators},
+  journal   = {Precision engineering},
+  year      = {2009},
+  volume    = {33},
+  number    = {4},
+  pages     = {311--321},
+  publisher = {Elsevier},
+}
+
+@Article{Robinson2016,
+  author    = {Robinson, Ryan M and Kothera, Curt S and Sanner, Robert M and Wereley, Norman M},
+  title     = {Nonlinear control of robotic manipulators driven by pneumatic artificial muscles},
+  journal   = {IEEE/ASME Transactions on Mechatronics},
+  year      = {2016},
+  volume    = {21},
+  number    = {1},
+  pages     = {55--68},
+  publisher = {IEEE},
+}
+
+@InProceedings{Buechler2016,
+  author       = {B{\"u}chler, Dieter and Ott, Heiko and Peters, Jan},
+  title        = {A lightweight robotic arm with pneumatic muscles for robot learning},
+  booktitle    = {Robotics and Automation (ICRA), 2016 IEEE International Conference on},
+  year         = {2016},
+  pages        = {4086--4092},
+  organization = {IEEE},
+}
+
+@Article{Li2013,
+  author    = {Li, Hongbing and Kawashima, Kenji and Tadano, Kotaro and Ganguly, Shameek and Nakano, Sumire},
+  title     = {Achieving haptic perception in forceps’ manipulator using pneumatic artificial muscle},
+  journal   = {IEEE/ASME Transactions on Mechatronics},
+  year      = {2013},
+  volume    = {18},
+  number    = {1},
+  pages     = {74--85},
+  publisher = {IEEE},
+}
+
+@Article{Jamwal2014,
+  author    = {Jamwal, Prashant K and Xie, Sheng Q and Hussain, Shahid and Parsons, John G},
+  title     = {An adaptive wearable parallel robot for the treatment of ankle injuries},
+  journal   = {IEEE/ASME Transactions on Mechatronics},
+  year      = {2014},
+  volume    = {19},
+  number    = {1},
+  pages     = {64--75},
+  publisher = {IEEE},
+}
+
+@Article{Noritsugu1997,
+  author    = {Noritsugu, Toshiro and Tanaka, Toshihiro},
+  title     = {Application of rubber artificial muscle manipulator as a rehabilitation robot},
+  journal   = {IEEE/ASME Transactions On Mechatronics},
+  year      = {1997},
+  volume    = {2},
+  number    = {4},
+  pages     = {259--267},
+  publisher = {IEEE},
+}
+
+@Article{Takuma2006,
+  author    = {Takuma, Takashi and Hosoda, Koh},
+  title     = {Controlling the walking period of a pneumatic muscle walker},
+  journal   = {The International Journal of Robotics Research},
+  year      = {2006},
+  volume    = {25},
+  number    = {9},
+  pages     = {861--866},
+  publisher = {Sage Publications Sage CA: Thousand Oaks, CA},
+}
+
+@InProceedings{Pritts2004,
+  author       = {Pritts, Michael B and Rahn, Christopher D},
+  title        = {Design of an artificial muscle continuum robot},
+  booktitle    = {Robotics and Automation, 2004. Proceedings. ICRA'04. 2004 IEEE International Conference on},
+  year         = {2004},
+  volume       = {5},
+  pages        = {4742--4746},
+  organization = {IEEE},
+}
+
+@Article{Kang2017,
+  author    = {Kang, Rongjie and Guo, Yong and Chen, Lisha and Branson III, David T and Dai, Jian S},
+  title     = {Design of a pneumatic muscle based continuum robot with embedded tendons},
+  journal   = {IEEE/ASME Transactions on Mechatronics},
+  year      = {2017},
+  volume    = {22},
+  number    = {2},
+  pages     = {751--761},
+  publisher = {IEEE},
+}
+
+@InProceedings{Vanderborght2006,
+  author       = {Vanderborght, Bram and Verrelst, Bj{\"o}rn and Van Ham, Ronald and Van Damme, Michael and Beyl, Pieter and Lefeber, Dirk},
+  title        = {Torque and compliance control of the pneumatic artificial muscles in the biped" Lucy"},
+  booktitle    = {Robotics and Automation, 2006. ICRA 2006. Proceedings 2006 IEEE International Conference on},
+  year         = {2006},
+  pages        = {842--847},
+  organization = {IEEE},
+}
+
+@Article{Takosoglu2016,
+  author    = {Takosoglu, Jakub Emanuel and Laski, Pawel Andrzej and Blasiak, Slawomir and Bracha, Gabriel and Pietrala, Dawid},
+  title     = {Determining the static characteristics of pneumatic muscles},
+  journal   = {Measurement and Control},
+  year      = {2016},
+  volume    = {49},
+  number    = {2},
+  pages     = {62--71},
+  publisher = {SAGE Publications Sage UK: London, England},
+}
+
+@Article{Kurumaya2017,
+  author    = {Kurumaya, Shunichi and Nabae, Hiroyuki and Endo, Gen and Suzumori, Koichi},
+  title     = {Design of thin McKibben muscle and multifilament structure},
+  journal   = {Sensors and Actuators A: Physical},
+  year      = {2017},
+  volume    = {261},
+  pages     = {66--74},
+  publisher = {Elsevier},
+}
+
+@Article{Zorn2017,
+  author    = {Zorn, Lucile and Nageotte, Florent and Zanne, Philippe and Legner, Andras and Dallemagne, Bernard and Marescaux, Jacques and de Mathelin, Michel},
+  title     = {A Novel Telemanipulated Robotic Assistant for Surgical Endoscopy: Preclinical Application to ESD},
+  journal   = {IEEE Transactions on Biomedical Engineering},
+  year      = {2017},
+  publisher = {IEEE},
+}
+
+@InProceedings{Andrikopoulos2011,
+  author       = {Andrikopoulos, Georgios and Nikolakopoulos, Georgios and Manesis, Stamatis},
+  title        = {A survey on applications of pneumatic artificial muscles},
+  booktitle    = {Control \& Automation (MED), 2011 19th Mediterranean Conference on},
+  year         = {2011},
+  pages        = {1439--1446},
+  organization = {IEEE},
+}
+
+@Article{Roesthuis2014,
+  author    = {Roesthuis, Roy J and Kemp, Marco and van den Dobbelsteen, John J and Misra, Sarthak},
+  title     = {Three-dimensional needle shape reconstruction using an array of fiber bragg grating sensors},
+  journal   = {IEEE/ASME transactions on mechatronics},
+  year      = {2014},
+  volume    = {19},
+  number    = {4},
+  pages     = {1115--1126},
+  publisher = {IEEE},
+}
+
+@Article{Andrikopoulos2016,
+  author    = {Andrikopoulos, George and Nikolakopoulos, George and Manesis, Stamatis},
+  title     = {Novel considerations on static force modeling of pneumatic muscle actuators},
+  journal   = {IEEE/ASME transactions on mechatronics},
+  year      = {2016},
+  volume    = {21},
+  number    = {6},
+  pages     = {2647--2659},
+  publisher = {IEEE},
+}
+
+@InProceedings{Simaan2004,
+  author       = {Simaan, Nabil and Taylor, Russell and Flint, Paul},
+  title        = {A dexterous system for laryngeal surgery},
+  booktitle    = {Robotics and Automation, 2004. Proceedings. ICRA'04. 2004 IEEE International Conference on},
+  year         = {2004},
+  volume       = {1},
+  pages        = {351--357},
+  organization = {IEEE},
+}
+
+@Article{Kato2015,
+  author    = {Kato, Takahisa and Okumura, Ichiro and Song, Sang-Eun and Golby, Alexandra J and Hata, Nobuhiko},
+  title     = {Tendon-driven continuum robot for endoscopic surgery: Preclinical development and validation of a tension propagation model},
+  journal   = {IEEE/ASME Transactions on Mechatronics},
+  year      = {2015},
+  volume    = {20},
+  number    = {5},
+  pages     = {2252--2263},
+  publisher = {IEEE},
+}
+
+@Article{Menon2013,
+  author    = {Menon, Midhun S and Ananthasuresh, GK and Ghosal, Ashitava},
+  title     = {Natural motion of one-dimensional flexible objects using minimization approaches},
+  journal   = {Mechanism and Machine Theory},
+  year      = {2013},
+  volume    = {67},
+  pages     = {64--76},
+  publisher = {Elsevier},
+}
+
+@Article{Trivedi2008,
+  author    = {Trivedi, Deepak and Rahn, Christopher D and Kier, William M and Walker, Ian D},
+  title     = {Soft robotics: Biological inspiration, state of the art, and future research},
+  journal   = {Applied bionics and biomechanics},
+  year      = {2008},
+  volume    = {5},
+  number    = {3},
+  pages     = {99--117},
+  publisher = {IOS Press},
+}
+
+@Article{Kumbhari2014,
+  author    = {Kumbhari, Vivek and Khashab, Mouen A},
+  title     = {Perforation due to ERCP},
+  journal   = {Techniques in Gastrointestinal Endoscopy},
+  year      = {2014},
+  volume    = {16},
+  number    = {4},
+  pages     = {187--194},
+  publisher = {Elsevier},
+}
+
+@Article{Tjahyono2013,
+  author    = {Tjahyono, Arief P and Aw, Kean C and Devaraj, Harish and Surendra, Wisnu and Haemmerle, Enrico and Travas-Sejdic, Jadranka},
+  title     = {A five-fingered hand exoskeleton driven by pneumatic artificial muscles with novel polypyrrole sensors},
+  journal   = {Industrial Robot: An International Journal},
+  year      = {2013},
+  volume    = {40},
+  number    = {3},
+  pages     = {251--260},
+  publisher = {Emerald Group Publishing Limited},
+}
+
+@Article{Goulbourne2009,
+  author    = {Goulbourne, NC},
+  title     = {A mathematical model for cylindrical, fiber reinforced electro-pneumatic actuators},
+  journal   = {International Journal of Solids and Structures},
+  year      = {2009},
+  volume    = {46},
+  number    = {5},
+  pages     = {1043--1052},
+  publisher = {Elsevier},
+}
+
+@Article{Ahn2007,
+  author    = {Ahn, KK and Anh, HPH},
+  title     = {A new approach for modelling and identification of the pneumatic artificial muscle manipulator based on recurrent neural networks},
+  journal   = {Proceedings of the Institution of Mechanical Engineers, Part I: Journal of Systems and Control Engineering},
+  year      = {2007},
+  volume    = {221},
+  number    = {8},
+  pages     = {1101--1121},
+  publisher = {SAGE Publications Sage UK: London, England},
+}
+
+@Article{Vo-Minh2011,
+  author    = {Vo-Minh, Tri and Tjahjowidodo, Tegoeh and Ramon, Herman and Van Brussel, Hendrik},
+  title     = {A new approach to modeling hysteresis in a pneumatic artificial muscle using the Maxwell-slip model},
+  journal   = {IEEE/ASME Transactions on Mechatronics},
+  year      = {2011},
+  volume    = {16},
+  number    = {1},
+  pages     = {177--186},
+  publisher = {IEEE},
+}
+
+@Article{Doric2017,
+  author    = {Doric, Igor and Reitberger, Andreas and Wittmann, Sebastian and Harrison, Robert and Brandmeier, Thomas},
+  title     = {A Novel Approach for the Test of Active Pedestrian Safety Systems},
+  journal   = {IEEE Transactions on Intelligent Transportation Systems},
+  year      = {2017},
+  volume    = {18},
+  number    = {5},
+  pages     = {1299--1312},
+  publisher = {IEEE},
+}
+
+@InProceedings{Park2014,
+  author       = {Park, Yong-Lae and Santos, Jobim and Galloway, Kevin G and Goldfield, Eugene C and Wood, Robert J},
+  title        = {A soft wearable robotic device for active knee motions using flat pneumatic artificial muscles},
+  booktitle    = {Robotics and Automation (ICRA), 2014 IEEE International Conference on},
+  year         = {2014},
+  pages        = {4805--4810},
+  organization = {IEEE},
+}
+
+@Article{Le2016,
+  author    = {Le, Huu Minh and Do, Thanh Nho and Phee, Soo Jay},
+  title     = {A survey on actuators-driven surgical robots},
+  journal   = {Sensors and Actuators A: Physical},
+  year      = {2016},
+  volume    = {247},
+  pages     = {323--354},
+  publisher = {Elsevier},
+}
+
+@Article{Prior1993,
+  author    = {Prior, Stephen D and Warner, Peter R and White, Anthony S and Parsons, JT and Gill, Raj},
+  title     = {Actuators for rehabilitation robots},
+  journal   = {Mechatronics},
+  year      = {1993},
+  volume    = {3},
+  number    = {3},
+  pages     = {285--294},
+  publisher = {Elsevier},
+}
+
+@Article{Jamwal2014a,
+  author    = {Jamwal, Prashant K and Xie, Sheng Q and Hussain, Shahid and Parsons, John G},
+  title     = {An adaptive wearable parallel robot for the treatment of ankle injuries},
+  journal   = {IEEE/ASME Transactions on mechatronics},
+  year      = {2014},
+  volume    = {19},
+  number    = {1},
+  pages     = {64--75},
+  publisher = {IEEE},
+}
+
+@Article{Zhang2005,
+  author    = {Zhang, Wenqing and Accorsi, Michael L and Leonard, John W},
+  title     = {Analysis of geometrically nonlinear anisotropic membranes: application to pneumatic muscle actuators},
+  journal   = {Finite Elements in Analysis and Design},
+  year      = {2005},
+  volume    = {41},
+  number    = {9-10},
+  pages     = {944--962},
+  publisher = {Elsevier},
+}
+
+@Article{Hocking2012,
+  author    = {Hocking, Erica G and Wereley, Norman M},
+  title     = {Analysis of nonlinear elastic behavior in miniature pneumatic artificial muscles},
+  journal   = {Smart Materials and Structures},
+  year      = {2012},
+  volume    = {22},
+  number    = {1},
+  pages     = {014016},
+  publisher = {IOP Publishing},
+}
+
+@PhdThesis{Doumit2009,
+  author = {Doumit, Marc D},
+  title  = {Characterization, modeling and design of the braided pneumatic muscle},
+  school = {University of Ottawa (Canada)},
+  year   = {2009},
+}
+
+@InProceedings{Tondu2013,
+  author       = {Tondu, Bertrand},
+  title        = {Closed-loop position control of artificial muscles with a single integral action: Application to robust positioning of McKibben artificial muscle},
+  booktitle    = {Mechatronics (ICM), 2013 IEEE International Conference on},
+  year         = {2013},
+  pages        = {718--723},
+  organization = {IEEE},
+}
+
+@Article{Pillsbury2017,
+  author    = {Pillsbury, Thomas E and Wereley, Norman M and Guan, Qinghua},
+  title     = {Comparison of contractile and extensile pneumatic artificial muscles},
+  journal   = {Smart Materials and Structures},
+  year      = {2017},
+  volume    = {26},
+  number    = {9},
+  pages     = {095034},
+  publisher = {IOP Publishing},
+}
+
+@InProceedings{Robinson2014,
+  author       = {Robinson, Ryan M and Kothera, Curt S and Wereley, Norman M},
+  title        = {Control of a heavy-lift robotic manipulator with pneumatic artificial muscles},
+  booktitle    = {Actuators},
+  year         = {2014},
+  volume       = {3},
+  number       = {2},
+  pages        = {41--65},
+  organization = {Multidisciplinary Digital Publishing Institute},
+}
+
+@InProceedings{Minh2009,
+  author       = {Minh, Tri Vo and Tjahjowidodo, Tegoeh and Ramon, Herman and Van Brussel, Hendrik},
+  title        = {Control of a pneumatic artificial muscle (PAM) with model-based hysteresis compensation},
+  booktitle    = {Advanced Intelligent Mechatronics, 2009. AIM 2009. IEEE/ASME International Conference on},
+  year         = {2009},
+  pages        = {1082--1087},
+  organization = {IEEE},
+}
+
+@InProceedings{Das2016,
+  author       = {Das, G Kumar Hari Shankar Lal and Tondu, Bertrand and Forget, Florent and Manhes, J{\'e}r{\^o}me and Stasse, Olivier and Sou{\`e}res, Philippe},
+  title        = {Controlling a multi-joint arm actuated by pneumatic muscles with quasi-DDP optimal control},
+  booktitle    = {Intelligent Robots and Systems (IROS), 2016 IEEE/RSJ International Conference on},
+  year         = {2016},
+  pages        = {521--528},
+  organization = {IEEE},
+}
+
+@InProceedings{Wang2016,
+  author       = {Wang, Boran and Aw, Kean C and Biglari-Abhari, Morteza and McDaid, Andrew},
+  title        = {Design and fabrication of a fiber-reinforced pneumatic bending actuator},
+  booktitle    = {Advanced Intelligent Mechatronics (AIM), 2016 IEEE International Conference on},
+  year         = {2016},
+  pages        = {83--88},
+  organization = {IEEE},
+}
+
+@Article{Bishop-Moser2015,
+  author    = {Bishop-Moser, Joshua and Kota, Sridhar},
+  title     = {Design and modeling of generalized fiber-reinforced pneumatic soft actuators},
+  journal   = {IEEE Transactions on Robotics},
+  year      = {2015},
+  volume    = {31},
+  number    = {3},
+  pages     = {536--545},
+  publisher = {IEEE},
+}
+
+@InProceedings{Erin2016,
+  author       = {Erin, Onder and Pol, Nishant and Valle, Luis and Park, Yong-Lae},
+  title        = {Design of a bio-inspired pneumatic artificial muscle with self-contained sensing},
+  booktitle    = {Engineering in Medicine and Biology Society (EMBC), 2016 IEEE 38th Annual International Conference of the},
+  year         = {2016},
+  pages        = {2115--2119},
+  organization = {IEEE},
+}
+
+@Article{Pillsbury2015,
+  author    = {Pillsbury, Thomas E and Kothera, Curt S and Wereley, Norman M},
+  title     = {Effect of bladder wall thickness on miniature pneumatic artificial muscle performance},
+  journal   = {Bioinspiration \& biomimetics},
+  year      = {2015},
+  volume    = {10},
+  number    = {5},
+  pages     = {055006},
+  publisher = {IOP Publishing},
+}
+
+@Article{Ball2016,
+  author    = {Ball, Erick and Garcia, Ephrahim},
+  title     = {Effects of bladder geometry in pneumatic artificial muscles},
+  journal   = {Journal of Medical Devices},
+  year      = {2016},
+  volume    = {10},
+  number    = {4},
+  pages     = {041001},
+  publisher = {American Society of Mechanical Engineers},
+}
+
+@InProceedings{Chapman2015,
+  author       = {Chapman, Edward and Macleod, Marc and Bryant, Matthew},
+  title        = {Electrohydraulic Modeling of a Fluidic Artificial Muscle Actuation System for Robot Locomotion},
+  booktitle    = {ASME 2015 Conference on Smart Materials, Adaptive Structures and Intelligent Systems},
+  year         = {2015},
+  pages        = {V001T03A005--V001T03A005},
+  organization = {American Society of Mechanical Engineers},
+}
+
+@InProceedings{McMahan2006,
+  author       = {McMahan, William and Chitrakaran, V and Csencsits, M and Dawson, D and Walker, Ian D and Jones, Bryan A and Pritts, M and Dienno, D and Grissom, M and Rahn, Christopher D},
+  title        = {Field trials and testing of the OctArm continuum manipulator},
+  booktitle    = {Robotics and Automation, 2006. ICRA 2006. Proceedings 2006 IEEE International Conference on},
+  year         = {2006},
+  pages        = {2336--2341},
+  organization = {IEEE},
+}
+
+@Article{CarloFerraresi2001,
+  author  = {Carlo Ferraresi, Walter Franco and Walter Franco, W and Bertetto, AM},
+  title   = {Flexible pneumatic actuators: a comparison between the McKibben and the straight fibres muscles},
+  journal = {J. Robot. Mechatronics},
+  year    = {2001},
+  volume  = {13},
+  pages   = {56--63},
+}
+
+@InProceedings{Bishop-Moser2013,
+  author       = {Bishop-Moser, Joshua and Krishnan, Girish and Kota, Sridhar},
+  title        = {Force and moment generation of fiber-reinforced pneumatic soft actuators},
+  booktitle    = {Intelligent Robots and Systems (IROS), 2013 IEEE/RSJ International Conference on},
+  year         = {2013},
+  pages        = {4460--4465},
+  organization = {IEEE},
+}
+
+@Article{Trivedi2008a,
+  author    = {Trivedi, Deepak and Lotfi, Amir and Rahn, Christopher D},
+  title     = {Geometrically exact models for soft robotic manipulators},
+  journal   = {IEEE Transactions on Robotics},
+  year      = {2008},
+  volume    = {24},
+  number    = {4},
+  pages     = {773--780},
+  publisher = {IEEE},
+}
+
+@InProceedings{Itto2011,
+  author       = {Itto, Takashi and Kogiso, Kiminao},
+  title        = {Hybrid modeling of McKibben pneumatic artificial muscle systems},
+  booktitle    = {Industrial Technology (ICIT), 2011 IEEE International Conference on},
+  year         = {2011},
+  pages        = {65--70},
+  organization = {IEEE},
+}
+
+@Article{Lin2015,
+  author    = {Lin, Chih-Jer and Lin, Chii-Ruey and Yu, Shen-Kai and Chen, Chun-Ta},
+  title     = {Hysteresis modeling and tracking control for a dual pneumatic artificial muscle system using Prandtl--Ishlinskii model},
+  journal   = {Mechatronics},
+  year      = {2015},
+  volume    = {28},
+  pages     = {35--45},
+  publisher = {Elsevier},
+}
+
+@Article{Xie2018,
+  author    = {Xie, Shenglong and Mei, Jiangping and Liu, Haitao and Wang, Yu},
+  title     = {Hysteresis modeling and trajectory tracking control of the pneumatic muscle actuator using modified Prandtl--Ishlinskii model},
+  journal   = {Mechanism and Machine Theory},
+  year      = {2018},
+  volume    = {120},
+  pages     = {213--224},
+  publisher = {Elsevier},
+}
+
+@Article{Meller2016,
+  author    = {Meller, Michael and Chipka, Jordan and Volkov, Alexander and Bryant, Matthew and Garcia, Ephrahim},
+  title     = {Improving actuation efficiency through variable recruitment hydraulic McKibben muscles: modeling, orderly recruitment control, and experiments},
+  journal   = {Bioinspiration \& biomimetics},
+  year      = {2016},
+  volume    = {11},
+  number    = {6},
+  pages     = {065004},
+  publisher = {IOP Publishing},
+}
+
+@Article{Moers2012,
+  author    = {Moers, AJM and De Volder, MFL and Reynaerts, Dominiek},
+  title     = {Integrated high pressure microhydraulic actuation and control for surgical instruments},
+  journal   = {Biomedical microdevices},
+  year      = {2012},
+  volume    = {14},
+  number    = {4},
+  pages     = {699--708},
+  publisher = {Springer},
+}
+
+@InProceedings{Tian2016,
+  author       = {Tian, Yinan and Wang, Kai and Yi, Juan and Wang, Zheng and Chen, Michael ZQ},
+  title        = {Introduction to modeling of the McKibben pneumatic artificial muscle with end constraints},
+  booktitle    = {Information and Automation (ICIA), 2016 IEEE International Conference on},
+  year         = {2016},
+  pages        = {1624--1629},
+  organization = {IEEE},
+}
+
+@InProceedings{Vagaska2014,
+  author       = {Vagask{\'a}, Alena},
+  title        = {Mathematical description and static characteristics of the spring actuator with pneumatic artificial muscle},
+  booktitle    = {Applied Mechanics and Materials},
+  year         = {2014},
+  volume       = {460},
+  pages        = {65--72},
+  organization = {Trans Tech Publ},
+}
+
+@InProceedings{Pillsbury2013,
+  author       = {Pillsbury, Thomas E and Robinson, Ryan M and Wereley, Norman M},
+  title        = {Miniaturized Pneumatic Artificial Muscles Actuating a Bio-Inspired Robot Hand},
+  booktitle    = {ASME 2013 Conference on Smart Materials, Adaptive Structures and Intelligent Systems},
+  year         = {2013},
+  pages        = {V002T06A026--V002T06A026},
+  organization = {American Society of Mechanical Engineers},
+}
+
+@Article{Ball2016a,
+  author    = {Ball, Erick J and Meller, Michael A and Chipka, Jordan B and Garcia, Ephrahim},
+  title     = {Modeling and testing of a knitted-sleeve fluidic artificial muscle},
+  journal   = {Smart Materials and Structures},
+  year      = {2016},
+  volume    = {25},
+  number    = {11},
+  pages     = {115024},
+  publisher = {IOP Publishing},
+}
+
+@InProceedings{VanDamme2008,
+  author       = {Van Damme, Micha{\"e}l and Beyl, Pieter and Vanderborght, Bram and Van Ham, Ronald and Vanderniepen, Innes and Versluys, Rino and Daerden, Frank and Lefeber, Dirk},
+  title        = {Modeling hysteresis in pleated pneumatic artificial muscles},
+  booktitle    = {Robotics, Automation and Mechatronics, 2008 IEEE Conference on},
+  year         = {2008},
+  pages        = {471--476},
+  organization = {IEEE},
+}
+
+@Article{Sui2013,
+  author    = {Sui, Liming and Xie, Shengquan},
+  title     = {Modelling of pneumatic muscle actuator and antagonistic joint using linearised parameters},
+  journal   = {International Journal of Biomechatronics and Biomedical Robotics 19},
+  year      = {2013},
+  volume    = {2},
+  number    = {2-4},
+  pages     = {67--74},
+  publisher = {Inderscience Publishers Ltd},
+}
+
+@InProceedings{Meller2015,
+  author       = {Meller, Michael A and Chipka, Jordan B and Bryant, Matthew J and Garcia, Ephrahim},
+  title        = {Modeling of the energy savings of variable recruitment McKibben muscle bundles},
+  booktitle    = {Bioinspiration, Biomimetics, and Bioreplication 2015},
+  year         = {2015},
+  volume       = {9429},
+  pages        = {94290S},
+  organization = {International Society for Optics and Photonics},
+}
+
+@InProceedings{Minh2010,
+  author       = {Minh, Tri Vo and Kamers, Bram and Tjahjowidodo, Tegoeh and Ramon, Herman and Van Brussel, Hendrik},
+  title        = {Modeling torque-angle hysteresis in a pneumatic muscle manipulator},
+  booktitle    = {Advanced Intelligent Mechatronics (AIM), 2010 IEEE/ASME International Conference on},
+  year         = {2010},
+  pages        = {1122--1127},
+  organization = {IEEE},
+}
+
+@Article{Moseley2016,
+  author    = {Moseley, Philip and Florez, Juan Manuel and Sonar, Harshal Arun and Agarwal, Gunjan and Curtin, William and Paik, Jamie},
+  title     = {Modeling, design, and development of soft pneumatic actuators with finite element method},
+  journal   = {Advanced Engineering Materials},
+  year      = {2016},
+  volume    = {18},
+  number    = {6},
+  pages     = {978--988},
+  publisher = {Wiley Online Library},
+}
+
+@Article{Hao2017,
+  author    = {Hao, Lina and Yang, Hui and Sun, Zhiyong and Xiang, Chaoqun and Xue, Bangcan},
+  title     = {Modeling and compensation control of asymmetric hysteresis in a pneumatic artificial muscle},
+  journal   = {Journal of Intelligent Material Systems and Structures},
+  year      = {2017},
+  volume    = {28},
+  number    = {19},
+  pages     = {2769--2780},
+  publisher = {SAGE Publications Sage UK: London, England},
+}
+
+@Article{Liu2017,
+  author  = {Liu, Yixiang and Zang, Xizhe and Lin, Zhenkun and Liu, Xinyu and Zhao, Jie},
+  title   = {Modelling length/pressure hysteresis of a pneumatic artificial muscle using a modified Prandtl-Ishlinskii model},
+  journal = {Strojni{\v{s}}ki vestnik-Journal of Mechanical Engineering},
+  year    = {2017},
+  volume  = {63},
+  number  = {1},
+  pages   = {56--64},
+}
+
+@Article{Wakimoto2016,
+  author    = {Wakimoto, Shuichi and Misumi, Jumpei and Suzumori, Koichi},
+  title     = {New concept and fundamental experiments of a smart pneumatic artificial muscle with a conductive fiber},
+  journal   = {Sensors and Actuators A: Physical},
+  year      = {2016},
+  volume    = {250},
+  pages     = {48--54},
+  publisher = {Elsevier},
+}
+
+@Article{Wang2015,
+  author    = {Wang, Gang and Wereley, Norman M and Pillsbury, Thomas},
+  title     = {Non-linear quasi-static model of pneumatic artificial muscle actuators},
+  journal   = {Journal of Intelligent Material Systems and Structures},
+  year      = {2015},
+  volume    = {26},
+  number    = {5},
+  pages     = {541--553},
+  publisher = {SAGE Publications Sage UK: London, England},
+}
+
+@InProceedings{Minh2009a,
+  author       = {Minh, Tri Vo and Tjahjowidodo, Tegoeh and Ramon, Herman and Van Brussel, Hendrik},
+  title        = {Non-local memory hysteresis in a pneumatic artificial muscle (PAM)},
+  booktitle    = {Control and Automation, 2009. MED'09. 17th Mediterranean Conference on},
+  year         = {2009},
+  pages        = {640--645},
+  organization = {IEEE},
+}
+
+@Article{Antonelli2017,
+  author    = {Antonelli, Michele G and Beomonte Zobel, Pierluigi and Durante, Francesco and Raparelli, Terenziano},
+  title     = {Numerical modelling and experimental validation of a McKibben pneumatic muscle actuator},
+  journal   = {Journal of Intelligent Material Systems and Structures},
+  year      = {2017},
+  volume    = {28},
+  number    = {19},
+  pages     = {2737--2748},
+  publisher = {SAGE Publications Sage UK: London, England},
+}
+
+@InProceedings{Chapman2016,
+  author       = {Chapman, Edward and Jenkins, Tyler and Bryant, Matthew},
+  title        = {Parametric Study of a Fluidic Artificial Muscle Actuated Electrohydraulic System},
+  booktitle    = {ASME 2016 Conference on Smart Materials, Adaptive Structures and Intelligent Systems},
+  year         = {2016},
+  pages        = {V002T06A003--V002T06A003},
+  organization = {American Society of Mechanical Engineers},
+}
+
+@Article{Robinson2015,
+  author    = {Robinson, Ryan M and Kothera, Curt S and Wereley, Norman M},
+  title     = {Quasi-static nonlinear response of pneumatic artificial muscles for both agonistic and antagonistic actuation modes},
+  journal   = {Journal of Intelligent Material Systems and Structures},
+  year      = {2015},
+  volume    = {26},
+  number    = {7},
+  pages     = {796--809},
+  publisher = {SAGE Publications Sage UK: London, England},
+}
+
+@InProceedings{Tondu2015,
+  author       = {Tondu, Bertrand},
+  title        = {Single linear integral action control for closed-loop positioning of a biomimetic actuator with artificial muscles},
+  booktitle    = {Control Conference (ECC), 2015 European},
+  year         = {2015},
+  pages        = {3585--3590},
+  organization = {IEEE},
+}
+
+@Article{Driver2013,
+  author    = {Driver, Tad and Shen, Xiangrong},
+  title     = {Sleeve muscle actuator: Concept and prototype demonstration},
+  journal   = {Journal of Bionic Engineering},
+  year      = {2013},
+  volume    = {10},
+  number    = {2},
+  pages     = {222--230},
+  publisher = {Elsevier},
+}
+
+@InProceedings{Obiajulu2013,
+  author       = {Obiajulu, Steven C and Roche, Ellen T and Pigula, Frank A and Walsh, Conor J},
+  title        = {Soft pneumatic artificial muscles with low threshold pressures for a cardiac compression device},
+  booktitle    = {ASME 2013 International Design Engineering Technical Conferences and Computers and Information in Engineering Conference},
+  year         = {2013},
+  pages        = {V06AT07A009--V06AT07A009},
+  organization = {American Society of Mechanical Engineers},
+}
+
+@Article{Agarwal2016,
+  author    = {Agarwal, Gunjan and Besuchet, Nicolas and Audergon, Basile and Paik, Jamie},
+  title     = {Stretchable materials for robust soft actuators towards assistive wearable devices},
+  journal   = {Scientific reports},
+  year      = {2016},
+  volume    = {6},
+  pages     = {34224},
+  publisher = {Nature Publishing Group},
+}
+
+@Article{Al-Fahaam2018,
+  author    = {Al-Fahaam, Hassanin and Davis, Steve and Nefti-Meziani, Samia},
+  title     = {The design and mathematical modelling of novel extensor bending pneumatic artificial muscles (EBPAMs) for soft exoskeletons},
+  journal   = {Robotics and Autonomous Systems},
+  year      = {2018},
+  volume    = {99},
+  pages     = {63--74},
+  publisher = {Elsevier},
+}
+
+@Article{Sangian2016,
+  author    = {Sangian, Danial and Naficy, Sina and Spinks, Geoffrey M},
+  title     = {Thermally activated paraffin-filled McKibben muscles},
+  journal   = {Journal of Intelligent Material Systems and Structures},
+  year      = {2016},
+  volume    = {27},
+  number    = {18},
+  pages     = {2508--2516},
+  publisher = {SAGE Publications Sage UK: London, England},
+}
+
+@InProceedings{Bryant2013,
+  author       = {Bryant, Matthew and Meller, Michael A and Garcia, Ephrahim},
+  title        = {Toward variable recruitment fluidic artificial muscles},
+  booktitle    = {ASME 2013 Conference on Smart Materials, Adaptive Structures and Intelligent Systems},
+  year         = {2013},
+  pages        = {V002T06A014--V002T06A014},
+  organization = {American Society of Mechanical Engineers},
+}
+
+@Article{Bryant2014,
+  author    = {Bryant, Matthew and Meller, Michael A and Garcia, Ephrahim},
+  title     = {Variable recruitment fluidic artificial muscles: modeling and experiments},
+  journal   = {Smart Materials and Structures},
+  year      = {2014},
+  volume    = {23},
+  number    = {7},
+  pages     = {074009},
+  publisher = {IOP Publishing},
+}
+
+@Article{Robinson2015a,
+  author    = {Robinson, Ryan M and Kothera, Curt S and Wereley, Norman M},
+  title     = {Variable recruitment testing of pneumatic artificial muscles for robotic manipulators},
+  journal   = {IEEE/ASME Transactions on mechatronics},
+  year      = {2015},
+  volume    = {20},
+  number    = {4},
+  pages     = {1642--1652},
+  publisher = {IEEE},
+}
+
+@Article{Woods2011,
+  author    = {Woods, Benjamin KS and Kothera, Curt S and Wereley, Norman M},
+  title     = {Wind tunnel testing of a helicopter rotor trailing edge flap actuated via pneumatic artificial muscles},
+  journal   = {Journal of Intelligent Material Systems and Structures},
+  year      = {2011},
+  volume    = {22},
+  number    = {13},
+  pages     = {1513--1528},
+  publisher = {Sage Publications Sage UK: London, England},
+}
+
+@Misc{Yokohama1986,
+  author = {Takeo Takagi Yokohama, Yuji Sakaguchi Kawasaki},
+  title  = {Pneumatic actuator for manipulator},
+  month  = oct #{~7},
+  year   = {1986},
+  note   = {US Patent 4,615,260},
+}
+
+@Article{Klute2000,
+  author    = {Klute, Glenn K and Hannaford, Blake},
+  title     = {Accounting for elastic energy storage in McKibben artificial muscle actuators},
+  journal   = {Journal of dynamic systems, measurement, and control},
+  year      = {2000},
+  volume    = {122},
+  number    = {2},
+  pages     = {386--388},
+  publisher = {American Society of Mechanical Engineers},
+}
+
+@Misc{FFM,
+  author       = {{Festo Fluidic Muscle}},
+  title        = {{Festo Didactic Inc., 607 Industrial Way West, Eatontown NJ 07724}},
+  howpublished = {\url{www.festo.com}},
+  note         = {Accessed: 2018-04-12},
+}
+
+@Book{Green1970,
+  title     = {Large elastic deformations},
+  publisher = {Clarendon Press},
+  year      = {1970},
+  author    = {Albert Edward Green, J. E. Adkins},
+  volume    = {1},
+}
+
+@Article{Kydoniefs1969,
+  author    = {Kydoniefs, AD and Spencer, AJM},
+  title     = {Finite axisymmetric deformations of an initially cylindrical elastic membrane},
+  journal   = {The Quarterly Journal of Mechanics and Applied Mathematics},
+  year      = {1969},
+  volume    = {22},
+  number    = {1},
+  pages     = {87--95},
+  publisher = {Oxford University Press},
+}
+
+@Article{Sangian2015,
+  author    = {Sangian, Danial and Naficy, Sina and Spinks, Geoffrey M and Tondu, Bertrand},
+  title     = {The effect of geometry and material properties on the performance of a small hydraulic McKibben muscle system},
+  journal   = {Sensors and Actuators A: Physical},
+  year      = {2015},
+  volume    = {234},
+  pages     = {150--157},
+  publisher = {Elsevier},
+}
+
+@Article{Stakvik2015,
+  author  = {Jon Age Stakvik and Michael R.P. Ragazzon, Arnfinn A. Eielsen, J. Tommy Gravdahl},
+  title   = {On implementation of Preisach model for hysteresis identification and inversion for hysteresis compensation},
+  journal = {Modeling, Identification and Controll},
+  year    = {2015},
+}
+
+@Article{Iwan1966,
+  author    = {Iwan, Wilfred D},
+  title     = {A distributed-element model for hysteresis and its steady-state dynamic response},
+  journal   = {Journal of Applied Mechanics},
+  year      = {1966},
+  volume    = {33},
+  number    = {4},
+  pages     = {893--900},
+  publisher = {American Society of Mechanical Engineers},
+}
+
+@Article{Aschemann2014,
+  author    = {Aschemann, Harald and Schindele, Dominik},
+  title     = {Comparison of model-based approaches to the compensation of hysteresis in the force characteristic of pneumatic muscles},
+  journal   = {IEEE Transactions on Industrial Electronics},
+  year      = {2014},
+  volume    = {61},
+  number    = {7},
+  pages     = {3620--3629},
+  publisher = {IEEE},
+}
+
+@Article{Ismail2009,
+  author    = {Ismail, Mohammed and Ikhouane, Fay{\c{c}}al and Rodellar, Jos{\'e}},
+  title     = {The hysteresis Bouc-Wen model, a survey},
+  journal   = {Archives of Computational Methods in Engineering},
+  year      = {2009},
+  volume    = {16},
+  number    = {2},
+  pages     = {161--188},
+  publisher = {Springer},
+}
+
+@Article{Chen2008,
+  author    = {Chen, Xinkai and Hisayama, Takeshi},
+  title     = {Adaptive sliding-mode position control for piezo-actuated stage},
+  journal   = {IEEE Transactions on Industrial Electronics},
+  year      = {2008},
+  volume    = {55},
+  number    = {11},
+  pages     = {3927--3934},
+  publisher = {IEEE},
+}
+
+@Book{Visintin2013,
+  title     = {Differential models of hysteresis},
+  publisher = {Springer Science \& Business Media},
+  year      = {2013},
+  author    = {Visintin, Augusto},
+  volume    = {111},
+}
+
+@Article{Mooney1940,
+  author    = {Mooney, Melvin},
+  title     = {A theory of large elastic deformation},
+  journal   = {Journal of applied physics},
+  year      = {1940},
+  volume    = {11},
+  number    = {9},
+  pages     = {582--592},
+  publisher = {AIP},
+}
+
+@Article{Rivlin1948,
+  author    = {Rivlin, RS},
+  title     = {Large elastic deformations of isotropic materials IV. Further developments of the general theory},
+  journal   = {Phil. Trans. R. Soc. Lond. A},
+  year      = {1948},
+  volume    = {241},
+  number    = {835},
+  pages     = {379--397},
+  publisher = {The Royal Society},
+}
+
+@Article{Kim2012,
+  author    = {Kim, Beomkeun and Lee, Seong Beom and Lee, Jayone and Cho, Sehyun and Park, Hyungmin and Yeom, Sanghoon and Park, Sung Han},
+  title     = {A comparison among Neo-Hookean model, Mooney-Rivlin model, and Ogden model for chloroprene rubber},
+  journal   = {International Journal of Precision Engineering and Manufacturing},
+  year      = {2012},
+  volume    = {13},
+  number    = {5},
+  pages     = {759--764},
+  publisher = {Springer},
+}
+
+@InProceedings{Wolf2003,
+  author       = {Wolf, Alon and Brown, H Benjamin and Casciola, Randy and Costa, Albert and Schwerin, Michael and Shamas, E and Choset, Howie},
+  title        = {A mobile hyper redundant mechanism for search and rescue tasks},
+  booktitle    = {Intelligent Robots and Systems, 2003.(IROS 2003). Proceedings. 2003 IEEE/RSJ International Conference on},
+  year         = {2003},
+  volume       = {3},
+  pages        = {2889--2895},
+  organization = {IEEE},
+}
+
+@InCollection{Murphy2008,
+  author    = {Murphy, Robin R and Tadokoro, Satoshi and Nardi, Daniele and Jacoff, Adam and Fiorini, Paolo and Choset, Howie and Erkmen, Aydan M},
+  title     = {Search and rescue robotics},
+  booktitle = {Springer Handbook of Robotics},
+  publisher = {Springer},
+  year      = {2008},
+  pages     = {1151--1173},
+}
+
+@Article{Howe1999,
+  author    = {Howe, Robert D and Matsuoka, Yoky},
+  title     = {Robotics for surgery},
+  journal   = {Annual Review of Biomedical Engineering},
+  year      = {1999},
+  volume    = {1},
+  number    = {1},
+  pages     = {211--240},
+  publisher = {Annual Reviews 4139 El Camino Way, PO Box 10139, Palo Alto, CA 94303-0139, USA},
+}
+
+@InProceedings{Slatkin1995,
+  author       = {Slatkin, A Brett and Burdick, Joel and Grundfest, Warren},
+  title        = {The development of a robotic endoscope},
+  booktitle    = {Intelligent Robots and Systems 95.'Human Robot Interaction and Cooperative Robots', Proceedings. 1995 IEEE/RSJ International Conference on},
+  year         = {1995},
+  volume       = {2},
+  pages        = {162--171},
+  organization = {IEEE},
+}
+
+@Article{Sung2001,
+  author    = {Sung, Gyung Tak and Gill, Inderbir S},
+  title     = {Robotic laparoscopic surgery: a comparison of the da Vinci and Zeus systems},
+  journal   = {Urology},
+  year      = {2001},
+  volume    = {58},
+  number    = {6},
+  pages     = {893--898},
+  publisher = {Elsevier},
+}
+
+@Article{Cadiere2001,
+  author    = {Cadiere, Guy-Bernard and Himpens, Jacques and Germay, Olivier and Izizaw, Rachel and Degueldre, Michel and Vandromme, Jean and Capelluto, Elie and Bruyns, Jean},
+  title     = {Feasibility of robotic laparoscopic surgery: 146 cases},
+  journal   = {World journal of surgery},
+  year      = {2001},
+  volume    = {25},
+  number    = {11},
+  pages     = {1467--1477},
+  publisher = {Springer},
+}
+
+@InProceedings{Paljug1995,
+  author       = {Paljug, Eric and Ohm, Timothy and Hayati, Samad},
+  title        = {The JPL Serpentine Robot: a 12-DOF system for inspection},
+  booktitle    = {Robotics and Automation, 1995. Proceedings., 1995 IEEE International Conference on},
+  year         = {1995},
+  volume       = {3},
+  pages        = {3143--3148},
+  organization = {IEEE},
+}
+
+@InProceedings{Chirikjian1991,
+  author       = {Chirikjian, Gregory S and Burdick, Joel W},
+  title        = {Hyper-redundant robot mechanisms and their applications},
+  booktitle    = {Intelligent Robots and Systems' 91.'Intelligence for Mechanical Systems, Proceedings IROS'91. IEEE/RSJ International Workshop on},
+  year         = {1991},
+  pages        = {185--190},
+  organization = {IEEE},
+}
+
+@InProceedings{WilliamII1997,
+  author    = {William II, Robert L and Mayhew IV, James B},
+  title     = {Obstacle-free control of the hyper-redundant nasa inspection manipulator},
+  booktitle = {Proc. of the Fifth National Conf. on Applied Mechanics and Robotics},
+  year      = {1997},
+  pages     = {12--15},
+}
+
+@Article{Gargiulo2009,
+  author    = {Gargiulo, Laurent and Bayetti, Pascal and Bruno, Vincent and Hatchressian, Jean-Claude and Hernandez, Caroline and Houry, Michael and Keller, Delphine and Martins, Jean-Pierre and Measson, Yvan and Perrot, Yann and others},
+  title     = {Operation of an ITER relevant inspection robot on Tore Supra tokamak},
+  journal   = {Fusion Engineering and Design},
+  year      = {2009},
+  volume    = {84},
+  number    = {2-6},
+  pages     = {220--223},
+  publisher = {Elsevier},
+}
+
+@Article{Ma1994,
+  author    = {Ma, Shugen and Hirose, Shigeo and Yoshinada, Hiroshi},
+  title     = {Development of a hyper-redundant multijoint manipulator for maintenance of nuclear reactors},
+  journal   = {Advanced robotics},
+  year      = {1994},
+  volume    = {9},
+  number    = {3},
+  pages     = {281--300},
+  publisher = {Taylor \& Francis},
+}
+
+@Article{Burgner-Kahrs2015,
+  author    = {Burgner-Kahrs, Jessica and Rucker, D Caleb and Choset, Howie},
+  title     = {Continuum robots for medical applications: A survey},
+  journal   = {IEEE Transactions on Robotics},
+  year      = {2015},
+  volume    = {31},
+  number    = {6},
+  pages     = {1261--1280},
+  publisher = {IEEE},
+}
+
+@InProceedings{Chirikjian1993,
+  author       = {Chirikjian, Gregory S and Burdick, Joel W},
+  title        = {Design and Experiments with a 30 DOF Robot},
+  booktitle    = {Robotics and Automation, 1993. Proceedings., 1993 IEEE International Conference on},
+  year         = {1993},
+  pages        = {113--119},
+  organization = {IEEE},
+}
+
+@InProceedings{Hannan2000,
+  author       = {Hannan, Michael W and Walker, Ian D},
+  title        = {Analysis and initial experiments for a novel elephant's trunk robot},
+  booktitle    = {Intelligent Robots and Systems, 2000.(IROS 2000). Proceedings. 2000 IEEE/RSJ International Conference on},
+  year         = {2000},
+  volume       = {1},
+  pages        = {330--337},
+  organization = {IEEE},
+}
+
+@InProceedings{Hirose2004,
+  author       = {Hirose, Shigeo and Mori, Makoto},
+  title        = {Biologically inspired snake-like robots},
+  booktitle    = {Robotics and Biomimetics, 2004. ROBIO 2004. IEEE International Conference on},
+  year         = {2004},
+  pages        = {1--7},
+  organization = {IEEE},
+}
+
+@Article{Maciejewski1985,
+  author    = {Maciejewski, Anthony A and Klein, Charles A},
+  title     = {Obstacle avoidance for kinematically redundant manipulators in dynamically varying environments},
+  journal   = {The international journal of robotics research},
+  year      = {1985},
+  volume    = {4},
+  number    = {3},
+  pages     = {109--117},
+  publisher = {Sage Publications Sage CA: Thousand Oaks, CA},
+}
+
+@Article{Mao1997,
+  author    = {Mao, Ziqiang and Hsia, Tien C},
+  title     = {Obstacle avoidance inverse kinematics solution of redundant robots by neural networks},
+  journal   = {Robotica},
+  year      = {1997},
+  volume    = {15},
+  number    = {1},
+  pages     = {3--10},
+  publisher = {Cambridge University Press},
+}
+
+@Article{Sciavicco1988,
+  author    = {Sciavicco, Lorenzo and Siciliano, Bruno},
+  title     = {A solution algorithm to the inverse kinematic problem for redundant manipulators},
+  journal   = {IEEE Journal on Robotics and Automation},
+  year      = {1988},
+  volume    = {4},
+  number    = {4},
+  pages     = {403--410},
+  publisher = {IEEE},
+}
+
+@Article{Hwang1992,
+  author    = {Hwang, Yong K and Ahuja, Narendra},
+  title     = {Gross motion planning—a survey},
+  journal   = {ACM Computing Surveys (CSUR)},
+  year      = {1992},
+  volume    = {24},
+  number    = {3},
+  pages     = {219--291},
+  publisher = {ACM},
+}
+
+@Article{Chiaverini1997,
+  author    = {Chiaverini, Stefano},
+  title     = {Singularity-robust task-priority redundancy resolution for real-time kinematic control of robot manipulators},
+  journal   = {IEEE Transactions on Robotics and Automation},
+  year      = {1997},
+  volume    = {13},
+  number    = {3},
+  pages     = {398--410},
+  publisher = {IEEE},
+}
+
+@Article{Dasgupta2009,
+  author    = {Dasgupta, Bhaskar and Gupta, Akhil and Singla, Ekta},
+  title     = {A variational approach to path planning for hyper-redundant manipulators},
+  journal   = {Robotics and Autonomous Systems},
+  year      = {2009},
+  volume    = {57},
+  number    = {2},
+  pages     = {194--201},
+  publisher = {Elsevier},
+}
+
+@Article{Antonelli2003,
+  author    = {Antonelli, Gianluca and Chiaverini, Stefano},
+  title     = {Fuzzy redundancy resolution and motion coordination for underwater vehicle-manipulator systems},
+  journal   = {IEEE Transactions on Fuzzy Systems},
+  year      = {2003},
+  volume    = {11},
+  number    = {1},
+  pages     = {109--120},
+  publisher = {IEEE},
+}
+
+@Article{Choset2001,
+  author    = {Choset, Howie},
+  title     = {Coverage for robotics--A survey of recent results},
+  journal   = {Annals of mathematics and artificial intelligence},
+  year      = {2001},
+  volume    = {31},
+  number    = {1-4},
+  pages     = {113--126},
+  publisher = {Springer},
+}
+
+@Article{Lumelsky1987,
+  author    = {Lumelsky, Vladimir J and Stepanov, Alexander A},
+  title     = {Path-planning strategies for a point mobile automaton moving amidst unknown obstacles of arbitrary shape},
+  journal   = {Algorithmica},
+  year      = {1987},
+  volume    = {2},
+  number    = {1-4},
+  pages     = {403--430},
+  publisher = {Springer},
+}
+
+@InCollection{Khatib1986,
+  author    = {Khatib, Oussama},
+  title     = {Real-time obstacle avoidance for manipulators and mobile robots},
+  booktitle = {Autonomous robot vehicles},
+  publisher = {Springer},
+  year      = {1986},
+  pages     = {396--404},
+}
+
+@Article{Sreenivasan2010,
+  author    = {Sreenivasan, S and Goel, Piyush and Ghosal, Ashitava},
+  title     = {A real-time algorithm for simulation of flexible objects and hyper-redundant manipulators},
+  journal   = {Mechanism and Machine Theory},
+  year      = {2010},
+  volume    = {45},
+  number    = {3},
+  pages     = {454--466},
+  publisher = {Elsevier},
+}
+
+@Article{Liegeois1977,
+  author  = {Liegeois, Alain},
+  title   = {Automatic supervisory control of the configuration and behaviour of multibody mechanisms},
+  journal = {IEEE Transactions on systems, man and cybernetics},
+  year    = {1977},
+  volume  = {7},
+  number  = {12},
+  pages   = {868--871},
+}
+
+@InProceedings{Baillieul1984,
+  author       = {Baillieul, John and Hollerbach, John and Brockett, Roger},
+  title        = {Programming and control of kinematically redundant manipulators},
+  booktitle    = {Decision and Control, 1984. The 23rd IEEE Conference on},
+  year         = {1984},
+  volume       = {23},
+  pages        = {768--774},
+  organization = {IEEE},
+}
+
+@Comment{jabref-meta: databaseType:bibtex;}
