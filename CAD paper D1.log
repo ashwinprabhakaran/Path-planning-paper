@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2017.5.20)  16 JUN 2018 11:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2017.5.20)  11 JUN 2018 10:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -909,431 +909,388 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <7> not available
  [1
 
 {d:/Program Files/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-
-LaTeX Warning: Citation `Latombe2012' on page 2 undefined on input line 63.
-
-[2] <figures/backbone.pdf, id=172, 409.78165pt x 171.42444pt>
-File: figures/backbone.pdf Graphic file (type pdf)
-
-<use figures/backbone.pdf>
-Package pdftex.def Info: figures/backbone.pdf used on input line 69.
-(pdftex.def)             Requested size: 307.33548pt x 128.56801pt.
- [3 <./figures/backbone.pdf>]
-<figures/fig1.pdf, id=199, 345.0194pt x 283.81032pt>
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 70.
+ [2]
+<figures/fig1.pdf, id=118, 345.0194pt x 283.81032pt>
 File: figures/fig1.pdf Graphic file (type pdf)
  <use figures/fig1.pdf>
-Package pdftex.def Info: figures/fig1.pdf used on input line 88.
+Package pdftex.def Info: figures/fig1.pdf used on input line 111.
 (pdftex.def)             Requested size: 225.48038pt x 185.4792pt.
 
-<figures/fig2.pdf, id=200, 294.09875pt x 290.08376pt>
+<figures/fig2.pdf, id=119, 294.09875pt x 290.08376pt>
 File: figures/fig2.pdf Graphic file (type pdf)
  <use figures/fig2.pdf>
-Package pdftex.def Info: figures/fig2.pdf used on input line 94.
+Package pdftex.def Info: figures/fig2.pdf used on input line 117.
 (pdftex.def)             Requested size: 169.11028pt x 166.80128pt.
 
-[4] <figures/fig3.pdf, id=216, 417.56pt x 411.5375pt>
+[3] [4 <./figures/fig1.pdf> <./figures/fig2.pdf>]
+<figures/fig3.pdf, id=193, 417.56pt x 411.5375pt>
 File: figures/fig3.pdf Graphic file (type pdf)
  <use figures/fig3.pdf>
-Package pdftex.def Info: figures/fig3.pdf used on input line 117.
+Package pdftex.def Info: figures/fig3.pdf used on input line 140.
 (pdftex.def)             Requested size: 313.16922pt x 308.65237pt.
 
+[5 <./figures/fig3.pdf>] [6] <figures/fig4.pdf, id=280, 562.1pt x 318.18875pt>
+File: figures/fig4.pdf Graphic file (type pdf)
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[5 <./figures/fig1.pdf> <./figures/fig2.pdf>] [6 <./figures/fig3.pdf>] [7]
-<figures/fig4a_SE.pdf, id=368, 366.36874pt x 304.13625pt>
-File: figures/fig4a_SE.pdf Graphic file (type pdf)
-
-<use figures/fig4a_SE.pdf>
-Package pdftex.def Info: figures/fig4a_SE.pdf used on input line 157.
-(pdftex.def)             Requested size: 214.20566pt x 177.82385pt.
-
-<figures/fig4b_SEduct.pdf, id=369, 359.3425pt x 159.59625pt>
-File: figures/fig4b_SEduct.pdf Graphic file (type pdf)
-
-<use figures/fig4b_SEduct.pdf>
-Package pdftex.def Info: figures/fig4b_SEduct.pdf used on input line 162.
-(pdftex.def)             Requested size: 169.11028pt x 75.11008pt.
- [8 <./figures/fig4a_SE.pdf> <./figures/fig4b_SEduct.pdf>] <figures/fig5.pdf, i
-d=386, 373.395pt x 304.13625pt>
-File: figures/fig5.pdf Graphic file (type pdf)
-
-<use figures/fig5.pdf>
-Package pdftex.def Info: figures/fig5.pdf used on input line 201.
-(pdftex.def)             Requested size: 214.20566pt x 174.47324pt.
- <figures/fig6.pdf, id=387, 294.09875pt x 290.08376pt>
-File: figures/fig6.pdf Graphic file (type pdf)
-
-<use figures/fig6.pdf>
-Package pdftex.def Info: figures/fig6.pdf used on input line 206.
-(pdftex.def)             Requested size: 169.11028pt x 166.80128pt.
- [9 <./figures/fig5.pdf> <./figures/fig6.pdf>]
-<figures/fig7.pdf, id=475, 453.695pt x 371.88937pt>
-File: figures/fig7.pdf Graphic file (type pdf)
- <use figures/fig7.pdf>
-Package pdftex.def Info: figures/fig7.pdf used on input line 235.
-(pdftex.def)             Requested size: 226.84694pt x 185.94423pt.
+<use figures/fig4.pdf>
+Package pdftex.def Info: figures/fig4.pdf used on input line 176.
+(pdftex.def)             Requested size: 421.57397pt x 238.64096pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[10] [11 <./figures/fig7.pdf>]
-<figures/fig10.pdf, id=532, 482.80376pt x 304.13625pt>
+[7] <figures/fig5.pdf, id=288, 532.99126pt x 404.51125pt>
+File: figures/fig5.pdf Graphic file (type pdf)
+
+<use figures/fig5.pdf>
+Package pdftex.def Info: figures/fig5.pdf used on input line 199.
+(pdftex.def)             Requested size: 266.49498pt x 202.25513pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<figures/fig6.pdf, id=289, 294.09875pt x 290.08376pt>
+File: figures/fig6.pdf Graphic file (type pdf)
+ <use figures/fig6.pdf>
+Package pdftex.def Info: figures/fig6.pdf used on input line 205.
+(pdftex.def)             Requested size: 147.04901pt x 145.04152pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[8 <./figures/fig4.pdf>] [9 <./figures/fig5.pdf> <./figures/fig6.pdf>]
+<figures/fig7.pdf, id=400, 453.695pt x 376.40625pt>
+File: figures/fig7.pdf Graphic file (type pdf)
+ <use figures/fig7.pdf>
+Package pdftex.def Info: figures/fig7.pdf used on input line 232.
+(pdftex.def)             Requested size: 226.84694pt x 188.20265pt.
+
+[10 <./figures/fig7.pdf>] [11]
+<figures/fig10.pdf, id=456, 482.80376pt x 304.13625pt>
 File: figures/fig10.pdf Graphic file (type pdf)
  <use figures/fig10.pdf>
-Package pdftex.def Info: figures/fig10.pdf used on input line 271.
+Package pdftex.def Info: figures/fig10.pdf used on input line 268.
 (pdftex.def)             Requested size: 362.10193pt x 228.10162pt.
 
-<figures/fig10b.pdf, id=533, 388.45125pt x 297.11pt>
+<figures/fig10b.pdf, id=457, 388.45125pt x 297.11pt>
 File: figures/fig10b.pdf Graphic file (type pdf)
  <use figures/fig10b.pdf>
-Package pdftex.def Info: figures/fig10b.pdf used on input line 277.
+Package pdftex.def Info: figures/fig10b.pdf used on input line 274.
 (pdftex.def)             Requested size: 194.22514pt x 148.55463pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[12 <./figures/fig10.pdf>]
-<figures/fig11.pdf, id=543, 438.63875pt x 355.3275pt>
+<figures/fig11.pdf, id=458, 438.63875pt x 355.3275pt>
 File: figures/fig11.pdf Graphic file (type pdf)
  <use figures/fig11.pdf>
-Package pdftex.def Info: figures/fig11.pdf used on input line 293.
+Package pdftex.def Info: figures/fig11.pdf used on input line 290.
 (pdftex.def)             Requested size: 169.11028pt x 136.99397pt.
 
-<figures/fig12.pdf, id=544, 366.36874pt x 290.08376pt>
+<figures/fig12.pdf, id=459, 366.36874pt x 290.08376pt>
 File: figures/fig12.pdf Graphic file (type pdf)
  <use figures/fig12.pdf>
-Package pdftex.def Info: figures/fig12.pdf used on input line 298.
+Package pdftex.def Info: figures/fig12.pdf used on input line 295.
 (pdftex.def)             Requested size: 169.11028pt x 133.90047pt.
 
-[13 <./figures/fig10b.pdf> <./figures/fig11.pdf> <./figures/fig12.pdf>]
-<figures/fig13.pdf, id=589, 643.92517pt x 241.79636pt>
+[12 <./figures/fig10.pdf>] [13 <./figures/fig10b.pdf> <./figures/fig11.pdf> <./
+figures/fig12.pdf>] <figures/fig13.pdf, id=513, 804.34161pt x 605.62086pt>
 File: figures/fig13.pdf Graphic file (type pdf)
- <use figures/fig13.pdf>
-Package pdftex.def Info: figures/fig13.pdf used on input line 342.
-(pdftex.def)             Requested size: 321.96179pt x 120.89787pt.
+
+<use figures/fig13.pdf>
+Package pdftex.def Info: figures/fig13.pdf used on input line 338.
+(pdftex.def)             Requested size: 402.16983pt x 302.80968pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[14] [15 <./figures/fig13.pdf>]
-<figures/pipefitell.pdf, id=683, 345.29pt x 297.11pt>
-File: figures/pipefitell.pdf Graphic file (type pdf)
+[14] <figures/fitonpipe.pdf, id=525, 1058.89928pt x 499.41121pt>
+File: figures/fitonpipe.pdf Graphic file (type pdf)
 
-<use figures/pipefitell.pdf>
-Package pdftex.def Info: figures/pipefitell.pdf used on input line 388.
-(pdftex.def)             Requested size: 114.5017pt x 98.52261pt.
+<use figures/fitonpipe.pdf>
+Package pdftex.def Info: figures/fitonpipe.pdf used on input line 359.
+(pdftex.def)             Requested size: 476.50027pt x 224.73296pt.
 
-<figures/pipefitcyl.pdf, id=684, 352.31625pt x 283.0575pt>
-File: figures/pipefitcyl.pdf Graphic file (type pdf)
-
-<use figures/pipefitcyl.pdf>
-Package pdftex.def Info: figures/pipefitcyl.pdf used on input line 393.
-(pdftex.def)             Requested size: 114.5017pt x 91.99258pt.
-
-<figures/pipefitstl.pdf, id=685, 359.3425pt x 290.08376pt>
-File: figures/pipefitstl.pdf Graphic file (type pdf)
-
-<use figures/pipefitstl.pdf>
-Package pdftex.def Info: figures/pipefitstl.pdf used on input line 398.
-(pdftex.def)             Requested size: 114.5017pt x 92.43033pt.
-
-
-LaTeX Warning: Reference `sc:pipe_robot' on page 1 undefined on input line 438.
-
-
-<figures/Pipesnaps/1.png, id=687, 1141.26375pt x 1064.97874pt>
-File: figures/Pipesnaps/1.png Graphic file (type png)
-
-<use figures/Pipesnaps/1.png>
-Package pdftex.def Info: figures/Pipesnaps/1.png used on input line 444.
-(pdftex.def)             Requested size: 116.49875pt x 108.69789pt.
-
-<figures/Pipesnaps/2.png, id=689, 1141.26375pt x 1064.97874pt>
-File: figures/Pipesnaps/2.png Graphic file (type png)
-
-<use figures/Pipesnaps/2.png>
-Package pdftex.def Info: figures/Pipesnaps/2.png used on input line 450.
-(pdftex.def)             Requested size: 116.49875pt x 108.69789pt.
-
-<figures/Pipesnaps/3.png, id=690, 1141.26375pt x 1064.97874pt>
-File: figures/Pipesnaps/3.png Graphic file (type png)
-
-<use figures/Pipesnaps/3.png>
-Package pdftex.def Info: figures/Pipesnaps/3.png used on input line 456.
-(pdftex.def)             Requested size: 116.49875pt x 108.69789pt.
-
-<figures/Pipesnaps/4.png, id=691, 1141.26375pt x 1064.97874pt>
-File: figures/Pipesnaps/4.png Graphic file (type png)
-
-<use figures/Pipesnaps/4.png>
-Package pdftex.def Info: figures/Pipesnaps/4.png used on input line 463.
-(pdftex.def)             Requested size: 116.49875pt x 108.69789pt.
-
-<figures/Pipesnaps/5.png, id=692, 1141.26375pt x 1064.97874pt>
-File: figures/Pipesnaps/5.png Graphic file (type png)
-
-<use figures/Pipesnaps/5.png>
-Package pdftex.def Info: figures/Pipesnaps/5.png used on input line 469.
-(pdftex.def)             Requested size: 116.49875pt x 108.69789pt.
-
-<figures/Pipesnaps/6.png, id=693, 1141.26375pt x 1064.97874pt>
-File: figures/Pipesnaps/6.png Graphic file (type png)
-
-<use figures/Pipesnaps/6.png>
-Package pdftex.def Info: figures/Pipesnaps/6.png used on input line 475.
-(pdftex.def)             Requested size: 116.49875pt x 108.69789pt.
- [16] [17 <./figures/pipefitell.pdf> <./figures/pipefitcyl.pdf> <./figures/pipe
-fitstl.pdf> <./figures/Pipesnaps/1.png> <./figures/Pipesnaps/2.png> <./figures/
-Pipesnaps/3.png> <./figures/Pipesnaps/4.png> <./figures/Pipesnaps/5.png> <./fig
-ures/Pipesnaps/6.png>]
-<figures/fig19.pdf, id=32527, 175.65625pt x 695.59875pt>
-File: figures/fig19.pdf Graphic file (type pdf)
-
-<use figures/fig19.pdf>
-Package pdftex.def Info: figures/fig19.pdf used on input line 490.
-(pdftex.def)             Requested size: 56.37009pt x 223.22237pt.
-
-<figures/GIcylfit.pdf, id=32528, 56.21pt x 217.81375pt>
-File: figures/GIcylfit.pdf Graphic file (type pdf)
-
-<use figures/GIcylfit.pdf>
-Package pdftex.def Info: figures/GIcylfit.pdf used on input line 495.
-(pdftex.def)             Requested size: 56.37009pt x 218.44467pt.
-
-<figures/GIsnaps/1.png, id=32530, 452.69125pt x 964.60374pt>
-File: figures/GIsnaps/1.png Graphic file (type png)
-
-<use figures/GIsnaps/1.png>
-Package pdftex.def Info: figures/GIsnaps/1.png used on input line 509.
-(pdftex.def)             Requested size: 63.4139pt x 135.11719pt.
-
-<figures/GIsnaps/2.png, id=32531, 452.69125pt x 964.60374pt>
-File: figures/GIsnaps/2.png Graphic file (type png)
-
-<use figures/GIsnaps/2.png>
-Package pdftex.def Info: figures/GIsnaps/2.png used on input line 515.
-(pdftex.def)             Requested size: 63.4139pt x 135.11719pt.
-
-<figures/GIsnaps/3.png, id=32532, 238.8925pt x 839.135pt>
-File: figures/GIsnaps/3.png Graphic file (type png)
-
-<use figures/GIsnaps/3.png>
-Package pdftex.def Info: figures/GIsnaps/3.png used on input line 520.
-(pdftex.def)             Requested size: 52.84528pt x 185.6218pt.
-
-<figures/GIsnaps/4.png, id=32533, 238.8925pt x 839.135pt>
-File: figures/GIsnaps/4.png Graphic file (type png)
-
-<use figures/GIsnaps/4.png>
-Package pdftex.def Info: figures/GIsnaps/4.png used on input line 526.
-(pdftex.def)             Requested size: 52.84528pt x 185.6218pt.
-
-<figures/GIsnaps/5.png, id=32534, 238.8925pt x 839.135pt>
-File: figures/GIsnaps/5.png Graphic file (type png)
-
-<use figures/GIsnaps/5.png>
-Package pdftex.def Info: figures/GIsnaps/5.png used on input line 532.
-(pdftex.def)             Requested size: 52.84528pt x 185.6218pt.
-
-<figures/GIsnaps/6.png, id=32535, 238.8925pt x 839.135pt>
-File: figures/GIsnaps/6.png Graphic file (type png)
-
-<use figures/GIsnaps/6.png>
-Package pdftex.def Info: figures/GIsnaps/6.png used on input line 538.
-(pdftex.def)             Requested size: 52.84528pt x 185.6218pt.
-
-
-LaTeX Warning: Reference `sc:pipe_robot' on page 1 undefined on input line 546.
-
-
-<figures/figscene.pdf, id=32539, 596.99686pt x 370.59946pt>
-File: figures/figscene.pdf Graphic file (type pdf)
-
-<use figures/figscene.pdf>
-Package pdftex.def Info: figures/figscene.pdf used on input line 550.
-(pdftex.def)             Requested size: 388.04335pt x 240.8868pt.
- [18 <./figures/fig19.pdf, page is rotated 180 degrees> <./figures/GIcylfit.pdf
-, page is rotated 180 degrees>] [19 <./figures/GIsnaps/1.png> <./figures/GIsnap
-s/2.png> <./figures/GIsnaps/3.png (PNG copy)> <./figures/GIsnaps/4.png (PNG cop
-y)> <./figures/GIsnaps/5.png (PNG copy)> <./figures/GIsnaps/6.png (PNG copy)>]
-<figures/Sceneshots/1.png, id=47796, 1704.3675pt x 1059.96pt>
-File: figures/Sceneshots/1.png Graphic file (type png)
-
-<use figures/Sceneshots/1.png>
-Package pdftex.def Info: figures/Sceneshots/1.png used on input line 559.
-(pdftex.def)             Requested size: 140.92792pt x 87.62892pt.
-
-<figures/Sceneshots/2.png, id=47797, 1704.3675pt x 1059.96pt>
-File: figures/Sceneshots/2.png Graphic file (type png)
-
-<use figures/Sceneshots/2.png>
-Package pdftex.def Info: figures/Sceneshots/2.png used on input line 565.
-(pdftex.def)             Requested size: 140.92792pt x 87.62892pt.
-
-<figures/Sceneshots/3.png, id=47798, 1704.3675pt x 1059.96pt>
-File: figures/Sceneshots/3.png Graphic file (type png)
-
-<use figures/Sceneshots/3.png>
-Package pdftex.def Info: figures/Sceneshots/3.png used on input line 571.
-(pdftex.def)             Requested size: 140.92792pt x 87.62892pt.
-
-<figures/Sceneshots/4.png, id=47799, 1771.61874pt x 1065.9825pt>
-File: figures/Sceneshots/4.png Graphic file (type png)
-
-<use figures/Sceneshots/4.png>
-Package pdftex.def Info: figures/Sceneshots/4.png used on input line 578.
-(pdftex.def)             Requested size: 140.92792pt x 84.79237pt.
-
-<figures/Sceneshots/5.png, id=47800, 1771.61874pt x 1065.9825pt>
-File: figures/Sceneshots/5.png Graphic file (type png)
-
-<use figures/Sceneshots/5.png>
-Package pdftex.def Info: figures/Sceneshots/5.png used on input line 584.
-(pdftex.def)             Requested size: 140.92792pt x 84.79237pt.
-
-<figures/Sceneshots/6.png, id=47801, 1771.61874pt x 1065.9825pt>
-File: figures/Sceneshots/6.png Graphic file (type png)
-
-<use figures/Sceneshots/6.png>
-Package pdftex.def Info: figures/Sceneshots/6.png used on input line 589.
-(pdftex.def)             Requested size: 140.92792pt x 84.79237pt.
- [20 <./figures/figscene.pdf>] [21 <./figures/Sceneshots/1.png> <./figures/Scen
-eshots/2.png> <./figures/Sceneshots/3.png> <./figures/Sceneshots/4.png> <./figu
-res/Sceneshots/5.png> <./figures/Sceneshots/6.png>] [22] [23]
-<figures/Path_and_link_complexity.pdf, id=47866, 1233.62517pt x 650.06322pt>
-File: figures/Path_and_link_complexity.pdf Graphic file (type pdf)
-
-<use figures/Path_and_link_complexity.pdf>
-Package pdftex.def Info: figures/Path_and_link_complexity.pdf used on input lin
-e 654.
-(pdftex.def)             Requested size: 225.48038pt x 118.81161pt.
-
-<figures/face_complexity.pdf, id=47867, 1253.95969pt x 664.3751pt>
-File: figures/face_complexity.pdf Graphic file (type pdf)
-
-<use figures/face_complexity.pdf>
-Package pdftex.def Info: figures/face_complexity.pdf used on input line 660.
-(pdftex.def)             Requested size: 248.02979pt x 131.40273pt.
-
-Overfull \hbox (22.54941pt too wide) in paragraph at lines 660--661
+Overfull \hbox (6.74529pt too wide) in paragraph at lines 359--360
  [][] 
  []
 
-[24 <./figures/Path_and_link_complexity.pdf> <./figures/face_complexity.pdf>]
-<figures/Traversabilityproblem.pdf, id=47963, 199.13538pt x 143.84741pt>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[15 <./figures/fig13.pdf>] [16 <./figures/fitonpipe.pdf>]
+<figures/Pipesnaps/1.png, id=35584, 1358.07375pt x 1033.8625pt>
+File: figures/Pipesnaps/1.png Graphic file (type png)
+
+<use figures/Pipesnaps/1.png>
+Package pdftex.def Info: figures/Pipesnaps/1.png used on input line 425.
+(pdftex.def)             Requested size: 116.49875pt x 88.6738pt.
+
+<figures/Pipesnaps/2.png, id=35586, 1358.07375pt x 1033.8625pt>
+File: figures/Pipesnaps/2.png Graphic file (type png)
+
+<use figures/Pipesnaps/2.png>
+Package pdftex.def Info: figures/Pipesnaps/2.png used on input line 431.
+(pdftex.def)             Requested size: 116.49875pt x 88.6738pt.
+
+<figures/Pipesnaps/3.png, id=35587, 1358.07375pt x 1033.8625pt>
+File: figures/Pipesnaps/3.png Graphic file (type png)
+
+<use figures/Pipesnaps/3.png>
+Package pdftex.def Info: figures/Pipesnaps/3.png used on input line 437.
+(pdftex.def)             Requested size: 116.49875pt x 88.6738pt.
+
+<figures/Pipesnaps/4.png, id=35588, 1358.07375pt x 1033.8625pt>
+File: figures/Pipesnaps/4.png Graphic file (type png)
+
+<use figures/Pipesnaps/4.png>
+Package pdftex.def Info: figures/Pipesnaps/4.png used on input line 444.
+(pdftex.def)             Requested size: 116.49875pt x 88.6738pt.
+
+<figures/Pipesnaps/5.png, id=35589, 1358.07375pt x 1033.8625pt>
+File: figures/Pipesnaps/5.png Graphic file (type png)
+
+<use figures/Pipesnaps/5.png>
+Package pdftex.def Info: figures/Pipesnaps/5.png used on input line 450.
+(pdftex.def)             Requested size: 116.49875pt x 88.6738pt.
+
+<figures/Pipesnaps/6.png, id=35590, 1358.07375pt x 1033.8625pt>
+File: figures/Pipesnaps/6.png Graphic file (type png)
+
+<use figures/Pipesnaps/6.png>
+Package pdftex.def Info: figures/Pipesnaps/6.png used on input line 456.
+(pdftex.def)             Requested size: 116.49875pt x 88.6738pt.
+ [17]
+<figures/fig19.pdf, id=35601, 175.65625pt x 695.59875pt>
+File: figures/fig19.pdf Graphic file (type pdf)
+
+<use figures/fig19.pdf>
+Package pdftex.def Info: figures/fig19.pdf used on input line 471.
+(pdftex.def)             Requested size: 56.37009pt x 223.22237pt.
+File: figures/fig19.pdf Graphic file (type pdf)
+ <use figures/fig19.pdf>
+Package pdftex.def Info: figures/fig19.pdf used on input line 476.
+(pdftex.def)             Requested size: 56.37009pt x 223.22237pt.
+
+Underfull \hbox (badness 5908) in paragraph at lines 477--477
+[]\OT1/cmr/m/n/10.95 (b) |GI tract with con-nected cylin-der(??
+ []
+
+<figures/GIsnaps/1.png, id=35603, 238.8925pt x 839.135pt>
+File: figures/GIsnaps/1.png Graphic file (type png)
+
+<use figures/GIsnaps/1.png>
+Package pdftex.def Info: figures/GIsnaps/1.png used on input line 490.
+(pdftex.def)             Requested size: 52.84528pt x 185.6218pt.
+
+<figures/GIsnaps/2.png, id=35604, 238.8925pt x 839.135pt>
+File: figures/GIsnaps/2.png Graphic file (type png)
+
+<use figures/GIsnaps/2.png>
+Package pdftex.def Info: figures/GIsnaps/2.png used on input line 496.
+(pdftex.def)             Requested size: 52.84528pt x 185.6218pt.
+
+<figures/GIsnaps/3.png, id=35605, 238.8925pt x 839.135pt>
+File: figures/GIsnaps/3.png Graphic file (type png)
+
+<use figures/GIsnaps/3.png>
+Package pdftex.def Info: figures/GIsnaps/3.png used on input line 502.
+(pdftex.def)             Requested size: 52.84528pt x 185.6218pt.
+
+<figures/GIsnaps/4.png, id=35606, 238.8925pt x 839.135pt>
+File: figures/GIsnaps/4.png Graphic file (type png)
+
+<use figures/GIsnaps/4.png>
+Package pdftex.def Info: figures/GIsnaps/4.png used on input line 508.
+(pdftex.def)             Requested size: 52.84528pt x 185.6218pt.
+
+<figures/GIsnaps/5.png, id=35607, 238.8925pt x 839.135pt>
+File: figures/GIsnaps/5.png Graphic file (type png)
+
+<use figures/GIsnaps/5.png>
+Package pdftex.def Info: figures/GIsnaps/5.png used on input line 514.
+(pdftex.def)             Requested size: 52.84528pt x 185.6218pt.
+
+<figures/GIsnaps/6.png, id=35608, 238.8925pt x 839.135pt>
+File: figures/GIsnaps/6.png Graphic file (type png)
+
+<use figures/GIsnaps/6.png>
+Package pdftex.def Info: figures/GIsnaps/6.png used on input line 520.
+(pdftex.def)             Requested size: 52.84528pt x 185.6218pt.
+ [18 <./figures/Pipesnaps/1.png> <./figures/Pipesnaps/2.png> <./figures/Pipesna
+ps/3.png> <./figures/Pipesnaps/4.png> <./figures/Pipesnaps/5.png> <./figures/Pi
+pesnaps/6.png>] [19 <./figures/fig19.pdf, page is rotated 180 degrees> <./figur
+es/GIsnaps/1.png (PNG copy)> <./figures/GIsnaps/2.png (PNG copy)> <./figures/GI
+snaps/3.png (PNG copy)> <./figures/GIsnaps/4.png (PNG copy)> <./figures/GIsnaps
+/5.png (PNG copy)> <./figures/GIsnaps/6.png (PNG copy)>] <figures/figscene.png,
+ id=35636, 1651.16875pt x 1042.89626pt>
+File: figures/figscene.png Graphic file (type png)
+
+<use figures/figscene.png>
+Package pdftex.def Info: figures/figscene.png used on input line 532.
+(pdftex.def)             Requested size: 330.2279pt x 208.57556pt.
+File: figures/figscene.png Graphic file (type png)
+ <use figures/figscene.png>
+Package pdftex.def Info: figures/figscene.png used on input line 541.
+(pdftex.def)             Requested size: 140.92792pt x 89.00305pt.
+File: figures/figscene.png Graphic file (type png)
+
+<use figures/figscene.png>
+Package pdftex.def Info: figures/figscene.png used on input line 547.
+(pdftex.def)             Requested size: 140.92792pt x 89.00305pt.
+File: figures/figscene.png Graphic file (type png)
+ <use figures/figscene.png>
+Package pdftex.def Info: figures/figscene.png used on input line 553.
+(pdftex.def)             Requested size: 140.92792pt x 89.00305pt.
+File: figures/figscene.png Graphic file (type png)
+
+<use figures/figscene.png>
+Package pdftex.def Info: figures/figscene.png used on input line 560.
+(pdftex.def)             Requested size: 140.92792pt x 89.00305pt.
+File: figures/figscene.png Graphic file (type png)
+ <use figures/figscene.png>
+Package pdftex.def Info: figures/figscene.png used on input line 566.
+(pdftex.def)             Requested size: 140.92792pt x 89.00305pt.
+File: figures/figscene.png Graphic file (type png)
+
+<use figures/figscene.png>
+Package pdftex.def Info: figures/figscene.png used on input line 571.
+(pdftex.def)             Requested size: 140.92792pt x 89.00305pt.
+ [20 <./figures/figscene.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 587--588
+
+ []
+
+[21] [22] [23]
+<figures/Traversabilityproblem.pdf, id=35682, 199.13538pt x 143.84741pt>
 File: figures/Traversabilityproblem.pdf Graphic file (type pdf)
 
 <use figures/Traversabilityproblem.pdf>
 Package pdftex.def Info: figures/Traversabilityproblem.pdf used on input line 6
-80.
+52.
 (pdftex.def)             Requested size: 167.46544pt x 120.97585pt.
 
-Overfull \hbox (21.84254pt too wide) in paragraph at lines 680--681
+Overfull \hbox (21.84254pt too wide) in paragraph at lines 652--653
  [][] 
  []
 
-<figures/Traversability.pdf, id=47964, 164.9352pt x 186.55698pt>
+<figures/Traversability.pdf, id=35683, 164.9352pt x 186.55698pt>
 File: figures/Traversability.pdf Graphic file (type pdf)
 
 <use figures/Traversability.pdf>
-Package pdftex.def Info: figures/Traversability.pdf used on input line 685.
+Package pdftex.def Info: figures/Traversability.pdf used on input line 657.
 (pdftex.def)             Requested size: 109.21716pt x 123.53789pt.
 
-<figures/Traversability2.pdf, id=47965, 190.15933pt x 191.8337pt>
+<figures/Traversability2.pdf, id=35684, 190.15933pt x 191.8337pt>
 File: figures/Traversability2.pdf Graphic file (type pdf)
 
 <use figures/Traversability2.pdf>
-Package pdftex.def Info: figures/Traversability2.pdf used on input line 690.
+Package pdftex.def Info: figures/Traversability2.pdf used on input line 662.
 (pdftex.def)             Requested size: 123.78033pt x 124.87189pt.
- [25]
+ [24]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 732.
+(hyperref)                removing `math shift' on input line 702.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 732.
+(hyperref)                removing `math shift' on input line 702.
 
 
-Overfull \hbox (33.9312pt too wide) in paragraph at lines 739--739
+Overfull \hbox (33.9312pt too wide) in paragraph at lines 709--709
 [] 
  []
 
-[26 <./figures/Traversabilityproblem.pdf> <./figures/Traversability.pdf> <./fig
+[25 <./figures/Traversabilityproblem.pdf> <./figures/Traversability.pdf> <./fig
 ures/Traversability2.pdf>]
-<figures/fig17a.pdf, id=48027, 95.96352pt x 200.95377pt>
+<figures/fig17a.pdf, id=35748, 151.3113pt x 354.19427pt>
 File: figures/fig17a.pdf Graphic file (type pdf)
 
 <use figures/fig17a.pdf>
-Package pdftex.def Info: figures/fig17a.pdf used on input line 751.
-(pdftex.def)             Requested size: 67.64479pt x 141.654pt.
+Package pdftex.def Info: figures/fig17a.pdf used on input line 721.
+(pdftex.def)             Requested size: 67.64479pt x 158.34827pt.
+ <figures/fig16.pdf, id=35749, 373.395pt x 297.11pt>
+File: figures/fig16.pdf Graphic file (type pdf)
 
-<figures/app_fig1.pdf, id=48028, 491.42676pt x 364.03043pt>
-File: figures/app_fig1.pdf Graphic file (type pdf)
+<use figures/fig16.pdf>
+Package pdftex.def Info: figures/fig16.pdf used on input line 726.
+(pdftex.def)             Requested size: 169.11028pt x 134.55963pt.
 
-<use figures/app_fig1.pdf>
-Package pdftex.def Info: figures/app_fig1.pdf used on input line 756.
-(pdftex.def)             Requested size: 191.65968pt x 141.97128pt.
- [27 <./figures/fig17a.pdf> <./figures/app_fig1.pdf>]
-Overfull \hbox (17.62482pt too wide) detected at line 797
+Overfull \hbox (17.62482pt too wide) detected at line 770
 [][] 
  []
 
-(./CAD paper D1.bbl [28] [29] [30])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 827.
- [31]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 827.
+[26 <./figures/fig17a.pdf> <./figures/fig16.pdf>]
+
+LaTeX Warning: Empty `thebibliography' environment on input line 797.
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 800.
+[27]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 800.
  (./CAD paper D1.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 827.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 827.
-Package rerunfilecheck Info: File `"CAD paper D1".out' has not changed.
-(rerunfilecheck)             Checksum: DBB4DCDCDAD65594B83D9C8136AE8058;2056.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 800.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 800.
 
 
-LaTeX Warning: There were undefined references.
+Package rerunfilecheck Warning: File `"CAD paper D1".out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 827.
+Package rerunfilecheck Info: Checksums for `"CAD paper D1".out':
+(rerunfilecheck)             Before: 6560B2C4AF62B41114FD161142AE1BD8;2135
+(rerunfilecheck)             After:  1B79C61246E36CCE9137E32DC1740FF6;2147.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 800.
  )
 (\end occurred inside a group at level 1)
 
 ### simple group (level 1) entered at line 1061 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 12752 strings out of 493014
- 202958 string characters out of 6130549
- 334832 words of memory out of 5000000
- 15920 multiletter control sequences out of 15000+600000
- 18118 words of font info for 72 fonts, out of 8000000 for 9000
+ 12570 strings out of 493014
+ 199091 string characters out of 6130549
+ 334466 words of memory out of 5000000
+ 15777 multiletter control sequences out of 15000+600000
+ 16705 words of font info for 66 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 37i,16n,43p,2637b,3288s stack positions out of 5000i,500n,10000p,200000b,80000s
-<d:/Program Files/texlive/2016/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmbx10.pfb><d:/Program Files/texlive/2016/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmbx12.pfb><d:/Program Files/texlive/2016/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmbx8.pfb><d:/Program Files/texlive/2016/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmex10.pfb><d:/Program Files/texlive/2016/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmmi10.pfb><d:/Program Files/texlive/2016/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmmi12.pfb><d:/Program Files/texlive/2016/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><d:/Program Files/texlive/2016
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><d:/Program Files/texlive/
-2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><d:/Program Files/texl
-ive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><d:/Program Files/
-texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><d:/Program Fi
-les/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><d:/Progra
-m Files/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><d:/Pro
-gram Files/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><d:/
-Program Files/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><
-d:/Program Files/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.
-pfb><d:/Program Files/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-sy5.pfb><d:/Program Files/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmsy7.pfb><d:/Program Files/texlive/2016/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmsy8.pfb><d:/Program Files/texlive/2016/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmti12.pfb><d:/Program Files/texlive/2016/texmf-dist/fonts/type1/publ
-ic/amsfonts/symbols/msbm10.pfb>
-Output written on "CAD paper D1.pdf" (31 pages, 66337403 bytes).
+ 37i,16n,39p,2100b,3293s stack positions out of 5000i,500n,10000p,200000b,80000s
+pdfTeX warning (dest): name{subsection.5.4} has been referenced
+ but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{subsubsection.5.2.2} has been referenced but does n
+ot exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{subsubsection.5.2.1} has been referenced but does n
+ot exist, replaced by a fixed one
+
+<d:/Program Files/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10
+.pfb><d:/Program Files/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mbx12.pfb><d:/Program Files/texlive/2016/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmbx8.pfb><d:/Program Files/texlive/2016/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmex10.pfb><d:/Program Files/texlive/2016/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmmi10.pfb><d:/Program Files/texlive/2016/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmmi12.pfb><d:/Program Files/texlive/2016/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmmi6.pfb><d:/Program Files/texlive/2016/texmf-dist/font
+s/type1/public/amsfonts/cm/cmmi7.pfb><d:/Program Files/texlive/2016/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmmi8.pfb><d:/Program Files/texlive/2016/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmr10.pfb><d:/Program Files/texlive/2016/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><d:/Program Files/texlive/2016
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><d:/Program Files/texlive/
+2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><d:/Program Files/texli
+ve/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><d:/Program Files/te
+xlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><d:/Program Files
+/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><d:/Program 
+Files/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><d:/Prog
+ram Files/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><d:/
+Program Files/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+<d:/Program Files/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12
+.pfb><d:/Program Files/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/symb
+ols/msbm10.pfb>
+Output written on "CAD paper D1.pdf" (27 pages, 11374808 bytes).
 PDF statistics:
- 48194 PDF objects out of 55141 (max. 8388607)
- 47532 compressed objects within 476 object streams
- 162 named destinations out of 1000 (max. 500000)
- 410 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 35909 PDF objects out of 38293 (max. 8388607)
+ 35415 compressed objects within 355 object streams
+ 134 named destinations out of 1000 (max. 500000)
+ 353 words of extra memory for PDF output out of 10000 (max. 10000000)
 
